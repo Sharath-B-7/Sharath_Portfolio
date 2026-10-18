@@ -1,0 +1,264 @@
+/* ==========================================================================
+   SHARATH B — CYBERSECURITY & SOFTWARE ENGINEERING PORTFOLIO
+   Clean, Disciplined, Typography-First Design System
+   ========================================================================== */
+
+:root {
+  /* Surfaces & Canvas */
+  --bg-color: #08080c;
+  --bg-surface: #0e0e14;
+  --bg-surface-elevated: #14141d;
+  --bg-hairline: rgba(255, 255, 255, 0.08);
+  --bg-hairline-subtle: rgba(255, 255, 255, 0.04);
+
+  /* Typography Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #e4e4e7;
+  --text-muted: #9ca3af;
+  --text-faint: #6b7280;
+
+  /* Single Restrained Accent */
+  --accent-cyan: #38bdf8;
+  --accent-primary: #38bdf8;
+  --accent-cyan-subtle: rgba(56, 189, 248, 0.12);
+  --accent-cyan-border: rgba(56, 189, 248, 0.3);
+
+  /* Subtle Status */
+  --accent-emerald: #10b981;
+  --accent-emerald-subtle: rgba(16, 185, 129, 0.12);
+
+  /* Fonts */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Layout */
+  --max-width: 1240px;
+  --header-height: 68px;
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  position: relative;
+  /* Micro dot-matrix texture for subtle architectural depth */
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0.6px, transparent 0.6px);
+  background-size: 24px 24px;
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Selection */
+::selection {
+  background: rgba(56, 189, 248, 0.25);
+  color: #ffffff;
+}
+
+/* Main Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 3.5vw, 2.5rem);
+  padding-right: clamp(1.25rem, 3.5vw, 2.5rem);
+}
+
+/* Section Common Styling */
+.editorial-section {
+  padding-top: clamp(4.5rem, 8vw, 6.5rem);
+  padding-bottom: clamp(4.5rem, 8vw, 6.5rem);
+  position: relative;
+  border-bottom: 1px solid var(--bg-hairline);
+}
+
+/* Section Header Typography */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-cyan);
+  margin-bottom: 0.75rem;
+}
+
+.section-heading-editorial {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 0.85rem;
+}
+
+.section-subheading-editorial {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.65;
+}
+
+/* Mono Metadata Tag */
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Buttons & Interactive Elements */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  color: #08080c;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  color: #08080c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid var(--bg-hairline);
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Compact Social Pill Links */
+.social-pill-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--bg-hairline);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: all 0.2s ease;
+}
+
+.social-pill-link:hover {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: var(--accent-cyan-border);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Cards & Containers */
+.card-clean {
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-hairline);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-clean:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Modal Dialog Guidance Compliance */
+dialog:modal {
+  overscroll-behavior: contain;
+  background: transparent;
+  border: none;
+  padding: 0;
+  max-width: 95vw;
+  max-height: 95vh;
+  margin: auto;
+  border-radius: 12px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.95);
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
