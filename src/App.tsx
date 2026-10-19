@@ -7,6 +7,7 @@ import { AboutSection } from "./sections/AboutSection";
 import { ProjectsSection } from "./sections/ProjectsSection";
 import { SkillsSection } from "./sections/SkillsSection";
 import { EducationSection } from "./sections/EducationSection";
+import { AchievementsSection } from "./sections/AchievementsSection";
 import { ContactSection } from "./sections/ContactSection";
 import { Footer } from "./sections/Footer";
 
@@ -33,6 +34,7 @@ export const App: React.FC = () => {
         <ProjectsSection />
         <SkillsSection />
         <EducationSection />
+        <AchievementsSection />
         <ContactSection />
       </main>
 

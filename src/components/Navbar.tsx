@@ -70,38 +70,65 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
     };
   }, [matrixOpen]);
 
+  const [activeSection, setActiveSection] = useState<string>("hero");
+
+  // Track active section via IntersectionObserver for smooth scrollspy
+  useEffect(() => {
+    const sections = ["hero", "about", "projects", "skills", "education", "achievements", "contact"];
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 200;
+      for (const sectionId of [...sections].reverse()) {
+        const el = document.getElementById(sectionId);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(sectionId);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const directoryHubs = [
     {
+      id: "projects",
       name: "Projects",
       desc: "Selected software & security builds",
       href: "#projects",
       icon: <FolderGit2 size={16} color="var(--accent-cyan)" />,
     },
     {
+      id: "skills",
       name: "Skills",
       desc: "Technical capabilities & core toolchains",
       href: "#skills",
       icon: <Cpu size={16} color="var(--accent-cyan)" />,
     },
     {
+      id: "about",
       name: "About",
       desc: "Approach, background & engineering thesis",
       href: "#about",
       icon: <User size={16} color="var(--accent-cyan)" />,
     },
     {
+      id: "education",
       name: "Education",
       desc: "CIT Chennai (B.E. CSE Cyber) & credentials",
       href: "#education",
       icon: <GraduationCap size={16} color="var(--accent-cyan)" />,
     },
     {
+      id: "achievements",
       name: "Achievements",
       desc: "450+ LeetCode problems & milestones",
-      href: "#education",
+      href: "#achievements",
       icon: <Trophy size={16} color="var(--accent-cyan)" />,
     },
     {
+      id: "resume",
       name: "Resume",
       desc: "View or download official PDF CV",
       href: "#",
@@ -113,6 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
       icon: <FileText size={16} color="var(--accent-cyan)" />,
     },
     {
+      id: "contact",
       name: "Contact",
       desc: "Direct email inquiry & professional network",
       href: "#contact",
@@ -176,15 +204,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             href="#hero"
             style={{
               textDecoration: "none",
-              color: "var(--text-primary)",
+              color: activeSection === "hero" ? "var(--accent-cyan)" : "var(--text-secondary)",
+              background: activeSection === "hero" ? "rgba(255, 255, 255, 0.07)" : "transparent",
               fontSize: "0.8125rem",
               fontWeight: 500,
               padding: "0.45rem 1rem",
               borderRadius: "9999px",
               transition: "all 0.15s ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.06)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+            onMouseEnter={(e) => {
+              if (activeSection !== "hero") {
+                e.currentTarget.style.color = "var(--text-primary)";
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.06)";
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (activeSection !== "hero") {
+                e.currentTarget.style.color = "var(--text-secondary)";
+                e.currentTarget.style.background = "transparent";
+              }
+            }}
           >
             Home
           </a>
@@ -239,7 +278,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             href="#contact"
             style={{
               textDecoration: "none",
-              color: "var(--text-secondary)",
+              color: activeSection === "contact" ? "var(--accent-cyan)" : "var(--text-secondary)",
+              background: activeSection === "contact" ? "rgba(255, 255, 255, 0.07)" : "transparent",
               fontSize: "0.8125rem",
               fontWeight: 500,
               padding: "0.45rem 1rem",
@@ -247,12 +287,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               transition: "all 0.15s ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = "var(--text-primary)";
-              e.currentTarget.style.background = "rgba(255, 255, 255, 0.06)";
+              if (activeSection !== "contact") {
+                e.currentTarget.style.color = "var(--text-primary)";
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.06)";
+              }
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.color = "var(--text-secondary)";
-              e.currentTarget.style.background = "transparent";
+              if (activeSection !== "contact") {
+                e.currentTarget.style.color = "var(--text-secondary)";
+                e.currentTarget.style.background = "transparent";
+              }
             }}
           >
             Contact
@@ -373,6 +417,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           >
             {directoryHubs.map((hub, idx) => {
               const isLast = idx === directoryHubs.length - 1;
+              const isActive = hub.id === activeSection;
+
               if (hub.isAction) {
                 return (
                   <button
@@ -422,8 +468,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                   onClick={() => setMatrixOpen(false)}
                   style={{
                     textDecoration: "none",
-                    background: "rgba(255, 255, 255, 0.025)",
-                    border: "1px solid var(--border-subtle)",
+                    background: isActive ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
+                    border: isActive ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
                     borderRadius: "10px",
                     padding: "0.75rem 1rem",
                     display: "flex",
@@ -437,14 +483,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                     e.currentTarget.style.borderColor = "var(--accent-cyan-border)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.025)";
-                    e.currentTarget.style.borderColor = "var(--border-subtle)";
+                    e.currentTarget.style.background = isActive ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)";
+                    e.currentTarget.style.borderColor = isActive ? "var(--accent-cyan-border)" : "var(--border-subtle)";
                   }}
                 >
                   <div style={{ marginTop: "2px" }}>{hub.icon}</div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ color: "var(--text-primary)", fontSize: "0.875rem", fontWeight: 600 }}>
-                      {hub.name}
+                    <div style={{ color: "var(--text-primary)", fontSize: "0.875rem", fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                      <span>{hub.name}</span>
+                      {isActive && (
+                        <span style={{ fontSize: "0.625rem", color: "var(--accent-cyan)", fontFamily: "var(--font-mono)" }}>
+                          [CURRENT]
+                        </span>
+                      )}
                     </div>
                     <div style={{ color: "var(--text-secondary)", fontSize: "0.71875rem", marginTop: "0.15rem", lineHeight: 1.4 }}>
                       {hub.desc}
