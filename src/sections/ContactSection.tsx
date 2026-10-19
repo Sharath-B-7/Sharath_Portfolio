@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ArrowUpRight, Copy, Check, Send } from "lucide-react";
+import { ArrowUpRight, Copy, Check, Send, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "../components/Icons";
 import { personalInfo } from "../data/personalInfo";
 
 export const ContactSection: React.FC = () => {
@@ -17,12 +18,12 @@ export const ContactSection: React.FC = () => {
         
         {/* Section Header */}
         <div style={{ marginBottom: "3.5rem" }}>
-          <div className="section-label">05 // Inquiries & Connection</div>
+          <div className="section-label">05 // Inquiries & Professional Connections</div>
           <h2 className="section-heading-editorial">
             Let's Build Something Secure.
           </h2>
           <p className="section-subheading-editorial">
-            Currently open to undergraduate research collaborations, defensive security internships, and technical software engineering opportunities.
+            Currently open to undergraduate research collaborations, defensive cybersecurity internships, and software engineering opportunities.
           </p>
         </div>
 
@@ -33,11 +34,15 @@ export const ContactSection: React.FC = () => {
             background: "var(--bg-surface)",
             padding: "clamp(2rem, 4vw, 3.5rem)",
             marginBottom: "3rem",
+            position: "relative",
           }}
         >
-          <span className="mono-tag" style={{ display: "block", marginBottom: "0.75rem" }}>
-            PRIMARY DIRECT CONTACT
-          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
+            <Mail size={15} color="var(--accent-cyan)" />
+            <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
+              PRIMARY DIRECT CONTACT
+            </span>
+          </div>
 
           <div
             style={{
@@ -64,6 +69,7 @@ export const ContactSection: React.FC = () => {
             </a>
 
             <button
+              type="button"
               onClick={handleCopyEmail}
               className="btn-editorial-secondary"
             >
@@ -74,65 +80,106 @@ export const ContactSection: React.FC = () => {
         </div>
 
         {/* Verified Profile Links Matrix */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "1.5rem",
-            borderTop: "1px solid var(--bg-hairline)",
-            paddingTop: "2.5rem",
-          }}
-        >
-          <div>
-            <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem" }}>
-              CODE REPOSITORIES
-            </span>
-            <a
-              href={personalInfo.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-link-arrow"
-              style={{ fontSize: "1rem", color: "#ffffff", fontWeight: 600 }}
-            >
-              <span>GitHub: @Sharath-B-7</span>
-              <ArrowUpRight size={14} />
-            </a>
-          </div>
+        <div className="contact-links-grid">
+          {/* GitHub */}
+          <a
+            href={personalInfo.social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-profile-card"
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+                <GithubIcon size={18} />
+                <span className="mono-tag" style={{ color: "#ffffff" }}>GITHUB</span>
+              </div>
+              <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
+            </div>
+            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "#ffffff", marginBottom: "0.25rem" }}>
+              @Sharath-B-7
+            </div>
+            <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>
+              Source code repositories, security pipelines & ML architectures
+            </div>
+          </a>
 
-          <div>
-            <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem" }}>
-              PROFESSIONAL NETWORK
-            </span>
-            <a
-              href={personalInfo.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-link-arrow"
-              style={{ fontSize: "1rem", color: "#ffffff", fontWeight: 600 }}
-            >
-              <span>LinkedIn: Sharath B</span>
-              <ArrowUpRight size={14} />
-            </a>
-          </div>
+          {/* LinkedIn */}
+          <a
+            href={personalInfo.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-profile-card"
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+                <LinkedinIcon size={18} />
+                <span className="mono-tag" style={{ color: "#ffffff" }}>LINKEDIN</span>
+              </div>
+              <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
+            </div>
+            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "#ffffff", marginBottom: "0.25rem" }}>
+              Sharath B
+            </div>
+            <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>
+              Professional network, academic milestones & internship updates
+            </div>
+          </a>
 
-          <div>
-            <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem" }}>
-              ALGORITHMIC PRACTICE
-            </span>
-            <a
-              href={personalInfo.social.leetcode}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-link-arrow"
-              style={{ fontSize: "1rem", color: "#ffffff", fontWeight: 600 }}
-            >
-              <span>LeetCode: 450+ Solved</span>
-              <ArrowUpRight size={14} />
-            </a>
-          </div>
+          {/* LeetCode */}
+          <a
+            href={personalInfo.social.leetcode}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-profile-card"
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+                <LeetCodeIcon size={18} />
+                <span className="mono-tag" style={{ color: "#ffffff" }}>LEETCODE</span>
+              </div>
+              <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
+            </div>
+            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "#ffffff", marginBottom: "0.25rem" }}>
+              Sharathbcs (450+ Solved)
+            </div>
+            <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>
+              Continuous algorithmic practice across data structures & graph theory
+            </div>
+          </a>
         </div>
 
       </div>
+
+      <style>{`
+        .contact-links-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+          border-top: 1px solid var(--bg-hairline);
+          padding-top: 2.5rem;
+        }
+
+        .contact-profile-card {
+          display: block;
+          padding: 1.5rem;
+          background: var(--bg-surface);
+          border: 1px solid var(--bg-hairline);
+          text-decoration: none;
+          transition: all 0.2s ease;
+        }
+
+        .contact-profile-card:hover {
+          border-color: rgba(255, 255, 255, 0.25);
+          background: var(--bg-surface-elevated);
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 900px) {
+          .contact-links-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
     </section>
   );
 };

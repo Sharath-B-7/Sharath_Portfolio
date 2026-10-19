@@ -223,7 +223,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
             <div className="hero-clean-pill">
               <Code size={12} color="var(--accent-cyan)" />
-              <span>400+ LeetCode Solved</span>
+              <span>450+ LeetCode Solved</span>
             </div>
           </div>
 
@@ -350,7 +350,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="social-pill-link"
-              title="LeetCode (400+ Solved)"
+              title="LeetCode (450+ Solved)"
             >
               <LeetCodeIcon size={13} />
               <span>LeetCode</span>

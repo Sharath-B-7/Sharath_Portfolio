@@ -1,215 +1,342 @@
+export interface ProjectVisualPanel {
+  systemTag: string;
+  statusLabel: string;
+  statusColor?: string;
+  queryLabel: string;
+  queryValue: string;
+  highlightCard: {
+    title: string;
+    badge: string;
+    value: string;
+    unit?: string;
+    note: string;
+    theme: "danger" | "warning" | "success" | "neutral" | "cyan";
+  };
+  metrics: {
+    label: string;
+    value: string;
+    highlight?: boolean;
+    color?: string;
+  }[];
+  pipelineFlow: {
+    label: string;
+    steps: string;
+  };
+  imagePreview?: string;
+  imageAlt?: string;
+}
+
 export interface ProjectItem {
   id: string;
+  number: string;
+  categoryTag: string;
+  statusBadge?: string;
   name: string;
-  shortName?: string;
-  tagline?: string;
-  badge: string;
-  domain: string;
-  description: string;
+  subtitle: string;
   problem: string;
-  solution: string;
-  coreConcepts: string[];
-  keyFeatures: {
-    title: string;
-    description: string;
-  }[];
+  architectureContribution: string;
+  capabilities: string[];
   techStack: string[];
-  flowSteps: string[];
   githubUrl?: string;
   demoUrl?: string;
-  highlight?: boolean;
+  diagramUrl?: string;
+  visualPanel: ProjectVisualPanel;
 }
 
 export const projectsData: ProjectItem[] = [
   {
     id: "fraudlens-ai",
+    number: "01",
+    categoryTag: "01 // FEATURED PLATFORM",
+    statusBadge: "ACTIVE DEVELOPMENT",
     name: "FraudLens AI",
-    tagline: "Detect. Analyze. Protect.",
-    badge: "In Active Development",
-    domain: "Cybersecurity × AI/ML Platform",
-    description:
-      "FraudLens AI is an AI-powered fraud intelligence platform designed to help identify potentially fraudulent digital payment entities before transactions take place. The platform focuses on analyzing digital payment identities such as UPI IDs and generating a Cyber Trust Score using multiple intelligence signals.",
+    subtitle: "AI-Powered Digital Payment Fraud Intelligence",
     problem:
-      "Digital payment platforms and rapid UPI transactions expose everyday users and merchants to payment scams and malicious entities, often without proactive trust metrics or network visibility before money is transferred.",
-    solution:
-      "Designed an intelligence engine combining community reporting signals, relationship graph modeling, and behavioral analytics to evaluate payment identities and output an explainable Cyber Trust Score.",
-    coreConcepts: [
-      "Graph Intelligence",
-      "Behavioral Analytics",
-      "Scam Fingerprinting",
-      "Community Intelligence",
-      "Explainable AI",
-      "Fraud Risk Scoring",
-    ],
-    keyFeatures: [
-      {
-        title: "UPI Fraud Detection",
-        description:
-          "Users can search any UPI ID to assess whether it has previously been flagged by genuine users or associated with fraudulent activities.",
-      },
-      {
-        title: "Cyber Trust Score",
-        description:
-          "Synthesizes weighted telemetry signals and anomaly detection into an interpretable trust/risk index for digital payment entities.",
-      },
-      {
-        title: "Community Fraud Reporting",
-        description:
-          "Provides structured submission pipelines for users to report suspicious payment identities, scams, and deceptive merchant behavior.",
-      },
-      {
-        title: "Fraud Graph Explorer",
-        description:
-          "Visualizes multi-node relationship graphs between suspicious entities to uncover potential coordinated fraud rings and mule networks.",
-      },
-      {
-        title: "Fraud Heat Map",
-        description:
-          "Geographic visualization of reported fraud hotspots, patterns, and regional transaction concentration.",
-      },
-      {
-        title: "Real-Time Dashboard",
-        description:
-          "Centralized monitoring panel displaying live fraud reports, high-risk entities, suspicious payment identities, and merchant alert tiers.",
-      },
+      "Digital payment platforms and rapid UPI transactions expose everyday users and merchants to scams and suspicious payment identities without proactive trust metrics or network visibility before funds transfer.",
+    architectureContribution:
+      "Designed and implemented an intelligence engine that evaluates digital payment identities (e.g. UPI IDs) using graph relationship analysis, community reporting signals, and behavioral heuristics to output an interpretable Cyber Trust Score.",
+    capabilities: [
+      "Fraud Risk Scoring (Trust Index)",
+      "Community Fraud Reporting & Tracking",
+      "Fraud Graph Relationship Visualizer",
+      "Geographic Fraud Insights & Heat Map",
+      "Real-Time Intelligence Dashboard",
     ],
     techStack: ["FastAPI", "React", "TypeScript", "SQLAlchemy", "SQLite", "Vite"],
-    flowSteps: ["UPI Identity Input", "Graph Intelligence Engine", "Risk & Behavioral Analysis", "Explainable Cyber Trust Score"],
     githubUrl: "https://github.com/Sharath-B-7",
-    highlight: true,
+    visualPanel: {
+      systemTag: "SYS // FRAUDLENS_TELEMETRY",
+      statusLabel: "ONLINE",
+      statusColor: "var(--accent-emerald)",
+      queryLabel: "QUERY ENTITY:",
+      queryValue: "payment-gateway.9821@okhdfcbank",
+      highlightCard: {
+        title: "CYBER TRUST SCORE",
+        badge: "HIGH RISK ALERT",
+        value: "34",
+        unit: "/ 100",
+        note: "Confidence: 94.2% based on 14 community reports & mule node graph clustering. (Illustrative Demo Data)",
+        theme: "danger",
+      },
+      metrics: [
+        {
+          label: "Graph Node Centrality:",
+          value: "0.82 (Cluster Flag)",
+          highlight: false,
+        },
+        {
+          label: "Community Scam Flags:",
+          value: "14 Verified",
+          highlight: true,
+          color: "#f87171",
+        },
+        {
+          label: "Regional Concentration:",
+          value: "Tamil Nadu & Karnataka",
+          highlight: false,
+        },
+      ],
+      pipelineFlow: {
+        label: "PIPELINE FLOW:",
+        steps: "UPI Input → Graph Engine → Anomaly Scorer → Trust Score & Report",
+      },
+    },
   },
   {
     id: "android-malware-analysis",
+    number: "02",
+    categoryTag: "02 // SECURITY RESEARCH",
+    statusBadge: "STATIC LAB RESEARCH",
     name: "Android Malware Static Analysis",
-    badge: "Lab & Security Research",
-    domain: "Cybersecurity & Reverse Engineering",
-    description:
-      "A cybersecurity-focused project involving static analysis of Android malware and examination of malware artifacts, logs, and suspicious behavior without executing untrusted binaries.",
+    subtitle: "APK Decompilation, Manifest Audit & Forensic Triage Pipeline",
     problem:
-      "Mobile malware frequently disguises itself as benign utility apps while requesting dangerous permissions, embedding suspicious receivers, and exfiltrating sensitive credentials in background threads.",
-    solution:
-      "Executed structured static triage pipelines to unpack APK packages, inspect manifest configurations, audit requested permissions against dangerous Android APIs, and examine telemetry artifacts.",
-    coreConcepts: [
-      "Android Malware Analysis",
-      "Static Malware Analysis",
-      "Log Analysis",
-      "Incident Monitoring",
-      "Security Event Monitoring",
-      "Malware Behavior Investigation",
+      "Mobile malware frequently conceals dangerous behaviors behind benign utility facades, requesting high-risk system privileges and quietly establishing unauthorized background network channels without user awareness.",
+    architectureContribution:
+      "Executed a structured static analysis workflow to inspect Android application structure and artifacts without executing untrusted binaries. Decompiled APK packages, audited AndroidManifest.xml for dangerous permission combinations and exported components, disassembled Smali bytecode, and mapped extracted indicators against security event baselines.",
+    capabilities: [
+      "Manifest & permission privilege audit",
+      "Detection of hidden broadcast receivers & exported services",
+      "Disassembled Smali bytecode & string triage",
+      "Extraction of unencrypted HTTP/C2 endpoints and certificate signatures",
+      "Forensic indicator mapping against security event baselines",
     ],
-    keyFeatures: [
-      {
-        title: "Permission & Manifest Audit",
-        description:
-          "Evaluated AndroidManifest.xml entries to flag high-risk permission combinations, hidden broadcast receivers, and suspicious intent filters.",
+    techStack: ["Python", "Linux", "Bash", "Android Debug Tools", "Smali / APKTool", "Log Analysis"],
+    githubUrl: "https://github.com/Sharath-B-7",
+    visualPanel: {
+      systemTag: "SYS // ANDROID_STATIC_TRIAGE",
+      statusLabel: "ANALYSIS READY",
+      statusColor: "var(--accent-cyan)",
+      queryLabel: "TARGET APK ARCHIVE:",
+      queryValue: "com.utility.systemupdater.v2.apk",
+      highlightCard: {
+        title: "STATIC AUDIT RATING",
+        badge: "SUSPICIOUS PRIVILEGES",
+        value: "HIGH",
+        unit: "RISK PROFILE",
+        note: "Manifest requests 6 dangerous Android permissions with an exported background boot receiver and plain HTTP endpoint. (Lab Sample)",
+        theme: "warning",
       },
-      {
-        title: "Static Artifact Extraction",
-        description:
-          "Analyzed disassembled Smali bytecode structures, hardcoded strings, API endpoints, and certificate signatures.",
+      metrics: [
+        {
+          label: "Dangerous Permissions:",
+          value: "BOOT_COMPLETED, SEND_SMS, READ_CONTACTS",
+          highlight: true,
+          color: "#fbbf24",
+        },
+        {
+          label: "Suspicious Component:",
+          value: "com.utility.receiver.BootTrigger (Exported)",
+          highlight: false,
+        },
+        {
+          label: "Extracted Endpoint:",
+          value: "http://192.168.1.105:8080/sync (Cleartext HTTP)",
+          highlight: true,
+          color: "#f87171",
+        },
+      ],
+      pipelineFlow: {
+        label: "TRIAGE FLOW:",
+        steps: "APK Archive → Unpack & Disassemble → Manifest & Smali Audit → Indicator Extraction → Report",
       },
-      {
-        title: "Log & Indicator Correlation",
-        description:
-          "Mapped extracted forensic indicators against security event patterns and baseline behavior logs to support investigation reporting.",
-      },
-    ],
-    techStack: ["Linux", "Python", "Bash", "Android Debug Tools", "Log Analysis"],
-    flowSteps: ["Android Sample (APK)", "Static Analysis", "Indicators Extraction", "Log Correlation", "Investigation Report"],
-    highlight: true,
-  },
-  {
-    id: "soc-training",
-    name: "Security Operations Center Training",
-    badge: "Training / Internship Experience",
-    domain: "Defensive Security & Blue Teaming",
-    description:
-      "Practical cybersecurity training focused on understanding real-time security operations, monitoring, telemetry analysis, and defensive incident investigation workflows.",
-    problem:
-      "Enterprise systems generate millions of raw logs daily. Distinguishing true-positive security events from background noise requires rigorous SOC triaging protocols and escalation understanding.",
-    solution:
-      "Gained hands-on exposure to SIEM-style monitoring concepts, incident lifecycle phases, log correlation techniques, and defensive threat triage procedures.",
-    coreConcepts: [
-      "Security Event Monitoring",
-      "Incident Monitoring",
-      "Log Analysis",
-      "SOC Workflows",
-      "Threat Investigation Fundamentals",
-      "Security Operations Concepts",
-    ],
-    keyFeatures: [
-      {
-        title: "Security Event Monitoring",
-        description:
-          "Practiced continuous event log observation, pattern recognition across authentication attempts, and network boundary anomalies.",
-      },
-      {
-        title: "Incident Triage & Investigation",
-        description:
-          "Applied standard incident response frameworks: identification, containment guidelines, evidence preservation, and ticket escalation.",
-      },
-      {
-        title: "Log Analysis Fundamentals",
-        description:
-          "Inspected syslogs, firewall entries, and auth logs to trace event sequences and reconstruct threat timelines.",
-      },
-    ],
-    techStack: ["SOC Workflows", "SIEM Concepts", "Log Analysis", "Network Security", "Ubuntu Linux"],
-    flowSteps: ["Security Events", "Log Analysis", "Event Monitoring", "Incident Investigation", "Defensive Response"],
-    highlight: false,
+    },
   },
   {
     id: "knowledge-gap-detection",
-    name: "Explainable and Prerequisite-Aware Knowledge Gap Detection using Machine Learning and Deep Knowledge Tracing for Personalized Learning",
-    shortName: "Knowledge Gap Detection for Personalized Learning",
-    tagline: "Detect. Explain. Personalize.",
-    badge: "AI/ML Academic Exploration",
-    domain: "AI / Machine Learning & EdTech",
-    description:
-      "An AI/ML-based personalized learning system designed to identify students' knowledge gaps by analyzing learning performance and tracing their understanding of prerequisite concepts rather than solely grading right or wrong answers.",
+    number: "03",
+    categoryTag: "03 // AI / MACHINE LEARNING",
+    statusBadge: "ACADEMIC RESEARCH",
+    name: "EduGap AI: Knowledge Gap Detection",
+    subtitle: "Deep Knowledge Tracing & Prerequisite-Aware Personalized Learning",
     problem:
-      "Traditional testing treats question scores as binary outcomes. When a student fails a complex question, existing platforms fail to explain whether the deficiency stems from the current topic or a foundational prerequisite concept learned earlier.",
-    solution:
-      "Formulated a conceptual learning framework that combines Deep Knowledge Tracing with a prerequisite concept graph to trace knowledge evolution over time and generate explainable remediation pathways.",
-    coreConcepts: [
-      "Machine Learning",
-      "Deep Knowledge Tracing",
-      "Knowledge Gap Detection",
-      "Prerequisite-Aware Learning",
-      "Personalized Learning",
-      "Explainable AI",
-      "Student Performance Analysis",
-      "Educational Data Mining",
+      "Traditional testing treats question scores as binary right-or-wrong outcomes. When a student struggles with complex questions, standard platforms fail to determine whether the deficiency stems from the current topic or a foundational prerequisite concept learned earlier.",
+    architectureContribution:
+      "Formulated and implemented an intelligent dual-AI diagnostic system combining a tuned XGBoost classifier and PyTorch LSTM Deep Knowledge Tracing with a 20-node prerequisite concept graph. The system models sequential problem-solving interactions, predicts cognitive friction levels, and maps unmastered concepts directly to personalized remediation paths.",
+    capabilities: [
+      "Dynamic 10-skill diagnostic assessment engine across mathematics domains",
+      "Dual-AI architecture (Tuned XGBoost Classifier + PyTorch LSTM DKT)",
+      "20-node prerequisite concept graph dependency mapping",
+      "1-to-1 skill mastery classification (<70% Weak Action Required vs ≥70% Strong)",
+      "Automated personalized remediation ranking (Khan Academy streams & master notes)",
+      "Interactive diagnostic analytics dashboard & downloadable report generator",
     ],
-    keyFeatures: [
-      {
-        title: "Knowledge Gap Detection",
-        description:
-          "Analyzes student interaction patterns and performance data to identify specific subject concepts where the learner demonstrates insufficient mastery.",
+    techStack: ["Python", "PyTorch (LSTM)", "XGBoost", "Scikit-Learn", "Pandas", "NumPy", "Flask", "Chart.js"],
+    githubUrl: "https://github.com/Sharath-B-7",
+    diagramUrl: "/projects/edugap-architecture.png",
+    visualPanel: {
+      systemTag: "SYS // EDUGAP_DIAGNOSTIC_ENGINE",
+      statusLabel: "MODEL TRAINED",
+      statusColor: "var(--accent-emerald)",
+      queryLabel: "STUDENT DIAGNOSTIC SESSION:",
+      queryValue: "#CIT-2026-CS88 · Skill Session [Algebra & Geometry]",
+      highlightCard: {
+        title: "COGNITIVE MASTERY LEVEL",
+        badge: "MODERATE GAP",
+        value: "72.4%",
+        unit: "OVERALL MASTERY",
+        note: "Tuned XGBoost (92.40% Accuracy, ROC-AUC 0.9865) + PyTorch LSTM sequence tracing across 10 skill domains. (Verified Benchmark)",
+        theme: "cyan",
       },
-      {
-        title: "Prerequisite-Aware Analysis",
-        description:
-          "Evaluates hierarchical dependencies between concepts so that struggles on advanced topics trigger investigation into foundational prerequisites.",
+      metrics: [
+        {
+          label: "Prerequisite Concept Graph:",
+          value: "20 Concept Nodes (Geometry → Trigonometry)",
+          highlight: false,
+        },
+        {
+          label: "Critical Deficit Identified:",
+          value: "Fraction Arithmetic (42% Accuracy — High Friction)",
+          highlight: true,
+          color: "#f87171",
+        },
+        {
+          label: "Targeted Remediation:",
+          value: "Khan Academy Concept 04 + Step-by-Step Notes",
+          highlight: false,
+        },
+      ],
+      pipelineFlow: {
+        label: "INFERENCE FLOW:",
+        steps: "Interaction Logs → Feature Vector (23 Dims) → DKT / XGBoost → Prerequisite Graph → Remediation Path",
       },
-      {
-        title: "Deep Knowledge Tracing",
-        description:
-          "Models temporal knowledge shifts across a sequence of practice problems to gauge student mastery progression over time.",
-      },
-      {
-        title: "Explainable Predictions",
-        description:
-          "Provides interpretable reasoning for why the model flagged a specific gap rather than treating predictions as an opaque black box.",
-      },
-      {
-        title: "Personalized Learning Pathways",
-        description:
-          "Recommends targeted concept reviews and adaptive exercise sequences designed around the learner's individual gap profile.",
-      },
+      imagePreview: "/projects/edugap-architecture.png",
+      imageAlt: "EduGap AI System Architecture Diagram",
+    },
+  },
+  {
+    id: "aethergrade",
+    number: "04",
+    categoryTag: "04 // SECURE SYSTEMS",
+    statusBadge: "SYSTEMS BUILT",
+    name: "AetherGrade: Security & Grade Engine",
+    subtitle: "High-Performance Java Application with Cryptographic Audit Ledger & RBAC",
+    problem:
+      "Academic institutions require high-integrity grading software where student evaluations and transcript records are tamper-proof, auditable, and restricted by strict role boundaries to prevent unauthorized modification of academic standing.",
+    architectureContribution:
+      "Architected a native Java SE application featuring multi-role JWT access control (Admin, Faculty, Student), PBKDF2/BCrypt password hashing, AES-256 payload encryption, and an immutable SHA-256 hash-chain audit ledger that flags historical single-byte database tampering.",
+    capabilities: [
+      "Multi-Role RBAC (Admin, Faculty, Student) with cryptographically signed JWTs",
+      "Immutable SHA-256 hash-chain tamper-evident audit ledger",
+      "Cryptographic HMAC-SHA256 privacy verification tokens",
+      "Asynchronous multi-threaded worker engine for non-blocking report generation",
+      "Automated GPA calculation, percentage metrics, and transcript printing",
     ],
-    techStack: ["Python", "NumPy", "Pandas", "Machine Learning", "Deep Knowledge Tracing", "Explainable AI"],
-    flowSteps: ["Student Learning Data", "Knowledge Tracing", "Prerequisite Graph Analysis", "Knowledge Gap Detection", "Explainable Reasoning", "Personalized Roadmap"],
-    highlight: true,
+    techStack: ["Java SE 21", "MySQL 8.0", "Native HTTP Server", "AES-256 / SHA-256", "JWT / PBKDF2", "JavaScript"],
+    githubUrl: "https://github.com/Sharath-B-7",
+    visualPanel: {
+      systemTag: "SYS // AETHERGRADE_CORE",
+      statusLabel: "SECURE RUNTIME",
+      statusColor: "var(--accent-emerald)",
+      queryLabel: "ACTIVE AUTH PRINCIPAL:",
+      queryValue: "faculty.dept_cs@cit.edu [ROLE: FACULTY]",
+      highlightCard: {
+        title: "AUDIT LEDGER INTEGRITY",
+        badge: "HASH-CHAIN VERIFIED",
+        value: "0",
+        unit: "TAMPER FLAGS",
+        note: "SHA-256 block ledger validated against MySQL transaction records. Ledger height #1,428.",
+        theme: "success",
+      },
+      metrics: [
+        {
+          label: "Role-Based Access:",
+          value: "JWT Verified (Admin, Faculty, Student)",
+          highlight: false,
+        },
+        {
+          label: "Hash-Chain Ledger:",
+          value: "SHA-256 Previous-Hash Linkage Validated",
+          highlight: true,
+          color: "var(--accent-emerald)",
+        },
+        {
+          label: "Privacy Verification:",
+          value: "HMAC-SHA256 Tokens for 3rd-Party Verification",
+          highlight: false,
+        },
+      ],
+      pipelineFlow: {
+        label: "MUTATION FLOW:",
+        steps: "HTTP Request → RBAC Auth Filter → Controller → DAO Mutation → SHA-256 Ledger Block → Verified",
+      },
+    },
+  },
+  {
+    id: "soc-training",
+    number: "05",
+    categoryTag: "05 // DEFENSIVE SECURITY",
+    statusBadge: "VERIFIED PRACTICAL TRAINING",
+    name: "Security Operations Center (SOC) Training",
+    subtitle: "Live Event Monitoring, Log Correlation & Defensive Incident Triage",
+    problem:
+      "Enterprise networks generate millions of raw logs daily. Security analysts must rapidly differentiate between false positives and high-severity attacks to isolate compromised systems before threat actors move laterally.",
+    architectureContribution:
+      "Completed intensive practical hands-on training on enterprise SOC operations with Elevance Skills. Practiced analyzing authentication anomalies, parsing syslog and firewall entries, reconstructing threat timelines, and applying formal incident escalation procedures.",
+    capabilities: [
+      "Continuous security event monitoring across host and network telemetry",
+      "Multi-source log correlation (auth logs, firewall events, and syslogs)",
+      "Incident response lifecycle execution: identification, containment, and preservation",
+      "SIEM-style threat timeline reconstruction and anomaly detection",
+      "Ticket escalation and structured security incident reporting",
+    ],
+    techStack: ["SOC Workflows", "SIEM Concepts", "Log Analysis", "Network Security", "Ubuntu Linux", "Syslog / Auth Logs"],
+    githubUrl: "https://github.com/Sharath-B-7",
+    visualPanel: {
+      systemTag: "SYS // SOC_TELEMETRY_MONITOR",
+      statusLabel: "LIVE FEED",
+      statusColor: "var(--accent-cyan)",
+      queryLabel: "LOG INGESTION STREAM:",
+      queryValue: "/var/log/auth.log [SURICATA / IPTABLES INTERCEPT]",
+      highlightCard: {
+        title: "INCIDENT CLASSIFICATION",
+        badge: "BRUTE-FORCE DETECTED",
+        value: "TIER 2",
+        unit: "SEVERITY ALERT",
+        note: "50 failed SSH authentication attempts within 30 seconds from single external IP. Host isolation initiated.",
+        theme: "warning",
+      },
+      metrics: [
+        {
+          label: "Event Correlation:",
+          value: "Timestamp clustering across Auth & Firewall logs",
+          highlight: false,
+        },
+        {
+          label: "Triage Protocol:",
+          value: "Identify → Contain → Preserve → Remediate",
+          highlight: true,
+          color: "#fbbf24",
+        },
+        {
+          label: "Escalation Target:",
+          value: "Tier 2 Incident Response Team (Ticket #SEC-809)",
+          highlight: false,
+        },
+      ],
+      pipelineFlow: {
+        label: "SOC TRIAGE FLOW:",
+        steps: "Log Ingestion → Parser / Normalizer → Correlation Engine → Alert Triage → Incident Containment",
+      },
+    },
   },
 ];

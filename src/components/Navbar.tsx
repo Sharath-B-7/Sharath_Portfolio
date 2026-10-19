@@ -97,7 +97,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
     },
     {
       name: "Achievements",
-      desc: "400+ LeetCode problems & milestones",
+      desc: "450+ LeetCode problems & milestones",
       href: "#education",
       icon: <Trophy size={16} color="var(--accent-cyan)" />,
     },

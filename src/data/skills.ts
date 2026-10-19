@@ -1,54 +1,69 @@
-export interface SkillCategory {
+export interface SkillGroup {
   id: string;
+  index: string;
   name: string;
   description: string;
   skills: string[];
 }
 
-export const skillCategories: SkillCategory[] = [
+export const skillCategories: SkillGroup[] = [
   {
-    id: "programming",
-    name: "Programming",
-    description: "Core languages for systems development, algorithmic problem solving, and backend logic.",
-    skills: ["Python", "Java", "C", "C++", "JavaScript"],
+    id: "languages",
+    index: "01",
+    name: "Programming Languages",
+    description: "Core languages for systems engineering, backend logic, and algorithmic problem-solving.",
+    skills: ["Python", "Java", "C", "C++", "JavaScript", "TypeScript"],
   },
   {
     id: "cybersecurity",
+    index: "02",
     name: "Cybersecurity",
-    description: "Defensive security fundamentals, threat analysis, forensic log triage, and vulnerability inspection.",
+    description: "Defensive telemetry, static malware triage, network auditing, and incident monitoring.",
     skills: [
       "Cybersecurity Fundamentals",
       "Network Security",
-      "SOC Fundamentals",
+      "SOC Operations",
       "Log Analysis",
-      "Incident Analysis",
+      "Incident Analysis & Triage",
       "Android Malware Static Analysis",
       "Security Event Monitoring",
     ],
   },
   {
     id: "webdev",
+    index: "03",
     name: "Web Development",
-    description: "Modern frontend frameworks and backend runtimes for building resilient web applications.",
-    skills: ["HTML", "CSS", "React", "Node.js", "Express.js", "Vite"],
+    description: "Modern frontend architectures, RESTful API development, and web application servers.",
+    skills: ["HTML5", "CSS3", "React", "Node.js", "Express.js", "Vite", "FastAPI"],
   },
   {
     id: "aiml",
-    name: "AI & Machine Learning",
-    description: "Intelligent systems, deep learning architectures, and data-driven analytical modeling.",
-    skills: ["Machine Learning", "Deep Learning", "CNN", "NumPy", "Pandas"],
+    index: "04",
+    name: "AI and Machine Learning",
+    description: "Intelligent systems, deep learning architectures, sequence modeling, and tabular classifiers.",
+    skills: [
+      "Machine Learning",
+      "Deep Learning",
+      "PyTorch (LSTM)",
+      "XGBoost",
+      "Convolutional Neural Networks (CNN)",
+      "NumPy",
+      "Pandas",
+      "Scikit-Learn",
+    ],
   },
   {
     id: "databases",
+    index: "05",
     name: "Databases",
-    description: "Relational and document storage engines with declarative querying and ORM integration.",
+    description: "Relational schema design, declarative querying, document stores, and ORM abstractions.",
     skills: ["SQL", "SQLite", "MySQL", "MongoDB", "SQLAlchemy"],
   },
   {
     id: "tools",
-    name: "Tools & Platforms",
-    description: "Essential development environments, version control systems, and operating environments.",
-    skills: ["Git", "GitHub", "Linux", "Ubuntu", "VS Code", "FastAPI"],
+    index: "06",
+    name: "Tools and Platforms",
+    description: "Operating systems, developer environments, version control, and analysis utilities.",
+    skills: ["Linux / Ubuntu", "Git", "GitHub", "Bash Scripting", "VS Code", "Postman", "Android Debug Tools"],
   },
 ];
-

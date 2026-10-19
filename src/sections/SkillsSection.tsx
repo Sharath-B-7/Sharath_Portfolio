@@ -1,52 +1,26 @@
 import React from "react";
+import { Terminal, Shield, Globe, Cpu, Database, Wrench } from "lucide-react";
+import { skillCategories } from "../data/skills";
 
 export const SkillsSection: React.FC = () => {
-  const skillCategories = [
-    {
-      index: "01",
-      category: "Programming",
-      description: "Systems programming, algorithm implementations, and automation scripting.",
-      skills: ["Python", "Java", "C", "C++", "JavaScript"],
-    },
-    {
-      index: "02",
-      category: "Cybersecurity",
-      description: "Defensive telemetry, static malware triage, and incident monitoring.",
-      skills: [
-        "Cybersecurity Fundamentals",
-        "Network Security",
-        "SOC Fundamentals",
-        "Log Analysis",
-        "Incident Analysis",
-        "Android Malware Static Analysis",
-        "Security Event Monitoring",
-      ],
-    },
-    {
-      index: "03",
-      category: "Web Development",
-      description: "Modern frontend architectures, REST APIs, and application servers.",
-      skills: ["HTML", "CSS", "React", "Node.js", "Express.js", "Vite"],
-    },
-    {
-      index: "04",
-      category: "AI / Machine Learning",
-      description: "Predictive models, deep learning architectures, and data processing.",
-      skills: ["Machine Learning", "Deep Learning", "CNN", "NumPy", "Pandas"],
-    },
-    {
-      index: "05",
-      category: "Databases",
-      description: "Relational queries, schema modeling, and ORM abstractions.",
-      skills: ["SQL", "SQLite", "MySQL", "MongoDB", "SQLAlchemy"],
-    },
-    {
-      index: "06",
-      category: "Tools & Environments",
-      description: "Operating systems, version control, and developer toolchains.",
-      skills: ["Git", "GitHub", "Linux", "Ubuntu", "VS Code", "FastAPI"],
-    },
-  ];
+  const getGroupIcon = (id: string) => {
+    switch (id) {
+      case "languages":
+        return <Terminal size={16} color="var(--accent-cyan)" />;
+      case "cybersecurity":
+        return <Shield size={16} color="var(--accent-cyan)" />;
+      case "webdev":
+        return <Globe size={16} color="var(--accent-cyan)" />;
+      case "aiml":
+        return <Cpu size={16} color="var(--accent-cyan)" />;
+      case "databases":
+        return <Database size={16} color="var(--accent-cyan)" />;
+      case "tools":
+        return <Wrench size={16} color="var(--accent-cyan)" />;
+      default:
+        return <Terminal size={16} color="var(--accent-cyan)" />;
+    }
+  };
 
   return (
     <section id="skills" className="editorial-section">
@@ -59,57 +33,53 @@ export const SkillsSection: React.FC = () => {
             Disciplines & Core Toolchain
           </h2>
           <p className="section-subheading-editorial">
-            Structured technical capabilities spanning systems programming, offensive-aware defensive security, and intelligent software engineering.
+            Systematic technical competencies organized across systems programming, defensive security, intelligent algorithms, and developer tooling.
           </p>
         </div>
 
-        {/* 6-Block Typographic Swiss Matrix */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            borderTop: "1px solid var(--bg-hairline)",
-            borderLeft: "1px solid var(--bg-hairline)",
-          }}
-          className="capabilities-matrix"
-        >
+        {/* 6-Block Grid: Clean, Text-First Technical Matrix */}
+        <div className="skills-grid-container">
           {skillCategories.map((group) => (
             <div
-              key={group.index}
+              key={group.id}
+              className="skill-card-block"
               style={{
-                padding: "2rem 1.75rem",
-                borderRight: "1px solid var(--bg-hairline)",
-                borderBottom: "1px solid var(--bg-hairline)",
+                padding: "clamp(1.5rem, 2.5vw, 2.25rem)",
                 background: "var(--bg-surface)",
+                border: "1px solid var(--bg-hairline)",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
+                transition: "border-color 0.2s ease",
               }}
             >
               <div>
-                {/* Index & Category Name */}
-                <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem", marginBottom: "0.4rem" }}>
-                  <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
-                    {group.index} //
-                  </span>
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "1.2rem",
-                      fontWeight: 700,
-                      color: "#ffffff",
-                      letterSpacing: "-0.02em",
-                    }}
-                  >
-                    {group.category}
-                  </h3>
+                {/* Header with index, restrained icon, and group name */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.6rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
+                      {group.index} //
+                    </span>
+                    <h3
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "1.2rem",
+                        fontWeight: 700,
+                        color: "#ffffff",
+                        letterSpacing: "-0.02em",
+                      }}
+                    >
+                      {group.name}
+                    </h3>
+                  </div>
+                  <div style={{ opacity: 0.85 }}>{getGroupIcon(group.id)}</div>
                 </div>
 
                 <p
                   style={{
                     fontSize: "0.8125rem",
                     color: "var(--text-muted)",
-                    lineHeight: 1.5,
+                    lineHeight: 1.55,
                     marginBottom: "1.5rem",
                   }}
                 >
@@ -117,14 +87,14 @@ export const SkillsSection: React.FC = () => {
                 </p>
               </div>
 
-              {/* Text-based Technology Listing */}
+              {/* Text-based Technology Listing (No arbitrary percentages or fake progress bars) */}
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: "0.35rem",
+                  gap: "0.4rem",
                   paddingTop: "1rem",
-                  borderTop: "1px solid var(--bg-hairline-subtle)",
+                  borderTop: "1px solid var(--bg-hairline)",
                 }}
               >
                 {group.skills.map((skill, sIdx) => (
@@ -135,11 +105,11 @@ export const SkillsSection: React.FC = () => {
                       color: "var(--text-secondary)",
                       display: "flex",
                       alignItems: "center",
-                      gap: "0.5rem",
+                      gap: "0.55rem",
                     }}
                   >
-                    <span style={{ color: "var(--text-faint)", fontSize: "0.6875rem" }}>—</span>
-                    <span>{skill}</span>
+                    <span style={{ color: "var(--accent-primary)", fontSize: "0.7rem" }}>—</span>
+                    <span style={{ color: "#f1f5f9" }}>{skill}</span>
                   </div>
                 ))}
               </div>
@@ -150,14 +120,25 @@ export const SkillsSection: React.FC = () => {
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
-          .capabilities-matrix {
-            grid-template-columns: repeat(2, 1fr) !important;
+        .skills-grid-container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+        }
+
+        .skill-card-block:hover {
+          border-color: rgba(255, 255, 255, 0.18) !important;
+        }
+
+        @media (max-width: 1024px) {
+          .skills-grid-container {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
-        @media (max-width: 600px) {
-          .capabilities-matrix {
-            grid-template-columns: 1fr !important;
+
+        @media (max-width: 640px) {
+          .skills-grid-container {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
