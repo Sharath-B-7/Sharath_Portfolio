@@ -14,7 +14,7 @@ export const ProjectsSection: React.FC = () => {
         <div style={{ marginBottom: "3.5rem" }}>
           <div className="section-label">02 // Selected Work</div>
           <h2 className="section-heading-editorial">
-            Engineered Systems & Research
+            Engineered Systems &amp; Research
           </h2>
           <p className="section-subheading-editorial">
             A curated index of practical software platforms, static malware triage pipelines, cryptographic backend systems, and machine learning architectures.
@@ -22,51 +22,25 @@ export const ProjectsSection: React.FC = () => {
         </div>
 
         {/* Project Presentations List */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "2.75rem" }}>
           {projectsData.map((project) => {
             const vp = project.visualPanel;
-            const isDanger = vp.highlightCard.theme === "danger";
-            const isWarning = vp.highlightCard.theme === "warning";
-            const isSuccess = vp.highlightCard.theme === "success";
-
-            const cardBorder = isDanger
-              ? "rgba(239, 68, 68, 0.28)"
-              : isWarning
-              ? "rgba(245, 158, 11, 0.28)"
-              : isSuccess
-              ? "rgba(16, 185, 129, 0.28)"
-              : "rgba(56, 189, 248, 0.28)";
-
-            const cardBg = isDanger
-              ? "rgba(239, 68, 68, 0.05)"
-              : isWarning
-              ? "rgba(245, 158, 11, 0.05)"
-              : isSuccess
-              ? "rgba(16, 185, 129, 0.05)"
-              : "rgba(56, 189, 248, 0.05)";
-
-            const cardColor = isDanger
-              ? "#f87171"
-              : isWarning
-              ? "#fbbf24"
-              : isSuccess
-              ? "#34d399"
-              : "#38bdf8";
 
             return (
               <article
                 key={project.id}
                 className="project-editorial-card"
                 style={{
-                  border: "1px solid var(--bg-hairline)",
+                  border: "1px solid var(--border-default)",
                   background: "var(--bg-surface)",
+                  borderRadius: "8px",
                   padding: "clamp(1.75rem, 3.5vw, 3rem)",
                   position: "relative",
-                  transition: "border-color 0.2s ease",
+                  transition: "border-color 0.2s ease, background 0.2s ease",
                 }}
               >
                 <div className="project-grid-layout">
-                  {/* LEFT COLUMN: Editorial Technical Copy */}
+                  {/* LEFT COLUMN: Detailed Technical Architecture & Copy */}
                   <div className="project-left-col">
                     {/* Number & Category Bar */}
                     <div
@@ -78,7 +52,7 @@ export const ProjectsSection: React.FC = () => {
                         flexWrap: "wrap",
                       }}
                     >
-                      <span className="mono-tag" style={{ color: "var(--accent-primary)" }}>
+                      <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
                         {project.categoryTag}
                       </span>
                       {project.statusBadge && (
@@ -86,11 +60,12 @@ export const ProjectsSection: React.FC = () => {
                           style={{
                             fontSize: "0.6875rem",
                             fontFamily: "var(--font-mono)",
-                            color: "var(--accent-emerald)",
-                            border: "1px solid rgba(16, 185, 129, 0.25)",
+                            color: "var(--text-secondary)",
+                            border: "1px solid var(--border-subtle)",
                             padding: "0.15rem 0.5rem",
-                            borderRadius: "2px",
+                            borderRadius: "4px",
                             letterSpacing: "0.04em",
+                            background: "rgba(255, 255, 255, 0.02)",
                           }}
                         >
                           {project.statusBadge}
@@ -102,11 +77,11 @@ export const ProjectsSection: React.FC = () => {
                     <h3
                       style={{
                         fontFamily: "var(--font-display)",
-                        fontSize: "clamp(1.85rem, 3vw, 2.45rem)",
+                        fontSize: "clamp(1.85rem, 2.8vw, 2.35rem)",
                         fontWeight: 700,
-                        color: "#ffffff",
+                        color: "var(--text-primary)",
                         letterSpacing: "-0.03em",
-                        lineHeight: 1.15,
+                        lineHeight: 1.2,
                         marginBottom: "0.4rem",
                       }}
                     >
@@ -116,9 +91,9 @@ export const ProjectsSection: React.FC = () => {
                     {/* One-line technical subtitle */}
                     <div
                       style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.875rem",
-                        color: "var(--text-muted)",
+                        fontFamily: "var(--font-sans)",
+                        fontSize: "0.9375rem",
+                        color: "var(--text-secondary)",
                         marginBottom: "1.5rem",
                       }}
                     >
@@ -126,28 +101,37 @@ export const ProjectsSection: React.FC = () => {
                     </div>
 
                     {/* Problem Statement */}
-                    <div style={{ marginBottom: "1.25rem" }}>
-                      <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem" }}>
-                        THE PROBLEM
+                    <div style={{ marginBottom: "1.35rem" }}>
+                      <span
+                        className="mono-tag"
+                        style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan)" }}
+                      >
+                        PROBLEM STATEMENT
                       </span>
-                      <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.65 }}>
+                      <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68 }}>
                         {project.problem}
                       </p>
                     </div>
 
                     {/* Technical Architecture & Contribution */}
                     <div style={{ marginBottom: "1.5rem" }}>
-                      <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem" }}>
-                        TECHNICAL ARCHITECTURE & CONTRIBUTION
+                      <span
+                        className="mono-tag"
+                        style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan)" }}
+                      >
+                        TECHNICAL ARCHITECTURE &amp; CONTRIBUTION
                       </span>
-                      <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.65 }}>
+                      <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68 }}>
                         {project.architectureContribution}
                       </p>
                     </div>
 
                     {/* Implemented Capabilities Checklist */}
                     <div style={{ marginBottom: "1.75rem" }}>
-                      <span className="mono-tag" style={{ display: "block", marginBottom: "0.5rem" }}>
+                      <span
+                        className="mono-tag"
+                        style={{ display: "block", marginBottom: "0.55rem", color: "var(--accent-cyan)" }}
+                      >
                         IMPLEMENTED CAPABILITIES
                       </span>
                       <ul
@@ -163,14 +147,14 @@ export const ProjectsSection: React.FC = () => {
                             key={idx}
                             style={{
                               fontSize: "0.8125rem",
-                              color: "#e2e8f0",
+                              color: "var(--text-secondary)",
                               display: "flex",
                               alignItems: "flex-start",
                               gap: "0.45rem",
                               lineHeight: 1.45,
                             }}
                           >
-                            <span style={{ color: "var(--accent-primary)", fontSize: "0.75rem", flexShrink: 0 }}>—</span>
+                            <span style={{ color: "var(--accent-cyan)", fontSize: "0.75rem", flexShrink: 0 }}>—</span>
                             <span>{cap}</span>
                           </li>
                         ))}
@@ -196,7 +180,8 @@ export const ProjectsSection: React.FC = () => {
                             color: "var(--text-muted)",
                             background: "rgba(255, 255, 255, 0.03)",
                             padding: "0.22rem 0.55rem",
-                            border: "1px solid var(--bg-hairline)",
+                            borderRadius: "4px",
+                            border: "1px solid var(--border-subtle)",
                           }}
                         >
                           {tech}
@@ -205,7 +190,7 @@ export const ProjectsSection: React.FC = () => {
                     </div>
 
                     {/* Action Links */}
-                    <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.85rem", flexWrap: "wrap" }}>
                       {project.githubUrl && (
                         <a
                           href={project.githubUrl}
@@ -214,7 +199,7 @@ export const ProjectsSection: React.FC = () => {
                           className="btn-editorial-primary"
                         >
                           <GithubIcon size={14} />
-                          <span>View Repository on GitHub</span>
+                          <span>View on GitHub</span>
                           <ArrowUpRight size={13} style={{ opacity: 0.7 }} />
                         </a>
                       )}
@@ -232,12 +217,13 @@ export const ProjectsSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* RIGHT COLUMN: Clean Technical Visual Panel */}
+                  {/* RIGHT COLUMN: Restrained Technical Telemetry Panel */}
                   <div
                     className="project-right-col"
                     style={{
-                      border: "1px solid var(--bg-hairline)",
-                      background: "#0a0d13",
+                      border: "1px solid var(--border-default)",
+                      background: "var(--bg-surface-elevated)",
+                      borderRadius: "6px",
                       padding: "clamp(1.25rem, 2.5vw, 1.75rem)",
                       fontFamily: "var(--font-mono)",
                       display: "flex",
@@ -253,21 +239,22 @@ export const ProjectsSection: React.FC = () => {
                           justifyContent: "space-between",
                           alignItems: "center",
                           paddingBottom: "0.85rem",
-                          borderBottom: "1px solid var(--bg-hairline)",
+                          borderBottom: "1px solid var(--border-subtle)",
                           marginBottom: "1.25rem",
-                          fontSize: "0.75rem",
+                          fontSize: "0.71875rem",
                           color: "var(--text-muted)",
                         }}
                       >
                         <span style={{ letterSpacing: "0.06em" }}>{vp.systemTag}</span>
-                        <span style={{ color: vp.statusColor || "var(--accent-emerald)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                        <span style={{ color: "var(--accent-cyan)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
                           <span
                             style={{
                               width: "6px",
                               height: "6px",
                               borderRadius: "50%",
-                              backgroundColor: vp.statusColor || "var(--accent-emerald)",
+                              backgroundColor: "var(--accent-cyan)",
                               display: "inline-block",
+                              boxShadow: "0 0 6px var(--accent-cyan)",
                             }}
                           />
                           {vp.statusLabel}
@@ -282,9 +269,10 @@ export const ProjectsSection: React.FC = () => {
                         <div
                           style={{
                             padding: "0.55rem 0.75rem",
-                            background: "rgba(255, 255, 255, 0.03)",
-                            border: "1px solid var(--bg-hairline)",
-                            color: "#f8fafc",
+                            background: "rgba(255, 255, 255, 0.025)",
+                            border: "1px solid var(--border-subtle)",
+                            borderRadius: "4px",
+                            color: "var(--text-primary)",
                             fontSize: "0.8125rem",
                             marginTop: "0.35rem",
                             wordBreak: "break-all",
@@ -294,24 +282,35 @@ export const ProjectsSection: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Highlight Score / Audit Status Card */}
+                      {/* Highlight Score / Audit Status Card (Refined & Restrained) */}
                       <div
                         style={{
-                          border: `1px solid ${cardBorder}`,
-                          background: cardBg,
+                          border: "1px solid var(--border-default)",
+                          background: "rgba(255, 255, 255, 0.02)",
+                          borderRadius: "6px",
                           padding: "1rem",
                           marginBottom: "1.25rem",
                         }}
                       >
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "0.5rem" }}>
-                          <span style={{ fontSize: "0.6875rem", color: cardColor, letterSpacing: "0.06em" }}>
+                          <span style={{ fontSize: "0.6875rem", color: "var(--text-secondary)", letterSpacing: "0.06em" }}>
                             {vp.highlightCard.title}
                           </span>
-                          <span style={{ fontSize: "0.6875rem", color: cardColor, fontWeight: 600 }}>
+                          <span
+                            style={{
+                              fontSize: "0.6875rem",
+                              color: "var(--accent-cyan)",
+                              fontWeight: 600,
+                              background: "var(--accent-cyan-subtle)",
+                              border: "1px solid var(--accent-cyan-border)",
+                              padding: "0.15rem 0.45rem",
+                              borderRadius: "3px",
+                            }}
+                          >
                             {vp.highlightCard.badge}
                           </span>
                         </div>
-                        <div style={{ fontSize: "2rem", fontWeight: 700, color: cardColor, margin: "0.35rem 0" }}>
+                        <div style={{ fontSize: "2rem", fontWeight: 700, color: "var(--text-primary)", margin: "0.35rem 0" }}>
                           {vp.highlightCard.value}{" "}
                           {vp.highlightCard.unit && (
                             <span style={{ fontSize: "0.875rem", color: "var(--text-muted)", fontWeight: 400 }}>
@@ -319,13 +318,13 @@ export const ProjectsSection: React.FC = () => {
                             </span>
                           )}
                         </div>
-                        <div style={{ fontSize: "0.75rem", color: "#cbd5e1", lineHeight: 1.5 }}>
+                        <div style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: 1.55 }}>
                           {vp.highlightCard.note}
                         </div>
                       </div>
 
                       {/* Signal Breakdown / Metric Rows */}
-                      <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", fontSize: "0.75rem" }}>
+                      <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem", fontSize: "0.75rem" }}>
                         {vp.metrics.map((metric, mIdx) => (
                           <div
                             key={mIdx}
@@ -334,12 +333,14 @@ export const ProjectsSection: React.FC = () => {
                               justifyContent: "space-between",
                               gap: "1rem",
                               alignItems: "baseline",
+                              paddingBottom: "0.4rem",
+                              borderBottom: mIdx < vp.metrics.length - 1 ? "1px solid var(--border-subtle)" : "none",
                             }}
                           >
                             <span style={{ color: "var(--text-muted)" }}>{metric.label}</span>
                             <span
                               style={{
-                                color: metric.color ? metric.color : metric.highlight ? "#ffffff" : "#f1f5f9",
+                                color: metric.highlight ? "var(--accent-cyan-light)" : "var(--text-primary)",
                                 textAlign: "right",
                                 fontWeight: metric.highlight ? 600 : 400,
                               }}
@@ -352,11 +353,11 @@ export const ProjectsSection: React.FC = () => {
                     </div>
 
                     {/* Pipeline Flow Visualization */}
-                    <div style={{ marginTop: "1.5rem", paddingTop: "1rem", borderTop: "1px solid var(--bg-hairline)" }}>
+                    <div style={{ marginTop: "1.5rem", paddingTop: "1rem", borderTop: "1px solid var(--border-subtle)" }}>
                       <span style={{ fontSize: "0.6875rem", color: "var(--text-muted)", display: "block", marginBottom: "0.4rem", letterSpacing: "0.06em" }}>
                         {vp.pipelineFlow.label}
                       </span>
-                      <div style={{ fontSize: "0.6875rem", color: "#cbd5e1", lineHeight: 1.6 }}>
+                      <div style={{ fontSize: "0.71875rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
                         {vp.pipelineFlow.steps}
                       </div>
                     </div>
@@ -378,7 +379,7 @@ export const ProjectsSection: React.FC = () => {
             position: "fixed",
             inset: 0,
             zIndex: 999,
-            background: "rgba(0, 0, 0, 0.88)",
+            background: "rgba(7, 10, 16, 0.88)",
             backdropFilter: "blur(8px)",
             display: "flex",
             alignItems: "center",
@@ -393,12 +394,13 @@ export const ProjectsSection: React.FC = () => {
               maxWidth: "1000px",
               width: "100%",
               maxHeight: "90vh",
-              background: "#0b0f17",
-              border: "1px solid var(--bg-hairline)",
+              background: "var(--bg-surface-elevated)",
+              border: "1px solid var(--border-default)",
               padding: "1.5rem",
-              borderRadius: "4px",
+              borderRadius: "8px",
               display: "flex",
               flexDirection: "column",
+              boxShadow: "0 25px 60px rgba(0, 0, 0, 0.95)",
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -409,10 +411,10 @@ export const ProjectsSection: React.FC = () => {
                 alignItems: "center",
                 marginBottom: "1rem",
                 paddingBottom: "0.75rem",
-                borderBottom: "1px solid var(--bg-hairline)",
+                borderBottom: "1px solid var(--border-subtle)",
               }}
             >
-              <span className="mono-tag" style={{ color: "var(--accent-primary)" }}>
+              <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
                 {selectedDiagram.title}
               </span>
               <button
@@ -421,7 +423,7 @@ export const ProjectsSection: React.FC = () => {
                 style={{
                   background: "transparent",
                   border: "none",
-                  color: "var(--text-muted)",
+                  color: "var(--text-secondary)",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
@@ -436,7 +438,7 @@ export const ProjectsSection: React.FC = () => {
               <img
                 src={selectedDiagram.url}
                 alt={selectedDiagram.title}
-                style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "2px" }}
+                style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "4px" }}
               />
             </div>
           </div>
@@ -451,47 +453,8 @@ export const ProjectsSection: React.FC = () => {
           align-items: stretch;
         }
 
-        .btn-editorial-primary {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          background: #ffffff;
-          color: #090c10;
-          font-family: var(--font-sans);
-          font-size: 0.8125rem;
-          font-weight: 600;
-          padding: 0.55rem 1rem;
-          border-radius: 4px;
-          text-decoration: none;
-          cursor: pointer;
-          border: 1px solid #ffffff;
-          transition: all 0.15s ease;
-        }
-        .btn-editorial-primary:hover {
-          background: var(--accent-primary);
-          border-color: var(--accent-primary);
-          color: #090c10;
-        }
-
-        .btn-editorial-secondary {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.45rem;
-          background: rgba(255, 255, 255, 0.04);
-          color: #ffffff;
-          font-family: var(--font-sans);
-          font-size: 0.8125rem;
-          font-weight: 500;
-          padding: 0.55rem 1rem;
-          border-radius: 4px;
-          text-decoration: none;
-          cursor: pointer;
-          border: 1px solid var(--bg-hairline);
-          transition: all 0.15s ease;
-        }
-        .btn-editorial-secondary:hover {
-          background: rgba(255, 255, 255, 0.08);
-          border-color: rgba(255, 255, 255, 0.2);
+        .project-editorial-card:hover {
+          border-color: var(--border-strong) !important;
         }
 
         @media (max-width: 960px) {

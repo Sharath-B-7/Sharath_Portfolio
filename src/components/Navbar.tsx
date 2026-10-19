@@ -141,9 +141,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         <div
           style={{
             fontFamily: "var(--font-mono)",
-            fontSize: "0.875rem",
+            fontSize: "0.8125rem",
             color: "var(--text-muted)",
-            letterSpacing: "0.12em",
+            letterSpacing: "0.1em",
             display: "flex",
             alignItems: "center",
             gap: "0.5rem",
@@ -151,23 +151,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           }}
           className="header-clock"
         >
-          <span style={{ color: "#ffffff", fontWeight: 700 }}>{timeString || "11:00:00"}</span>
+          <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>{timeString || "11:00:00"}</span>
         </div>
 
-        {/* Center: Floating Rounded Dark Pill Navigation (Reference Match) */}
+        {/* Center: Floating Rounded Dark Pill Navigation */}
         <nav
           style={{
             pointerEvents: "auto",
             display: "flex",
             alignItems: "center",
             gap: "0.35rem",
-            background: "rgba(10, 10, 14, 0.88)",
+            background: "rgba(17, 22, 36, 0.92)",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
-            border: "1px solid rgba(255, 255, 255, 0.12)",
+            border: "1px solid var(--border-default)",
             borderRadius: "9999px",
-            padding: "0.3rem 0.55rem",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.6)",
+            padding: "0.32rem 0.55rem",
+            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
           }}
           className="nav-center-pill"
         >
@@ -176,40 +176,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             href="#hero"
             style={{
               textDecoration: "none",
-              color: "#ffffff",
+              color: "var(--text-primary)",
               fontSize: "0.8125rem",
-              fontWeight: 600,
+              fontWeight: 500,
               padding: "0.45rem 1rem",
               borderRadius: "9999px",
               transition: "all 0.15s ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.08)")}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.06)")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
           >
             Home
           </a>
 
-          {/* Interactive Explore Matrix Button with Dropdown Trigger */}
+          {/* Interactive Explore Directory Button with Dropdown Trigger */}
           <button
             ref={buttonRef}
             onClick={() => setMatrixOpen(!matrixOpen)}
             aria-expanded={matrixOpen}
             aria-label="Toggle directory matrix menu"
             style={{
-              background: matrixOpen ? "rgba(56, 189, 248, 0.12)" : "rgba(255, 255, 255, 0.04)",
-              border: matrixOpen ? "1px solid rgba(56, 189, 248, 0.4)" : "1px solid rgba(255, 255, 255, 0.1)",
-              color: "#ffffff",
+              background: matrixOpen ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.035)",
+              border: matrixOpen ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-default)",
+              color: "var(--text-primary)",
               fontSize: "0.78125rem",
-              fontWeight: 700,
+              fontWeight: 600,
               fontFamily: "var(--font-mono)",
-              padding: "0.4rem 0.95rem",
+              padding: "0.42rem 0.95rem",
               borderRadius: "9999px",
               cursor: "pointer",
               display: "inline-flex",
               alignItems: "center",
               gap: "0.45rem",
-              letterSpacing: "0.04em",
-              transition: "all 0.2s ease",
+              letterSpacing: "0.03em",
+              transition: "all 0.18s ease",
             }}
           >
             <span
@@ -223,7 +223,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               }}
             />
             <Terminal size={12} color="var(--accent-cyan)" />
-            <span>EXPLORE MATRIX</span>
+            <span>DIRECTORY</span>
             <ChevronDown
               size={13}
               style={{
@@ -239,7 +239,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             href="#contact"
             style={{
               textDecoration: "none",
-              color: "var(--text-muted)",
+              color: "var(--text-secondary)",
               fontSize: "0.8125rem",
               fontWeight: 500,
               padding: "0.45rem 1rem",
@@ -247,11 +247,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               transition: "all 0.15s ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = "#ffffff";
-              e.currentTarget.style.background = "rgba(255, 255, 255, 0.08)";
+              e.currentTarget.style.color = "var(--text-primary)";
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.06)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.color = "var(--text-muted)";
+              e.currentTarget.style.color = "var(--text-secondary)";
               e.currentTarget.style.background = "transparent";
             }}
           >
@@ -266,7 +266,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               fontFamily: "var(--font-mono)",
               fontSize: "0.6875rem",
               color: "var(--text-muted)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
+              border: "1px solid var(--border-subtle)",
               padding: "0.35rem 0.75rem",
               borderRadius: "9999px",
               background: "rgba(255, 255, 255, 0.02)",
@@ -281,9 +281,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
               display: "none",
-              background: "rgba(16, 16, 22, 0.9)",
-              border: "1px solid rgba(255, 255, 255, 0.15)",
-              color: "#ffffff",
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border-default)",
+              color: "var(--text-primary)",
               padding: "0.45rem",
               borderRadius: "8px",
               cursor: "pointer",
@@ -296,18 +296,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         </div>
       </header>
 
-      {/* Expandable Navigation Directory Panel (Exact Reference Screenshot Match) */}
+      {/* Expandable Navigation Directory Panel */}
       {matrixOpen && (
         <>
-          {/* Subtle Dim Backdrop for Focus (Matching Reference Screenshot) */}
+          {/* Subtle Dim Backdrop for Focus */}
           <div
             onClick={() => setMatrixOpen(false)}
             style={{
               position: "fixed",
               inset: 0,
-              backgroundColor: "rgba(0, 0, 0, 0.6)",
-              backdropFilter: "blur(5px)",
-              WebkitBackdropFilter: "blur(5px)",
+              backgroundColor: "rgba(7, 10, 16, 0.7)",
+              backdropFilter: "blur(6px)",
+              WebkitBackdropFilter: "blur(6px)",
               zIndex: 100,
             }}
             aria-hidden="true"
@@ -322,11 +322,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               transform: "translateX(-50%)",
               width: "calc(100% - 2.5rem)",
               maxWidth: "680px",
-              backgroundColor: "#0d0d14",
-              border: "1px solid rgba(255, 255, 255, 0.16)",
-              borderRadius: "18px",
+              backgroundColor: "var(--bg-surface-elevated)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "16px",
               padding: "1.25rem 1.5rem",
-              boxShadow: "0 25px 60px -10px rgba(0, 0, 0, 0.98), 0 0 35px rgba(56, 189, 248, 0.12)",
+              boxShadow: "0 25px 60px -10px rgba(0, 0, 0, 0.95), 0 0 35px rgba(6, 182, 212, 0.08)",
               zIndex: 110,
               animation: "fadeInDown 0.15s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
@@ -339,14 +339,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               justifyContent: "space-between",
               alignItems: "center",
               paddingBottom: "0.85rem",
-              borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+              borderBottom: "1px solid var(--bg-hairline)",
               marginBottom: "1rem",
               fontFamily: "var(--font-mono)",
               fontSize: "0.6875rem",
-              letterSpacing: "0.1em",
+              letterSpacing: "0.08em",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--accent-cyan)", fontWeight: 700 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--accent-cyan)", fontWeight: 600 }}>
               <span
                 style={{
                   width: "6px",
@@ -379,8 +379,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                     key={hub.name}
                     onClick={hub.onClick}
                     style={{
-                      background: "rgba(255, 255, 255, 0.03)",
-                      border: "1px solid rgba(255, 255, 255, 0.08)",
+                      background: "rgba(255, 255, 255, 0.025)",
+                      border: "1px solid var(--border-subtle)",
                       borderRadius: "10px",
                       padding: "0.75rem 1rem",
                       display: "flex",
@@ -393,21 +393,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                       transition: "all 0.15s ease",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "rgba(56, 189, 248, 0.08)";
-                      e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.35)";
+                      e.currentTarget.style.background = "var(--accent-cyan-subtle)";
+                      e.currentTarget.style.borderColor = "var(--accent-cyan-border)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "rgba(255, 255, 255, 0.03)";
-                      e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.08)";
+                      e.currentTarget.style.background = "rgba(255, 255, 255, 0.025)";
+                      e.currentTarget.style.borderColor = "var(--border-subtle)";
                     }}
                   >
                     <div style={{ marginTop: "2px" }}>{hub.icon}</div>
                     <div style={{ flex: 1 }}>
-                      <div style={{ color: "#ffffff", fontSize: "0.875rem", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.35rem" }}>
+                      <div style={{ color: "var(--text-primary)", fontSize: "0.875rem", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.35rem" }}>
                         <span>{hub.name}</span>
                         <ArrowUpRight size={11} style={{ opacity: 0.6 }} />
                       </div>
-                      <div style={{ color: "var(--text-muted)", fontSize: "0.71875rem", marginTop: "0.15rem", lineHeight: 1.4 }}>
+                      <div style={{ color: "var(--text-secondary)", fontSize: "0.71875rem", marginTop: "0.15rem", lineHeight: 1.4 }}>
                         {hub.desc}
                       </div>
                     </div>
@@ -422,8 +422,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                   onClick={() => setMatrixOpen(false)}
                   style={{
                     textDecoration: "none",
-                    background: "rgba(255, 255, 255, 0.03)",
-                    border: "1px solid rgba(255, 255, 255, 0.08)",
+                    background: "rgba(255, 255, 255, 0.025)",
+                    border: "1px solid var(--border-subtle)",
                     borderRadius: "10px",
                     padding: "0.75rem 1rem",
                     display: "flex",
@@ -433,20 +433,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                     transition: "all 0.15s ease",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(56, 189, 248, 0.08)";
-                    e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.35)";
+                    e.currentTarget.style.background = "var(--accent-cyan-subtle)";
+                    e.currentTarget.style.borderColor = "var(--accent-cyan-border)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.03)";
-                    e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.08)";
+                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.025)";
+                    e.currentTarget.style.borderColor = "var(--border-subtle)";
                   }}
                 >
                   <div style={{ marginTop: "2px" }}>{hub.icon}</div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ color: "#ffffff", fontSize: "0.875rem", fontWeight: 600 }}>
+                    <div style={{ color: "var(--text-primary)", fontSize: "0.875rem", fontWeight: 600 }}>
                       {hub.name}
                     </div>
-                    <div style={{ color: "var(--text-muted)", fontSize: "0.71875rem", marginTop: "0.15rem", lineHeight: 1.4 }}>
+                    <div style={{ color: "var(--text-secondary)", fontSize: "0.71875rem", marginTop: "0.15rem", lineHeight: 1.4 }}>
                       {hub.desc}
                     </div>
                   </div>
@@ -466,8 +466,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             top: "70px",
             left: "1rem",
             right: "1rem",
-            background: "#0c0c14",
-            border: "1px solid rgba(255, 255, 255, 0.15)",
+            background: "var(--bg-surface-elevated)",
+            border: "1px solid var(--border-default)",
             borderRadius: "14px",
             padding: "1.25rem",
             zIndex: 100,
@@ -486,15 +486,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 if (hub.isAction && hub.onClick) hub.onClick();
               }}
               style={{
-                color: "#ffffff",
+                color: "var(--text-primary)",
                 textDecoration: "none",
                 fontFamily: "var(--font-mono)",
                 fontSize: "0.875rem",
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                padding: "0.4rem 0",
-                borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+                padding: "0.45rem 0",
+                borderBottom: "1px solid var(--border-subtle)",
               }}
             >
               {hub.icon}

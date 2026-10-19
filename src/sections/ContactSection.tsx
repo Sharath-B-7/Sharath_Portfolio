@@ -18,7 +18,7 @@ export const ContactSection: React.FC = () => {
         
         {/* Section Header */}
         <div style={{ marginBottom: "3.5rem" }}>
-          <div className="section-label">05 // Inquiries & Professional Connections</div>
+          <div className="section-label">05 // Inquiries &amp; Connections</div>
           <h2 className="section-heading-editorial">
             Let's Build Something Secure.
           </h2>
@@ -30,14 +30,15 @@ export const ContactSection: React.FC = () => {
         {/* Large Typographic Email Feature Card */}
         <div
           style={{
-            border: "1px solid var(--bg-hairline)",
+            border: "1px solid var(--border-default)",
             background: "var(--bg-surface)",
-            padding: "clamp(2rem, 4vw, 3.5rem)",
+            borderRadius: "8px",
+            padding: "clamp(2rem, 4vw, 3.25rem)",
             marginBottom: "3rem",
             position: "relative",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.85rem" }}>
             <Mail size={15} color="var(--accent-cyan)" />
             <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
               PRIMARY DIRECT CONTACT
@@ -47,10 +48,10 @@ export const ContactSection: React.FC = () => {
           <div
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.75rem, 4vw, 3.25rem)",
+              fontSize: "clamp(1.75rem, 3.8vw, 3rem)",
               fontWeight: 700,
               letterSpacing: "-0.03em",
-              color: "#ffffff",
+              color: "var(--text-primary)",
               wordBreak: "break-all",
               lineHeight: 1.15,
               marginBottom: "1.75rem",
@@ -59,10 +60,10 @@ export const ContactSection: React.FC = () => {
             {personalInfo.social.email}
           </div>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem" }}>
             <a
               href={`mailto:${personalInfo.social.email}`}
-              className="btn-editorial-primary"
+              className="btn-primary"
             >
               <Send size={14} />
               <span>Send Direct Email</span>
@@ -71,7 +72,7 @@ export const ContactSection: React.FC = () => {
             <button
               type="button"
               onClick={handleCopyEmail}
-              className="btn-editorial-secondary"
+              className="btn-secondary"
             >
               {copied ? <Check size={14} color="var(--accent-emerald)" /> : <Copy size={14} />}
               <span>{copied ? "Copied to Clipboard" : "Copy Email Address"}</span>
@@ -91,15 +92,15 @@ export const ContactSection: React.FC = () => {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <GithubIcon size={18} />
-                <span className="mono-tag" style={{ color: "#ffffff" }}>GITHUB</span>
+                <span className="mono-tag" style={{ color: "var(--text-primary)" }}>GITHUB</span>
               </div>
               <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
             </div>
-            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "#ffffff", marginBottom: "0.25rem" }}>
+            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
               @Sharath-B-7
             </div>
-            <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>
-              Source code repositories, security pipelines & ML architectures
+            <div style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+              Source code repositories, security pipelines &amp; ML architectures
             </div>
           </a>
 
@@ -113,15 +114,15 @@ export const ContactSection: React.FC = () => {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <LinkedinIcon size={18} />
-                <span className="mono-tag" style={{ color: "#ffffff" }}>LINKEDIN</span>
+                <span className="mono-tag" style={{ color: "var(--text-primary)" }}>LINKEDIN</span>
               </div>
               <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
             </div>
-            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "#ffffff", marginBottom: "0.25rem" }}>
+            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
               Sharath B
             </div>
-            <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>
-              Professional network, academic milestones & internship updates
+            <div style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+              Professional network, academic milestones &amp; internship updates
             </div>
           </a>
 
@@ -135,15 +136,15 @@ export const ContactSection: React.FC = () => {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <LeetCodeIcon size={18} />
-                <span className="mono-tag" style={{ color: "#ffffff" }}>LEETCODE</span>
+                <span className="mono-tag" style={{ color: "var(--text-primary)" }}>LEETCODE</span>
               </div>
               <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
             </div>
-            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "#ffffff", marginBottom: "0.25rem" }}>
+            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
               Sharathbcs (450+ Solved)
             </div>
-            <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>
-              Continuous algorithmic practice across data structures & graph theory
+            <div style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+              Continuous algorithmic practice across data structures &amp; graph theory
             </div>
           </a>
         </div>
@@ -155,7 +156,7 @@ export const ContactSection: React.FC = () => {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 1.5rem;
-          border-top: 1px solid var(--bg-hairline);
+          border-top: 1px solid var(--border-subtle);
           padding-top: 2.5rem;
         }
 
@@ -163,13 +164,14 @@ export const ContactSection: React.FC = () => {
           display: block;
           padding: 1.5rem;
           background: var(--bg-surface);
-          border: 1px solid var(--bg-hairline);
+          border: 1px solid var(--border-default);
+          border-radius: 8px;
           text-decoration: none;
-          transition: all 0.2s ease;
+          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .contact-profile-card:hover {
-          border-color: rgba(255, 255, 255, 0.25);
+          border-color: var(--border-strong);
           background: var(--bg-surface-elevated);
           transform: translateY(-2px);
         }

@@ -1,39 +1,51 @@
 /* ==========================================================================
    SHARATH B — CYBERSECURITY & SOFTWARE ENGINEERING PORTFOLIO
-   Clean, Disciplined, Typography-First Design System
+   Refined Design System & Visual Hierarchy
    ========================================================================== */
 
 :root {
-  /* Surfaces & Canvas (Sophisticated Charcoal & Dark Slate) */
-  --bg-color: #090c10;
-  --bg-surface: #0e1218;
-  --bg-surface-elevated: #131822;
+  /* Surfaces & Canvas (Sophisticated Charcoal & Dark Slate - No Harsh Pure Black) */
+  --bg-color: #0c0f17;
+  --bg-canvas: #0c0f17;
+  --bg-surface: #111624;
+  --bg-surface-elevated: #161c2d;
+  --bg-surface-subtle: rgba(255, 255, 255, 0.025);
+  --bg-surface-hover: #1c2438;
+
+  /* Borders & Hairlines (Subtle & Consistent) */
   --bg-hairline: rgba(255, 255, 255, 0.08);
   --bg-hairline-subtle: rgba(255, 255, 255, 0.04);
+  --bg-hairline-strong: rgba(255, 255, 255, 0.14);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
 
-  /* Typography Colors */
-  --text-primary: #ffffff;
-  --text-secondary: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-faint: #64748b;
+  /* Typography Colors (Clean Off-White & Muted Slate Grey) */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-faint: #475569;
 
-  /* Single Restrained Accent */
-  --accent-cyan: #38bdf8;
-  --accent-primary: #38bdf8;
-  --accent-cyan-subtle: rgba(56, 189, 248, 0.12);
-  --accent-cyan-border: rgba(56, 189, 248, 0.3);
+  /* Restrained Cyan / Teal Accent */
+  --accent-cyan: #06b6d4;
+  --accent-primary: #06b6d4;
+  --accent-cyan-light: #22d3ee;
+  --accent-cyan-subtle: rgba(6, 182, 212, 0.08);
+  --accent-cyan-border: rgba(6, 182, 212, 0.28);
+  --accent-cyan-hover: rgba(6, 182, 212, 0.14);
 
-  /* Subtle Status */
+  /* Subtle Status Accent (Muted Emerald) */
   --accent-emerald: #10b981;
-  --accent-emerald-subtle: rgba(16, 185, 129, 0.12);
+  --accent-emerald-subtle: rgba(16, 185, 129, 0.08);
+  --accent-emerald-border: rgba(16, 185, 129, 0.25);
 
-  /* Fonts */
-  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* Modern Professional Typography */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
 
-  /* Layout */
-  --max-width: 1240px;
+  /* Layout Constraints */
+  --max-width: 1200px;
   --header-height: 68px;
 }
 
@@ -47,22 +59,23 @@
 html {
   scroll-behavior: smooth;
   font-family: var(--font-sans);
-  background-color: var(--bg-color);
+  background-color: var(--bg-canvas);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
 }
 
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: var(--bg-color);
+  background-color: var(--bg-canvas);
   color: var(--text-primary);
   position: relative;
-  /* Micro dot-matrix texture for subtle architectural depth */
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0.6px, transparent 0.6px);
-  background-size: 24px 24px;
+  /* Micro dot-matrix texture for subtle architectural depth without distraction */
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.035) 0.6px, transparent 0.6px);
+  background-size: 28px 28px;
 }
 
 /* Custom Minimal Scrollbar */
@@ -70,20 +83,20 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-color);
+  background: var(--bg-canvas);
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #1e293b;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #334155;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(56, 189, 248, 0.25);
-  color: #ffffff;
+  background: rgba(6, 182, 212, 0.25);
+  color: var(--text-primary);
 }
 
 /* Main Container */
@@ -98,8 +111,8 @@ body {
 
 /* Section Common Styling */
 .editorial-section {
-  padding-top: clamp(4.5rem, 8vw, 6.5rem);
-  padding-bottom: clamp(4.5rem, 8vw, 6.5rem);
+  padding-top: clamp(4.5rem, 7.5vw, 6.5rem);
+  padding-bottom: clamp(4.5rem, 7.5vw, 6.5rem);
   position: relative;
   border-bottom: 1px solid var(--bg-hairline);
 }
@@ -111,27 +124,28 @@ body {
   gap: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: var(--accent-cyan);
   margin-bottom: 0.75rem;
 }
 
 .section-heading-editorial {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  font-size: clamp(2rem, 3.6vw, 2.85rem);
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.15;
-  color: #ffffff;
+  line-height: 1.2;
+  color: var(--text-primary);
   margin-bottom: 0.85rem;
 }
 
 .section-subheading-editorial {
+  font-family: var(--font-sans);
   font-size: 1.05rem;
-  color: var(--text-muted);
-  max-width: 720px;
+  color: var(--text-secondary);
+  max-width: 68ch;
   line-height: 1.65;
 }
 
@@ -150,23 +164,23 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #ffffff;
-  color: #090c10;
+  background: var(--text-primary);
+  color: #0b0f17;
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 600;
-  padding: 0.7rem 1.4rem;
+  padding: 0.68rem 1.35rem;
   border-radius: 6px;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid #ffffff;
-  transition: all 0.15s ease;
+  border: 1px solid var(--text-primary);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-primary:hover {
-  background: var(--accent-cyan);
-  border-color: var(--accent-cyan);
-  color: #090c10;
+  background: var(--accent-cyan-light);
+  border-color: var(--accent-cyan-light);
+  color: #080d14;
   transform: translateY(-1px);
 }
 
@@ -174,22 +188,22 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.04);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 500;
-  padding: 0.7rem 1.4rem;
+  padding: 0.68rem 1.35rem;
   border-radius: 6px;
   text-decoration: none;
   cursor: pointer;
   border: 1px solid var(--bg-hairline);
-  transition: all 0.15s ease;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--bg-hairline-strong);
   color: #ffffff;
   transform: translateY(-1px);
 }
@@ -198,58 +212,59 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #ffffff;
-  color: #090c10;
+  background: var(--text-primary);
+  color: #0b0f17;
   font-family: var(--font-sans);
   font-size: 0.8125rem;
   font-weight: 600;
   padding: 0.55rem 1.1rem;
-  border-radius: 4px;
+  border-radius: 5px;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid #ffffff;
-  transition: all 0.15s ease;
+  border: 1px solid var(--text-primary);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-editorial-primary:hover {
-  background: var(--accent-cyan);
-  border-color: var(--accent-cyan);
-  color: #090c10;
+  background: var(--accent-cyan-light);
+  border-color: var(--accent-cyan-light);
+  color: #080d14;
 }
 
 .btn-editorial-secondary {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background: rgba(255, 255, 255, 0.04);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: 0.8125rem;
   font-weight: 500;
   padding: 0.55rem 1.1rem;
-  border-radius: 4px;
+  border-radius: 5px;
   text-decoration: none;
   cursor: pointer;
   border: 1px solid var(--bg-hairline);
-  transition: all 0.15s ease;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-editorial-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--bg-hairline-strong);
+  color: #ffffff;
 }
 
 .text-link-arrow {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .text-link-arrow:hover {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 /* Compact Social Pill Links */
@@ -261,19 +276,19 @@ body {
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--bg-hairline);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
-  letter-spacing: 0.03em;
-  transition: all 0.15s ease;
+  letter-spacing: 0.02em;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .social-pill-link:hover {
-  background: rgba(56, 189, 248, 0.08);
+  background: var(--accent-cyan-subtle);
   border-color: var(--accent-cyan-border);
-  color: #ffffff;
+  color: var(--text-primary);
   transform: translateY(-1px);
 }
 
@@ -283,11 +298,12 @@ body {
   border: 1px solid var(--bg-hairline);
   border-radius: 8px;
   padding: clamp(1.5rem, 3vw, 2.5rem);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .card-clean:hover {
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: var(--border-strong);
+  background: var(--bg-surface-elevated);
 }
 
 /* Modal Dialog Guidance Compliance */
@@ -305,7 +321,7 @@ dialog:modal {
 
 dialog::backdrop {
   overscroll-behavior: contain;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(7, 10, 16, 0.85);
   backdrop-filter: blur(8px);
 }
 

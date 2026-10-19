@@ -9,10 +9,10 @@ export const Footer: React.FC = () => {
   return (
     <footer
       style={{
-        background: "#09090b",
-        borderTop: "1px solid var(--bg-hairline)",
-        paddingTop: "3rem",
-        paddingBottom: "3.5rem",
+        background: "var(--bg-canvas)",
+        borderTop: "1px solid var(--border-subtle)",
+        paddingTop: "2.75rem",
+        paddingBottom: "3.25rem",
       }}
     >
       <div className="container">
@@ -32,15 +32,15 @@ export const Footer: React.FC = () => {
                 fontFamily: "var(--font-display)",
                 fontSize: "1rem",
                 fontWeight: 700,
-                color: "#ffffff",
+                color: "var(--text-primary)",
                 letterSpacing: "-0.01em",
                 marginBottom: "0.25rem",
               }}
             >
               SHARATH B
             </div>
-            <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>
-              B.E. Computer Science & Engineering (Cyber Security) · Chennai Institute of Technology
+            <p style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }}>
+              B.E. Computer Science &amp; Engineering (Cyber Security) · Chennai Institute of Technology
             </p>
           </div>
 
@@ -63,8 +63,9 @@ export const Footer: React.FC = () => {
               onClick={scrollToTop}
               aria-label="Back to top"
               style={{
-                background: "transparent",
-                border: "1px solid var(--bg-hairline)",
+                background: "rgba(255, 255, 255, 0.025)",
+                border: "1px solid var(--border-default)",
+                borderRadius: "4px",
                 color: "var(--text-secondary)",
                 padding: "0.35rem 0.75rem",
                 fontFamily: "var(--font-mono)",
@@ -73,15 +74,17 @@ export const Footer: React.FC = () => {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.35rem",
-                transition: "all 0.15s ease",
+                transition: "all 0.18s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#ffffff";
-                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.4)";
+                e.currentTarget.style.color = "var(--text-primary)";
+                e.currentTarget.style.borderColor = "var(--accent-cyan-border)";
+                e.currentTarget.style.background = "var(--accent-cyan-subtle)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = "var(--text-secondary)";
-                e.currentTarget.style.borderColor = "var(--bg-hairline)";
+                e.currentTarget.style.borderColor = "var(--border-default)";
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.025)";
               }}
             >
               <span>TOP</span>

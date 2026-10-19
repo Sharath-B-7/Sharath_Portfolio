@@ -57,9 +57,9 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         width: "92vw",
         maxWidth: "960px",
         height: "88vh",
-        background: "#09090b",
-        border: "1px solid var(--bg-hairline)",
-        borderRadius: "4px",
+        background: "var(--bg-surface-elevated)",
+        border: "1px solid var(--border-default)",
+        borderRadius: "8px",
         boxShadow: "0 25px 60px rgba(0, 0, 0, 0.95)",
         overflow: "hidden",
         display: isOpen ? "flex" : "none",
@@ -73,8 +73,8 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           alignItems: "center",
           justifyContent: "space-between",
           padding: "1rem 1.5rem",
-          background: "#121215",
-          borderBottom: "1px solid var(--bg-hairline)",
+          background: "var(--bg-surface)",
+          borderBottom: "1px solid var(--border-subtle)",
           flexShrink: 0,
         }}
       >
@@ -82,9 +82,11 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           <div
             style={{
               padding: "0.4rem",
-              border: "1px solid var(--bg-hairline)",
-              color: "#ffffff",
+              border: "1px solid var(--border-subtle)",
+              borderRadius: "4px",
+              color: "var(--accent-cyan)",
               display: "flex",
+              background: "var(--accent-cyan-subtle)",
             }}
           >
             <FileText size={18} />
@@ -96,7 +98,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 fontFamily: "var(--font-display)",
                 fontSize: "1.0625rem",
                 fontWeight: 700,
-                color: "#ffffff",
+                color: "var(--text-primary)",
                 lineHeight: 1.2,
               }}
             >
@@ -147,10 +149,23 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             aria-label="Close resume viewer"
             style={{
               padding: "0.4rem",
-              background: "transparent",
-              border: "1px solid var(--bg-hairline)",
+              background: "rgba(255, 255, 255, 0.03)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "4px",
               color: "var(--text-secondary)",
               cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "all 0.15s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "var(--text-primary)";
+              e.currentTarget.style.borderColor = "var(--border-strong)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "var(--text-secondary)";
+              e.currentTarget.style.borderColor = "var(--border-default)";
             }}
           >
             <X size={18} />
@@ -164,7 +179,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           flex: 1,
           width: "100%",
           height: "100%",
-          background: "#09090b",
+          background: "var(--bg-canvas)",
           position: "relative",
         }}
       >

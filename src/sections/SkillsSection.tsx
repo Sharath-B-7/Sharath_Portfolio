@@ -30,7 +30,7 @@ export const SkillsSection: React.FC = () => {
         <div style={{ marginBottom: "3.5rem" }}>
           <div className="section-label">03 // Technical Capabilities</div>
           <h2 className="section-heading-editorial">
-            Disciplines & Core Toolchain
+            Disciplines &amp; Core Toolchain
           </h2>
           <p className="section-subheading-editorial">
             Systematic technical competencies organized across systems programming, defensive security, intelligent algorithms, and developer tooling.
@@ -44,13 +44,14 @@ export const SkillsSection: React.FC = () => {
               key={group.id}
               className="skill-card-block"
               style={{
-                padding: "clamp(1.5rem, 2.5vw, 2.25rem)",
+                padding: "clamp(1.5rem, 2.5vw, 2rem)",
                 background: "var(--bg-surface)",
-                border: "1px solid var(--bg-hairline)",
+                border: "1px solid var(--border-default)",
+                borderRadius: "8px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                transition: "border-color 0.2s ease",
+                transition: "border-color 0.2s ease, background 0.2s ease",
               }}
             >
               <div>
@@ -63,22 +64,22 @@ export const SkillsSection: React.FC = () => {
                     <h3
                       style={{
                         fontFamily: "var(--font-display)",
-                        fontSize: "1.2rem",
+                        fontSize: "1.15rem",
                         fontWeight: 700,
-                        color: "#ffffff",
+                        color: "var(--text-primary)",
                         letterSpacing: "-0.02em",
                       }}
                     >
                       {group.name}
                     </h3>
                   </div>
-                  <div style={{ opacity: 0.85 }}>{getGroupIcon(group.id)}</div>
+                  <div style={{ opacity: 0.9 }}>{getGroupIcon(group.id)}</div>
                 </div>
 
                 <p
                   style={{
                     fontSize: "0.8125rem",
-                    color: "var(--text-muted)",
+                    color: "var(--text-secondary)",
                     lineHeight: 1.55,
                     marginBottom: "1.5rem",
                   }}
@@ -87,14 +88,14 @@ export const SkillsSection: React.FC = () => {
                 </p>
               </div>
 
-              {/* Text-based Technology Listing (No arbitrary percentages or fake progress bars) */}
+              {/* Text-based Technology Listing */}
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: "0.4rem",
+                  gap: "0.45rem",
                   paddingTop: "1rem",
-                  borderTop: "1px solid var(--bg-hairline)",
+                  borderTop: "1px solid var(--border-subtle)",
                 }}
               >
                 {group.skills.map((skill, sIdx) => (
@@ -108,8 +109,8 @@ export const SkillsSection: React.FC = () => {
                       gap: "0.55rem",
                     }}
                   >
-                    <span style={{ color: "var(--accent-primary)", fontSize: "0.7rem" }}>—</span>
-                    <span style={{ color: "#f1f5f9" }}>{skill}</span>
+                    <span style={{ color: "var(--accent-cyan)", fontSize: "0.75rem" }}>—</span>
+                    <span style={{ color: "var(--text-primary)" }}>{skill}</span>
                   </div>
                 ))}
               </div>
@@ -127,7 +128,8 @@ export const SkillsSection: React.FC = () => {
         }
 
         .skill-card-block:hover {
-          border-color: rgba(255, 255, 255, 0.18) !important;
+          border-color: var(--border-strong) !important;
+          background: var(--bg-surface-elevated) !important;
         }
 
         @media (max-width: 1024px) {

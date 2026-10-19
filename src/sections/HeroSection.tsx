@@ -26,13 +26,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundColor: "var(--bg-color)",
+        backgroundColor: "var(--bg-canvas)",
         overflow: "hidden",
       }}
     >
       {/* ==============================================================
           RIGHT-SIDE FULL-BLEED EDITORIAL BACKGROUND PHOTOGRAPH
-          Integrated with Multi-Directional Gradient Blend (Reference Match)
+          Seamless Multi-Directional Gradient Blend into Canvas
           ============================================================== */}
       <div
         className="hero-backdrop-portrait"
@@ -41,8 +41,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           top: 0,
           right: 0,
           bottom: 0,
-          width: "45%",
-          maxWidth: "760px",
+          width: "46%",
+          maxWidth: "740px",
           zIndex: 1,
           pointerEvents: "none",
           overflow: "hidden",
@@ -58,20 +58,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "center 12%",
-            filter: "contrast(106%) saturate(102%) brightness(98%)",
+            objectPosition: "center 14%",
+            filter: "contrast(104%) saturate(102%) brightness(98%)",
           }}
           loading="eager"
         />
 
-        {/* Multi-Directional Gradient Vignette / Edge Blend */}
+        {/* Multi-Directional Gradient Vignette / Edge Blend matching deep charcoal canvas */}
         {/* Left-edge smooth fade into the dark canvas */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to right, #08080c 0%, rgba(8, 8, 12, 0.85) 15%, rgba(8, 8, 12, 0.4) 40%, transparent 70%)",
+              "linear-gradient(to right, #0c0f17 0%, rgba(12, 15, 23, 0.95) 15%, rgba(12, 15, 23, 0.75) 35%, rgba(12, 15, 23, 0.25) 60%, transparent 85%)",
           }}
         />
 
@@ -82,9 +82,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             left: 0,
             right: 0,
             bottom: 0,
-            height: "40%",
+            height: "42%",
             background:
-              "linear-gradient(to top, #08080c 0%, rgba(8, 8, 12, 0.9) 25%, transparent 100%)",
+              "linear-gradient(to top, #0c0f17 0%, rgba(12, 15, 23, 0.95) 20%, rgba(12, 15, 23, 0.4) 55%, transparent 100%)",
           }}
         />
 
@@ -95,9 +95,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             left: 0,
             right: 0,
             top: 0,
-            height: "18%",
+            height: "22%",
             background:
-              "linear-gradient(to bottom, #08080c 0%, rgba(8, 8, 12, 0.6) 40%, transparent 100%)",
+              "linear-gradient(to bottom, #0c0f17 0%, rgba(12, 15, 23, 0.65) 35%, transparent 100%)",
           }}
         />
       </div>
@@ -114,13 +114,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          paddingTop: "clamp(6rem, 12vh, 8.5rem)",
+          paddingTop: "clamp(6.5rem, 12vh, 9rem)",
           paddingBottom: "clamp(2rem, 4vh, 3.5rem)",
         }}
       >
         <div
           style={{
-            maxWidth: "clamp(460px, 58vw, 820px)",
+            maxWidth: "clamp(480px, 58vw, 800px)",
             display: "flex",
             flexDirection: "column",
           }}
@@ -132,70 +132,55 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              padding: "0.3rem 0.8rem",
+              padding: "0.32rem 0.85rem",
               borderRadius: "9999px",
               background: "rgba(16, 185, 129, 0.08)",
-              border: "1px solid rgba(16, 185, 129, 0.25)",
+              border: "1px solid var(--accent-emerald-border)",
               width: "fit-content",
               marginBottom: "1.5rem",
             }}
           >
             <span
               style={{
-                width: "7px",
-                height: "7px",
+                width: "6px",
+                height: "6px",
                 borderRadius: "50%",
-                backgroundColor: "#10b981",
+                backgroundColor: "var(--accent-emerald)",
                 display: "inline-block",
-                boxShadow: "0 0 8px #10b981",
+                boxShadow: "0 0 6px var(--accent-emerald)",
               }}
             />
             <span
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: "0.6875rem",
-                fontWeight: 700,
+                fontSize: "0.71875rem",
+                fontWeight: 600,
                 color: "#34d399",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
+                letterSpacing: "0.04em",
               }}
             >
-              Available for Internships & Projects
+              Available for Internships &amp; Research
             </span>
           </div>
 
-          {/* Bold, Oversized Multi-Line Editorial Headline */}
+          {/* Refined, Authoritative Editorial Headline */}
           <h1
             className="hero-headline-text"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.8rem, 6.8vw, 6.6rem)",
-              fontWeight: 800,
-              letterSpacing: "-0.04em",
-              lineHeight: 0.89,
-              color: "#ffffff",
-              textTransform: "uppercase",
-              marginBottom: "1.75rem",
+              fontSize: "clamp(2.75rem, 5.8vw, 5.25rem)",
+              fontWeight: 700,
+              letterSpacing: "-0.035em",
+              lineHeight: 1.05,
+              color: "var(--text-primary)",
+              marginBottom: "1.65rem",
             }}
           >
-            <div style={{ textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}>CYBER</div>
-            <div style={{ textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}>SECURITY</div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
-                gap: "1rem",
-                textShadow: "0 4px 20px rgba(0,0,0,0.8)",
-              }}
-              className="hero-third-line"
-            >
-              <span>& SOFTWARE</span>
-            </div>
-            <div style={{ textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}>ENGINEER</div>
+            <span style={{ display: "block" }}>Cybersecurity &amp;</span>
+            <span style={{ display: "block", color: "#ffffff" }}>Software Engineer</span>
           </h1>
 
-          {/* Compact Supporting Metadata Pills (Refined & Restrained) */}
+          {/* Compact Supporting Metadata Pills */}
           <div
             style={{
               display: "flex",
@@ -208,16 +193,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           >
             <div className="hero-clean-pill">
               <Shield size={12} color="var(--accent-cyan)" />
-              <span>Cybersecurity & Network Security</span>
+              <span>Cybersecurity &amp; Network Security</span>
             </div>
 
             <div className="hero-clean-pill">
               <GraduationCap size={12} color="var(--accent-cyan)" />
-              <span>CIT Chennai // 2025–2029</span>
+              <span>CIT Chennai · 2025–2029</span>
             </div>
 
             <div className="hero-clean-pill">
-              <CheckCircle2 size={12} color="#34d399" />
+              <CheckCircle2 size={12} color="var(--accent-emerald)" />
               <span>CGPA: 8.5 / 10</span>
             </div>
 
@@ -231,14 +216,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           <p
             style={{
               fontFamily: "var(--font-sans)",
-              fontSize: "clamp(1rem, 1.4vw, 1.15rem)",
+              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
               color: "var(--text-secondary)",
-              lineHeight: 1.6,
+              lineHeight: 1.68,
               maxWidth: "580px",
               marginBottom: "2rem",
             }}
           >
-            I'm <strong style={{ color: "#ffffff", fontWeight: 600 }}>Sharath B</strong>, a Cybersecurity student at <span style={{ color: "#ffffff" }}>Chennai Institute of Technology</span> interested in secure software, threat analysis, and intelligent systems.
+            I'm <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>Sharath B</strong>, a Cybersecurity student at <span style={{ color: "var(--text-primary)" }}>Chennai Institute of Technology</span> focused on defensive security, threat modeling, and secure software engineering.
           </p>
 
           {/* Primary Action Buttons */}
@@ -246,7 +231,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "1rem",
+              gap: "0.85rem",
               flexWrap: "wrap",
             }}
           >
@@ -256,7 +241,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             </a>
 
             <button onClick={onOpenResume} className="btn-secondary">
-              <FileText size={14} />
+              <FileText size={15} />
               <span>View Resume (PDF)</span>
             </button>
           </div>
@@ -271,11 +256,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         style={{
           position: "relative",
           zIndex: 20,
-          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          background: "rgba(8, 8, 12, 0.85)",
-          backdropFilter: "blur(10px)",
-          paddingTop: "1rem",
-          paddingBottom: "1.1rem",
+          borderTop: "1px solid var(--bg-hairline)",
+          background: "rgba(12, 15, 23, 0.92)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          paddingTop: "0.95rem",
+          paddingBottom: "1.05rem",
         }}
       >
         <div
@@ -294,13 +280,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               fontFamily: "var(--font-mono)",
               fontSize: "0.75rem",
               color: "var(--text-muted)",
-              letterSpacing: "0.1em",
+              letterSpacing: "0.08em",
               display: "flex",
               alignItems: "center",
               gap: "0.75rem",
             }}
           >
-            <span>CHENNAI, INDIA — 2025–2029</span>
+            <span>CHENNAI, INDIA · 2025–2029</span>
             <span style={{ opacity: 0.3 }}>/</span>
             <span style={{ color: "var(--text-secondary)" }}>CIT CHENNAI CSE-CYBER</span>
           </div>
@@ -359,30 +345,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             {/* Resume Action */}
             <button
               onClick={onOpenResume}
+              className="social-pill-link"
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.45rem",
-                padding: "0.4rem 0.95rem",
-                borderRadius: "6px",
-                background: "rgba(16, 185, 129, 0.12)",
-                border: "1px solid rgba(16, 185, 129, 0.35)",
-                color: "#34d399",
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                letterSpacing: "0.04em",
-                textTransform: "uppercase",
+                background: "var(--accent-cyan-subtle)",
+                borderColor: "var(--accent-cyan-border)",
+                color: "var(--accent-cyan-light)",
                 cursor: "pointer",
-                transition: "all 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#10b981";
-                e.currentTarget.style.color = "#04070d";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "rgba(16, 185, 129, 0.12)";
-                e.currentTarget.style.color = "#34d399";
+                fontWeight: 600,
               }}
               title="View Verified Resume PDF"
             >
@@ -394,24 +363,33 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             <a
               href="#about"
               style={{
-                width: "34px",
-                height: "34px",
+                width: "32px",
+                height: "32px",
                 borderRadius: "50%",
-                background: "#ffffff",
-                color: "#08080c",
+                background: "rgba(255, 255, 255, 0.04)",
+                border: "1px solid var(--border-default)",
+                color: "var(--text-primary)",
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
                 textDecoration: "none",
                 cursor: "pointer",
-                transition: "transform 0.2s ease",
+                transition: "all 0.2s ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = "rotate(45deg)")}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = "rotate(0deg)")}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "rotate(45deg)";
+                e.currentTarget.style.borderColor = "var(--accent-cyan-border)";
+                e.currentTarget.style.background = "var(--accent-cyan-subtle)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "rotate(0deg)";
+                e.currentTarget.style.borderColor = "var(--border-default)";
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.04)";
+              }}
               title="Scroll to About Section"
               aria-label="Scroll to about section"
             >
-              <ArrowDownRight size={17} />
+              <ArrowDownRight size={15} />
             </a>
           </div>
         </div>
@@ -423,13 +401,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           display: inline-flex;
           align-items: center;
           gap: 0.45rem;
-          padding: 0.3rem 0.65rem;
+          padding: 0.32rem 0.65rem;
           border-radius: 6px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.09);
+          background: rgba(255, 255, 255, 0.025);
+          border: 1px solid var(--border-subtle);
           color: var(--text-secondary);
           font-family: var(--font-mono);
-          fontSize: 0.75rem;
+          font-size: 0.75rem;
           font-weight: 500;
           letter-spacing: 0.02em;
         }

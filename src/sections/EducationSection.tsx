@@ -66,9 +66,9 @@ export const EducationSection: React.FC = () => {
         
         {/* Section Header */}
         <div style={{ marginBottom: "3.5rem" }}>
-          <div className="section-label">04 // Education & Credentials</div>
+          <div className="section-label">04 // Education &amp; Credentials</div>
           <h2 className="section-heading-editorial">
-            Academic Foundation & Credentials
+            Academic Foundation &amp; Credentials
           </h2>
           <p className="section-subheading-editorial">
             Rigorous undergraduate studies at Chennai Institute of Technology, continuous algorithmic problem solving, and verified technical credentials.
@@ -81,24 +81,26 @@ export const EducationSection: React.FC = () => {
           <div
             className="edu-card-block"
             style={{
-              border: "1px solid var(--bg-hairline)",
+              border: "1px solid var(--border-default)",
               background: "var(--bg-surface)",
+              borderRadius: "8px",
               padding: "clamp(1.75rem, 3vw, 2.5rem)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
+              transition: "border-color 0.2s ease, background 0.2s ease",
             }}
           >
             <div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.6rem" }}>
-                <span className="mono-tag" style={{ color: "var(--accent-primary)" }}>
+                <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
                   UNDERGRADUATE DEGREE
                 </span>
                 <span
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.875rem",
-                    fontWeight: 700,
+                    fontWeight: 600,
                     color: "var(--accent-emerald)",
                   }}
                 >
@@ -109,9 +111,9 @@ export const EducationSection: React.FC = () => {
               <h3
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "1.45rem",
+                  fontSize: "1.4rem",
                   fontWeight: 700,
-                  color: "#ffffff",
+                  color: "var(--text-primary)",
                   letterSpacing: "-0.02em",
                   marginBottom: "0.35rem",
                 }}
@@ -119,7 +121,7 @@ export const EducationSection: React.FC = () => {
                 Chennai Institute of Technology
               </h3>
 
-              <div style={{ fontSize: "1rem", color: "#f1f5f9", fontWeight: 600, marginBottom: "0.5rem" }}>
+              <div style={{ fontSize: "0.95rem", color: "var(--text-primary)", fontWeight: 500, marginBottom: "0.45rem" }}>
                 B.E. Computer Science and Engineering — Cyber Security
               </div>
 
@@ -131,18 +133,18 @@ export const EducationSection: React.FC = () => {
                   marginBottom: "1.25rem",
                 }}
               >
-                2025 – 2029 (Currently in 2nd Year) · Chennai, Tamil Nadu
+                2025 – 2029 (2nd Year) · Chennai, Tamil Nadu
               </div>
 
-              <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.65, marginBottom: "1.5rem" }}>
-                Core coursework centers on Systems Programming, Cybersecurity, Network Security, Operating Systems, Database Management Systems, and Data Structures & Algorithms.
+              <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.68, marginBottom: "1.5rem" }}>
+                Core coursework centers on Systems Programming, Defensive Cybersecurity, Network Security, Operating Systems, Database Management Systems, and Data Structures &amp; Algorithms.
               </p>
             </div>
 
             {/* Prior Scholastic Distinctions */}
             <div
               style={{
-                borderTop: "1px solid var(--bg-hairline)",
+                borderTop: "1px solid var(--border-subtle)",
                 paddingTop: "1.25rem",
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
@@ -151,24 +153,24 @@ export const EducationSection: React.FC = () => {
             >
               <div>
                 <span className="mono-tag" style={{ display: "block", marginBottom: "0.25rem" }}>
-                  CLASS 12 (HSC)
+                  Class 12 (HSC)
                 </span>
-                <span style={{ fontSize: "0.875rem", color: "#ffffff", fontWeight: 600, display: "block" }}>
+                <span style={{ fontSize: "0.875rem", color: "var(--text-primary)", fontWeight: 600, display: "block" }}>
                   97% · 3rd School Rank
                 </span>
-                <span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
-                  Little Angels Higher Secondary School
+                <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "0.15rem", display: "block" }}>
+                  Little Angels Higher Sec. School
                 </span>
               </div>
 
               <div>
                 <span className="mono-tag" style={{ display: "block", marginBottom: "0.25rem" }}>
-                  CLASS 10 (SSLC)
+                  Class 10 (SSLC)
                 </span>
-                <span style={{ fontSize: "0.875rem", color: "#ffffff", fontWeight: 600, display: "block" }}>
+                <span style={{ fontSize: "0.875rem", color: "var(--text-primary)", fontWeight: 600, display: "block" }}>
                   98% · School Topper
                 </span>
-                <span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
+                <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "0.15rem", display: "block" }}>
                   Little Angels Matriculation School
                 </span>
               </div>
@@ -179,17 +181,19 @@ export const EducationSection: React.FC = () => {
           <div
             className="edu-card-block"
             style={{
-              border: "1px solid var(--bg-hairline)",
+              border: "1px solid var(--border-default)",
               background: "var(--bg-surface)",
+              borderRadius: "8px",
               padding: "clamp(1.75rem, 3vw, 2.5rem)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
+              transition: "border-color 0.2s ease, background 0.2s ease",
             }}
           >
             <div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.6rem" }}>
-                <span className="mono-tag" style={{ color: "var(--accent-primary)" }}>
+                <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
                   COMPETITIVE ALGORITHMIC PRACTICE
                 </span>
                 <a
@@ -207,9 +211,9 @@ export const EducationSection: React.FC = () => {
               <h3
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "1.45rem",
+                  fontSize: "1.4rem",
                   fontWeight: 700,
-                  color: "#ffffff",
+                  color: "var(--text-primary)",
                   letterSpacing: "-0.02em",
                   marginBottom: "0.5rem",
                 }}
@@ -229,8 +233,8 @@ export const EducationSection: React.FC = () => {
                   style={{
                     fontFamily: "var(--font-display)",
                     fontSize: "clamp(2.5rem, 5vw, 3.25rem)",
-                    fontWeight: 800,
-                    color: "#ffffff",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
                     lineHeight: 1,
                   }}
                 >
@@ -241,14 +245,14 @@ export const EducationSection: React.FC = () => {
                 </span>
               </div>
 
-              <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.65, marginBottom: "1.5rem" }}>
+              <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.68, marginBottom: "1.5rem" }}>
                 Continuous algorithmic practice emphasizing optimal time and space complexity. Routine focus covers Data Structures, Graph Theory, Dynamic Programming, Tree Traversals, and Two-Pointer strategies.
               </p>
             </div>
 
             <div
               style={{
-                borderTop: "1px solid var(--bg-hairline)",
+                borderTop: "1px solid var(--border-subtle)",
                 paddingTop: "1.25rem",
                 display: "flex",
                 flexWrap: "wrap",
@@ -262,9 +266,10 @@ export const EducationSection: React.FC = () => {
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.71875rem",
                     color: "var(--text-muted)",
-                    background: "rgba(255, 255, 255, 0.03)",
-                    padding: "0.2rem 0.5rem",
-                    border: "1px solid var(--bg-hairline)",
+                    background: "rgba(255, 255, 255, 0.025)",
+                    padding: "0.22rem 0.55rem",
+                    borderRadius: "4px",
+                    border: "1px solid var(--border-subtle)",
                   }}
                 >
                   {t}
@@ -287,19 +292,19 @@ export const EducationSection: React.FC = () => {
             }}
           >
             <div>
-              <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem" }}>
-                CREDENTIALS & SPECIALIZED TRAINING
+              <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan)" }}>
+                CREDENTIALS &amp; SPECIALIZED TRAINING
               </span>
               <h3
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "1.5rem",
+                  fontSize: "1.45rem",
                   fontWeight: 700,
-                  color: "#ffffff",
+                  color: "var(--text-primary)",
                   letterSpacing: "-0.02em",
                 }}
               >
-                Verified Certifications, Training & Workshops
+                Verified Certifications, Training &amp; Workshops
               </h3>
             </div>
 
@@ -318,9 +323,9 @@ export const EducationSection: React.FC = () => {
                   type="button"
                   onClick={() => setFilterType(tab.id)}
                   style={{
-                    background: filterType === tab.id ? "rgba(56, 189, 248, 0.12)" : "rgba(255, 255, 255, 0.03)",
-                    border: filterType === tab.id ? "1px solid var(--accent-cyan)" : "1px solid var(--bg-hairline)",
-                    color: filterType === tab.id ? "#ffffff" : "var(--text-muted)",
+                    background: filterType === tab.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
+                    border: filterType === tab.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
+                    color: filterType === tab.id ? "var(--text-primary)" : "var(--text-muted)",
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.75rem",
                     padding: "0.35rem 0.75rem",
@@ -336,7 +341,7 @@ export const EducationSection: React.FC = () => {
           </div>
 
           {/* Credentials Table / Rows */}
-          <div style={{ borderTop: "1px solid var(--bg-hairline)" }}>
+          <div style={{ borderTop: "1px solid var(--border-subtle)" }}>
             {filteredCredentials.map((cred, idx) => {
               const isCert = cred.type === "certification";
               const isTraining = cred.type === "training";
@@ -350,12 +355,12 @@ export const EducationSection: React.FC = () => {
                     gridTemplateColumns: "1.4fr 1.6fr 0.9fr 0.8fr",
                     gap: "1.5rem",
                     padding: "1.25rem 0",
-                    borderBottom: "1px solid var(--bg-hairline)",
+                    borderBottom: "1px solid var(--border-subtle)",
                     alignItems: "baseline",
                   }}
                 >
                   <div>
-                    <span style={{ fontSize: "0.9375rem", fontWeight: 600, color: "#ffffff", display: "block", marginBottom: "0.2rem" }}>
+                    <span style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--text-primary)", display: "block", marginBottom: "0.2rem" }}>
                       {cred.title}
                     </span>
                     <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>
@@ -375,17 +380,21 @@ export const EducationSection: React.FC = () => {
                         padding: "0.2rem 0.55rem",
                         border: "1px solid",
                         borderColor: isCert
-                          ? "rgba(56, 189, 248, 0.3)"
+                          ? "var(--accent-cyan-border)"
                           : isTraining
-                          ? "rgba(16, 185, 129, 0.3)"
-                          : "rgba(255, 255, 255, 0.15)",
+                          ? "var(--accent-emerald-border)"
+                          : "var(--border-subtle)",
                         color: isCert
-                          ? "var(--accent-primary)"
+                          ? "var(--accent-cyan)"
                           : isTraining
                           ? "var(--accent-emerald)"
                           : "var(--text-muted)",
-                        background: "rgba(255, 255, 255, 0.02)",
-                        borderRadius: "2px",
+                        background: isCert
+                          ? "var(--accent-cyan-subtle)"
+                          : isTraining
+                          ? "var(--accent-emerald-subtle)"
+                          : "rgba(255, 255, 255, 0.02)",
+                        borderRadius: "4px",
                       }}
                     >
                       {cred.typeLabel}
@@ -413,7 +422,8 @@ export const EducationSection: React.FC = () => {
         }
 
         .edu-card-block:hover {
-          border-color: rgba(255, 255, 255, 0.18) !important;
+          border-color: var(--border-strong) !important;
+          background: var(--bg-surface-elevated) !important;
         }
 
         @media (max-width: 900px) {
