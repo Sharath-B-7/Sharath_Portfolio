@@ -35,11 +35,11 @@ export const personalInfo: PersonalInfo = {
   headline: "Building Secure Systems. Solving Real Problems.",
   title: "Cybersecurity | Software Development | AI/ML",
   heroDescription:
-    "B.E. Computer Science and Engineering — Cyber Security student at Chennai Institute of Technology (CIT Chennai), interested in cybersecurity, software development, problem-solving, and AI/ML.",
+    "Computer Science and Engineering student specializing in Cyber Security at Chennai Institute of Technology, Chennai, with interests in cybersecurity, SOC analysis, AI, machine learning, and software development. Strong problem-solving skills with an interest in AI-assisted coding and rapid prototyping.",
   education: {
     degree: "B.E. Computer Science and Engineering — Cyber Security",
-    college: "Chennai Institute of Technology (CIT Chennai)",
-    year: "2025 – 2029 (2nd Year)",
+    college: "Chennai Institute of Technology, Chennai",
+    year: "2025 – 2029",
     cgpa: "8.5 / 10",
     location: "Chennai, Tamil Nadu",
   },
@@ -47,12 +47,11 @@ export const personalInfo: PersonalInfo = {
   languages: ["English", "Tamil"],
   primaryInterest: "Cybersecurity",
   secondaryInterests: [
-    "Artificial Intelligence",
-    "Machine Learning",
-    "Data Science",
+    "Cybersecurity & SOC Analysis",
+    "AI & Machine Learning",
     "Software Development",
-    "Data Structures & Algorithms",
-    "Problem Solving",
+    "AI-assisted Coding & Rapid Prototyping",
+    "Problem Solving (450+ LeetCode)",
   ],
   statusBadge: "Currently Learning & Building",
   social: {

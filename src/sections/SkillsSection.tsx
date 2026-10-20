@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Terminal, Shield, Globe, Cpu, Database, Wrench, Search, SlidersHorizontal } from "lucide-react";
+import { Terminal, Shield, Globe, Cpu, Database, Wrench, Search, SlidersHorizontal, Sparkles } from "lucide-react";
 import { skillCategories } from "../data/skills";
 
 export const SkillsSection: React.FC = () => {
@@ -20,6 +20,8 @@ export const SkillsSection: React.FC = () => {
         return <Database size={16} color="var(--accent-cyan)" />;
       case "tools":
         return <Wrench size={16} color="var(--accent-cyan)" />;
+      case "other":
+        return <Sparkles size={16} color="var(--accent-cyan)" />;
       default:
         return <Terminal size={16} color="var(--accent-cyan)" />;
     }
