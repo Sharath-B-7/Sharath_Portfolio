@@ -4,10 +4,9 @@ import { GithubIcon } from "../components/Icons";
 import { projectsData } from "../data/projects";
 import type { ProjectItem } from "../data/projects";
 import { FraudLensPreview } from "../components/project-previews/FraudLensPreview";
-import { AndroidMalwarePreview } from "../components/project-previews/AndroidMalwarePreview";
+import { RagPreview } from "../components/project-previews/RagPreview";
 import { EduGapPreview } from "../components/project-previews/EduGapPreview";
 import { AetherGradePreview } from "../components/project-previews/AetherGradePreview";
-import { SocPreview } from "../components/project-previews/SocPreview";
 
 export const ProjectsSection: React.FC = () => {
   const [selectedDiagram, setSelectedDiagram] = useState<{ url: string; title: string } | null>(null);
@@ -15,35 +14,31 @@ export const ProjectsSection: React.FC = () => {
 
   const filterCategories = [
     { id: "all", label: "All Projects" },
-    { id: "fraud", label: "Fraud Intelligence" },
-    { id: "malware", label: "Malware Analysis" },
     { id: "ai", label: "Machine Learning" },
+    { id: "rag", label: "RAG & NLP" },
     { id: "systems", label: "Secure Backends" },
-    { id: "soc", label: "SOC Operations" },
+    { id: "fraud", label: "Fraud Intelligence" },
   ];
 
   const filteredProjects = projectsData.filter((project) => {
     if (activeFilter === "all") return true;
-    if (activeFilter === "fraud") return project.id === "fraudlens-ai";
-    if (activeFilter === "malware") return project.id === "android-malware-analysis";
     if (activeFilter === "ai") return project.id === "knowledge-gap-detection";
+    if (activeFilter === "rag") return project.id === "rag";
     if (activeFilter === "systems") return project.id === "aethergrade";
-    if (activeFilter === "soc") return project.id === "soc-training";
+    if (activeFilter === "fraud") return project.id === "fraudlens-ai";
     return true;
   });
 
   const renderProjectVisual = (project: ProjectItem) => {
     switch (project.id) {
-      case "fraudlens-ai":
-        return <FraudLensPreview />;
-      case "android-malware-analysis":
-        return <AndroidMalwarePreview />;
       case "knowledge-gap-detection":
         return <EduGapPreview />;
+      case "rag":
+        return <RagPreview />;
       case "aethergrade":
         return <AetherGradePreview />;
-      case "soc-training":
-        return <SocPreview />;
+      case "fraudlens-ai":
+        return <FraudLensPreview />;
       default:
         return null;
     }
@@ -59,7 +54,7 @@ export const ProjectsSection: React.FC = () => {
             Engineered Systems &amp; Research
           </h2>
           <p className="section-subheading-editorial">
-            Practical software architectures, defensive security tooling, static malware triage pipelines, and machine learning models. Every showcased system includes an interactive architecture demonstration grounded in real implementation.
+            Practical software architectures, retrieval-augmented question-answering pipelines, cryptographic grade ledgers, and intelligent machine learning diagnostics. Every showcased system includes an interactive architecture demonstration grounded in real implementation.
           </p>
         </div>
 
@@ -164,12 +159,14 @@ export const ProjectsSection: React.FC = () => {
                   <h3
                     style={{
                       fontFamily: "var(--font-display)",
-                      fontSize: "clamp(1.85rem, 2.8vw, 2.35rem)",
+                      fontSize: project.name.length > 40 ? "clamp(1.4rem, 2.2vw, 1.85rem)" : "clamp(1.85rem, 2.8vw, 2.35rem)",
                       fontWeight: 700,
                       color: "var(--text-primary)",
                       letterSpacing: "-0.03em",
-                      lineHeight: 1.2,
+                      lineHeight: 1.25,
                       marginBottom: "0.4rem",
+                      overflowWrap: "break-word",
+                      wordBreak: "break-word",
                     }}
                   >
                     {project.name}
