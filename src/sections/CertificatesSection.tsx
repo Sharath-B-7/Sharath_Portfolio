@@ -6,8 +6,6 @@ import {
   FileText,
   Award,
   ShieldCheck,
-  Pause,
-  Play,
   X,
   Download,
 } from "lucide-react";
@@ -16,7 +14,6 @@ import type { CertificationItem } from "../data/certifications";
 
 export const CertificatesSection: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<CertificationItem | null>(null);
-  const [isPaused, setIsPaused] = useState(false);
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   // Manage modal open / close
@@ -75,82 +72,14 @@ export const CertificatesSection: React.FC = () => {
     >
       <div className="container" style={{ marginBottom: "2.5rem" }}>
         {/* Section Header */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            flexWrap: "wrap",
-            gap: "1.25rem",
-          }}
-        >
-          <div>
-            <div className="section-label">Verified Documents &amp; Accreditations</div>
-            <h2 className="section-heading-editorial">
-              Official Certificates &amp; Accreditations
-            </h2>
-            <p className="section-subheading-editorial">
-              Continuously moving showcase of verified technical credentials in cloud architecture, networking fundamentals, Python development, multimodal AI, and defensive security operations.
-            </p>
-          </div>
-
-          {/* Interactive Animation Status & Manual Pause Toggle */}
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.6rem",
-              background: "var(--bg-surface)",
-              border: "1px solid var(--border-default)",
-              borderRadius: "9999px",
-              padding: "0.35rem 0.85rem",
-              boxShadow: "var(--shadow-sm)",
-            }}
-          >
-            <span
-              style={{
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                backgroundColor: isPaused ? "var(--text-muted)" : "var(--accent-emerald)",
-                display: "inline-block",
-                boxShadow: isPaused ? "none" : "0 0 8px rgba(16, 185, 129, 0.6)",
-                transition: "background-color 0.2s ease, box-shadow 0.2s ease",
-              }}
-            />
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.6875rem",
-                color: "var(--text-secondary)",
-                letterSpacing: "0.02em",
-              }}
-            >
-              {isPaused ? "CAROUSEL PAUSED" : "AUTO-SCROLLING · HOVER TO PAUSE"}
-            </span>
-            <button
-              type="button"
-              onClick={() => setIsPaused((prev) => !prev)}
-              aria-label={isPaused ? "Resume continuous certificate carousel" : "Pause certificate carousel"}
-              title={isPaused ? "Resume movement" : "Pause movement"}
-              style={{
-                background: "var(--bg-surface-subtle)",
-                border: "1px solid var(--border-subtle)",
-                color: "var(--text-primary)",
-                borderRadius: "50%",
-                width: "24px",
-                height: "24px",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                padding: 0,
-                transition: "background-color 0.2s ease, border-color 0.2s ease",
-              }}
-            >
-              {isPaused ? <Play size={11} /> : <Pause size={11} />}
-            </button>
-          </div>
+        <div>
+          <div className="section-label">Verified Documents &amp; Accreditations</div>
+          <h2 className="section-heading-editorial">
+            Official Certificates &amp; Accreditations
+          </h2>
+          <p className="section-subheading-editorial">
+            Continuously moving showcase of verified technical credentials in cloud architecture, networking fundamentals, Python development, multimodal AI, and defensive security operations.
+          </p>
         </div>
       </div>
 
@@ -196,7 +125,7 @@ export const CertificatesSection: React.FC = () => {
 
         {/* Animated Marquee Track */}
         <div
-          className={`certificates-marquee-track ${isPaused ? "is-paused" : ""}`}
+          className="certificates-marquee-track"
           style={{
             display: "flex",
             width: "max-content",
@@ -491,11 +420,6 @@ export const CertificatesSection: React.FC = () => {
         .certificates-marquee-container:hover .certificates-marquee-track,
         .certificates-marquee-track:hover {
           animation-play-state: paused;
-        }
-
-        /* Manual Pause State */
-        .certificates-marquee-track.is-paused {
-          animation-play-state: paused !important;
         }
 
         .certificates-marquee-group {

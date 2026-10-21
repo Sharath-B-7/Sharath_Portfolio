@@ -7,8 +7,11 @@ import { certificationsData } from "../data/certifications";
 export const AchievementsSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<"all" | "cert" | "workshop">("all");
 
-  // Filter out the SOC training from the certifications list because it has its own dedicated feature card in Part A
-  const credentialsList = certificationsData.filter((c) => c.id !== "elevance-soc");
+  // Verified credentials list including all certifications and practical training
+  const credentialsList = certificationsData;
+
+  const certCount = credentialsList.filter((c) => c.type === "certification").length;
+  const workshopCount = credentialsList.filter((c) => c.type === "training").length;
 
   const filteredCredentials = credentialsList.filter((item) => {
     if (activeFilter === "all") return true;
@@ -403,8 +406,8 @@ export const AchievementsSection: React.FC = () => {
               </span>
               {[
                 { id: "all", label: `All (${credentialsList.length})` },
-                { id: "cert", label: "Certifications" },
-                { id: "workshop", label: "Workshops" },
+                { id: "cert", label: `Certifications (${certCount})` },
+                { id: "workshop", label: `Workshops & Training (${workshopCount})` },
               ].map((tab) => (
                 <button
                   key={tab.id}
