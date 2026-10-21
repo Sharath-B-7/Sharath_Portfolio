@@ -349,7 +349,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
                 justifyContent: "center",
                 textDecoration: "none",
                 cursor: "pointer",
-                transition: "transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), border-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                transition: "transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 450ms ease-in-out, border-color 450ms ease-in-out",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "rotate(45deg)";
@@ -454,7 +454,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           font-size: 0.8125rem;
           font-weight: 500;
           letter-spacing: 0.01em;
-          transition: border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1);
+          transition: border-color 450ms ease-in-out, color 450ms ease-in-out, background-color 450ms ease-in-out;
         }
 
         .hero-skill-chip-link {
@@ -690,7 +690,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           position: absolute;
           inset: 0;
           pointer-events: none;
-          transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
+          transition: opacity 450ms ease-in-out;
         }
 
         .hero-ambient-dark {
@@ -747,7 +747,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           position: absolute;
           inset: 0;
           pointer-events: none;
-          transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
+          transition: opacity 450ms ease-in-out;
         }
 
         .hero-mobile-ambient-dark {

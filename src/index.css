@@ -329,7 +329,7 @@ body {
   border: 1px solid var(--btn-primary-bg);
   transition-property: transform, background-color, border-color, color, box-shadow;
   transition-duration: 0.18s, 450ms, 450ms, 450ms, 450ms;
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out, ease-in-out, ease-in-out, ease-in-out;
 }
 
 .btn-primary:hover {
@@ -358,7 +358,7 @@ body {
   border: 1px solid var(--border-default);
   transition-property: transform, background-color, border-color, color, box-shadow;
   transition-duration: 0.18s, 450ms, 450ms, 450ms, 450ms;
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out, ease-in-out, ease-in-out, ease-in-out;
 }
 
 .btn-secondary:hover {
@@ -386,7 +386,7 @@ body {
   border: 1px solid var(--btn-primary-bg);
   transition-property: transform, background-color, border-color, color, box-shadow;
   transition-duration: 0.18s, 450ms, 450ms, 450ms, 450ms;
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out, ease-in-out, ease-in-out, ease-in-out;
 }
 
 .btn-editorial-primary:hover {
@@ -414,7 +414,7 @@ body {
   border: 1px solid var(--border-default);
   transition-property: transform, background-color, border-color, color, box-shadow;
   transition-duration: 0.18s, 450ms, 450ms, 450ms, 450ms;
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out, ease-in-out, ease-in-out, ease-in-out;
 }
 
 .btn-editorial-secondary:hover {
@@ -455,7 +455,7 @@ body {
   letter-spacing: 0.01em;
   transition-property: transform, background-color, border-color, color, box-shadow;
   transition-duration: 0.18s, 450ms, 450ms, 450ms, 450ms;
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out, ease-in-out, ease-in-out, ease-in-out;
 }
 
 .social-pill-link:hover {
@@ -473,7 +473,7 @@ body {
   padding: clamp(1.5rem, 3vw, 2.5rem);
   transition-property: border-color, background-color, box-shadow;
   transition-duration: 450ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: ease-in-out;
 }
 
 .card-clean:hover {
@@ -539,7 +539,7 @@ dialog::backdrop {
 }
 
 /* ==========================================================================
-   Smooth Dark ↔ Light Theme Transition Animations (Coordinated 450ms)
+   Smooth Dark ↔ Light Theme Transition Animations (Coordinated 450ms ease-in-out)
    ========================================================================== */
 html,
 body,
@@ -564,10 +564,33 @@ a,
 input,
 textarea,
 select,
-svg {
-  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+ul,
+ol,
+li,
+code,
+pre,
+strong,
+em,
+small,
+label,
+table,
+thead,
+tbody,
+tr,
+th,
+td,
+svg,
+svg path,
+svg circle,
+svg rect,
+svg polygon,
+svg line,
+svg polyline,
+::before,
+::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow, outline-color;
   transition-duration: 450ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: ease-in-out;
 }
 
 /* Strictly exempt original image elements from transitions to preserve raw photo rendering */

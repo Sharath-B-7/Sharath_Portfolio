@@ -70,7 +70,7 @@ export const AchievementsSection: React.FC = () => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+              transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out",
             }}
           >
             <div>
@@ -227,7 +227,7 @@ export const AchievementsSection: React.FC = () => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+              transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out",
             }}
           >
             <div>
@@ -423,7 +423,7 @@ export const AchievementsSection: React.FC = () => {
                     minHeight: "36px",
                     display: "inline-flex",
                     alignItems: "center",
-                    transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                    transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
                   }}
                 >
                   {tab.label}
@@ -449,7 +449,7 @@ export const AchievementsSection: React.FC = () => {
                   flexDirection: "column",
                   justifyContent: "space-between",
                   gap: "1rem",
-                  transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                  transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out",
                 }}
               >
                 <div>

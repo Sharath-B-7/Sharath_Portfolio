@@ -238,7 +238,7 @@ export const ProjectsSection: React.FC = () => {
                 minHeight: "36px",
                 display: "inline-flex",
                 alignItems: "center",
-                transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
               }}
             >
               {cat.label}
@@ -430,7 +430,7 @@ export const ProjectsSection: React.FC = () => {
                   minWidth: "38px",
                   minHeight: "38px",
                   padding: "0.35rem",
-                  transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                  transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
                 }}
                 aria-label="Close architecture modal"
               >
@@ -468,7 +468,7 @@ export const ProjectsSection: React.FC = () => {
           overflow: hidden;
           transition-property: border-color, background-color, box-shadow;
           transition-duration: 450ms;
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: ease-in-out;
         }
 
         .project-editorial-card:hover {
@@ -676,7 +676,7 @@ export const ProjectsSection: React.FC = () => {
           min-width: 110px;
           flex: 1;
           flex-shrink: 0;
-          transition: border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1);
+          transition: border-color 450ms ease-in-out, background-color 450ms ease-in-out;
         }
 
         .pipeline-step-node.highlight {

@@ -199,7 +199,7 @@ export const RagPreview: React.FC = () => {
                 fontSize: "0.71875rem",
                 fontWeight: selectedQuery.id === item.id ? 600 : 400,
                 cursor: "pointer",
-                transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
               }}
             >
               {item.tag}

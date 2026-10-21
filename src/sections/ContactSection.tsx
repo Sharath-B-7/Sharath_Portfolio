@@ -175,7 +175,7 @@ export const ContactSection: React.FC = () => {
           text-decoration: none;
           transition-property: transform, border-color, background-color, box-shadow;
           transition-duration: 0.18s, 450ms, 450ms, 450ms;
-          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out, ease-in-out, ease-in-out;
         }
 
         [data-theme="light"] .contact-profile-card {

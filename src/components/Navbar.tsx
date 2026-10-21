@@ -242,7 +242,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               fontWeight: 500,
               padding: "0.45rem 1rem",
               borderRadius: "9999px",
-              transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+              transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
             }}
             onMouseEnter={(e) => {
               if (activeSection !== "hero") {
@@ -280,7 +280,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               alignItems: "center",
               gap: "0.45rem",
               letterSpacing: "0.02em",
-              transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+              transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
             }}
           >
             <span
@@ -315,7 +315,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               fontWeight: 500,
               padding: "0.45rem 1rem",
               borderRadius: "9999px",
-              transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+              transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
             }}
             onMouseEnter={(e) => {
               if (activeSection !== "contact") {
@@ -356,7 +356,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               fontWeight: 600,
               letterSpacing: "0.04em",
               boxShadow: "var(--shadow-sm)",
-              transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+              transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out, box-shadow 450ms ease-in-out",
             }}
             className="theme-toggle-desktop"
           >
@@ -391,6 +391,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               minWidth: "44px",
               minHeight: "44px",
               boxShadow: "var(--shadow-sm)",
+              transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out, box-shadow 450ms ease-in-out",
             }}
             className="theme-toggle-mobile"
           >
@@ -518,7 +519,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                       cursor: "pointer",
                       width: "100%",
                       gridColumn: isLast ? "span 2" : "auto",
-                      transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                      transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.background = "var(--accent-terracotta-subtle)";
@@ -558,7 +559,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                     alignItems: "flex-start",
                     gap: "0.75rem",
                     gridColumn: isLast ? "span 2" : "auto",
-                    transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                    transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = "var(--accent-terracotta-subtle)";
@@ -726,6 +727,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 gap: "0.45rem",
                 cursor: "pointer",
                 minHeight: "38px",
+                transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
               }}
             >
               {theme === "dark" ? (

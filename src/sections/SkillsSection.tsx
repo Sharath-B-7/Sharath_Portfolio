@@ -102,7 +102,7 @@ export const SkillsSection: React.FC = () => {
                 minHeight: "36px",
                 display: "inline-flex",
                 alignItems: "center",
-                transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
               }}
             >
               All Disciplines
@@ -126,7 +126,7 @@ export const SkillsSection: React.FC = () => {
                   minHeight: "36px",
                   display: "inline-flex",
                   alignItems: "center",
-                  transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                  transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
                 }}
               >
                 {group.name}
@@ -195,7 +195,7 @@ export const SkillsSection: React.FC = () => {
                 border: "1px solid var(--border-default)",
                 borderRadius: "10px",
                 padding: "clamp(1.5rem, 3.5vw, 2.75rem)",
-                transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out",
               }}
             >
               {/* Meta Top Line */}
@@ -381,7 +381,7 @@ export const SkillsSection: React.FC = () => {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
-                  transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                  transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out",
                 }}
               >
                 <div>
@@ -479,7 +479,7 @@ export const SkillsSection: React.FC = () => {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
-                  transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                  transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out",
                 }}
               >
                 <div>
@@ -586,7 +586,7 @@ export const SkillsSection: React.FC = () => {
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
-                      transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                      transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out",
                     }}
                   >
                     <div>

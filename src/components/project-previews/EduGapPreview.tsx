@@ -176,7 +176,7 @@ export const EduGapPreview: React.FC = () => {
                 borderRadius: "4px",
                 padding: "0.55rem 0.75rem",
                 cursor: "pointer",
-                transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out",
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.35rem" }}>

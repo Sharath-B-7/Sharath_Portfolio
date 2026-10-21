@@ -163,7 +163,7 @@ export const FraudLensPreview: React.FC = () => {
                 fontFamily: "var(--font-sans)",
                 fontSize: "0.71875rem",
                 cursor: "pointer",
-                transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
+                transition: "border-color 450ms ease-in-out, background-color 450ms ease-in-out, color 450ms ease-in-out",
               }}
             >
               {entity.query.split("@")[0]}
