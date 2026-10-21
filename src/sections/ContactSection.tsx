@@ -173,7 +173,13 @@ export const ContactSection: React.FC = () => {
           border: 1px solid var(--border-default);
           border-radius: 8px;
           text-decoration: none;
-          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+          transition-property: transform, border-color, background-color, box-shadow;
+          transition-duration: 0.18s, 450ms, 450ms, 450ms;
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] .contact-profile-card {
+          box-shadow: 0 2px 8px rgba(36, 42, 39, 0.04), 0 1px 2px rgba(36, 42, 39, 0.02);
         }
 
         .contact-profile-card:hover {

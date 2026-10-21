@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
               onClick={scrollToTop}
               aria-label="Back to top"
               style={{
-                background: "rgba(255, 255, 255, 0.025)",
+                background: "var(--bg-surface-subtle)",
                 border: "1px solid var(--border-default)",
                 borderRadius: "4px",
                 color: "var(--text-secondary)",
@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.35rem",
-                transition: "all 0.18s ease",
+                transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = "var(--text-primary)";
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = "var(--text-secondary)";
                 e.currentTarget.style.borderColor = "var(--border-default)";
-                e.currentTarget.style.background = "rgba(255, 255, 255, 0.025)";
+                e.currentTarget.style.background = "var(--bg-surface-subtle)";
               }}
             >
               <span>TOP</span>

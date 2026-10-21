@@ -48,7 +48,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           overflow: "hidden",
         }}
       >
-        {/* Genuine Profile Photograph */}
+        {/* Genuine Profile Photograph — Preserved original asset with 0 filters */}
         <img
           src={personalInfo.assets.profilePhoto}
           alt="Sharath B — Cybersecurity & Software Engineer"
@@ -59,50 +59,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             height: "100%",
             objectFit: "cover",
             objectPosition: "center 14%",
-            filter: "contrast(104%) saturate(102%) brightness(98%)",
           }}
           loading="eager"
         />
 
-        {/* Multi-Directional Gradient Vignette Blend matching theme canvas */}
-        {/* Left-edge smooth fade into theme canvas */}
-        <div
-          className="hero-portrait-fade-left"
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to right, var(--hero-vignette-solid) 0%, var(--hero-vignette-95) 15%, var(--hero-vignette-75) 35%, var(--hero-vignette-25) 60%, transparent 85%)",
-          }}
-        />
+        {/* --- DUAL VIGNETTE LAYERS FOR SEAMLESS 450ms OPACITY CROSS-FADE --- */}
+        {/* 1. Dark Theme Vignettes (Desktop) */}
+        <div className="hero-vignette-dark" aria-hidden="true">
+          <div className="hero-fade-dark-left" />
+          <div className="hero-fade-dark-bottom" />
+          <div className="hero-fade-dark-top" />
+        </div>
 
-        {/* Bottom-edge smooth fade into theme canvas */}
-        <div
-          className="hero-portrait-fade-bottom"
-          style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: "45%",
-            background:
-              "linear-gradient(to top, var(--hero-vignette-solid) 0%, var(--hero-vignette-95) 20%, var(--hero-vignette-40) 55%, transparent 100%)",
-          }}
-        />
-
-        {/* Top-edge subtle vignette */}
-        <div
-          className="hero-portrait-fade-top"
-          style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            top: 0,
-            height: "22%",
-            background:
-              "linear-gradient(to bottom, var(--hero-vignette-solid) 0%, var(--hero-vignette-75) 35%, transparent 100%)",
-          }}
-        />
+        {/* 2. Light Theme Vignettes (Desktop) — Zero face overlay, 100% natural skin tone preserved */}
+        <div className="hero-vignette-light" aria-hidden="true">
+          <div className="hero-fade-light-left" />
+          <div className="hero-fade-light-bottom" />
+        </div>
       </div>
 
       {/* ==============================================================
@@ -116,10 +89,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           className="hero-mobile-portrait-banner-img"
           loading="eager"
         />
-        {/* Bottom smooth multi-stop gradient blend into canvas */}
-        <div className="hero-mobile-portrait-fade-bottom" aria-hidden="true" />
-        {/* Top subtle fade under fixed navigation */}
-        <div className="hero-mobile-portrait-fade-top" aria-hidden="true" />
+        {/* Mobile Dark Theme Vignettes */}
+        <div className="hero-mobile-vignette-dark" aria-hidden="true">
+          <div className="hero-mobile-fade-dark-bottom" />
+          <div className="hero-mobile-fade-dark-top" />
+        </div>
+        {/* Mobile Light Theme Vignettes — Zero face overlay, lower suit blend only */}
+        <div className="hero-mobile-vignette-light" aria-hidden="true">
+          <div className="hero-mobile-fade-light-bottom" />
+        </div>
       </div>
 
       {/* ==============================================================
@@ -369,7 +347,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
                 width: "32px",
                 height: "32px",
                 borderRadius: "50%",
-                background: "rgba(255, 255, 255, 0.04)",
+                background: "var(--bg-surface-subtle)",
                 border: "1px solid var(--border-default)",
                 color: "var(--text-primary)",
                 display: "inline-flex",
@@ -377,7 +355,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
                 justifyContent: "center",
                 textDecoration: "none",
                 cursor: "pointer",
-                transition: "all 0.2s ease",
+                transition: "transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), border-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "rotate(45deg)";
@@ -387,7 +365,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "rotate(0deg)";
                 e.currentTarget.style.borderColor = "var(--border-default)";
-                e.currentTarget.style.background = "rgba(255, 255, 255, 0.04)";
+                e.currentTarget.style.background = "var(--bg-surface-subtle)";
               }}
               title="Scroll to About Section"
               aria-label="Scroll to about section"
@@ -482,7 +460,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           font-size: 0.8125rem;
           font-weight: 500;
           letter-spacing: 0.01em;
-          transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+          transition: border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .hero-skill-chip-link {
@@ -554,7 +532,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             width: 100%;
             height: clamp(340px, 48vh, 460px);
             overflow: hidden;
-            background: var(--hero-vignette-solid);
+            background: var(--bg-canvas);
           }
 
           .hero-mobile-portrait-banner-img {
@@ -563,38 +541,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             object-fit: cover;
             object-position: center 12%;
             display: block;
-          }
-
-          /* Smooth multi-stop bottom fade into solid canvas */
-          .hero-mobile-portrait-fade-bottom {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 52%;
-            background: linear-gradient(
-              to top,
-              var(--hero-vignette-solid) 0%,
-              var(--hero-vignette-95) 25%,
-              var(--hero-vignette-40) 55%,
-              transparent 100%
-            );
-            pointer-events: none;
-          }
-
-          /* Top subtle vignette for fixed navbar contrast */
-          .hero-mobile-portrait-fade-top {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            height: 25%;
-            background: linear-gradient(
-              to bottom,
-              var(--hero-vignette-75) 0%,
-              transparent 100%
-            );
-            pointer-events: none;
           }
 
           /* Content container directly below the portrait fade */
@@ -703,57 +649,173 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           transition: none !important;
         }
 
-        /* Light Theme Hero Vignette Overrides - Protect face & natural skin tones while blending into #F4F0E8 */
-        [data-theme="light"] .hero-portrait-fade-left {
+        /* ==========================================================
+           DESKTOP HERO VIGNETTE LAYERS — SMOOTH OPACITY CROSS-FADE (450ms)
+           ========================================================== */
+        .hero-vignette-dark,
+        .hero-vignette-light {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dark Theme: dark vignette visible (1), light vignette hidden (0) */
+        .hero-vignette-dark {
+          opacity: 1;
+        }
+        .hero-vignette-light {
+          opacity: 0;
+        }
+
+        /* Light Theme: cross-fade to light vignette */
+        [data-theme="light"] .hero-vignette-dark {
+          opacity: 0;
+        }
+        [data-theme="light"] .hero-vignette-light {
+          opacity: 1;
+        }
+
+        /* Dark Theme Desktop Vignettes */
+        .hero-fade-dark-left {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to right,
+            #171A19 0%,
+            rgba(23, 26, 25, 0.95) 15%,
+            rgba(23, 26, 25, 0.75) 35%,
+            rgba(23, 26, 25, 0.25) 60%,
+            transparent 85%
+          );
+        }
+
+        .hero-fade-dark-bottom {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 45%;
+          background: linear-gradient(
+            to top,
+            #171A19 0%,
+            rgba(23, 26, 25, 0.95) 20%,
+            rgba(23, 26, 25, 0.40) 55%,
+            transparent 100%
+          );
+        }
+
+        .hero-fade-dark-top {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 22%;
+          background: linear-gradient(
+            to bottom,
+            #171A19 0%,
+            rgba(23, 26, 25, 0.75) 35%,
+            transparent 100%
+          );
+        }
+
+        /* Light Theme Desktop Vignettes — Protect Face, Skin Tones & Hair from any Pale Overlays */
+        .hero-fade-light-left {
+          position: absolute;
+          inset: 0;
           background: linear-gradient(
             to right,
             #F4F0E8 0%,
-            rgba(244, 240, 232, 0.90) 8%,
-            rgba(244, 240, 232, 0.55) 18%,
-            rgba(244, 240, 232, 0.18) 28%,
-            transparent 35%
-          ) !important;
+            rgba(244, 240, 232, 0.95) 6%,
+            rgba(244, 240, 232, 0.60) 12%,
+            rgba(244, 240, 232, 0.15) 18%,
+            transparent 22%
+          );
         }
 
-        [data-theme="light"] .hero-portrait-fade-bottom {
-          height: 32% !important;
+        .hero-fade-light-bottom {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 22%;
           background: linear-gradient(
             to top,
             #F4F0E8 0%,
-            rgba(244, 240, 232, 0.88) 22%,
-            rgba(244, 240, 232, 0.35) 60%,
+            rgba(244, 240, 232, 0.90) 25%,
+            rgba(244, 240, 232, 0.35) 65%,
             transparent 100%
-          ) !important;
+          );
         }
 
-        [data-theme="light"] .hero-portrait-fade-top {
-          height: 9% !important;
+        /* ==========================================================
+           MOBILE HERO VIGNETTE LAYERS — SMOOTH OPACITY CROSS-FADE (450ms)
+           ========================================================== */
+        .hero-mobile-vignette-dark,
+        .hero-mobile-vignette-light {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-mobile-vignette-dark {
+          opacity: 1;
+        }
+        .hero-mobile-vignette-light {
+          opacity: 0;
+        }
+
+        [data-theme="light"] .hero-mobile-vignette-dark {
+          opacity: 0;
+        }
+        [data-theme="light"] .hero-mobile-vignette-light {
+          opacity: 1;
+        }
+
+        /* Mobile Dark Vignettes */
+        .hero-mobile-fade-dark-bottom {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 52%;
+          background: linear-gradient(
+            to top,
+            #171A19 0%,
+            rgba(23, 26, 25, 0.95) 25%,
+            rgba(23, 26, 25, 0.40) 55%,
+            transparent 100%
+          );
+        }
+
+        .hero-mobile-fade-dark-top {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 20%;
           background: linear-gradient(
             to bottom,
-            rgba(244, 240, 232, 0.55) 0%,
+            rgba(23, 26, 25, 0.75) 0%,
             transparent 100%
-          ) !important;
+          );
         }
 
-        /* Mobile Light Theme Hero Portrait Vignette Overrides */
-        [data-theme="light"] .hero-mobile-portrait-fade-bottom {
-          height: 36% !important;
+        /* Mobile Light Vignettes — Protect face & hair; subtle lower suit jacket blend only */
+        .hero-mobile-fade-light-bottom {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 22%;
           background: linear-gradient(
             to top,
             #F4F0E8 0%,
-            rgba(244, 240, 232, 0.92) 25%,
-            rgba(244, 240, 232, 0.45) 65%,
+            rgba(244, 240, 232, 0.92) 30%,
+            rgba(244, 240, 232, 0.25) 75%,
             transparent 100%
-          ) !important;
-        }
-
-        [data-theme="light"] .hero-mobile-portrait-fade-top {
-          height: 10% !important;
-          background: linear-gradient(
-            to bottom,
-            rgba(244, 240, 232, 0.60) 0%,
-            transparent 100%
-          ) !important;
+          );
         }
       `}</style>
     </section>

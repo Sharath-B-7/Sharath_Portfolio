@@ -90,7 +90,7 @@
   --bg-canvas: #F4F0E8;
   --bg-surface: #FFFFFF;
   --bg-surface-elevated: #EDE7DC;
-  --bg-surface-subtle: #EDE7DC;
+  --bg-surface-subtle: #F7F3EB;
   --bg-surface-hover: #E3DBD0;
 
   --bg-hairline: rgba(36, 42, 39, 0.10);
@@ -103,8 +103,8 @@
 
   --text-primary: #242A27;
   --text-secondary: #3D4642;
-  --text-muted: #5F6B66;
-  --text-faint: #84918B;
+  --text-muted: #54605B;
+  --text-faint: #75817C;
 
   /* Rich Terracotta in Light Theme (#B56A45) */
   --accent-terracotta: #B56A45;
@@ -276,7 +276,9 @@ body {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid var(--btn-primary-bg);
-  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-property: transform, background-color, border-color, color, box-shadow;
+  transition-duration: 0.18s, 450ms, 450ms, 450ms, 450ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover {
@@ -303,7 +305,9 @@ body {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid var(--border-default);
-  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-property: transform, background-color, border-color, color, box-shadow;
+  transition-duration: 0.18s, 450ms, 450ms, 450ms, 450ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-secondary:hover {
@@ -329,7 +333,9 @@ body {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid var(--btn-primary-bg);
-  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-property: transform, background-color, border-color, color, box-shadow;
+  transition-duration: 0.18s, 450ms, 450ms, 450ms, 450ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-editorial-primary:hover {
@@ -355,7 +361,9 @@ body {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid var(--border-default);
-  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-property: transform, background-color, border-color, color, box-shadow;
+  transition-duration: 0.18s, 450ms, 450ms, 450ms, 450ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-editorial-secondary:hover {
@@ -394,7 +402,9 @@ body {
   font-weight: 500;
   text-decoration: none;
   letter-spacing: 0.01em;
-  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-property: transform, background-color, border-color, color, box-shadow;
+  transition-duration: 0.18s, 450ms, 450ms, 450ms, 450ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-pill-link:hover {
@@ -410,12 +420,9 @@ body {
   border: 1px solid var(--border-default);
   border-radius: 8px;
   padding: clamp(1.5rem, 3vw, 2.5rem);
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.card-clean:hover {
-  border-color: var(--border-strong);
-  background: var(--bg-surface-elevated);
+  transition-property: border-color, background-color, box-shadow;
+  transition-duration: 450ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-clean:hover {
@@ -443,14 +450,45 @@ dialog::backdrop {
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* Light Mode Card Depth */
+/* Light Mode Card & Container Depth (Tactile, Non-flat Hierarchy) */
 [data-theme="light"] .card-clean,
-[data-theme="light"] .project-editorial-card {
+[data-theme="light"] .project-editorial-card,
+[data-theme="light"] .edu-card-block,
+[data-theme="light"] .achieve-card-block,
+[data-theme="light"] .skill-feature-card,
+[data-theme="light"] .credential-editorial-card {
   box-shadow: 0 2px 8px rgba(36, 42, 39, 0.04), 0 1px 2px rgba(36, 42, 39, 0.02);
 }
 
+/* Light Theme Buttons & Pill Surfaces */
+[data-theme="light"] .btn-secondary,
+[data-theme="light"] .btn-editorial-secondary {
+  background: #FFFFFF;
+  border-color: #D2C7B8;
+  color: #242A27;
+}
+
+[data-theme="light"] .btn-secondary:hover,
+[data-theme="light"] .btn-editorial-secondary:hover {
+  background: #EDE7DC;
+  border-color: #B5A895;
+  color: #141716;
+}
+
+[data-theme="light"] .social-pill-link {
+  background: #FFFFFF;
+  border-color: #D2C7B8;
+  color: #3D4642;
+}
+
+[data-theme="light"] .social-pill-link:hover {
+  background: rgba(181, 106, 69, 0.09);
+  border-color: rgba(181, 106, 69, 0.30);
+  color: #242A27;
+}
+
 /* ==========================================================================
-   Smooth Dark ↔ Light Theme Transition Animations (Restrained 300ms)
+   Smooth Dark ↔ Light Theme Transition Animations (Coordinated 450ms)
    ========================================================================== */
 html,
 body,
@@ -460,6 +498,7 @@ section,
 article,
 aside,
 footer,
+main,
 div,
 span,
 p,
@@ -473,13 +512,14 @@ button,
 a,
 input,
 textarea,
-select {
-  transition-property: background-color, color, border-color, box-shadow;
-  transition-duration: 300ms;
+select,
+svg {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 450ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Explicitly exempt hero photo and image assets from transitions to prevent artifacts */
+/* Explicitly exempt hero photo and image assets from transitions to preserve original rendering */
 img,
 svg image,
 .hero-backdrop-portrait img,

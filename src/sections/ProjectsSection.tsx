@@ -238,7 +238,7 @@ export const ProjectsSection: React.FC = () => {
                 minHeight: "36px",
                 display: "inline-flex",
                 alignItems: "center",
-                transition: "all 0.15s ease",
+                transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             >
               {cat.label}
@@ -430,7 +430,7 @@ export const ProjectsSection: React.FC = () => {
                   minWidth: "38px",
                   minHeight: "38px",
                   padding: "0.35rem",
-                  transition: "all 0.15s ease",
+                  transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
                 aria-label="Close architecture modal"
               >
@@ -466,7 +466,9 @@ export const ProjectsSection: React.FC = () => {
           width: 100%;
           max-width: 100%;
           overflow: hidden;
-          transition: border-color 0.2s ease, background 0.2s ease;
+          transition-property: border-color, background-color, box-shadow;
+          transition-duration: 450ms;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .project-editorial-card:hover {
@@ -674,7 +676,7 @@ export const ProjectsSection: React.FC = () => {
           min-width: 110px;
           flex: 1;
           flex-shrink: 0;
-          transition: border-color 0.15s ease;
+          transition: border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .pipeline-step-node.highlight {

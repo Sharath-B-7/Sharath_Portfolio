@@ -31,7 +31,7 @@ export const EducationSection: React.FC = () => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              transition: "border-color 0.2s ease, background 0.2s ease",
+              transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           >
             <div>
@@ -187,7 +187,7 @@ export const EducationSection: React.FC = () => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              transition: "border-color 0.2s ease, background 0.2s ease",
+              transition: "border-color 450ms cubic-bezier(0.4, 0, 0.2, 1), background-color 450ms cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           >
             <div>
