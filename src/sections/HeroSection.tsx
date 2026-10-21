@@ -3,6 +3,9 @@ import {
   ArrowDownRight,
   FileText,
   Mail,
+  Shield,
+  Cpu,
+  Code,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "../components/Icons";
 import { personalInfo } from "../data/personalInfo";
@@ -28,7 +31,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
       }}
     >
       {/* ==============================================================
-          DESKTOP RIGHT-SIDE FULL-BLEED EDITORIAL BACKGROUND PHOTOGRAPH
+          1. DESKTOP ONLY: RIGHT-SIDE FULL-BLEED EDITORIAL BACKGROUND
           Seamless Multi-Directional Gradient Blend into Canvas
           ============================================================== */}
       <div
@@ -61,10 +64,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           loading="eager"
         />
 
-        {/* Multi-Directional Gradient Vignette / Edge Blend matching deep charcoal canvas */}
-        {/* Left-edge smooth fade into the dark canvas (active on desktop) */}
+        {/* Multi-Directional Gradient Vignette Blend matching dark canvas */}
+        {/* Left-edge smooth fade into dark canvas */}
         <div
-          className="hero-vignette-left"
           style={{
             position: "absolute",
             inset: 0,
@@ -75,7 +77,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
         {/* Bottom-edge smooth fade into dark canvas */}
         <div
-          className="hero-vignette-bottom"
           style={{
             position: "absolute",
             left: 0,
@@ -89,7 +90,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
         {/* Top-edge subtle vignette */}
         <div
-          className="hero-vignette-top"
           style={{
             position: "absolute",
             left: 0,
@@ -103,8 +103,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
       </div>
 
       {/* ==============================================================
-          MAIN HERO CONTENT (LEFT SIDE DOMINANCE ON DESKTOP,
-          PORTRAIT-LED NATURAL FLOW ON MOBILE)
+          2. MOBILE ONLY: LARGE PORTRAIT-LED HERO BANNER
+          Nearly full-width prominent photo fading smoothly into canvas
+          ============================================================== */}
+      <div className="hero-mobile-portrait-banner" aria-label="Sharath B portrait">
+        <img
+          src={personalInfo.assets.profilePhoto}
+          alt="Sharath B — Cybersecurity & Software Engineer"
+          className="hero-mobile-portrait-banner-img"
+          loading="eager"
+        />
+        {/* Bottom smooth multi-stop gradient blend into #0c0f17 canvas */}
+        <div className="hero-mobile-portrait-fade-bottom" aria-hidden="true" />
+        {/* Top subtle fade under fixed navigation */}
+        <div className="hero-mobile-portrait-fade-top" aria-hidden="true" />
+      </div>
+
+      {/* ==============================================================
+          MAIN HERO CONTENT (LEFT SIDE ON DESKTOP,
+          STREAMLINED SEQUENTIAL HIERARCHY ON MOBILE)
           ============================================================== */}
       <div
         className="container hero-container-main"
@@ -127,129 +144,60 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           }}
           className="hero-left-col"
         >
-          {/* 1. Clear Portrait (Mobile only: large, prominent, natural proportions above heading) */}
-          <div className="hero-mobile-portrait" aria-label="Sharath B portrait">
-            <img
-              src={personalInfo.assets.profilePhoto}
-              alt="Sharath B — Cybersecurity & Software Engineer"
-              className="hero-mobile-portrait-img"
-              loading="eager"
-            />
+          {/* Order Item 3: Understated Availability Label */}
+          <div className="hero-availability-pill">
+            <span className="hero-status-dot" aria-hidden="true" />
+            <span>AVAILABLE FOR INTERNSHIPS &amp; RESEARCH</span>
           </div>
 
-          {/* 2. Availability Label */}
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              padding: "0.32rem 0.85rem",
-              borderRadius: "9999px",
-              background: "rgba(16, 185, 129, 0.08)",
-              border: "1px solid var(--accent-emerald-border)",
-              width: "fit-content",
-              marginBottom: "1.25rem",
-            }}
-            className="hero-availability-pill"
-          >
-            <span
-              style={{
-                width: "6px",
-                height: "6px",
-                borderRadius: "50%",
-                backgroundColor: "var(--accent-emerald)",
-                display: "inline-block",
-              }}
-            />
-            <span
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "0.8125rem",
-                fontWeight: 500,
-                color: "#34d399",
-                letterSpacing: "0.01em",
-              }}
-            >
-              Available for Internships &amp; Research
-            </span>
-          </div>
-
-          {/* 3. Primary Editorial Headline */}
-          <h1
-            className="hero-headline-text"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.25rem, 5.2vw, 5.25rem)",
-              fontWeight: 700,
-              letterSpacing: "-0.035em",
-              lineHeight: 1.08,
-              color: "var(--text-primary)",
-              marginBottom: "1.15rem",
-              overflowWrap: "break-word",
-            }}
-          >
+          {/* Order Item 4: Bold, Expressive Editorial Headline */}
+          <h1 className="hero-headline-text">
             <span style={{ display: "block" }}>Cybersecurity &amp;</span>
             <span style={{ display: "block", color: "#ffffff" }}>Software Engineer</span>
           </h1>
 
-          {/* 4. Short Supporting Text (Role Tagline + Understated LeetCode Problem Solver badge) */}
-          <div className="hero-support-group" style={{ marginBottom: "1.35rem" }}>
-            <p
-              className="hero-tagline"
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "clamp(0.95rem, 1.25vw, 1.125rem)",
-                fontWeight: 500,
-                color: "var(--accent-cyan-light)",
-                lineHeight: 1.45,
-                marginBottom: "0.75rem",
-              }}
-            >
-              Building secure systems, practical software, and applied AI/ML.
-            </p>
+          {/* Order Item 5: Short Supporting Line */}
+          <p className="hero-supporting-line">
+            Building secure systems, practical software, and applied AI/ML.
+          </p>
 
-            {/* Clickable LeetCode badge without problem count */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-              <a
-                href={personalInfo.social.leetcode}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hero-clean-pill"
-                style={{ textDecoration: "none", cursor: "pointer" }}
-                title="LeetCode Profile"
-              >
-                <LeetCodeIcon size={12} color="var(--accent-cyan)" />
-                <span>Consistent Problem Solver</span>
-              </a>
+          {/* Order Item 6: Meaningful Technical Skill Labels (No redundant metadata) */}
+          <div className="hero-skills-grid" aria-label="Core focus areas">
+            <div className="hero-skill-chip">
+              <Shield size={13} color="var(--accent-cyan)" />
+              <span>Defensive Security</span>
+            </div>
+
+            {/* LeetCode pill as "Consistent Problem Solver" without problem counts */}
+            <a
+              href={personalInfo.social.leetcode}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-skill-chip hero-skill-chip-link"
+              title="LeetCode Profile"
+            >
+              <LeetCodeIcon size={13} color="var(--accent-cyan)" />
+              <span>Consistent Problem Solver</span>
+            </a>
+
+            <div className="hero-skill-chip">
+              <Cpu size={13} color="var(--accent-cyan)" />
+              <span>Applied AI &amp; ML</span>
+            </div>
+
+            <div className="hero-skill-chip">
+              <Code size={13} color="var(--accent-cyan)" />
+              <span>Full-Stack Systems</span>
             </div>
           </div>
 
-          {/* 5. Concise Introduction Paragraph (Authentic, no 450+ count) */}
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "clamp(0.9375rem, 1.1vw, 1.0625rem)",
-              color: "var(--text-secondary)",
-              lineHeight: 1.68,
-              maxWidth: "580px",
-              marginBottom: "1.75rem",
-            }}
-            className="hero-intro-bio"
-          >
+          {/* Order Item 7: Concise Personal Introduction */}
+          <p className="hero-bio-text">
             I'm <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>Sharath B</strong>, a Cybersecurity student at <span style={{ color: "var(--text-primary)" }}>Chennai Institute of Technology</span> focused on defensive security, threat modeling, and secure software engineering.
           </p>
 
-          {/* 6. Primary Action Buttons */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.85rem",
-              flexWrap: "wrap",
-              marginBottom: "1.5rem",
-            }}
-            className="hero-cta-buttons"
-          >
+          {/* Order Item 8: Primary Actions */}
+          <div className="hero-cta-buttons">
             <a href="#projects" className="btn-primary">
               <span>View Projects</span>
               <ArrowDownRight size={15} />
@@ -261,8 +209,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             </button>
           </div>
 
-          {/* 7. Social Links (Mobile integrated view below buttons) */}
-          <div className="hero-mobile-social" aria-label="Social connections">
+          {/* Order Item 9: Social Links (Mobile integrated presentation) */}
+          <div className="hero-mobile-social-row" aria-label="Social connections">
             <span className="hero-mobile-social-label">Connect:</span>
             <div className="hero-mobile-social-links">
               <a
@@ -313,21 +261,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
       </div>
 
       {/* ==============================================================
-          SLIM BOTTOM INFORMATION BAR (ALIGNED FOOTER BAR ON DESKTOP)
+          DESKTOP ONLY: SLIM BOTTOM INFORMATION BAR
           ============================================================== */}
-      <div
-        className="hero-bottom-bar"
-        style={{
-          position: "relative",
-          zIndex: 20,
-          borderTop: "1px solid var(--bg-hairline)",
-          background: "rgba(12, 15, 23, 0.92)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
-          paddingTop: "0.95rem",
-          paddingBottom: "1.05rem",
-        }}
-      >
+      <div className="hero-bottom-bar">
         <div
           className="container hero-bottom-container"
           style={{
@@ -459,50 +395,145 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         </div>
       </div>
 
-      {/* Dedicated Styles for Hero & Metadata */}
+      {/* Dedicated Styles for Desktop & Mobile Hero */}
       <style>{`
-        .hero-clean-pill {
+        /* --- Desktop Baseline: Hide mobile portrait banner & mobile social row --- */
+        .hero-mobile-portrait-banner {
+          display: none;
+        }
+
+        .hero-mobile-social-row {
+          display: none;
+        }
+
+        /* --- Shared Availability Pill --- */
+        .hero-availability-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.28rem 0.75rem;
+          border-radius: 9999px;
+          background: rgba(16, 185, 129, 0.08);
+          border: 1px solid var(--accent-emerald-border);
+          width: fit-content;
+          margin-bottom: 1.15rem;
+          font-family: var(--font-sans);
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: #34d399;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .hero-status-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: var(--accent-emerald);
+          display: inline-block;
+        }
+
+        /* --- Headline --- */
+        .hero-headline-text {
+          font-family: var(--font-display);
+          font-size: clamp(2.35rem, 5.2vw, 5.25rem);
+          font-weight: 700;
+          letter-spacing: -0.035em;
+          line-height: 1.08;
+          color: var(--text-primary);
+          margin-bottom: 1.15rem;
+          overflow-wrap: break-word;
+        }
+
+        /* --- Supporting Line --- */
+        .hero-supporting-line {
+          font-family: var(--font-sans);
+          font-size: clamp(1rem, 1.35vw, 1.1875rem);
+          font-weight: 500;
+          color: var(--accent-cyan-light);
+          line-height: 1.45;
+          margin-bottom: 1.35rem;
+          max-width: 580px;
+        }
+
+        /* --- Meaningful Skills Grid --- */
+        .hero-skills-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.55rem;
+          margin-bottom: 1.65rem;
+        }
+
+        .hero-skill-chip {
           display: inline-flex;
           align-items: center;
           gap: 0.45rem;
-          padding: 0.32rem 0.65rem;
+          padding: 0.38rem 0.75rem;
           border-radius: 6px;
           background: var(--bg-surface-subtle);
-          border: 1px solid var(--border-subtle);
+          border: 1px solid var(--border-default);
           color: var(--text-secondary);
           font-family: var(--font-sans);
           font-size: 0.8125rem;
           font-weight: 500;
           letter-spacing: 0.01em;
-          transition: border-color 0.15s ease, color 0.15s ease;
+          transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
         }
 
-        .hero-clean-pill:hover {
-          border-color: var(--border-strong);
+        .hero-skill-chip-link {
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        .hero-skill-chip:hover,
+        .hero-skill-chip-link:hover {
+          border-color: var(--accent-cyan-border);
+          background: var(--accent-cyan-subtle);
           color: var(--text-primary);
         }
 
-        /* Desktop: mobile portrait and mobile social are hidden */
-        .hero-mobile-portrait {
-          display: none;
+        /* --- Bio Text --- */
+        .hero-bio-text {
+          font-family: var(--font-sans);
+          font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+          color: var(--text-secondary);
+          line-height: 1.68;
+          max-width: 580px;
+          margin-bottom: 1.75rem;
         }
 
-        .hero-mobile-social {
-          display: none;
+        /* --- CTA Buttons --- */
+        .hero-cta-buttons {
+          display: flex;
+          align-items: center;
+          gap: 0.85rem;
+          flex-wrap: wrap;
+          margin-bottom: 1.5rem;
         }
 
-        /* ==========================================================
-           MOBILE & TABLET RESPONSIVE HERO (<= 960px)
-           Portrait-led natural hero sequence with clear portrait
-           above heading, no watermark behind text, no separate card
-           ========================================================== */
+        /* --- Desktop Bottom Bar --- */
+        .hero-bottom-bar {
+          position: relative;
+          z-index: 20;
+          border-top: 1px solid var(--bg-hairline);
+          background: rgba(12, 15, 23, 0.92);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          padding-top: 0.95rem;
+          padding-bottom: 1.05rem;
+        }
+
+        /* ==============================================================
+           MOBILE ONLY (<= 960px): PORTRAIT-LED PROPORTIONS & HIERARCHY
+           Matches visual structure and dominant portrait of reference
+           ============================================================== */
         @media (max-width: 960px) {
           #hero {
             min-height: auto !important;
             padding-bottom: 2.5rem;
           }
 
-          /* Hide desktop right-side background portrait & desktop bottom bar */
+          /* Hide desktop right-side portrait & bottom bar */
           .hero-backdrop-portrait {
             display: none !important;
           }
@@ -511,56 +542,105 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             display: none !important;
           }
 
-          /* Content column full width */
+          /* 1. Large Portrait-Led Banner: nearly full-width, dominant, natural ratio */
+          .hero-mobile-portrait-banner {
+            display: block !important;
+            position: relative;
+            width: 100%;
+            height: clamp(340px, 48vh, 460px);
+            overflow: hidden;
+            background: #0c0f17;
+          }
+
+          .hero-mobile-portrait-banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 12%;
+            display: block;
+          }
+
+          /* Smooth multi-stop bottom fade into solid #0c0f17 */
+          .hero-mobile-portrait-fade-bottom {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 52%;
+            background: linear-gradient(
+              to top,
+              #0c0f17 0%,
+              rgba(12, 15, 23, 0.95) 25%,
+              rgba(12, 15, 23, 0.5) 55%,
+              transparent 100%
+            );
+            pointer-events: none;
+          }
+
+          /* Top subtle vignette for fixed navbar contrast */
+          .hero-mobile-portrait-fade-top {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 25%;
+            background: linear-gradient(
+              to bottom,
+              rgba(12, 15, 23, 0.75) 0%,
+              transparent 100%
+            );
+            pointer-events: none;
+          }
+
+          /* Content container directly below the portrait fade */
+          .hero-container-main {
+            padding-top: 0.5rem !important;
+            padding-bottom: 1.5rem !important;
+          }
+
           .hero-left-col {
             max-width: 100% !important;
           }
 
-          .hero-container-main {
-            padding-top: clamp(5.25rem, 8vh, 6.25rem) !important;
-            padding-bottom: 1.5rem !important;
-          }
-
-          /* 1. Large, clear profile portrait above the heading */
-          .hero-mobile-portrait {
-            display: block;
-            width: clamp(140px, 42vw, 180px);
-            aspect-ratio: 4 / 5;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid var(--border-default);
-            background: var(--bg-surface);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
-            margin-bottom: 1.35rem;
-          }
-
-          .hero-mobile-portrait-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 14%;
-            display: block;
-          }
-
-          /* 3. Headline responsiveness */
+          /* Mobile Bold Expressive Headline */
           .hero-headline-text {
-            font-size: clamp(2rem, 7.5vw, 3rem) !important;
-            line-height: 1.12 !important;
-            margin-bottom: 0.95rem !important;
+            font-size: clamp(2.15rem, 8.5vw, 3.25rem) !important;
+            line-height: 1.08 !important;
+            margin-bottom: 0.85rem !important;
           }
 
-          /* 6. Buttons responsiveness */
+          /* 2x2 Skill Grid on Mobile */
+          .hero-skills-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.55rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .hero-skill-chip {
+            justify-content: flex-start;
+            padding: 0.42rem 0.65rem;
+            font-size: 0.75rem;
+          }
+
+          /* Mobile CTA Buttons */
           .hero-cta-buttons {
             gap: 0.75rem !important;
             margin-bottom: 1.5rem !important;
           }
 
-          /* 7. Social Links row on mobile */
-          .hero-mobile-social {
-            display: flex;
+          .hero-cta-buttons > a,
+          .hero-cta-buttons > button {
+            flex: 1 1 140px;
+            justify-content: center;
+          }
+
+          /* Integrated Social Row on Mobile */
+          .hero-mobile-social-row {
+            display: flex !important;
             flex-direction: column;
             gap: 0.55rem;
-            padding-top: 0.5rem;
+            padding-top: 0.75rem;
             border-top: 1px solid var(--border-subtle);
           }
 
@@ -581,20 +661,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           }
         }
 
-        /* Narrow mobile phones (<= 360px, e.g. iPhone SE 1st gen) */
+        /* Narrow mobile screens (<= 360px, e.g. iPhone SE 1st gen) */
         @media (max-width: 360px) {
-          .hero-mobile-portrait {
-            width: 130px;
+          .hero-mobile-portrait-banner {
+            height: 310px !important;
           }
 
           .hero-headline-text {
-            font-size: 1.85rem !important;
+            font-size: 1.95rem !important;
+          }
+
+          .hero-skills-grid {
+            grid-template-columns: 1fr !important;
           }
 
           .hero-cta-buttons > a,
           .hero-cta-buttons > button {
             width: 100%;
-            justify-content: center;
           }
         }
       `}</style>
