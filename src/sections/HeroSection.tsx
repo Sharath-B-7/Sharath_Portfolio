@@ -34,9 +34,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           1. DESKTOP ONLY: RIGHT-SIDE FULL-BLEED EDITORIAL BACKGROUND
           Seamless Multi-Directional Gradient Blend into Canvas
           ============================================================== */}
-      {/* Separate Atmospheric Background Transition Layer Behind the Portrait */}
-      <div className="hero-backdrop-atmosphere" aria-hidden="true" />
-
       <div
         className="hero-backdrop-portrait"
         aria-hidden="true"
@@ -45,8 +42,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           top: 0,
           right: 0,
           bottom: 0,
-          width: "46%",
-          maxWidth: "740px",
+          width: "clamp(360px, 40vw, 620px)",
           zIndex: 1,
           pointerEvents: "none",
           overflow: "hidden",
@@ -63,15 +59,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "center 14%",
+            objectPosition: "center 10%",
           }}
           loading="eager"
         />
 
-        {/* Carefully scoped perimeter edge-blends — leaving face, hair & skin 100% untouched */}
-        <div className="hero-edge-blend-left" aria-hidden="true" />
-        <div className="hero-edge-blend-bottom" aria-hidden="true" />
-        <div className="hero-edge-blend-top" aria-hidden="true" />
+        {/* Dual-Theme Seamless Ambient Blends — Zero Halos, Zero Masks, Zero Face Overlays */}
+        <div className="hero-blend-dark" aria-hidden="true">
+          <div className="hero-blend-dark-left" />
+          <div className="hero-blend-dark-bottom" />
+          <div className="hero-blend-dark-top" />
+        </div>
+        <div className="hero-blend-light" aria-hidden="true">
+          <div className="hero-blend-light-left" />
+          <div className="hero-blend-light-bottom" />
+          <div className="hero-blend-light-top" />
+        </div>
       </div>
 
       {/* ==============================================================
@@ -85,9 +88,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           className="hero-mobile-portrait-banner-img"
           loading="eager"
         />
-        {/* Mobile Edge Blends — Scoped strictly to lower suit & top header, zero face alteration */}
-        <div className="hero-mobile-edge-blend-bottom" aria-hidden="true" />
-        <div className="hero-mobile-edge-blend-top" aria-hidden="true" />
+        {/* Mobile Dual-Theme Seamless Ambient Blends */}
+        <div className="hero-mobile-blend-dark" aria-hidden="true">
+          <div className="hero-mobile-blend-dark-bottom" />
+          <div className="hero-mobile-blend-dark-top" />
+        </div>
+        <div className="hero-mobile-blend-light" aria-hidden="true">
+          <div className="hero-mobile-blend-light-bottom" />
+          <div className="hero-mobile-blend-light-top" />
+        </div>
       </div>
 
       {/* ==============================================================
@@ -639,124 +648,188 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           transition: none !important;
         }
 
-        /* Atmospheric Background Transition Layer Behind Portrait */
-        .hero-backdrop-atmosphere {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          z-index: 0;
-          background: radial-gradient(
-            ellipse 75% 65% at 75% 38%,
-            rgba(32, 36, 35, 0.45) 0%,
-            rgba(23, 26, 25, 0.8) 55%,
-            var(--bg-canvas) 100%
-          );
-          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        [data-theme="light"] .hero-backdrop-atmosphere {
-          background: radial-gradient(
-            ellipse 75% 65% at 75% 38%,
-            rgba(237, 231, 220, 0.70) 0%,
-            rgba(244, 240, 232, 0.88) 55%,
-            var(--bg-canvas) 100%
-          );
-        }
-
-        /* Desktop Portrait Container Feathered Mask — 100% untouched face, soft outer perimeter */
+        /* Desktop Portrait Container — Clean, full-bleed natural frame (No radial mask, no halo) */
         .hero-backdrop-portrait {
-          -webkit-mask-image: radial-gradient(
-            ellipse 92% 86% at 65% 38%,
-            #000000 48%,
-            rgba(0, 0, 0, 0.95) 60%,
-            rgba(0, 0, 0, 0.65) 75%,
-            rgba(0, 0, 0, 0.20) 88%,
-            transparent 100%
-          );
-          mask-image: radial-gradient(
-            ellipse 92% 86% at 65% 38%,
-            #000000 48%,
-            rgba(0, 0, 0, 0.95) 60%,
-            rgba(0, 0, 0, 0.65) 75%,
-            rgba(0, 0, 0, 0.20) 88%,
-            transparent 100%
-          );
           transition: background-color 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Desktop Edge Blends — Scoped to Outer Edges Only, Face at 34%+ is 100% Untouched */
-        .hero-edge-blend-left {
+        /* Ambient Blend Layers — Smooth 450ms cross-fade between themes */
+        .hero-blend-dark,
+        .hero-blend-light {
           position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          width: 20%;
+          inset: 0;
+          pointer-events: none;
+          transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-blend-dark {
+          opacity: 1;
+        }
+        .hero-blend-light {
+          opacity: 0;
+        }
+
+        [data-theme="light"] .hero-blend-dark {
+          opacity: 0;
+        }
+        [data-theme="light"] .hero-blend-light {
+          opacity: 1;
+        }
+
+        /* Dark Theme Desktop Blends: Broad, cinematic integration matching reference site */
+        .hero-blend-dark-left {
+          position: absolute;
+          inset: 0;
           background: linear-gradient(
             to right,
-            var(--bg-canvas) 0%,
-            var(--bg-canvas-90) 25%,
-            var(--bg-canvas-40) 65%,
-            transparent 100%
+            #171A19 0%,
+            rgba(23, 26, 25, 0.95) 16%,
+            rgba(23, 26, 25, 0.65) 32%,
+            rgba(23, 26, 25, 0.20) 48%,
+            transparent 62%
           );
-          pointer-events: none;
-          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-edge-blend-bottom {
+        .hero-blend-dark-bottom {
           position: absolute;
           left: 0;
           right: 0;
           bottom: 0;
-          height: 26%;
+          height: clamp(100px, 16vh, 160px);
           background: linear-gradient(
             to top,
-            var(--bg-canvas) 0%,
-            var(--bg-canvas-90) 25%,
-            var(--bg-canvas-40) 65%,
+            #171A19 0%,
+            rgba(23, 26, 25, 0.85) 35%,
+            rgba(23, 26, 25, 0.25) 75%,
             transparent 100%
           );
-          pointer-events: none;
-          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-edge-blend-top {
+        .hero-blend-dark-top {
           position: absolute;
           left: 0;
           right: 0;
           top: 0;
-          height: 10%;
+          height: clamp(60px, 9vh, 90px);
           background: linear-gradient(
             to bottom,
-            var(--bg-canvas) 0%,
+            rgba(23, 26, 25, 0.70) 0%,
             transparent 100%
           );
-          pointer-events: none;
-          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Mobile Portrait Banner & Edge Blends */
+        /* Light Theme Desktop Blends: Scoped strictly to left stone pillar (0-34%), zero face overlay */
+        .hero-blend-light-left {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to right,
+            #F4F0E8 0%,
+            rgba(244, 240, 232, 0.95) 12%,
+            rgba(244, 240, 232, 0.60) 22%,
+            rgba(244, 240, 232, 0.15) 28%,
+            transparent 34%
+          );
+        }
+
+        .hero-blend-light-bottom {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: clamp(80px, 12vh, 120px);
+          background: linear-gradient(
+            to top,
+            rgba(244, 240, 232, 0.65) 0%,
+            rgba(244, 240, 232, 0.20) 50%,
+            transparent 100%
+          );
+        }
+
+        .hero-blend-light-top {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: clamp(50px, 8vh, 80px);
+          background: linear-gradient(
+            to bottom,
+            rgba(244, 240, 232, 0.50) 0%,
+            transparent 100%
+          );
+        }
+
+        /* Mobile Portrait Banner & Blends */
         .hero-mobile-portrait-banner {
           transition: background-color 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-mobile-edge-blend-bottom {
+        .hero-mobile-blend-dark,
+        .hero-mobile-blend-light {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-mobile-blend-dark {
+          opacity: 1;
+        }
+        .hero-mobile-blend-light {
+          opacity: 0;
+        }
+
+        [data-theme="light"] .hero-mobile-blend-dark {
+          opacity: 0;
+        }
+        [data-theme="light"] .hero-mobile-blend-light {
+          opacity: 1;
+        }
+
+        .hero-mobile-blend-dark-bottom {
           position: absolute;
           left: 0;
           right: 0;
           bottom: 0;
-          height: 30%;
+          height: 38%;
           background: linear-gradient(
             to top,
-            var(--bg-canvas) 0%,
-            var(--bg-canvas-90) 25%,
-            var(--bg-canvas-40) 65%,
+            #171A19 0%,
+            rgba(23, 26, 25, 0.95) 25%,
+            rgba(23, 26, 25, 0.45) 60%,
             transparent 100%
           );
-          pointer-events: none;
-          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-mobile-edge-blend-top {
+        .hero-mobile-blend-dark-top {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 14%;
+          background: linear-gradient(
+            to bottom,
+            rgba(23, 26, 25, 0.65) 0%,
+            transparent 100%
+          );
+        }
+
+        .hero-mobile-blend-light-bottom {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 32%;
+          background: linear-gradient(
+            to top,
+            #F4F0E8 0%,
+            rgba(244, 240, 232, 0.90) 25%,
+            rgba(244, 240, 232, 0.35) 65%,
+            transparent 100%
+          );
+        }
+
+        .hero-mobile-blend-light-top {
           position: absolute;
           left: 0;
           right: 0;
@@ -764,11 +837,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           height: 12%;
           background: linear-gradient(
             to bottom,
-            var(--bg-canvas) 0%,
+            rgba(244, 240, 232, 0.50) 0%,
             transparent 100%
           );
-          pointer-events: none;
-          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
       `}</style>
     </section>
