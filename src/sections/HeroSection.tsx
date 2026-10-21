@@ -64,18 +64,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           loading="eager"
         />
 
-        {/* Multi-Directional Gradient Vignette Blend matching dark canvas */}
-        {/* Left-edge smooth fade into dark canvas */}
+        {/* Multi-Directional Gradient Vignette Blend matching theme canvas */}
+        {/* Left-edge smooth fade into theme canvas */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to right, #0c0f17 0%, rgba(12, 15, 23, 0.95) 15%, rgba(12, 15, 23, 0.75) 35%, rgba(12, 15, 23, 0.25) 60%, transparent 85%)",
+              "linear-gradient(to right, var(--hero-vignette-solid) 0%, var(--hero-vignette-95) 15%, var(--hero-vignette-75) 35%, var(--hero-vignette-25) 60%, transparent 85%)",
           }}
         />
 
-        {/* Bottom-edge smooth fade into dark canvas */}
+        {/* Bottom-edge smooth fade into theme canvas */}
         <div
           style={{
             position: "absolute",
@@ -84,7 +84,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             bottom: 0,
             height: "45%",
             background:
-              "linear-gradient(to top, #0c0f17 0%, rgba(12, 15, 23, 0.95) 20%, rgba(12, 15, 23, 0.4) 55%, transparent 100%)",
+              "linear-gradient(to top, var(--hero-vignette-solid) 0%, var(--hero-vignette-95) 20%, var(--hero-vignette-40) 55%, transparent 100%)",
           }}
         />
 
@@ -97,7 +97,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             top: 0,
             height: "22%",
             background:
-              "linear-gradient(to bottom, #0c0f17 0%, rgba(12, 15, 23, 0.65) 35%, transparent 100%)",
+              "linear-gradient(to bottom, var(--hero-vignette-solid) 0%, var(--hero-vignette-75) 35%, transparent 100%)",
           }}
         />
       </div>
@@ -113,7 +113,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           className="hero-mobile-portrait-banner-img"
           loading="eager"
         />
-        {/* Bottom smooth multi-stop gradient blend into #0c0f17 canvas */}
+        {/* Bottom smooth multi-stop gradient blend into canvas */}
         <div className="hero-mobile-portrait-fade-bottom" aria-hidden="true" />
         {/* Top subtle fade under fixed navigation */}
         <div className="hero-mobile-portrait-fade-top" aria-hidden="true" />
@@ -153,7 +153,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           {/* Order Item 4: Bold, Expressive Editorial Headline */}
           <h1 className="hero-headline-text">
             <span style={{ display: "block" }}>Cybersecurity &amp;</span>
-            <span style={{ display: "block", color: "#ffffff" }}>Software Engineer</span>
+            <span style={{ display: "block", color: "var(--text-primary)" }}>Software Engineer</span>
           </h1>
 
           {/* Order Item 5: Short Supporting Line */}
@@ -516,7 +516,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           position: relative;
           z-index: 20;
           border-top: 1px solid var(--bg-hairline);
-          background: rgba(12, 15, 23, 0.92);
+          background: var(--hero-bottom-bar-bg);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           padding-top: 0.95rem;
@@ -549,7 +549,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             width: 100%;
             height: clamp(340px, 48vh, 460px);
             overflow: hidden;
-            background: #0c0f17;
+            background: var(--hero-vignette-solid);
           }
 
           .hero-mobile-portrait-banner-img {
@@ -560,7 +560,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             display: block;
           }
 
-          /* Smooth multi-stop bottom fade into solid #0c0f17 */
+          /* Smooth multi-stop bottom fade into solid canvas */
           .hero-mobile-portrait-fade-bottom {
             position: absolute;
             left: 0;
@@ -569,9 +569,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             height: 52%;
             background: linear-gradient(
               to top,
-              #0c0f17 0%,
-              rgba(12, 15, 23, 0.95) 25%,
-              rgba(12, 15, 23, 0.5) 55%,
+              var(--hero-vignette-solid) 0%,
+              var(--hero-vignette-95) 25%,
+              var(--hero-vignette-40) 55%,
               transparent 100%
             );
             pointer-events: none;
@@ -586,7 +586,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             height: 25%;
             background: linear-gradient(
               to bottom,
-              rgba(12, 15, 23, 0.75) 0%,
+              var(--hero-vignette-75) 0%,
               transparent 100%
             );
             pointer-events: none;

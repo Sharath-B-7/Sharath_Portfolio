@@ -93,7 +93,7 @@ export const SocPreview: React.FC = () => {
         </div>
         <div
           style={{
-            background: "rgba(10, 14, 22, 0.9)",
+            background: "var(--bg-canvas)",
             border: "1px solid var(--border-default)",
             borderRadius: "5px",
             padding: "0.65rem",

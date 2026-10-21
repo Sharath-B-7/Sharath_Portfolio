@@ -352,7 +352,7 @@ export const FraudLensPreview: React.FC = () => {
               position: "relative",
               width: "100%",
               height: "170px",
-              background: "rgba(10, 14, 22, 0.9)",
+              background: "var(--bg-canvas)",
               border: "1px solid var(--border-default)",
               borderRadius: "6px",
               overflow: "hidden",

@@ -12,6 +12,8 @@ import {
   Menu,
   X,
   ArrowUpRight,
+  Sun,
+  Moon,
 } from "lucide-react";
 
 interface NavbarProps {
@@ -24,8 +26,29 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
   );
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [timeString, setTimeString] = useState<string>("");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const matrixRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Sync initial theme from documentElement on mount
+  useEffect(() => {
+    const active = (document.documentElement.getAttribute("data-theme") as "dark" | "light") || "dark";
+    setTheme(active);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    document.documentElement.setAttribute("data-theme", next);
+    document.documentElement.style.colorScheme = next;
+    try {
+      localStorage.setItem("theme-preference", next);
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) {
+        meta.setAttribute("content", next === "light" ? "#f8fafc" : "#0c0f17");
+      }
+    } catch (e) {}
+  };
 
   // Live real-time monospace clock matching reference screenshot
   useEffect(() => {
@@ -189,7 +212,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             display: "flex",
             alignItems: "center",
             gap: "0.35rem",
-            background: "rgba(17, 22, 36, 0.92)",
+            background: "var(--nav-pill-bg)",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
             border: "1px solid var(--border-default)",
@@ -205,7 +228,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             style={{
               textDecoration: "none",
               color: activeSection === "hero" ? "var(--accent-cyan)" : "var(--text-secondary)",
-              background: activeSection === "hero" ? "rgba(255, 255, 255, 0.07)" : "transparent",
+              background: activeSection === "hero" ? "var(--bg-surface-hover)" : "transparent",
               fontSize: "0.8125rem",
               fontWeight: 500,
               padding: "0.45rem 1rem",
@@ -215,7 +238,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             onMouseEnter={(e) => {
               if (activeSection !== "hero") {
                 e.currentTarget.style.color = "var(--text-primary)";
-                e.currentTarget.style.background = "rgba(255, 255, 255, 0.06)";
+                e.currentTarget.style.background = "var(--bg-surface-hover)";
               }
             }}
             onMouseLeave={(e) => {
@@ -235,7 +258,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             aria-expanded={matrixOpen}
             aria-label="Toggle directory matrix menu"
             style={{
-              background: matrixOpen ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.035)",
+              background: matrixOpen ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
               border: matrixOpen ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-default)",
               color: "var(--text-primary)",
               fontSize: "0.78125rem",
@@ -278,7 +301,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             style={{
               textDecoration: "none",
               color: activeSection === "contact" ? "var(--accent-cyan)" : "var(--text-secondary)",
-              background: activeSection === "contact" ? "rgba(255, 255, 255, 0.07)" : "transparent",
+              background: activeSection === "contact" ? "var(--bg-surface-hover)" : "transparent",
               fontSize: "0.8125rem",
               fontWeight: 500,
               padding: "0.45rem 1rem",
@@ -288,7 +311,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             onMouseEnter={(e) => {
               if (activeSection !== "contact") {
                 e.currentTarget.style.color = "var(--text-primary)";
-                e.currentTarget.style.background = "rgba(255, 255, 255, 0.06)";
+                e.currentTarget.style.background = "var(--bg-surface-hover)";
               }
             }}
             onMouseLeave={(e) => {
@@ -302,8 +325,45 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           </a>
         </nav>
 
-        {/* Right: Academic Status Badge & Mobile Hamburger */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", pointerEvents: "auto" }}>
+        {/* Right: Academic Status Badge, Desktop/Mobile Theme Toggle & Hamburger */}
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", pointerEvents: "auto" }}>
+          {/* Theme Toggle Button - Desktop */}
+          <button
+            onClick={toggleTheme}
+            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            title={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            style={{
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "9999px",
+              padding: "0.38rem 0.75rem",
+              color: "var(--text-primary)",
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.4rem",
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.6875rem",
+              fontWeight: 600,
+              letterSpacing: "0.04em",
+              boxShadow: "var(--shadow-sm)",
+              transition: "all 0.18s ease",
+            }}
+            className="theme-toggle-desktop"
+          >
+            {theme === "dark" ? (
+              <>
+                <Sun size={12} color="var(--accent-cyan)" />
+                <span>LIGHT</span>
+              </>
+            ) : (
+              <>
+                <Moon size={12} color="var(--accent-cyan)" />
+                <span>DARK</span>
+              </>
+            )}
+          </button>
+
           <span
             style={{
               fontFamily: "var(--font-mono)",
@@ -312,12 +372,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               border: "1px solid var(--border-subtle)",
               padding: "0.35rem 0.75rem",
               borderRadius: "9999px",
-              background: "rgba(255, 255, 255, 0.02)",
+              background: "var(--bg-surface-subtle)",
             }}
             className="header-badge"
           >
             CIT // 2029
           </span>
+
+          {/* Theme Toggle Button - Mobile (Quick 1-tap accessible) */}
+          <button
+            onClick={toggleTheme}
+            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            title={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            style={{
+              display: "none",
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border-default)",
+              color: "var(--text-primary)",
+              padding: "0.45rem",
+              borderRadius: "8px",
+              cursor: "pointer",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            className="theme-toggle-mobile"
+          >
+            {theme === "dark" ? <Sun size={18} color="var(--accent-cyan)" /> : <Moon size={18} color="var(--accent-cyan)" />}
+          </button>
 
           {/* Mobile hamburger */}
           <button
@@ -348,7 +429,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             style={{
               position: "fixed",
               inset: 0,
-              backgroundColor: "rgba(7, 10, 16, 0.7)",
+              backgroundColor: "var(--modal-backdrop-bg)",
               backdropFilter: "blur(6px)",
               WebkitBackdropFilter: "blur(6px)",
               zIndex: 100,
@@ -423,7 +504,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                     key={hub.name}
                     onClick={hub.onClick}
                     style={{
-                      background: "rgba(255, 255, 255, 0.025)",
+                      background: "var(--bg-surface-subtle)",
                       border: "1px solid var(--border-subtle)",
                       borderRadius: "10px",
                       padding: "0.75rem 1rem",
@@ -441,7 +522,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                       e.currentTarget.style.borderColor = "var(--accent-cyan-border)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "rgba(255, 255, 255, 0.025)";
+                      e.currentTarget.style.background = "var(--bg-surface-subtle)";
                       e.currentTarget.style.borderColor = "var(--border-subtle)";
                     }}
                   >
@@ -466,7 +547,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                   onClick={() => setMatrixOpen(false)}
                   style={{
                     textDecoration: "none",
-                    background: isActive ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
+                    background: isActive ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
                     border: isActive ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
                     borderRadius: "10px",
                     padding: "0.75rem 1rem",
@@ -481,7 +562,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                     e.currentTarget.style.borderColor = "var(--accent-cyan-border)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = isActive ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)";
+                    e.currentTarget.style.background = isActive ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)";
                     e.currentTarget.style.borderColor = isActive ? "var(--accent-cyan-border)" : "var(--border-subtle)";
                   }}
                 >
@@ -551,6 +632,48 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               <span>{hub.name}</span>
             </a>
           ))}
+
+          {/* Mobile Drawer Appearance Switcher */}
+          <div
+            style={{
+              paddingTop: "0.4rem",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <span style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}>
+              Appearance
+            </span>
+            <button
+              onClick={toggleTheme}
+              style={{
+                background: "var(--bg-surface)",
+                border: "1px solid var(--border-default)",
+                borderRadius: "6px",
+                padding: "0.38rem 0.75rem",
+                color: "var(--text-primary)",
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.75rem",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.45rem",
+                cursor: "pointer",
+              }}
+            >
+              {theme === "dark" ? (
+                <>
+                  <Sun size={13} color="var(--accent-cyan)" />
+                  <span>Light Mode</span>
+                </>
+              ) : (
+                <>
+                  <Moon size={13} color="var(--accent-cyan)" />
+                  <span>Dark Mode</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
       )}
 
@@ -571,6 +694,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             display: none !important;
           }
           .mobile-toggle-btn {
+            display: inline-flex !important;
+          }
+          .theme-toggle-desktop {
+            display: none !important;
+          }
+          .theme-toggle-mobile {
             display: inline-flex !important;
           }
         }

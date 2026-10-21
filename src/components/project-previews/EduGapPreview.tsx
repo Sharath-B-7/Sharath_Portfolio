@@ -219,7 +219,7 @@ export const EduGapPreview: React.FC = () => {
               position: "relative",
               width: "100%",
               height: "160px",
-              background: "rgba(10, 14, 22, 0.9)",
+              background: "var(--bg-canvas)",
               border: "1px solid var(--border-default)",
               borderRadius: "6px",
               overflow: "hidden",
@@ -227,10 +227,10 @@ export const EduGapPreview: React.FC = () => {
           >
             <svg width="100%" height="100%" viewBox="0 0 320 160">
               {/* Edges */}
-              <line x1="60" y1="80" x2="160" y2="45" stroke="rgba(255, 255, 255, 0.15)" strokeWidth={1.5} />
+              <line x1="60" y1="80" x2="160" y2="45" stroke="var(--border-strong)" strokeWidth={1.5} />
               <line x1="60" y1="80" x2="160" y2="115" stroke="var(--accent-cyan)" strokeWidth={2} strokeDasharray="4 2" />
-              <line x1="160" y1="45" x2="260" y2="80" stroke="rgba(255, 255, 255, 0.15)" strokeWidth={1.5} />
-              <line x1="160" y1="115" x2="260" y2="80" stroke="rgba(255, 255, 255, 0.15)" strokeWidth={1.5} />
+              <line x1="160" y1="45" x2="260" y2="80" stroke="var(--border-strong)" strokeWidth={1.5} />
+              <line x1="160" y1="115" x2="260" y2="80" stroke="var(--border-strong)" strokeWidth={1.5} />
 
               {/* Node 1: Fractions (Prereq root) */}
               <circle cx="60" cy="80" r="14" fill="var(--accent-cyan-subtle)" stroke="var(--accent-cyan)" strokeWidth={2} />
