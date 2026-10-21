@@ -5,7 +5,6 @@ import {
   Mail,
   Shield,
   GraduationCap,
-  Code,
   CheckCircle2,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "../components/Icons";
@@ -65,8 +64,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         />
 
         {/* Multi-Directional Gradient Vignette / Edge Blend matching deep charcoal canvas */}
-        {/* Left-edge smooth fade into the dark canvas */}
+        {/* Left-edge smooth fade into the dark canvas (active on desktop) */}
         <div
+          className="hero-vignette-left"
           style={{
             position: "absolute",
             inset: 0,
@@ -77,12 +77,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
         {/* Bottom-edge smooth fade into dark canvas */}
         <div
+          className="hero-vignette-bottom"
           style={{
             position: "absolute",
             left: 0,
             right: 0,
             bottom: 0,
-            height: "42%",
+            height: "45%",
             background:
               "linear-gradient(to top, #0c0f17 0%, rgba(12, 15, 23, 0.95) 20%, rgba(12, 15, 23, 0.4) 55%, transparent 100%)",
           }}
@@ -90,6 +91,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
         {/* Top-edge subtle vignette */}
         <div
+          className="hero-vignette-top"
           style={{
             position: "absolute",
             left: 0,
@@ -106,7 +108,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           MAIN HERO CONTENT (LEFT SIDE DOMINANCE)
           ============================================================== */}
       <div
-        className="container"
+        className="container hero-container-main"
         style={{
           position: "relative",
           zIndex: 10,
@@ -114,7 +116,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          paddingTop: "clamp(6.5rem, 12vh, 9rem)",
+          paddingTop: "clamp(6rem, 11vh, 8.5rem)",
           paddingBottom: "clamp(2rem, 4vh, 3.5rem)",
         }}
       >
@@ -137,7 +139,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               background: "rgba(16, 185, 129, 0.08)",
               border: "1px solid var(--accent-emerald-border)",
               width: "fit-content",
-              marginBottom: "1.5rem",
+              marginBottom: "1.35rem",
             }}
           >
             <span
@@ -167,12 +169,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             className="hero-headline-text"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.75rem, 5.8vw, 5.25rem)",
+              fontSize: "clamp(2.35rem, 5.2vw, 5.25rem)",
               fontWeight: 700,
               letterSpacing: "-0.035em",
-              lineHeight: 1.05,
+              lineHeight: 1.08,
               color: "var(--text-primary)",
-              marginBottom: "1.65rem",
+              marginBottom: "1.45rem",
+              overflowWrap: "break-word",
             }}
           >
             <span style={{ display: "block" }}>Cybersecurity &amp;</span>
@@ -186,7 +189,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               flexWrap: "wrap",
               alignItems: "center",
               gap: "0.5rem",
-              marginBottom: "1.75rem",
+              marginBottom: "1.65rem",
             }}
             className="hero-meta-pills"
           >
@@ -205,21 +208,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               <span>CGPA: 8.5 / 10</span>
             </div>
 
-            <div className="hero-clean-pill">
-              <Code size={12} color="var(--accent-cyan)" />
-              <span>450+ LeetCode Solved</span>
-            </div>
+            {/* Clickable LeetCode Pill with exact label "Consistent Problem Solver" and no number count */}
+            <a
+              href={personalInfo.social.leetcode}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-clean-pill"
+              style={{ textDecoration: "none", cursor: "pointer" }}
+              title="LeetCode Profile"
+            >
+              <LeetCodeIcon size={12} color="var(--accent-cyan)" />
+              <span>Consistent Problem Solver</span>
+            </a>
           </div>
 
           {/* Short Introduction Paragraph */}
           <p
             style={{
               fontFamily: "var(--font-sans)",
-              fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+              fontSize: "clamp(0.95rem, 1.2vw, 1.0625rem)",
               color: "var(--text-secondary)",
               lineHeight: 1.68,
               maxWidth: "580px",
-              marginBottom: "2rem",
+              marginBottom: "1.85rem",
             }}
           >
             I'm <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>Sharath B</strong>, a Cybersecurity student at <span style={{ color: "var(--text-primary)" }}>Chennai Institute of Technology</span> focused on defensive security, threat modeling, and secure software engineering.
@@ -264,7 +275,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         }}
       >
         <div
-          className="container"
+          className="container hero-bottom-container"
           style={{
             display: "flex",
             justifyContent: "space-between",
@@ -335,7 +346,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="social-pill-link"
-              title="LeetCode (450+ Solved)"
+              title="LeetCode Profile"
             >
               <LeetCodeIcon size={13} />
               <span>LeetCode</span>
@@ -409,16 +420,41 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           font-size: 0.8125rem;
           font-weight: 500;
           letter-spacing: 0.01em;
+          transition: border-color 0.15s ease, color 0.15s ease;
+        }
+
+        .hero-clean-pill:hover {
+          border-color: var(--border-strong);
+          color: var(--text-primary);
         }
 
         @media (max-width: 960px) {
+          #hero {
+            min-height: auto !important;
+            padding-bottom: 2rem;
+          }
           .hero-backdrop-portrait {
+            position: relative !important;
             width: 100% !important;
-            opacity: 0.22 !important;
-            background-blend-mode: darken;
+            max-width: 100% !important;
+            height: clamp(240px, 36vh, 320px) !important;
+            opacity: 1 !important;
+            pointer-events: none;
+          }
+          .hero-vignette-left {
+            display: none !important;
           }
           .hero-left-col {
             max-width: 100% !important;
+          }
+          .hero-container-main {
+            padding-top: 1.25rem !important;
+            padding-bottom: 2rem !important;
+          }
+          .hero-bottom-container {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 0.75rem !important;
           }
         }
       `}</style>
