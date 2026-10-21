@@ -32,6 +32,7 @@ export interface ProjectItem {
   categoryTag: string;
   statusBadge?: string;
   name: string;
+  fullResearchTitle?: string;
   subtitle: string;
   problem: string;
   architectureContribution: string;
@@ -50,6 +51,7 @@ export const projectsData: ProjectItem[] = [
     categoryTag: "01 · Machine Learning & AI",
     statusBadge: "Academic Research · CIT",
     name: "Knowledge Gap Detection",
+    fullResearchTitle: "Explainable and Prerequisite-Aware Knowledge Gap Detection using Machine Learning and Deep Knowledge Tracing for Personalized Learning.",
     subtitle: "Deep Knowledge Tracing & Prerequisite-Aware Personalized Learning",
     problem:
       "Traditional testing treats question scores as binary right-or-wrong outcomes. When a student struggles with complex questions, standard platforms fail to determine whether the deficiency stems from the current topic or a foundational prerequisite concept learned earlier.",

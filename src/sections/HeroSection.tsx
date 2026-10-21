@@ -67,6 +67,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         {/* Multi-Directional Gradient Vignette Blend matching theme canvas */}
         {/* Left-edge smooth fade into theme canvas */}
         <div
+          className="hero-portrait-fade-left"
           style={{
             position: "absolute",
             inset: 0,
@@ -77,6 +78,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
         {/* Bottom-edge smooth fade into theme canvas */}
         <div
+          className="hero-portrait-fade-bottom"
           style={{
             position: "absolute",
             left: 0,
@@ -90,6 +92,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
         {/* Top-edge subtle vignette */}
         <div
+          className="hero-portrait-fade-top"
           style={{
             position: "absolute",
             left: 0,
@@ -692,6 +695,65 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           .hero-mobile-social-links > a {
             flex: 1 1 calc(50% - 0.5rem);
           }
+        }
+
+        /* Prevent hero photo image elements from animating during theme changes */
+        .hero-backdrop-portrait img,
+        .hero-mobile-portrait-banner-img {
+          transition: none !important;
+        }
+
+        /* Light Theme Hero Vignette Overrides - Protect face & natural skin tones while blending into #F4F0E8 */
+        [data-theme="light"] .hero-portrait-fade-left {
+          background: linear-gradient(
+            to right,
+            #F4F0E8 0%,
+            rgba(244, 240, 232, 0.90) 8%,
+            rgba(244, 240, 232, 0.55) 18%,
+            rgba(244, 240, 232, 0.18) 28%,
+            transparent 35%
+          ) !important;
+        }
+
+        [data-theme="light"] .hero-portrait-fade-bottom {
+          height: 32% !important;
+          background: linear-gradient(
+            to top,
+            #F4F0E8 0%,
+            rgba(244, 240, 232, 0.88) 22%,
+            rgba(244, 240, 232, 0.35) 60%,
+            transparent 100%
+          ) !important;
+        }
+
+        [data-theme="light"] .hero-portrait-fade-top {
+          height: 9% !important;
+          background: linear-gradient(
+            to bottom,
+            rgba(244, 240, 232, 0.55) 0%,
+            transparent 100%
+          ) !important;
+        }
+
+        /* Mobile Light Theme Hero Portrait Vignette Overrides */
+        [data-theme="light"] .hero-mobile-portrait-fade-bottom {
+          height: 36% !important;
+          background: linear-gradient(
+            to top,
+            #F4F0E8 0%,
+            rgba(244, 240, 232, 0.92) 25%,
+            rgba(244, 240, 232, 0.45) 65%,
+            transparent 100%
+          ) !important;
+        }
+
+        [data-theme="light"] .hero-mobile-portrait-fade-top {
+          height: 10% !important;
+          background: linear-gradient(
+            to bottom,
+            rgba(244, 240, 232, 0.60) 0%,
+            transparent 100%
+          ) !important;
         }
       `}</style>
     </section>

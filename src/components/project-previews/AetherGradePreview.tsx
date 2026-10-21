@@ -76,7 +76,7 @@ export const AetherGradePreview: React.FC = () => {
         background: "var(--bg-surface-elevated)",
         borderRadius: "8px",
         padding: "clamp(1.15rem, 2vw, 1.5rem)",
-        fontFamily: "var(--font-mono)",
+        fontFamily: "var(--font-sans)",
         display: "flex",
         flexDirection: "column",
         gap: "1.1rem",
@@ -96,8 +96,8 @@ export const AetherGradePreview: React.FC = () => {
           gap: "0.4rem",
         }}
       >
-        <span style={{ letterSpacing: "0.04em" }}>AETHERGRADE · CRYPTOGRAPHIC LEDGER</span>
-        <span style={{ color: tampered ? "var(--accent-terracotta)" : "var(--accent-emerald)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ letterSpacing: "0.04em", fontFamily: "var(--font-mono)" }}>AETHERGRADE · CRYPTOGRAPHIC LEDGER</span>
+        <span style={{ color: tampered ? "var(--accent-terracotta)" : "var(--accent-emerald)", display: "flex", alignItems: "center", gap: "0.4rem", fontFamily: "var(--font-mono)" }}>
           <span
             style={{
               width: "6px",
@@ -128,7 +128,7 @@ export const AetherGradePreview: React.FC = () => {
                 borderRadius: "4px",
                 padding: "0.3rem 0.6rem",
                 color: activeRole === role ? "var(--text-primary)" : "var(--text-secondary)",
-                fontFamily: "var(--font-mono)",
+                fontFamily: "var(--font-sans)",
                 fontSize: "0.71875rem",
                 cursor: "pointer",
                 transition: "all 0.15s ease",
@@ -184,7 +184,7 @@ export const AetherGradePreview: React.FC = () => {
               padding: "0.2rem 0.5rem",
               borderRadius: "4px",
               cursor: "pointer",
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-sans)",
               display: "flex",
               alignItems: "center",
               gap: "0.3rem",
@@ -210,7 +210,7 @@ export const AetherGradePreview: React.FC = () => {
             }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.3rem" }}>
-              <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>
+              <span style={{ color: "var(--text-primary)", fontWeight: 600, fontFamily: "var(--font-mono)" }}>
                 BLOCK #{block.height} · {block.timestamp}
               </span>
               <span
@@ -220,6 +220,7 @@ export const AetherGradePreview: React.FC = () => {
                   alignItems: "center",
                   gap: "0.25rem",
                   fontWeight: 600,
+                  fontFamily: "var(--font-mono)",
                 }}
               >
                 {block.valid ? <ShieldCheck size={11} /> : <Lock size={11} />}
@@ -227,11 +228,11 @@ export const AetherGradePreview: React.FC = () => {
               </span>
             </div>
 
-            <div style={{ color: "var(--text-secondary)", wordBreak: "break-all" }}>
+            <div style={{ color: "var(--text-secondary)", wordBreak: "break-all", fontFamily: "var(--font-mono)" }}>
               {block.mutation}
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--text-muted)", fontSize: "0.625rem", paddingTop: "0.2rem", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--text-muted)", fontSize: "0.625rem", paddingTop: "0.2rem", flexWrap: "wrap", fontFamily: "var(--font-mono)" }}>
               <LinkIcon size={10} />
               <span>PREV: {block.prevHash}</span>
               <span>→</span>
@@ -256,7 +257,7 @@ export const AetherGradePreview: React.FC = () => {
         }}
       >
         <span>Java SE 21 · Cryptographic Tamper-Evident Ledger</span>
-        <span>SHA-256 / AES-256 / MySQL</span>
+        <span style={{ fontFamily: "var(--font-mono)" }}>SHA-256 / AES-256 / MySQL</span>
       </div>
     </div>
   );

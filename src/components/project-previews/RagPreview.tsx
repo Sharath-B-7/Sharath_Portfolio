@@ -136,7 +136,7 @@ export const RagPreview: React.FC = () => {
         background: "var(--bg-surface)",
         borderRadius: "8px",
         padding: "clamp(0.9rem, 2vw, 1.35rem)",
-        fontFamily: "var(--font-mono)",
+        fontFamily: "var(--font-sans)",
         display: "flex",
         flexDirection: "column",
         gap: "0.9rem",
@@ -160,8 +160,8 @@ export const RagPreview: React.FC = () => {
           gap: "0.4rem",
         }}
       >
-        <span style={{ letterSpacing: "0.04em", fontWeight: 600 }}>RAG PIPELINE · TWO-STAGE RETRIEVAL</span>
-        <span style={{ color: "var(--accent-terracotta)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ letterSpacing: "0.04em", fontWeight: 600, fontFamily: "var(--font-mono)" }}>RAG PIPELINE · TWO-STAGE RETRIEVAL</span>
+        <span style={{ color: "var(--accent-terracotta)", display: "flex", alignItems: "center", gap: "0.4rem", fontFamily: "var(--font-mono)" }}>
           <span
             style={{
               width: "6px",
@@ -195,7 +195,7 @@ export const RagPreview: React.FC = () => {
                 borderRadius: "4px",
                 padding: "0.3rem 0.55rem",
                 color: selectedQuery.id === item.id ? "var(--text-primary)" : "var(--text-secondary)",
-                fontFamily: "var(--font-mono)",
+                fontFamily: "var(--font-sans)",
                 fontSize: "0.71875rem",
                 fontWeight: selectedQuery.id === item.id ? 600 : 400,
                 cursor: "pointer",
@@ -255,7 +255,7 @@ export const RagPreview: React.FC = () => {
             fontSize: "0.71875rem",
             fontWeight: activeTab === "qa" ? 600 : 400,
             cursor: "pointer",
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-sans)",
           }}
         >
           Q&amp;A &amp; Citations
@@ -272,7 +272,7 @@ export const RagPreview: React.FC = () => {
             fontSize: "0.71875rem",
             fontWeight: activeTab === "rerank" ? 600 : 400,
             cursor: "pointer",
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-sans)",
           }}
         >
           Two-Stage Re-Ranking
@@ -289,7 +289,7 @@ export const RagPreview: React.FC = () => {
             fontSize: "0.71875rem",
             fontWeight: activeTab === "workflow" ? 600 : 400,
             cursor: "pointer",
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-sans)",
           }}
         >
           Workflow Preview
@@ -422,7 +422,7 @@ export const RagPreview: React.FC = () => {
               maxWidth: "100%",
             }}
           >
-            <div style={{ minWidth: "290px", width: "100%" }}>
+            <div style={{ minWidth: "290px", width: "100%", fontFamily: "var(--font-mono)" }}>
               <div
                 style={{
                   display: "grid",
@@ -564,6 +564,7 @@ export const RagPreview: React.FC = () => {
                 <span
                   style={{
                     fontSize: "0.65rem",
+                    fontFamily: "var(--font-mono)",
                     color: "var(--text-muted)",
                     border: "1px solid var(--border-subtle)",
                     padding: "0.15rem 0.4rem",
@@ -623,7 +624,7 @@ export const RagPreview: React.FC = () => {
           <ShieldCheck size={12} color="var(--accent-emerald)" />
           Interactive Demo · Grounded in RAG Architecture
         </span>
-        <span style={{ color: "var(--accent-terracotta)", fontSize: "0.65rem", fontWeight: 600 }}>
+        <span style={{ color: "var(--accent-terracotta)", fontSize: "0.65rem", fontWeight: 600, fontFamily: "var(--font-mono)" }}>
           pypdf + ChromaDB + Groq
         </span>
       </div>

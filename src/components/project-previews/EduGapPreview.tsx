@@ -28,7 +28,7 @@ export const EduGapPreview: React.FC = () => {
         background: "var(--bg-surface-elevated)",
         borderRadius: "8px",
         padding: "clamp(1.15rem, 2vw, 1.5rem)",
-        fontFamily: "var(--font-mono)",
+        fontFamily: "var(--font-sans)",
         display: "flex",
         flexDirection: "column",
         gap: "1.1rem",
@@ -48,8 +48,8 @@ export const EduGapPreview: React.FC = () => {
           gap: "0.4rem",
         }}
       >
-        <span style={{ letterSpacing: "0.04em" }}>EDUGAP AI · DKT DIAGNOSTIC ENGINE</span>
-        <span style={{ color: "var(--accent-terracotta)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ letterSpacing: "0.04em", fontFamily: "var(--font-mono)" }}>EDUGAP AI · DKT DIAGNOSTIC ENGINE</span>
+        <span style={{ color: "var(--accent-terracotta)", display: "flex", alignItems: "center", gap: "0.4rem", fontFamily: "var(--font-mono)" }}>
           <span
             style={{
               width: "6px",
@@ -104,7 +104,7 @@ export const EduGapPreview: React.FC = () => {
             border: "none",
             color: activeTab === "domains" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-sans)",
             fontWeight: 600,
             cursor: "pointer",
             display: "inline-flex",
@@ -126,7 +126,7 @@ export const EduGapPreview: React.FC = () => {
             border: "none",
             color: activeTab === "graph" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-sans)",
             fontWeight: 600,
             cursor: "pointer",
             display: "inline-flex",
@@ -148,7 +148,7 @@ export const EduGapPreview: React.FC = () => {
             border: "none",
             color: activeTab === "remediation" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-sans)",
             fontWeight: 600,
             cursor: "pointer",
             display: "inline-flex",
@@ -234,7 +234,7 @@ export const EduGapPreview: React.FC = () => {
 
               {/* Node 1: Fractions (Prereq root) */}
               <circle cx="60" cy="80" r="14" fill="var(--accent-terracotta-subtle)" stroke="var(--accent-terracotta)" strokeWidth={2} />
-              <text x="60" y="84" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-mono)">
+              <text x="60" y="84" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-sans)">
                 Fractions
               </text>
               <text x="60" y="103" textAnchor="middle" fill="var(--accent-terracotta)" fontSize="7" fontFamily="var(--font-mono)">
@@ -243,13 +243,13 @@ export const EduGapPreview: React.FC = () => {
 
               {/* Node 2: Linear Equations */}
               <circle cx="160" cy="45" r="13" fill="var(--accent-emerald-subtle)" stroke="var(--accent-emerald)" strokeWidth={1.5} />
-              <text x="160" y="49" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-mono)">
+              <text x="160" y="49" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-sans)">
                 Algebra
               </text>
 
               {/* Node 3: Coordinate Geo */}
               <circle cx="160" cy="115" r="13" fill="rgba(217, 119, 6, 0.12)" stroke="#d97706" strokeWidth={1.5} />
-              <text x="160" y="119" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-mono)">
+              <text x="160" y="119" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-sans)">
                 Geometry
               </text>
               <text x="160" y="137" textAnchor="middle" fill="#d97706" fontSize="7" fontFamily="var(--font-mono)">
@@ -258,7 +258,7 @@ export const EduGapPreview: React.FC = () => {
 
               {/* Node 4: Trigonometry */}
               <circle cx="260" cy="80" r="13" fill="var(--accent-emerald-subtle)" stroke="var(--accent-emerald)" strokeWidth={1.5} />
-              <text x="260" y="84" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-mono)">
+              <text x="260" y="84" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-sans)">
                 Trig
               </text>
             </svg>
@@ -308,7 +308,7 @@ export const EduGapPreview: React.FC = () => {
         }}
       >
         <span>Research Prototype · Deep Knowledge Tracing</span>
-        <span>PyTorch + XGBoost</span>
+        <span style={{ fontFamily: "var(--font-mono)" }}>PyTorch + XGBoost</span>
       </div>
     </div>
   );

@@ -90,21 +90,21 @@
   --bg-canvas: #F4F0E8;
   --bg-surface: #FFFFFF;
   --bg-surface-elevated: #EDE7DC;
-  --bg-surface-subtle: #F6F2EB;
-  --bg-surface-hover: #E6DDD0;
+  --bg-surface-subtle: #EDE7DC;
+  --bg-surface-hover: #E3DBD0;
 
-  --bg-hairline: rgba(36, 42, 39, 0.08);
-  --bg-hairline-subtle: rgba(36, 42, 39, 0.04);
-  --bg-hairline-strong: rgba(36, 42, 39, 0.16);
-  --border-subtle: #E2DAD0;
+  --bg-hairline: rgba(36, 42, 39, 0.10);
+  --bg-hairline-subtle: rgba(36, 42, 39, 0.05);
+  --bg-hairline-strong: rgba(36, 42, 39, 0.18);
+  --border-subtle: #DDD5C7;
   --border-default: #D2C7B8;
-  --border-strong: #B2A492;
+  --border-strong: #B5A895;
   --border-focus: rgba(181, 106, 69, 0.50);
 
   --text-primary: #242A27;
-  --text-secondary: #424B47;
-  --text-muted: #64706B;
-  --text-faint: #8B9792;
+  --text-secondary: #3D4642;
+  --text-muted: #5F6B66;
+  --text-faint: #84918B;
 
   /* Rich Terracotta in Light Theme (#B56A45) */
   --accent-terracotta: #B56A45;
@@ -124,9 +124,9 @@
   --accent-emerald-subtle: rgba(5, 150, 105, 0.09);
   --accent-emerald-border: rgba(5, 150, 105, 0.24);
 
-  --shadow-sm: 0 1px 3px rgba(36, 42, 39, 0.05);
-  --shadow-md: 0 4px 14px rgba(36, 42, 39, 0.08);
-  --shadow-lg: 0 14px 32px rgba(36, 42, 39, 0.12);
+  --shadow-sm: 0 1px 3px rgba(36, 42, 39, 0.06);
+  --shadow-md: 0 4px 14px rgba(36, 42, 39, 0.08), 0 1px 3px rgba(36, 42, 39, 0.04);
+  --shadow-lg: 0 14px 32px rgba(36, 42, 39, 0.10), 0 2px 6px rgba(36, 42, 39, 0.04);
 
   /* Hero Portrait Vignette Overlays & Atmospheric Blend (Matching #F4F0E8) */
   --hero-vignette-solid: #F4F0E8;
@@ -148,7 +148,7 @@
   /* Scrollbar & Background Grid */
   --scrollbar-thumb: #D0C7B9;
   --scrollbar-thumb-hover: #B8AE9E;
-  --bg-grid-dot: rgba(36, 42, 39, 0.035);
+  --bg-grid-dot: rgba(36, 42, 39, 0.04);
 }
 
 /* Reset & Box Sizing */
@@ -443,12 +443,59 @@ dialog::backdrop {
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* Reduced Motion */
+/* Light Mode Card Depth */
+[data-theme="light"] .card-clean,
+[data-theme="light"] .project-editorial-card {
+  box-shadow: 0 2px 8px rgba(36, 42, 39, 0.04), 0 1px 2px rgba(36, 42, 39, 0.02);
+}
+
+/* ==========================================================================
+   Smooth Dark ↔ Light Theme Transition Animations (Restrained 300ms)
+   ========================================================================== */
+html,
+body,
+header,
+nav,
+section,
+article,
+aside,
+footer,
+div,
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+a,
+input,
+textarea,
+select {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Explicitly exempt hero photo and image assets from transitions to prevent artifacts */
+img,
+svg image,
+.hero-backdrop-portrait img,
+.hero-mobile-portrait-banner-img,
+.hero-backdrop-portrait,
+.hero-mobile-portrait-banner {
+  transition: none !important;
+}
+
+/* Reduced Motion: Substantially reduce or disable transitions */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition: none !important;
     scroll-behavior: auto !important;
   }
 }

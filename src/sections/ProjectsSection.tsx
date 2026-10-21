@@ -270,6 +270,12 @@ export const ProjectsSection: React.FC = () => {
                   {project.name}
                 </h3>
 
+                {project.fullResearchTitle && (
+                  <div className="project-card-research-title">
+                    “{project.fullResearchTitle}”
+                  </div>
+                )}
+
                 <div className="project-card-subtitle">
                   {project.subtitle}
                 </div>
@@ -501,6 +507,17 @@ export const ProjectsSection: React.FC = () => {
           line-height: 1.25;
           margin-bottom: 0.35rem;
           overflow-wrap: break-word;
+        }
+
+        .project-card-research-title {
+          font-family: var(--font-sans);
+          font-size: clamp(0.9rem, 1.25vw, 1.05rem);
+          font-weight: 500;
+          color: var(--text-primary);
+          line-height: 1.5;
+          margin-bottom: 0.45rem;
+          overflow-wrap: break-word;
+          word-break: break-word;
         }
 
         .project-card-subtitle {

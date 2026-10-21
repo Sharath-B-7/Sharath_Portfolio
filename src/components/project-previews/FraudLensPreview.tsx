@@ -108,7 +108,7 @@ export const FraudLensPreview: React.FC = () => {
         background: "var(--bg-surface-elevated)",
         borderRadius: "8px",
         padding: "clamp(1.15rem, 2vw, 1.5rem)",
-        fontFamily: "var(--font-mono)",
+        fontFamily: "var(--font-sans)",
         display: "flex",
         flexDirection: "column",
         gap: "1.1rem",
@@ -128,8 +128,8 @@ export const FraudLensPreview: React.FC = () => {
           gap: "0.4rem",
         }}
       >
-        <span style={{ letterSpacing: "0.04em" }}>FRAUDLENS AI · TRUST ENGINE SIMULATOR</span>
-        <span style={{ color: "var(--accent-terracotta)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ letterSpacing: "0.04em", fontFamily: "var(--font-mono)" }}>FRAUDLENS AI · TRUST ENGINE SIMULATOR</span>
+        <span style={{ color: "var(--accent-terracotta)", display: "flex", alignItems: "center", gap: "0.4rem", fontFamily: "var(--font-mono)" }}>
           <span
             style={{
               width: "6px",
@@ -160,7 +160,7 @@ export const FraudLensPreview: React.FC = () => {
                 borderRadius: "4px",
                 padding: "0.3rem 0.6rem",
                 color: selectedEntity.id === entity.id ? "var(--text-primary)" : "var(--text-secondary)",
-                fontFamily: "var(--font-mono)",
+                fontFamily: "var(--font-sans)",
                 fontSize: "0.71875rem",
                 cursor: "pointer",
                 transition: "all 0.15s ease",
@@ -187,10 +187,10 @@ export const FraudLensPreview: React.FC = () => {
           flexWrap: "wrap",
         }}
       >
-        <span style={{ color: "var(--text-primary)", wordBreak: "break-all" }}>
+        <span style={{ color: "var(--text-primary)", wordBreak: "break-all", fontFamily: "var(--font-mono)" }}>
           {selectedEntity.query}
         </span>
-        <span style={{ fontSize: "0.6875rem", color: "var(--text-muted)", flexShrink: 0 }}>
+        <span style={{ fontSize: "0.6875rem", color: "var(--text-muted)", flexShrink: 0, fontFamily: "var(--font-mono)" }}>
           [LOOKUP]
         </span>
       </div>
@@ -213,7 +213,7 @@ export const FraudLensPreview: React.FC = () => {
             border: "none",
             color: activeTab === "score" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-sans)",
             fontWeight: 600,
             cursor: "pointer",
             display: "inline-flex",
@@ -235,7 +235,7 @@ export const FraudLensPreview: React.FC = () => {
             border: "none",
             color: activeTab === "graph" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-sans)",
             fontWeight: 600,
             cursor: "pointer",
             display: "inline-flex",
@@ -257,7 +257,7 @@ export const FraudLensPreview: React.FC = () => {
             border: "none",
             color: activeTab === "triage" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-sans)",
             fontWeight: 600,
             cursor: "pointer",
             display: "inline-flex",
@@ -414,7 +414,7 @@ export const FraudLensPreview: React.FC = () => {
                       textAnchor="middle"
                       fill={isTarget ? "var(--text-primary)" : "var(--text-secondary)"}
                       fontSize="9"
-                      fontFamily="var(--font-mono)"
+                      fontFamily="var(--font-sans)"
                     >
                       {node.label}
                     </text>
@@ -471,7 +471,7 @@ export const FraudLensPreview: React.FC = () => {
         }}
       >
         <span>Interactive Demo · Grounded in FraudLens Architecture</span>
-        <span>FastAPI + Vite</span>
+        <span style={{ fontFamily: "var(--font-mono)" }}>FastAPI + Vite</span>
       </div>
     </div>
   );
