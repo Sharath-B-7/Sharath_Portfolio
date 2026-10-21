@@ -92,6 +92,8 @@ export const AetherGradePreview: React.FC = () => {
           borderBottom: "1px solid var(--border-subtle)",
           fontSize: "0.71875rem",
           color: "var(--text-muted)",
+          flexWrap: "wrap",
+          gap: "0.4rem",
         }}
       >
         <span style={{ letterSpacing: "0.04em" }}>AETHERGRADE · CRYPTOGRAPHIC LEDGER</span>
@@ -114,7 +116,7 @@ export const AetherGradePreview: React.FC = () => {
         <div style={{ fontSize: "0.6875rem", color: "var(--text-muted)", marginBottom: "0.4rem", letterSpacing: "0.05em" }}>
           TEST RBAC PRINCIPAL (JWT AUTH):
         </div>
-        <div style={{ display: "flex", gap: "0.35rem" }}>
+        <div style={{ display: "flex", gap: "0.35rem", flexWrap: "wrap" }}>
           {(["FACULTY", "STUDENT", "ADMIN"] as const).map((role) => (
             <button
               key={role}
@@ -149,6 +151,8 @@ export const AetherGradePreview: React.FC = () => {
           justifyContent: "space-between",
           alignItems: "center",
           fontSize: "0.71875rem",
+          flexWrap: "wrap",
+          gap: "0.35rem",
         }}
       >
         <span style={{ color: "var(--text-primary)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
@@ -164,7 +168,7 @@ export const AetherGradePreview: React.FC = () => {
 
       {/* Cryptographic Ledger Block View */}
       <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.35rem" }}>
           <span style={{ fontSize: "0.6875rem", color: "var(--text-muted)", letterSpacing: "0.05em" }}>
             SHA-256 HASH-CHAIN BLOCKS:
           </span>
@@ -204,7 +208,7 @@ export const AetherGradePreview: React.FC = () => {
               gap: "0.25rem",
             }}
           >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.3rem" }}>
               <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>
                 BLOCK #{block.height} · {block.timestamp}
               </span>
@@ -225,7 +229,7 @@ export const AetherGradePreview: React.FC = () => {
               {block.mutation}
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--text-muted)", fontSize: "0.625rem", paddingTop: "0.2rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--text-muted)", fontSize: "0.625rem", paddingTop: "0.2rem", flexWrap: "wrap" }}>
               <LinkIcon size={10} />
               <span>PREV: {block.prevHash}</span>
               <span>→</span>
@@ -245,6 +249,8 @@ export const AetherGradePreview: React.FC = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          flexWrap: "wrap",
+          gap: "0.35rem",
         }}
       >
         <span>Java SE 21 · Cryptographic Tamper-Evident Ledger</span>

@@ -152,6 +152,8 @@ export const RagPreview: React.FC = () => {
           borderBottom: "1px solid var(--border-subtle)",
           fontSize: "0.71875rem",
           color: "var(--text-muted)",
+          flexWrap: "wrap",
+          gap: "0.4rem",
         }}
       >
         <span style={{ letterSpacing: "0.04em" }}>RAG PIPELINE · TWO-STAGE RETRIEVAL</span>
@@ -213,6 +215,7 @@ export const RagPreview: React.FC = () => {
           alignItems: "center",
           gap: "0.5rem",
           fontSize: "0.78125rem",
+          flexWrap: "wrap",
         }}
       >
         <span style={{ color: "var(--text-primary)", display: "flex", alignItems: "center", gap: "0.45rem" }}>
@@ -232,6 +235,7 @@ export const RagPreview: React.FC = () => {
           gap: "0.35rem",
           borderBottom: "1px solid var(--border-subtle)",
           paddingBottom: "0.5rem",
+          flexWrap: "wrap",
         }}
       >
         <button
@@ -314,7 +318,7 @@ export const RagPreview: React.FC = () => {
               padding: "0.75rem",
             }}
           >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.4rem" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.4rem", flexWrap: "wrap", gap: "0.35rem" }}>
               <span style={{ fontSize: "0.6875rem", color: "var(--accent-cyan)", display: "flex", alignItems: "center", gap: "0.35rem" }}>
                 <Sparkles size={12} />
                 CONTEXT-GROUNDED RESPONSE (Groq / Llama 3.1 8B):
@@ -337,7 +341,7 @@ export const RagPreview: React.FC = () => {
               background: "rgba(0, 0, 0, 0.2)",
             }}
           >
-            <div style={{ fontSize: "0.6875rem", color: "var(--text-muted)", marginBottom: "0.45rem", display: "flex", justifyContent: "space-between" }}>
+            <div style={{ fontSize: "0.6875rem", color: "var(--text-muted)", marginBottom: "0.45rem", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.35rem" }}>
               <span>VERIFIED PAGE CITATIONS:</span>
               <span style={{ color: "var(--accent-cyan)" }}>{selectedQuery.citations.length} Sources Retained</span>
             </div>
@@ -399,61 +403,64 @@ export const RagPreview: React.FC = () => {
             style={{
               border: "1px solid var(--border-subtle)",
               borderRadius: "6px",
-              overflow: "hidden",
+              overflowX: "auto",
+              WebkitOverflowScrolling: "touch",
             }}
           >
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1.2fr 1.2fr 1fr 1fr",
-                padding: "0.45rem 0.65rem",
-                background: "rgba(255, 255, 255, 0.03)",
-                borderBottom: "1px solid var(--border-subtle)",
-                fontSize: "0.65625rem",
-                color: "var(--text-muted)",
-              }}
-            >
-              <span>CHUNK REF</span>
-              <span>VECTOR SEARCH</span>
-              <span>CROSS-ENCODER</span>
-              <span>STATUS</span>
-            </div>
-
-            {selectedQuery.vectorCandidates.map((cand) => (
+            <div style={{ minWidth: "420px" }}>
               <div
-                key={cand.chunkId}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "1.2fr 1.2fr 1fr 1fr",
+                  gridTemplateColumns: "1.2fr 1.2fr 1.1fr 1fr",
                   padding: "0.45rem 0.65rem",
+                  background: "rgba(255, 255, 255, 0.03)",
                   borderBottom: "1px solid var(--border-subtle)",
-                  fontSize: "0.71875rem",
-                  alignItems: "center",
-                  background: cand.selected ? "rgba(0, 240, 255, 0.025)" : "transparent",
+                  fontSize: "0.65625rem",
+                  color: "var(--text-muted)",
                 }}
               >
-                <span style={{ color: "var(--text-primary)" }}>
-                  {cand.chunkId} (p.{cand.page})
-                </span>
-                <span style={{ color: "var(--text-muted)" }}>
-                  Rank #{cand.rank} ({cand.initialScore.toFixed(2)})
-                </span>
-                <span style={{ color: cand.selected ? "var(--accent-cyan)" : "var(--text-muted)", fontWeight: cand.selected ? 600 : 400 }}>
-                  Score: {cand.rerankScore.toFixed(3)}
-                </span>
-                <span>
-                  {cand.selected ? (
-                    <span style={{ color: "var(--accent-emerald)", fontSize: "0.65rem", background: "rgba(16, 185, 129, 0.1)", padding: "0.1rem 0.35rem", borderRadius: "3px" }}>
-                      TOP 4 SELECTED
-                    </span>
-                  ) : (
-                    <span style={{ color: "var(--text-muted)", fontSize: "0.65rem" }}>
-                      FILTERED
-                    </span>
-                  )}
-                </span>
+                <span>CHUNK REF</span>
+                <span>VECTOR SEARCH</span>
+                <span>CROSS-ENCODER</span>
+                <span>STATUS</span>
               </div>
-            ))}
+
+              {selectedQuery.vectorCandidates.map((cand) => (
+                <div
+                  key={cand.chunkId}
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1.2fr 1.2fr 1.1fr 1fr",
+                    padding: "0.45rem 0.65rem",
+                    borderBottom: "1px solid var(--border-subtle)",
+                    fontSize: "0.71875rem",
+                    alignItems: "center",
+                    background: cand.selected ? "rgba(0, 240, 255, 0.025)" : "transparent",
+                  }}
+                >
+                  <span style={{ color: "var(--text-primary)" }}>
+                    {cand.chunkId} (p.{cand.page})
+                  </span>
+                  <span style={{ color: "var(--text-muted)" }}>
+                    Rank #{cand.rank} ({cand.initialScore.toFixed(2)})
+                  </span>
+                  <span style={{ color: cand.selected ? "var(--accent-cyan)" : "var(--text-muted)", fontWeight: cand.selected ? 600 : 400 }}>
+                    Score: {cand.rerankScore.toFixed(3)}
+                  </span>
+                  <span>
+                    {cand.selected ? (
+                      <span style={{ color: "var(--accent-emerald)", fontSize: "0.65rem", background: "rgba(16, 185, 129, 0.1)", padding: "0.1rem 0.35rem", borderRadius: "3px" }}>
+                        TOP 4 SELECTED
+                      </span>
+                    ) : (
+                      <span style={{ color: "var(--text-muted)", fontSize: "0.65rem" }}>
+                        FILTERED
+                      </span>
+                    )}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div
@@ -465,6 +472,8 @@ export const RagPreview: React.FC = () => {
               borderRadius: "4px",
               display: "flex",
               justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "0.35rem",
             }}
           >
             <span>Initial Vector Retrieval: Top 15</span>
@@ -523,6 +532,8 @@ export const RagPreview: React.FC = () => {
                   border: "1px solid var(--border-subtle)",
                   borderRadius: "4px",
                   fontSize: "0.75rem",
+                  gap: "0.5rem",
+                  flexWrap: "wrap",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
@@ -586,6 +597,8 @@ export const RagPreview: React.FC = () => {
           alignItems: "center",
           justifyContent: "space-between",
           paddingTop: "0.25rem",
+          flexWrap: "wrap",
+          gap: "0.35rem",
         }}
       >
         <span style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}>

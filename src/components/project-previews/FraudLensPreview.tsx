@@ -124,6 +124,8 @@ export const FraudLensPreview: React.FC = () => {
           borderBottom: "1px solid var(--border-subtle)",
           fontSize: "0.71875rem",
           color: "var(--text-muted)",
+          flexWrap: "wrap",
+          gap: "0.4rem",
         }}
       >
         <span style={{ letterSpacing: "0.04em" }}>FRAUDLENS AI · TRUST ENGINE SIMULATOR</span>
@@ -182,6 +184,7 @@ export const FraudLensPreview: React.FC = () => {
           alignItems: "center",
           gap: "0.5rem",
           fontSize: "0.78125rem",
+          flexWrap: "wrap",
         }}
       >
         <span style={{ color: "var(--text-primary)", wordBreak: "break-all" }}>
@@ -199,6 +202,7 @@ export const FraudLensPreview: React.FC = () => {
           gap: "0.35rem",
           borderBottom: "1px solid var(--border-subtle)",
           paddingBottom: "0.5rem",
+          flexWrap: "wrap",
         }}
       >
         <button
@@ -420,7 +424,7 @@ export const FraudLensPreview: React.FC = () => {
             </svg>
           </div>
 
-          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.6875rem", color: "var(--text-muted)" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.6875rem", color: "var(--text-muted)", flexWrap: "wrap", gap: "0.35rem" }}>
             <span>Cyan: Target Entity</span>
             <span>Dashed: Flagged Clustering Link</span>
           </div>
@@ -462,6 +466,8 @@ export const FraudLensPreview: React.FC = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          flexWrap: "wrap",
+          gap: "0.35rem",
         }}
       >
         <span>Interactive Demo · Grounded in FraudLens Architecture</span>

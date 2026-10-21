@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowUpRight, Image as ImageIcon, X, SlidersHorizontal } from "lucide-react";
 import { GithubIcon } from "../components/Icons";
 import { projectsData } from "../data/projects";
@@ -11,6 +11,22 @@ import { AetherGradePreview } from "../components/project-previews/AetherGradePr
 export const ProjectsSection: React.FC = () => {
   const [selectedDiagram, setSelectedDiagram] = useState<{ url: string; title: string } | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>("all");
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedDiagram(null);
+      }
+    };
+    if (selectedDiagram) {
+      window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selectedDiagram]);
 
   const filterCategories = [
     { id: "all", label: "All Projects" },
@@ -113,23 +129,16 @@ export const ProjectsSection: React.FC = () => {
             <article
               key={project.id}
               className="project-editorial-card"
-              style={{
-                border: "1px solid var(--border-default)",
-                background: "var(--bg-surface)",
-                borderRadius: "8px",
-                padding: "clamp(1.75rem, 3.5vw, 3rem)",
-                position: "relative",
-                transition: "border-color 0.2s ease, background 0.2s ease",
-              }}
             >
               <div className="project-grid-layout">
-                {/* LEFT COLUMN: Detailed Technical Architecture & Copy */}
+                {/* LEFT COLUMN: Technical Narrative, Architecture & Stack */}
                 <div className="project-left-col">
                   {/* Category & Status */}
                   <div
                     style={{
                       display: "flex",
                       alignItems: "center",
+                      justifyContent: "space-between",
                       gap: "0.75rem",
                       marginBottom: "0.85rem",
                       flexWrap: "wrap",
@@ -146,7 +155,7 @@ export const ProjectsSection: React.FC = () => {
                           fontWeight: 500,
                           color: "var(--text-secondary)",
                           border: "1px solid var(--border-subtle)",
-                          padding: "0.15rem 0.5rem",
+                          padding: "0.15rem 0.55rem",
                           borderRadius: "4px",
                           letterSpacing: "0.02em",
                           background: "var(--bg-surface-subtle)",
@@ -161,14 +170,13 @@ export const ProjectsSection: React.FC = () => {
                   <h3
                     style={{
                       fontFamily: "var(--font-display)",
-                      fontSize: project.name.length > 40 ? "clamp(1.4rem, 2.2vw, 1.85rem)" : "clamp(1.85rem, 2.8vw, 2.35rem)",
+                      fontSize: "clamp(1.5rem, 2.4vw, 2.1rem)",
                       fontWeight: 700,
                       color: "var(--text-primary)",
-                      letterSpacing: "-0.03em",
+                      letterSpacing: "-0.025em",
                       lineHeight: 1.25,
-                      marginBottom: "0.4rem",
+                      marginBottom: "0.35rem",
                       overflowWrap: "break-word",
-                      wordBreak: "break-word",
                     }}
                   >
                     {project.name}
@@ -179,68 +187,61 @@ export const ProjectsSection: React.FC = () => {
                     style={{
                       fontFamily: "var(--font-sans)",
                       fontSize: "0.9375rem",
-                      color: "var(--text-secondary)",
-                      marginBottom: "1.5rem",
+                      color: "var(--accent-cyan-light)",
+                      marginBottom: "1.35rem",
+                      fontWeight: 500,
                     }}
                   >
                     {project.subtitle}
                   </div>
 
-                  {/* Problem Statement */}
-                  <div style={{ marginBottom: "1.35rem" }}>
-                    <span
-                      className="mono-tag"
-                      style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan-light)" }}
-                    >
-                      PROBLEM CONTEXT
-                    </span>
-                    <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68 }}>
+                  {/* Engineering Narrative (Problem Context + Solution Architecture) */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem", marginBottom: "1.5rem" }}>
+                    <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68, margin: 0 }}>
                       {project.problem}
                     </p>
-                  </div>
-
-                  {/* Technical Architecture & Contribution */}
-                  <div style={{ marginBottom: "1.5rem" }}>
-                    <span
-                      className="mono-tag"
-                      style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan-light)" }}
-                    >
-                      ARCHITECTURE &amp; IMPLEMENTATION
-                    </span>
-                    <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68 }}>
+                    <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68, margin: 0 }}>
                       {project.architectureContribution}
                     </p>
                   </div>
 
-                  {/* Implemented Capabilities Checklist */}
-                  <div style={{ marginBottom: "1.75rem" }}>
-                    <span
-                      className="mono-tag"
-                      style={{ display: "block", marginBottom: "0.55rem", color: "var(--accent-cyan-light)" }}
+                  {/* Key Capabilities & Highlights */}
+                  <div style={{ marginBottom: "1.5rem" }}>
+                    <div
+                      style={{
+                        fontSize: "0.6875rem",
+                        fontFamily: "var(--font-mono)",
+                        color: "var(--text-muted)",
+                        letterSpacing: "0.06em",
+                        marginBottom: "0.6rem",
+                        textTransform: "uppercase",
+                      }}
                     >
-                      KEY CAPABILITIES &amp; HIGHLIGHTS
-                    </span>
+                      Key Architecture Highlights
+                    </div>
                     <ul
                       style={{
                         listStyle: "none",
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                        gap: "0.5rem 1rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "0.45rem",
+                        padding: 0,
+                        margin: 0,
                       }}
                     >
                       {project.capabilities.map((cap, idx) => (
                         <li
                           key={idx}
                           style={{
-                            fontSize: "0.8125rem",
+                            fontSize: "0.84375rem",
                             color: "var(--text-secondary)",
                             display: "flex",
                             alignItems: "flex-start",
-                            gap: "0.45rem",
-                            lineHeight: 1.45,
+                            gap: "0.5rem",
+                            lineHeight: 1.5,
                           }}
                         >
-                          <span style={{ color: "var(--accent-cyan)", fontSize: "0.75rem", flexShrink: 0 }}>—</span>
+                          <span style={{ color: "var(--accent-cyan)", flexShrink: 0, marginTop: "0.05rem" }}>—</span>
                           <span>{cap}</span>
                         </li>
                       ))}
@@ -248,31 +249,44 @@ export const ProjectsSection: React.FC = () => {
                   </div>
 
                   {/* Tech Stack Pills */}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      alignItems: "center",
-                      gap: "0.45rem",
-                      marginBottom: "1.75rem",
-                    }}
-                  >
-                    {project.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        style={{
-                          fontFamily: "var(--font-mono)",
-                          fontSize: "0.71875rem",
-                          color: "var(--text-muted)",
-                          background: "rgba(255, 255, 255, 0.03)",
-                          padding: "0.22rem 0.55rem",
-                          borderRadius: "4px",
-                          border: "1px solid var(--border-subtle)",
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div style={{ marginBottom: "1.75rem" }}>
+                    <div
+                      style={{
+                        fontSize: "0.6875rem",
+                        fontFamily: "var(--font-mono)",
+                        color: "var(--text-muted)",
+                        letterSpacing: "0.06em",
+                        marginBottom: "0.5rem",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Technologies
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        alignItems: "center",
+                        gap: "0.4rem",
+                      }}
+                    >
+                      {project.techStack.map((tech) => (
+                        <span
+                          key={tech}
+                          style={{
+                            fontFamily: "var(--font-mono)",
+                            fontSize: "0.71875rem",
+                            color: "var(--text-secondary)",
+                            background: "rgba(255, 255, 255, 0.025)",
+                            padding: "0.22rem 0.55rem",
+                            borderRadius: "4px",
+                            border: "1px solid var(--border-subtle)",
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Action Links */}
@@ -389,21 +403,37 @@ export const ProjectsSection: React.FC = () => {
       )}
 
       <style>{`
-        .project-grid-layout {
-          display: grid;
-          grid-template-columns: 1.15fr 0.85fr;
-          gap: clamp(2rem, 3.5vw, 3.5rem);
-          align-items: start;
+        .project-editorial-card {
+          border: 1px solid var(--border-default);
+          background: var(--bg-surface);
+          border-radius: 10px;
+          padding: clamp(1.25rem, 3.5vw, 2.75rem);
+          position: relative;
+          transition: border-color 0.2s ease, background 0.2s ease;
         }
 
         .project-editorial-card:hover {
-          border-color: var(--border-strong) !important;
+          border-color: var(--border-strong);
         }
 
-        @media (max-width: 960px) {
+        .project-grid-layout {
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: clamp(1.75rem, 3vw, 3rem);
+          align-items: start;
+        }
+
+        @media (max-width: 1024px) {
           .project-grid-layout {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .project-editorial-card {
+            padding: 1.25rem 1rem !important;
+            border-radius: 8px !important;
           }
         }
       `}</style>
