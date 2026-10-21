@@ -86,11 +86,11 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               padding: "0.4rem",
               border: "1px solid var(--border-subtle)",
               borderRadius: "4px",
-              color: "var(--accent-cyan)",
+              color: "var(--accent-terracotta)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "var(--accent-cyan-subtle)",
+              background: "var(--accent-terracotta-subtle)",
               flexShrink: 0,
             }}
           >

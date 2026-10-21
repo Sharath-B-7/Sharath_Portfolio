@@ -66,8 +66,8 @@ export const SocPreview: React.FC = () => {
       <div
         style={{
           padding: "0.65rem 0.85rem",
-          background: isolated ? "rgba(16, 185, 129, 0.08)" : "rgba(6, 182, 212, 0.08)",
-          border: isolated ? "1px solid rgba(16, 185, 129, 0.3)" : "1px solid rgba(6, 182, 212, 0.3)",
+          background: isolated ? "rgba(16, 185, 129, 0.08)" : "var(--accent-terracotta-subtle)",
+          border: isolated ? "1px solid rgba(16, 185, 129, 0.3)" : "1px solid var(--accent-terracotta-border)",
           borderRadius: "5px",
           display: "flex",
           justifyContent: "space-between",

@@ -39,8 +39,8 @@ export const ContactSection: React.FC = () => {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.85rem" }}>
-            <Mail size={15} color="var(--accent-cyan-light)" />
-            <span className="mono-tag" style={{ color: "var(--accent-cyan-light)" }}>
+            <Mail size={15} color="var(--accent-terracotta-light)" />
+            <span className="mono-tag" style={{ color: "var(--accent-terracotta-light)" }}>
               DIRECT EMAIL INQUIRY
             </span>
           </div>

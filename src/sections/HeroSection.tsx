@@ -152,13 +152,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
           {/* Order Item 4: Bold, Expressive Editorial Headline */}
           <h1 className="hero-headline-text">
-            <span style={{ display: "block" }}>Cybersecurity &amp;</span>
-            <span style={{ display: "block", color: "var(--text-primary)" }}>Software Engineer</span>
+            <span style={{ display: "block" }}>CYBERSECURITY &amp;</span>
+            <span style={{ display: "block" }}>SOFTWARE ENGINEER</span>
           </h1>
 
           {/* Order Item 5: Short Supporting Line */}
           <p className="hero-supporting-line">
-            Building secure systems, practical software, and applied AI/ML.
+            Building secure systems, verifiable software, and applied AI/ML architectures.
           </p>
 
           {/* Order Item 6: Meaningful Technical Skill Labels (No redundant metadata) */}
@@ -411,16 +411,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          padding: 0.28rem 0.75rem;
+          padding: 0.3rem 0.8rem;
           border-radius: 9999px;
-          background: rgba(16, 185, 129, 0.08);
-          border: 1px solid var(--accent-emerald-border);
+          background: var(--bg-surface-subtle);
+          border: 1px solid var(--border-default);
           width: fit-content;
-          margin-bottom: 1.15rem;
-          font-family: var(--font-sans);
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: #34d399;
+          margin-bottom: 1.25rem;
+          font-family: var(--font-mono);
+          font-size: 0.6875rem;
+          font-weight: 500;
+          color: var(--text-secondary);
           letter-spacing: 0.08em;
           text-transform: uppercase;
         }
@@ -429,20 +429,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           width: 6px;
           height: 6px;
           border-radius: 50%;
-          background-color: var(--accent-emerald);
+          background-color: var(--accent-terracotta);
+          box-shadow: 0 0 8px var(--accent-terracotta-border);
           display: inline-block;
         }
 
         /* --- Headline --- */
         .hero-headline-text {
           font-family: var(--font-display);
-          font-size: clamp(2.35rem, 5.2vw, 5.25rem);
-          font-weight: 700;
+          font-size: clamp(2.35rem, 5.5vw, 5.25rem);
+          font-weight: 800;
           letter-spacing: -0.035em;
-          line-height: 1.08;
+          line-height: 1.04;
           color: var(--text-primary);
           margin-bottom: 1.15rem;
           overflow-wrap: break-word;
+          text-transform: uppercase;
         }
 
         /* --- Supporting Line --- */
@@ -450,7 +452,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           font-family: var(--font-sans);
           font-size: clamp(1rem, 1.35vw, 1.1875rem);
           font-weight: 500;
-          color: var(--accent-cyan-light);
+          color: var(--accent-terracotta-light);
           line-height: 1.45;
           margin-bottom: 1.35rem;
           max-width: 580px;
@@ -604,8 +606,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
           /* Mobile Bold Expressive Headline */
           .hero-headline-text {
-            font-size: clamp(2.15rem, 8.5vw, 3.25rem) !important;
-            line-height: 1.08 !important;
+            font-size: clamp(2.15rem, 8.8vw, 3.25rem) !important;
+            line-height: 1.04 !important;
             margin-bottom: 0.85rem !important;
           }
 

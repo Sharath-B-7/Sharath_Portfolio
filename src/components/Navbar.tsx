@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
       localStorage.setItem("theme-preference", next);
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) {
-        meta.setAttribute("content", next === "light" ? "#f8fafc" : "#0c0f17");
+        meta.setAttribute("content", next === "light" ? "#faf8f5" : "#121214");
       }
     } catch (e) {}
   };
@@ -120,35 +120,35 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
       name: "Projects",
       desc: "Selected software & security builds",
       href: "#projects",
-      icon: <FolderGit2 size={16} color="var(--accent-cyan)" />,
+      icon: <FolderGit2 size={16} color="var(--accent-terracotta)" />,
     },
     {
       id: "skills",
       name: "Skills",
       desc: "Technical capabilities & core toolchains",
       href: "#skills",
-      icon: <Cpu size={16} color="var(--accent-cyan)" />,
+      icon: <Cpu size={16} color="var(--accent-terracotta)" />,
     },
     {
       id: "about",
       name: "About",
       desc: "Approach, background & engineering thesis",
       href: "#about",
-      icon: <User size={16} color="var(--accent-cyan)" />,
+      icon: <User size={16} color="var(--accent-terracotta)" />,
     },
     {
       id: "education",
       name: "Education",
       desc: "CIT Chennai (B.E. CSE Cyber) & scholastic record",
       href: "#education",
-      icon: <GraduationCap size={16} color="var(--accent-cyan)" />,
+      icon: <GraduationCap size={16} color="var(--accent-terracotta)" />,
     },
     {
       id: "achievements",
       name: "Achievements",
       desc: "450+ LeetCode problems & credentials",
       href: "#achievements",
-      icon: <Trophy size={16} color="var(--accent-cyan)" />,
+      icon: <Trophy size={16} color="var(--accent-terracotta)" />,
     },
     {
       id: "resume",
@@ -160,14 +160,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         setMatrixOpen(false);
         onOpenResume();
       },
-      icon: <FileText size={16} color="var(--accent-cyan)" />,
+      icon: <FileText size={16} color="var(--accent-terracotta)" />,
     },
     {
       id: "contact",
       name: "Contact",
       desc: "Direct email inquiry & professional network",
       href: "#contact",
-      icon: <Mail size={16} color="var(--accent-cyan)" />,
+      icon: <Mail size={16} color="var(--accent-terracotta)" />,
     },
   ];
 
@@ -227,7 +227,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             href="#hero"
             style={{
               textDecoration: "none",
-              color: activeSection === "hero" ? "var(--accent-cyan)" : "var(--text-secondary)",
+              color: activeSection === "hero" ? "var(--accent-terracotta)" : "var(--text-secondary)",
               background: activeSection === "hero" ? "var(--bg-surface-hover)" : "transparent",
               fontSize: "0.8125rem",
               fontWeight: 500,
@@ -258,8 +258,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             aria-expanded={matrixOpen}
             aria-label="Toggle directory matrix menu"
             style={{
-              background: matrixOpen ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
-              border: matrixOpen ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-default)",
+              background: matrixOpen ? "var(--accent-terracotta-subtle)" : "var(--bg-surface-subtle)",
+              border: matrixOpen ? "1px solid var(--accent-terracotta-border)" : "1px solid var(--border-default)",
               color: "var(--text-primary)",
               fontSize: "0.78125rem",
               fontWeight: 600,
@@ -279,11 +279,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 width: "6px",
                 height: "6px",
                 borderRadius: "50%",
-                backgroundColor: "var(--accent-cyan)",
+                backgroundColor: "var(--accent-terracotta)",
                 display: "inline-block",
               }}
             />
-            <Terminal size={12} color="var(--accent-cyan)" />
+            <Terminal size={12} color="var(--accent-terracotta)" />
             <span>DIRECTORY</span>
             <ChevronDown
               size={13}
@@ -300,7 +300,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             href="#contact"
             style={{
               textDecoration: "none",
-              color: activeSection === "contact" ? "var(--accent-cyan)" : "var(--text-secondary)",
+              color: activeSection === "contact" ? "var(--accent-terracotta)" : "var(--text-secondary)",
               background: activeSection === "contact" ? "var(--bg-surface-hover)" : "transparent",
               fontSize: "0.8125rem",
               fontWeight: 500,
@@ -353,12 +353,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           >
             {theme === "dark" ? (
               <>
-                <Sun size={12} color="var(--accent-cyan)" />
+                <Sun size={12} color="var(--accent-terracotta)" />
                 <span>LIGHT</span>
               </>
             ) : (
               <>
-                <Moon size={12} color="var(--accent-cyan)" />
+                <Moon size={12} color="var(--accent-terracotta)" />
                 <span>DARK</span>
               </>
             )}
@@ -399,7 +399,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             }}
             className="theme-toggle-mobile"
           >
-            {theme === "dark" ? <Sun size={18} color="var(--accent-cyan)" /> : <Moon size={18} color="var(--accent-cyan)" />}
+            {theme === "dark" ? <Sun size={18} color="var(--accent-terracotta)" /> : <Moon size={18} color="var(--accent-terracotta)" />}
           </button>
 
           {/* Mobile hamburger */}
@@ -476,13 +476,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               letterSpacing: "0.05em",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--accent-cyan)", fontWeight: 600 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--accent-terracotta)", fontWeight: 600 }}>
               <span
                 style={{
                   width: "6px",
                   height: "6px",
                   borderRadius: "50%",
-                  backgroundColor: "var(--accent-cyan)",
+                  backgroundColor: "var(--accent-terracotta)",
                   display: "inline-block",
                 }}
               />
@@ -524,8 +524,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                       transition: "all 0.15s ease",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "var(--accent-cyan-subtle)";
-                      e.currentTarget.style.borderColor = "var(--accent-cyan-border)";
+                      e.currentTarget.style.background = "var(--accent-terracotta-subtle)";
+                      e.currentTarget.style.borderColor = "var(--accent-terracotta-border)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background = "var(--bg-surface-subtle)";
@@ -553,8 +553,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                   onClick={() => setMatrixOpen(false)}
                   style={{
                     textDecoration: "none",
-                    background: isActive ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
-                    border: isActive ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
+                    background: isActive ? "var(--accent-terracotta-subtle)" : "var(--bg-surface-subtle)",
+                    border: isActive ? "1px solid var(--accent-terracotta-border)" : "1px solid var(--border-subtle)",
                     borderRadius: "10px",
                     padding: "0.75rem 1rem",
                     display: "flex",
@@ -564,12 +564,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                     transition: "all 0.15s ease",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "var(--accent-cyan-subtle)";
-                    e.currentTarget.style.borderColor = "var(--accent-cyan-border)";
+                    e.currentTarget.style.background = "var(--accent-terracotta-subtle)";
+                    e.currentTarget.style.borderColor = "var(--accent-terracotta-border)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = isActive ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)";
-                    e.currentTarget.style.borderColor = isActive ? "var(--accent-cyan-border)" : "var(--border-subtle)";
+                    e.currentTarget.style.background = isActive ? "var(--accent-terracotta-subtle)" : "var(--bg-surface-subtle)";
+                    e.currentTarget.style.borderColor = isActive ? "var(--accent-terracotta-border)" : "var(--border-subtle)";
                   }}
                 >
                   <div style={{ marginTop: "2px" }}>{hub.icon}</div>
@@ -577,7 +577,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                     <div style={{ color: "var(--text-primary)", fontSize: "0.875rem", fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                       <span>{hub.name}</span>
                       {isActive && (
-                        <span style={{ fontSize: "0.625rem", color: "var(--accent-cyan)", fontFamily: "var(--font-mono)" }}>
+                        <span style={{ fontSize: "0.625rem", color: "var(--accent-terracotta)", fontFamily: "var(--font-mono)" }}>
                           [CURRENT]
                         </span>
                       )}
@@ -673,12 +673,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             >
               {theme === "dark" ? (
                 <>
-                  <Sun size={13} color="var(--accent-cyan)" />
+                  <Sun size={13} color="var(--accent-terracotta)" />
                   <span>Light Mode</span>
                 </>
               ) : (
                 <>
-                  <Moon size={13} color="var(--accent-cyan)" />
+                  <Moon size={13} color="var(--accent-terracotta)" />
                   <span>Dark Mode</span>
                 </>
               )}

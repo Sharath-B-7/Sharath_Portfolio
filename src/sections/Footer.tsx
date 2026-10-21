@@ -78,8 +78,8 @@ export const Footer: React.FC = () => {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = "var(--text-primary)";
-                e.currentTarget.style.borderColor = "var(--accent-cyan-border)";
-                e.currentTarget.style.background = "var(--accent-cyan-subtle)";
+                e.currentTarget.style.borderColor = "var(--accent-terracotta-border)";
+                e.currentTarget.style.background = "var(--accent-terracotta-subtle)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = "var(--text-secondary)";

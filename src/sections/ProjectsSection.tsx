@@ -106,8 +106,8 @@ export const ProjectsSection: React.FC = () => {
               type="button"
               onClick={() => setActiveFilter(cat.id)}
               style={{
-                background: activeFilter === cat.id ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
-                border: activeFilter === cat.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
+                background: activeFilter === cat.id ? "var(--accent-terracotta-subtle)" : "var(--bg-surface-subtle)",
+                border: activeFilter === cat.id ? "1px solid var(--accent-terracotta-border)" : "1px solid var(--border-subtle)",
                 borderRadius: "6px",
                 padding: "0.38rem 0.8rem",
                 color: activeFilter === cat.id ? "var(--text-primary)" : "var(--text-secondary)",
@@ -147,7 +147,7 @@ export const ProjectsSection: React.FC = () => {
                       flexWrap: "wrap",
                     }}
                   >
-                    <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
+                    <span className="mono-tag" style={{ color: "var(--accent-terracotta)" }}>
                       {project.categoryTag}
                     </span>
                     {project.statusBadge && (
@@ -190,7 +190,7 @@ export const ProjectsSection: React.FC = () => {
                     style={{
                       fontFamily: "var(--font-sans)",
                       fontSize: "0.9375rem",
-                      color: "var(--accent-cyan-light)",
+                      color: "var(--accent-terracotta-light)",
                       marginBottom: "1.35rem",
                       fontWeight: 500,
                     }}
@@ -244,7 +244,7 @@ export const ProjectsSection: React.FC = () => {
                             lineHeight: 1.5,
                           }}
                         >
-                          <span style={{ color: "var(--accent-cyan)", flexShrink: 0, marginTop: "0.05rem" }}>—</span>
+                          <span style={{ color: "var(--accent-terracotta)", flexShrink: 0, marginTop: "0.05rem" }}>—</span>
                           <span>{cap}</span>
                         </li>
                       ))}
@@ -375,7 +375,7 @@ export const ProjectsSection: React.FC = () => {
                 borderBottom: "1px solid var(--border-subtle)",
               }}
             >
-              <span className="mono-tag" style={{ color: "var(--accent-cyan)", fontSize: "0.75rem" }}>
+              <span className="mono-tag" style={{ color: "var(--accent-terracotta)", fontSize: "0.75rem" }}>
                 {selectedDiagram.title}
               </span>
               <button

@@ -85,8 +85,8 @@ export const AchievementsSection: React.FC = () => {
                   gap: "0.5rem",
                 }}
               >
-                <span className="mono-tag" style={{ color: "var(--accent-cyan)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
-                  <LeetCodeIcon size={13} color="var(--accent-cyan)" />
+                <span className="mono-tag" style={{ color: "var(--accent-terracotta)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+                  <LeetCodeIcon size={13} color="var(--accent-terracotta)" />
                   01 · ALGORITHMIC RIGOR
                 </span>
                 <a
@@ -242,7 +242,7 @@ export const AchievementsSection: React.FC = () => {
                   gap: "0.5rem",
                 }}
               >
-                <span className="mono-tag" style={{ color: "var(--accent-cyan)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+                <span className="mono-tag" style={{ color: "var(--accent-terracotta)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
                   <ShieldCheck size={13} />
                   02 · OPERATIONAL TRAINING
                 </span>
@@ -250,9 +250,9 @@ export const AchievementsSection: React.FC = () => {
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.75rem",
-                    color: "var(--accent-cyan-light)",
-                    background: "rgba(6, 182, 212, 0.08)",
-                    border: "1px solid var(--accent-cyan-border)",
+                    color: "var(--accent-terracotta-light)",
+                    background: "var(--accent-terracotta-subtle)",
+                    border: "1px solid var(--accent-terracotta-border)",
                     padding: "0.15rem 0.55rem",
                     borderRadius: "4px",
                   }}
@@ -279,7 +279,7 @@ export const AchievementsSection: React.FC = () => {
               <div
                 style={{
                   fontSize: "0.95rem",
-                  color: "var(--accent-cyan-light)",
+                  color: "var(--accent-terracotta-light)",
                   fontWeight: 600,
                   marginBottom: "0.45rem",
                 }}
@@ -343,7 +343,7 @@ export const AchievementsSection: React.FC = () => {
                       lineHeight: 1.45,
                     }}
                   >
-                    <CheckCircle2 size={13} style={{ color: "var(--accent-cyan)", flexShrink: 0, marginTop: "0.15rem" }} />
+                    <CheckCircle2 size={13} style={{ color: "var(--accent-terracotta)", flexShrink: 0, marginTop: "0.15rem" }} />
                     <span>{comp}</span>
                   </div>
                 ))}
@@ -369,7 +369,7 @@ export const AchievementsSection: React.FC = () => {
             }}
           >
             <div>
-              <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan)" }}>
+              <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-terracotta)" }}>
                 VERIFIED CREDENTIALS
               </span>
               <h3
@@ -411,8 +411,8 @@ export const AchievementsSection: React.FC = () => {
                   type="button"
                   onClick={() => setActiveFilter(tab.id as "all" | "cert" | "workshop")}
                   style={{
-                    background: activeFilter === tab.id ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
-                    border: activeFilter === tab.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
+                    background: activeFilter === tab.id ? "var(--accent-terracotta-subtle)" : "var(--bg-surface-subtle)",
+                    border: activeFilter === tab.id ? "1px solid var(--accent-terracotta-border)" : "1px solid var(--border-subtle)",
                     color: activeFilter === tab.id ? "var(--text-primary)" : "var(--text-secondary)",
                     fontFamily: "var(--font-sans)",
                     fontSize: "0.8125rem",
@@ -468,7 +468,7 @@ export const AchievementsSection: React.FC = () => {
                       style={{
                         fontSize: "0.6875rem",
                         fontFamily: "var(--font-mono)",
-                        color: "var(--accent-cyan)",
+                        color: "var(--accent-terracotta)",
                         letterSpacing: "0.04em",
                       }}
                     >
@@ -488,7 +488,7 @@ export const AchievementsSection: React.FC = () => {
                         background: "var(--bg-surface-subtle)",
                       }}
                     >
-                      <Award size={11} style={{ color: "var(--accent-cyan)" }} />
+                      <Award size={11} style={{ color: "var(--accent-terracotta)" }} />
                       {cert.badgeLabel}
                     </span>
                   </div>

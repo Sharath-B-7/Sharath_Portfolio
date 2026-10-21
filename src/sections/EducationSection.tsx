@@ -46,7 +46,7 @@ export const EducationSection: React.FC = () => {
                   gap: "0.5rem",
                 }}
               >
-                <span className="mono-tag" style={{ color: "var(--accent-cyan)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+                <span className="mono-tag" style={{ color: "var(--accent-terracotta)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
                   <GraduationCap size={13} />
                   01 · UNDERGRADUATE DEGREE
                 </span>
@@ -96,7 +96,7 @@ export const EducationSection: React.FC = () => {
               <div
                 style={{
                   fontSize: "0.95rem",
-                  color: "var(--accent-cyan-light)",
+                  color: "var(--accent-terracotta-light)",
                   fontWeight: 600,
                   marginBottom: "0.45rem",
                 }}
@@ -202,7 +202,7 @@ export const EducationSection: React.FC = () => {
                   gap: "0.5rem",
                 }}
               >
-                <span className="mono-tag" style={{ color: "var(--accent-cyan)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+                <span className="mono-tag" style={{ color: "var(--accent-terracotta)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
                   <Award size={13} />
                   02 · SCHOLASTIC EXCELLENCE
                 </span>
@@ -256,7 +256,7 @@ export const EducationSection: React.FC = () => {
                 }}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.35rem", flexWrap: "wrap", gap: "0.35rem" }}>
-                  <span style={{ fontSize: "0.8125rem", color: "var(--accent-cyan-light)", fontFamily: "var(--font-mono)", fontWeight: 600 }}>
+                  <span style={{ fontSize: "0.8125rem", color: "var(--accent-terracotta-light)", fontFamily: "var(--font-mono)", fontWeight: 600 }}>
                     Class 12 (Higher Secondary / HSC)
                   </span>
                   <span
@@ -288,7 +288,7 @@ export const EducationSection: React.FC = () => {
                 }}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.35rem", flexWrap: "wrap", gap: "0.35rem" }}>
-                  <span style={{ fontSize: "0.8125rem", color: "var(--accent-cyan-light)", fontFamily: "var(--font-mono)", fontWeight: 600 }}>
+                  <span style={{ fontSize: "0.8125rem", color: "var(--accent-terracotta-light)", fontFamily: "var(--font-mono)", fontWeight: 600 }}>
                     Class 10 (Secondary / SSLC)
                   </span>
                   <span
@@ -328,7 +328,7 @@ export const EducationSection: React.FC = () => {
               }}
             >
               <span>Academic Distinction</span>
-              <span style={{ color: "var(--accent-cyan)" }}>Tamil Nadu State Board</span>
+              <span style={{ color: "var(--accent-terracotta)" }}>Tamil Nadu State Board</span>
             </div>
           </div>
         </div>

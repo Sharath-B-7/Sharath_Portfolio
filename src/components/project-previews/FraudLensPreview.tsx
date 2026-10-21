@@ -372,7 +372,7 @@ export const FraudLensPreview: React.FC = () => {
                     y1={source.y}
                     x2={target.x}
                     y2={target.y}
-                    stroke={edge.flagged ? "rgba(6, 182, 212, 0.7)" : "rgba(255, 255, 255, 0.12)"}
+                    stroke={edge.flagged ? "rgba(200, 100, 70, 0.85)" : "var(--border-strong)"}
                     strokeWidth={edge.flagged ? 1.5 : 1}
                     strokeDasharray={edge.flagged ? "4 2" : undefined}
                   />
@@ -386,10 +386,10 @@ export const FraudLensPreview: React.FC = () => {
                 const isHovered = hoveredNode === node.id;
 
                 const fillColor = isTarget
-                  ? "var(--accent-cyan)"
+                  ? "var(--accent-terracotta)"
                   : isMule
-                  ? "rgba(6, 182, 212, 0.4)"
-                  : "rgba(255, 255, 255, 0.2)";
+                  ? "rgba(200, 100, 70, 0.45)"
+                  : "var(--border-strong)";
 
                 const radius = isTarget ? 14 : isHovered ? 12 : 9;
 

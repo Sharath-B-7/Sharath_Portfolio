@@ -22,42 +22,39 @@ export const AboutSection: React.FC = () => {
 
             <div
               style={{
-                borderTop: "1px solid var(--bg-hairline)",
-                paddingTop: "1.5rem",
+                borderTop: "1px solid var(--border-default)",
+                paddingTop: "1.75rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.25rem",
               }}
-              className="about-meta-grid"
             >
-              <div
-                style={{
-                  background: "var(--bg-surface)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: "6px",
-                  padding: "1rem 1.25rem",
-                }}
-              >
-                <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem" }}>
-                  Academic Program
+              <div>
+                <span className="mono-tag" style={{ color: "var(--accent-terracotta)", display: "block", marginBottom: "0.35rem" }}>
+                  Academic Program &amp; Affiliation
                 </span>
-                <span style={{ fontSize: "0.9375rem", color: "var(--text-primary)", fontWeight: 600, display: "block" }}>
-                  B.E. CSE — Cyber Security
-                </span>
-                <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", fontFamily: "var(--font-sans)", marginTop: "0.2rem", display: "block" }}>
-                  CIT Chennai · 2025–2029
-                </span>
+                <div style={{ fontSize: "1.0625rem", color: "var(--text-primary)", fontWeight: 700, fontFamily: "var(--font-display)" }}>
+                  B.E. Computer Science &amp; Engineering (Cyber Security)
+                </div>
+                <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", marginTop: "0.25rem" }}>
+                  Chennai Institute of Technology · Class of 2029
+                </div>
               </div>
 
               <div
                 style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.85rem",
+                  padding: "0.6rem 0.95rem",
                   background: "var(--bg-surface)",
-                  border: "1px solid var(--border-subtle)",
+                  border: "1px solid var(--border-default)",
                   borderRadius: "6px",
-                  padding: "1rem 1.25rem",
+                  width: "fit-content",
+                  flexWrap: "wrap",
                 }}
               >
-                <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem" }}>
-                  Academic Standing
-                </span>
-                <span style={{ fontSize: "0.9375rem", color: "var(--accent-emerald)", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.35rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.45rem" }}>
                   <span
                     style={{
                       width: "6px",
@@ -67,10 +64,13 @@ export const AboutSection: React.FC = () => {
                       display: "inline-block",
                     }}
                   />
-                  {personalInfo.education.cgpa}
-                </span>
-                <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", fontFamily: "var(--font-sans)", marginTop: "0.2rem", display: "block" }}>
-                  Consistent Academic Record
+                  <span style={{ fontSize: "0.84375rem", fontFamily: "var(--font-mono)", fontWeight: 700, color: "var(--text-primary)" }}>
+                    CGPA: {personalInfo.education.cgpa}
+                  </span>
+                </div>
+                <span style={{ color: "var(--border-subtle)" }}>|</span>
+                <span style={{ fontSize: "0.75rem", color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}>
+                  2nd Year Scholastic Standing
                 </span>
               </div>
             </div>
@@ -78,33 +78,33 @@ export const AboutSection: React.FC = () => {
 
           {/* Right Column: Clear, Credible Technical Narrative */}
           <div className="about-right-col" style={{ display: "flex", flexDirection: "column", gap: "1.35rem" }}>
-            <p style={{ fontSize: "1rem", color: "var(--text-secondary)", lineHeight: 1.7, maxWidth: "65ch" }}>
+            <p style={{ fontSize: "1.05rem", color: "var(--text-primary)", lineHeight: 1.7, maxWidth: "65ch", fontWeight: 400 }}>
               I am a second-year undergraduate student pursuing a Bachelor of Engineering in Computer Science and Engineering with a specialization in Cyber Security at <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>Chennai Institute of Technology</strong>. My primary focus centers on systems security, threat modeling, network protocols, and developing software with security considered from the ground up.
             </p>
 
-            <p style={{ fontSize: "1rem", color: "var(--text-secondary)", lineHeight: 1.7, maxWidth: "65ch" }}>
+            <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.7, maxWidth: "65ch" }}>
               Beyond coursework, I apply a structured approach to technical learning and problem-solving. Through daily practice on <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>LeetCode with over 450+ problems solved</strong>, I have cultivated a strong foundation in data structures, graph theory, dynamic programming, and space-time complexity analysis. This algorithmic rigor directly informs how I architect backend logic and evaluate computational efficiency.
             </p>
 
-            <p style={{ fontSize: "1rem", color: "var(--text-secondary)", lineHeight: 1.7, maxWidth: "65ch" }}>
+            <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.7, maxWidth: "65ch" }}>
               In practical project work, I bridge cybersecurity with software development and artificial intelligence. Projects such as <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>FraudLens AI</strong> and <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>EduGap AI</strong> highlight my work in designing graph relationship engines, machine learning anomaly scoring pipelines, and verifiable full-stack applications.
             </p>
 
             <div
               style={{
-                borderTop: "1px solid var(--bg-hairline)",
+                borderTop: "1px solid var(--border-subtle)",
                 paddingTop: "1.25rem",
                 display: "flex",
                 flexWrap: "wrap",
-                gap: "1.5rem",
-                fontSize: "0.8125rem",
+                gap: "1.25rem",
+                fontSize: "0.78125rem",
                 color: "var(--text-muted)",
-                fontFamily: "var(--font-sans)",
+                fontFamily: "var(--font-mono)",
               }}
             >
-              <span>Languages: English, Tamil</span>
-              <span>·</span>
               <span>Location: Chennai, India</span>
+              <span>·</span>
+              <span>Languages: English, Tamil</span>
               <span>·</span>
               <span>Focus: Defensive Security &amp; Systems</span>
             </div>
@@ -122,23 +122,10 @@ export const AboutSection: React.FC = () => {
           align-items: start;
         }
 
-        .about-meta-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1.25rem;
-        }
-
         @media (max-width: 900px) {
           .about-editorial-grid {
             grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
-          }
-        }
-
-        @media (max-width: 580px) {
-          .about-meta-grid {
-            grid-template-columns: 1fr !important;
-            gap: 0.85rem !important;
+            gap: 2.25rem !important;
           }
         }
       `}</style>
