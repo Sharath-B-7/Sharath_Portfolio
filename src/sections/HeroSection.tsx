@@ -34,8 +34,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           1. DESKTOP ONLY: RIGHT-SIDE FULL-BLEED EDITORIAL BACKGROUND
           Seamless Multi-Directional Gradient Blend into Canvas
           ============================================================== */}
+      {/* Separate Atmospheric Background Transition Layer Behind the Portrait */}
+      <div className="hero-backdrop-atmosphere" aria-hidden="true" />
+
       <div
         className="hero-backdrop-portrait"
+        aria-hidden="true"
         style={{
           position: "absolute",
           top: 0,
@@ -52,6 +56,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         <img
           src={personalInfo.assets.profilePhoto}
           alt="Sharath B — Cybersecurity & Software Engineer"
+          className="hero-portrait-img"
           style={{
             position: "absolute",
             inset: 0,
@@ -63,19 +68,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           loading="eager"
         />
 
-        {/* --- DUAL VIGNETTE LAYERS FOR SEAMLESS 450ms OPACITY CROSS-FADE --- */}
-        {/* 1. Dark Theme Vignettes (Desktop) */}
-        <div className="hero-vignette-dark" aria-hidden="true">
-          <div className="hero-fade-dark-left" />
-          <div className="hero-fade-dark-bottom" />
-          <div className="hero-fade-dark-top" />
-        </div>
-
-        {/* 2. Light Theme Vignettes (Desktop) — Zero face overlay, 100% natural skin tone preserved */}
-        <div className="hero-vignette-light" aria-hidden="true">
-          <div className="hero-fade-light-left" />
-          <div className="hero-fade-light-bottom" />
-        </div>
+        {/* Carefully scoped perimeter edge-blends — leaving face, hair & skin 100% untouched */}
+        <div className="hero-edge-blend-left" aria-hidden="true" />
+        <div className="hero-edge-blend-bottom" aria-hidden="true" />
+        <div className="hero-edge-blend-top" aria-hidden="true" />
       </div>
 
       {/* ==============================================================
@@ -89,15 +85,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           className="hero-mobile-portrait-banner-img"
           loading="eager"
         />
-        {/* Mobile Dark Theme Vignettes */}
-        <div className="hero-mobile-vignette-dark" aria-hidden="true">
-          <div className="hero-mobile-fade-dark-bottom" />
-          <div className="hero-mobile-fade-dark-top" />
-        </div>
-        {/* Mobile Light Theme Vignettes — Zero face overlay, lower suit blend only */}
-        <div className="hero-mobile-vignette-light" aria-hidden="true">
-          <div className="hero-mobile-fade-light-bottom" />
-        </div>
+        {/* Mobile Edge Blends — Scoped strictly to lower suit & top header, zero face alteration */}
+        <div className="hero-mobile-edge-blend-bottom" aria-hidden="true" />
+        <div className="hero-mobile-edge-blend-top" aria-hidden="true" />
       </div>
 
       {/* ==============================================================
@@ -644,178 +634,141 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         }
 
         /* Prevent hero photo image elements from animating during theme changes */
-        .hero-backdrop-portrait img,
+        .hero-portrait-img,
         .hero-mobile-portrait-banner-img {
           transition: none !important;
         }
 
-        /* ==========================================================
-           DESKTOP HERO VIGNETTE LAYERS — SMOOTH OPACITY CROSS-FADE (450ms)
-           ========================================================== */
-        .hero-vignette-dark,
-        .hero-vignette-light {
+        /* Atmospheric Background Transition Layer Behind Portrait */
+        .hero-backdrop-atmosphere {
           position: absolute;
           inset: 0;
           pointer-events: none;
-          transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 0;
+          background: radial-gradient(
+            ellipse 75% 65% at 75% 38%,
+            rgba(32, 36, 35, 0.45) 0%,
+            rgba(23, 26, 25, 0.8) 55%,
+            var(--bg-canvas) 100%
+          );
+          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Dark Theme: dark vignette visible (1), light vignette hidden (0) */
-        .hero-vignette-dark {
-          opacity: 1;
-        }
-        .hero-vignette-light {
-          opacity: 0;
-        }
-
-        /* Light Theme: cross-fade to light vignette */
-        [data-theme="light"] .hero-vignette-dark {
-          opacity: 0;
-        }
-        [data-theme="light"] .hero-vignette-light {
-          opacity: 1;
-        }
-
-        /* Dark Theme Desktop Vignettes */
-        .hero-fade-dark-left {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            to right,
-            #171A19 0%,
-            rgba(23, 26, 25, 0.95) 15%,
-            rgba(23, 26, 25, 0.75) 35%,
-            rgba(23, 26, 25, 0.25) 60%,
-            transparent 85%
+        [data-theme="light"] .hero-backdrop-atmosphere {
+          background: radial-gradient(
+            ellipse 75% 65% at 75% 38%,
+            rgba(237, 231, 220, 0.70) 0%,
+            rgba(244, 240, 232, 0.88) 55%,
+            var(--bg-canvas) 100%
           );
         }
 
-        .hero-fade-dark-bottom {
+        /* Desktop Portrait Container Feathered Mask — 100% untouched face, soft outer perimeter */
+        .hero-backdrop-portrait {
+          -webkit-mask-image: radial-gradient(
+            ellipse 92% 86% at 65% 38%,
+            #000000 48%,
+            rgba(0, 0, 0, 0.95) 60%,
+            rgba(0, 0, 0, 0.65) 75%,
+            rgba(0, 0, 0, 0.20) 88%,
+            transparent 100%
+          );
+          mask-image: radial-gradient(
+            ellipse 92% 86% at 65% 38%,
+            #000000 48%,
+            rgba(0, 0, 0, 0.95) 60%,
+            rgba(0, 0, 0, 0.65) 75%,
+            rgba(0, 0, 0, 0.20) 88%,
+            transparent 100%
+          );
+          transition: background-color 450ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Desktop Edge Blends — Scoped to Outer Edges Only, Face at 34%+ is 100% Untouched */
+        .hero-edge-blend-left {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 20%;
+          background: linear-gradient(
+            to right,
+            var(--bg-canvas) 0%,
+            var(--bg-canvas-90) 25%,
+            var(--bg-canvas-40) 65%,
+            transparent 100%
+          );
+          pointer-events: none;
+          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-edge-blend-bottom {
           position: absolute;
           left: 0;
           right: 0;
           bottom: 0;
-          height: 45%;
+          height: 26%;
           background: linear-gradient(
             to top,
-            #171A19 0%,
-            rgba(23, 26, 25, 0.95) 20%,
-            rgba(23, 26, 25, 0.40) 55%,
+            var(--bg-canvas) 0%,
+            var(--bg-canvas-90) 25%,
+            var(--bg-canvas-40) 65%,
             transparent 100%
           );
+          pointer-events: none;
+          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-fade-dark-top {
+        .hero-edge-blend-top {
           position: absolute;
           left: 0;
           right: 0;
           top: 0;
-          height: 22%;
+          height: 10%;
           background: linear-gradient(
             to bottom,
-            #171A19 0%,
-            rgba(23, 26, 25, 0.75) 35%,
+            var(--bg-canvas) 0%,
             transparent 100%
           );
-        }
-
-        /* Light Theme Desktop Vignettes — Protect Face, Skin Tones & Hair from any Pale Overlays */
-        .hero-fade-light-left {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            to right,
-            #F4F0E8 0%,
-            rgba(244, 240, 232, 0.95) 6%,
-            rgba(244, 240, 232, 0.60) 12%,
-            rgba(244, 240, 232, 0.15) 18%,
-            transparent 22%
-          );
-        }
-
-        .hero-fade-light-bottom {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 22%;
-          background: linear-gradient(
-            to top,
-            #F4F0E8 0%,
-            rgba(244, 240, 232, 0.90) 25%,
-            rgba(244, 240, 232, 0.35) 65%,
-            transparent 100%
-          );
-        }
-
-        /* ==========================================================
-           MOBILE HERO VIGNETTE LAYERS — SMOOTH OPACITY CROSS-FADE (450ms)
-           ========================================================== */
-        .hero-mobile-vignette-dark,
-        .hero-mobile-vignette-light {
-          position: absolute;
-          inset: 0;
           pointer-events: none;
-          transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
+          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-mobile-vignette-dark {
-          opacity: 1;
-        }
-        .hero-mobile-vignette-light {
-          opacity: 0;
+        /* Mobile Portrait Banner & Edge Blends */
+        .hero-mobile-portrait-banner {
+          transition: background-color 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        [data-theme="light"] .hero-mobile-vignette-dark {
-          opacity: 0;
-        }
-        [data-theme="light"] .hero-mobile-vignette-light {
-          opacity: 1;
-        }
-
-        /* Mobile Dark Vignettes */
-        .hero-mobile-fade-dark-bottom {
+        .hero-mobile-edge-blend-bottom {
           position: absolute;
           left: 0;
           right: 0;
           bottom: 0;
-          height: 52%;
+          height: 30%;
           background: linear-gradient(
             to top,
-            #171A19 0%,
-            rgba(23, 26, 25, 0.95) 25%,
-            rgba(23, 26, 25, 0.40) 55%,
+            var(--bg-canvas) 0%,
+            var(--bg-canvas-90) 25%,
+            var(--bg-canvas-40) 65%,
             transparent 100%
           );
+          pointer-events: none;
+          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-mobile-fade-dark-top {
+        .hero-mobile-edge-blend-top {
           position: absolute;
           left: 0;
           right: 0;
           top: 0;
-          height: 20%;
+          height: 12%;
           background: linear-gradient(
             to bottom,
-            rgba(23, 26, 25, 0.75) 0%,
+            var(--bg-canvas) 0%,
             transparent 100%
           );
-        }
-
-        /* Mobile Light Vignettes — Protect face & hair; subtle lower suit jacket blend only */
-        .hero-mobile-fade-light-bottom {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 22%;
-          background: linear-gradient(
-            to top,
-            #F4F0E8 0%,
-            rgba(244, 240, 232, 0.92) 30%,
-            rgba(244, 240, 232, 0.25) 75%,
-            transparent 100%
-          );
+          pointer-events: none;
+          transition: background 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
       `}</style>
     </section>

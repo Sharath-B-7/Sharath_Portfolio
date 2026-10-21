@@ -35,7 +35,7 @@ export const personalInfo: PersonalInfo = {
   headline: "Building Secure Systems. Solving Real Problems.",
   title: "Cybersecurity | Software Development | AI/ML",
   heroDescription:
-    "Computer Science and Engineering student specializing in Cyber Security at Chennai Institute of Technology, Chennai, with interests in cybersecurity, SOC analysis, AI, machine learning, and software development. Strong problem-solving skills with an interest in AI-assisted coding and rapid prototyping.",
+    "Computer Science and Engineering student specializing in Cybersecurity at Chennai Institute of Technology, Chennai, with interests in cybersecurity, SOC analysis, AI, machine learning, and software development. Strong problem-solving skills with an interest in AI-assisted coding and rapid prototyping.",
   education: {
     degree: "B.E. Computer Science and Engineering — Cyber Security",
     college: "Chennai Institute of Technology, Chennai",
