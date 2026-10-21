@@ -661,14 +661,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           }
         }
 
-        /* Narrow mobile screens (<= 360px, e.g. iPhone SE 1st gen) */
-        @media (max-width: 360px) {
+        /* Narrow mobile screens (<= 380px, e.g. iPhone SE / compact viewports) */
+        @media (max-width: 380px) {
           .hero-mobile-portrait-banner {
             height: 310px !important;
           }
 
+          .hero-availability-pill {
+            font-size: 0.65625rem !important;
+            letter-spacing: 0.04em !important;
+            padding: 0.22rem 0.6rem !important;
+          }
+
           .hero-headline-text {
-            font-size: 1.95rem !important;
+            font-size: 1.85rem !important;
           }
 
           .hero-skills-grid {
@@ -677,7 +683,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
           .hero-cta-buttons > a,
           .hero-cta-buttons > button {
-            width: 100%;
+            width: 100% !important;
+            flex: 1 1 100% !important;
+          }
+
+          .hero-mobile-social-links > a {
+            flex: 1 1 calc(50% - 0.5rem);
           }
         }
       `}</style>

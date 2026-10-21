@@ -394,6 +394,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               cursor: "pointer",
               alignItems: "center",
               justifyContent: "center",
+              minWidth: "42px",
+              minHeight: "42px",
             }}
             className="theme-toggle-mobile"
           >
@@ -411,6 +413,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               padding: "0.45rem",
               borderRadius: "8px",
               cursor: "pointer",
+              alignItems: "center",
+              justifyContent: "center",
+              minWidth: "42px",
+              minHeight: "42px",
             }}
             className="mobile-toggle-btn"
             aria-label="Toggle navigation menu"
@@ -603,8 +609,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             zIndex: 100,
             display: "flex",
             flexDirection: "column",
-            gap: "0.75rem",
+            gap: "0.5rem",
             boxShadow: "var(--shadow-lg)",
+            maxHeight: "calc(100vh - 90px)",
+            overflowY: "auto",
+            WebkitOverflowScrolling: "touch",
           }}
         >
           {directoryHubs.map((hub) => (
@@ -623,8 +632,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 fontWeight: 500,
                 display: "flex",
                 alignItems: "center",
-                gap: "0.6rem",
-                padding: "0.5rem 0",
+                gap: "0.65rem",
+                padding: "0.6rem 0.25rem",
+                minHeight: "44px",
                 borderBottom: "1px solid var(--border-subtle)",
               }}
             >
@@ -636,7 +646,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           {/* Mobile Drawer Appearance Switcher */}
           <div
             style={{
-              paddingTop: "0.4rem",
+              paddingTop: "0.6rem",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
@@ -712,6 +722,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           }
           .header-badge {
             display: none !important;
+          }
+        }
+        @media (max-width: 380px) {
+          .header-clock {
+            font-size: 0.6875rem !important;
+            letter-spacing: 0.04em !important;
           }
         }
       `}</style>

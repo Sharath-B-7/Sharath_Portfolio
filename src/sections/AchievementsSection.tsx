@@ -203,7 +203,7 @@ export const AchievementsSection: React.FC = () => {
                       fontFamily: "var(--font-mono)",
                       fontSize: "0.71875rem",
                       color: "var(--text-secondary)",
-                      background: "rgba(255, 255, 255, 0.025)",
+                      background: "var(--bg-surface-subtle)",
                       padding: "0.22rem 0.55rem",
                       borderRadius: "4px",
                       border: "1px solid var(--border-subtle)",
@@ -329,11 +329,7 @@ export const AchievementsSection: React.FC = () => {
               </div>
 
               <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                  gap: "0.5rem 0.75rem",
-                }}
+                className="soc-competencies-grid"
               >
                 {socCompetencies.map((comp, idx) => (
                   <div
@@ -415,15 +411,18 @@ export const AchievementsSection: React.FC = () => {
                   type="button"
                   onClick={() => setActiveFilter(tab.id as "all" | "cert" | "workshop")}
                   style={{
-                    background: activeFilter === tab.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
+                    background: activeFilter === tab.id ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
                     border: activeFilter === tab.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
                     color: activeFilter === tab.id ? "var(--text-primary)" : "var(--text-secondary)",
                     fontFamily: "var(--font-sans)",
                     fontSize: "0.8125rem",
                     fontWeight: activeFilter === tab.id ? 600 : 500,
-                    padding: "0.35rem 0.8rem",
+                    padding: "0.38rem 0.8rem",
                     borderRadius: "6px",
                     cursor: "pointer",
+                    minHeight: "36px",
+                    display: "inline-flex",
+                    alignItems: "center",
                     transition: "all 0.15s ease",
                   }}
                 >
@@ -435,11 +434,7 @@ export const AchievementsSection: React.FC = () => {
 
           {/* Cards Grid */}
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))",
-              gap: "1.35rem",
-            }}
+            className="credentials-editorial-grid"
           >
             {filteredCredentials.map((cert) => (
               <div
@@ -490,7 +485,7 @@ export const AchievementsSection: React.FC = () => {
                         display: "inline-flex",
                         alignItems: "center",
                         gap: "0.3rem",
-                        background: "rgba(255, 255, 255, 0.02)",
+                        background: "var(--bg-surface-subtle)",
                       }}
                     >
                       <Award size={11} style={{ color: "var(--accent-cyan)" }} />
@@ -535,7 +530,7 @@ export const AchievementsSection: React.FC = () => {
                         fontSize: "0.6875rem",
                         fontFamily: "var(--font-mono)",
                         color: "var(--text-secondary)",
-                        background: "rgba(255, 255, 255, 0.025)",
+                        background: "var(--bg-surface-subtle)",
                         border: "1px solid var(--border-subtle)",
                         padding: "0.15rem 0.5rem",
                         borderRadius: "3px",
@@ -565,6 +560,18 @@ export const AchievementsSection: React.FC = () => {
           border-color: var(--border-strong) !important;
         }
 
+        .credentials-editorial-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+          gap: 1.35rem;
+        }
+
+        .soc-competencies-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 0.5rem 0.75rem;
+        }
+
         @media (max-width: 960px) {
           .achieve-split-grid {
             grid-template-columns: 1fr !important;
@@ -579,6 +586,15 @@ export const AchievementsSection: React.FC = () => {
           }
           .credential-editorial-card {
             padding: 1.25rem 1rem !important;
+          }
+        }
+
+        @media (max-width: 520px) {
+          .credentials-editorial-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .soc-competencies-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

@@ -123,7 +123,7 @@ export const AetherGradePreview: React.FC = () => {
               type="button"
               onClick={() => setActiveRole(role)}
               style={{
-                background: activeRole === role ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
+                background: activeRole === role ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
                 border: activeRole === role ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
                 borderRadius: "4px",
                 padding: "0.3rem 0.6rem",
@@ -144,7 +144,7 @@ export const AetherGradePreview: React.FC = () => {
       <div
         style={{
           padding: "0.55rem 0.75rem",
-          background: "rgba(255, 255, 255, 0.025)",
+          background: "var(--bg-surface-subtle)",
           border: "1px solid var(--border-subtle)",
           borderRadius: "4px",
           display: "flex",
@@ -199,7 +199,7 @@ export const AetherGradePreview: React.FC = () => {
             key={block.height}
             style={{
               border: block.valid ? "1px solid var(--border-default)" : "1px solid var(--accent-cyan-light)",
-              background: block.valid ? "rgba(255, 255, 255, 0.02)" : "rgba(6, 182, 212, 0.08)",
+              background: block.valid ? "var(--bg-surface-subtle)" : "var(--accent-cyan-subtle)",
               borderRadius: "5px",
               padding: "0.6rem 0.75rem",
               fontSize: "0.6875rem",

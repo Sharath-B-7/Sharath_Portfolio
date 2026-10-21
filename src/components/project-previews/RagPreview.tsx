@@ -186,7 +186,7 @@ export const RagPreview: React.FC = () => {
                 setActiveCitationIndex(0);
               }}
               style={{
-                background: selectedQuery.id === item.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
+                background: selectedQuery.id === item.id ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
                 border: selectedQuery.id === item.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
                 borderRadius: "4px",
                 padding: "0.3rem 0.6rem",
@@ -207,7 +207,7 @@ export const RagPreview: React.FC = () => {
       <div
         style={{
           padding: "0.55rem 0.75rem",
-          background: "rgba(255, 255, 255, 0.025)",
+          background: "var(--bg-surface-subtle)",
           border: "1px solid var(--border-subtle)",
           borderRadius: "4px",
           display: "flex",
@@ -568,23 +568,23 @@ export const RagPreview: React.FC = () => {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "0.5rem",
+          gap: "0.4rem",
           paddingTop: "0.75rem",
           borderTop: "1px solid var(--border-subtle)",
           textAlign: "center",
         }}
       >
-        <div style={{ background: "rgba(255, 255, 255, 0.02)", padding: "0.4rem", borderRadius: "4px" }}>
-          <div style={{ fontSize: "0.625rem", color: "var(--text-muted)" }}>CHUNK SIZE</div>
-          <div style={{ fontSize: "0.8125rem", color: "var(--text-primary)", fontWeight: 600 }}>800 / 150</div>
+        <div style={{ background: "var(--bg-surface-subtle)", padding: "0.35rem 0.2rem", borderRadius: "4px" }}>
+          <div style={{ fontSize: "0.59375rem", color: "var(--text-muted)" }}>CHUNK SIZE</div>
+          <div style={{ fontSize: "0.78125rem", color: "var(--text-primary)", fontWeight: 600 }}>800 / 150</div>
         </div>
-        <div style={{ background: "rgba(255, 255, 255, 0.02)", padding: "0.4rem", borderRadius: "4px" }}>
-          <div style={{ fontSize: "0.625rem", color: "var(--text-muted)" }}>CANDIDATES</div>
-          <div style={{ fontSize: "0.8125rem", color: "var(--accent-cyan)", fontWeight: 600 }}>15 &rarr; Top 4</div>
+        <div style={{ background: "var(--bg-surface-subtle)", padding: "0.35rem 0.2rem", borderRadius: "4px" }}>
+          <div style={{ fontSize: "0.59375rem", color: "var(--text-muted)" }}>CANDIDATES</div>
+          <div style={{ fontSize: "0.78125rem", color: "var(--accent-cyan)", fontWeight: 600 }}>15 &rarr; Top 4</div>
         </div>
-        <div style={{ background: "rgba(255, 255, 255, 0.02)", padding: "0.4rem", borderRadius: "4px" }}>
-          <div style={{ fontSize: "0.625rem", color: "var(--text-muted)" }}>INFERENCE</div>
-          <div style={{ fontSize: "0.8125rem", color: "var(--accent-emerald)", fontWeight: 600 }}>Llama 3.1 8B</div>
+        <div style={{ background: "var(--bg-surface-subtle)", padding: "0.35rem 0.2rem", borderRadius: "4px" }}>
+          <div style={{ fontSize: "0.59375rem", color: "var(--text-muted)" }}>INFERENCE</div>
+          <div style={{ fontSize: "0.78125rem", color: "var(--accent-emerald)", fontWeight: 600 }}>Llama 3.1</div>
         </div>
       </div>
 

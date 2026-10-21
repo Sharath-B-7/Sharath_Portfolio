@@ -24,10 +24,8 @@ export const AboutSection: React.FC = () => {
               style={{
                 borderTop: "1px solid var(--bg-hairline)",
                 paddingTop: "1.5rem",
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "1.25rem",
               }}
+              className="about-meta-grid"
             >
               <div
                 style={{
@@ -124,10 +122,23 @@ export const AboutSection: React.FC = () => {
           align-items: start;
         }
 
+        .about-meta-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.25rem;
+        }
+
         @media (max-width: 900px) {
           .about-editorial-grid {
             grid-template-columns: 1fr !important;
             gap: 2.5rem !important;
+          }
+        }
+
+        @media (max-width: 580px) {
+          .about-meta-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0.85rem !important;
           }
         }
       `}</style>

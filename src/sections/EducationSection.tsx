@@ -163,7 +163,7 @@ export const EducationSection: React.FC = () => {
                       fontFamily: "var(--font-mono)",
                       fontSize: "0.71875rem",
                       color: "var(--text-secondary)",
-                      background: "rgba(255, 255, 255, 0.025)",
+                      background: "var(--bg-surface-subtle)",
                       padding: "0.22rem 0.55rem",
                       borderRadius: "4px",
                       border: "1px solid var(--border-subtle)",
@@ -211,7 +211,7 @@ export const EducationSection: React.FC = () => {
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.75rem",
                     color: "var(--text-secondary)",
-                    background: "rgba(255, 255, 255, 0.025)",
+                    background: "var(--bg-surface-subtle)",
                     border: "1px solid var(--border-subtle)",
                     padding: "0.15rem 0.55rem",
                     borderRadius: "4px",
@@ -249,7 +249,7 @@ export const EducationSection: React.FC = () => {
               <div
                 style={{
                   padding: "1rem 1.15rem",
-                  background: "rgba(255, 255, 255, 0.02)",
+                  background: "var(--bg-surface-subtle)",
                   border: "1px solid var(--border-subtle)",
                   borderRadius: "6px",
                   marginBottom: "1rem",
@@ -282,7 +282,7 @@ export const EducationSection: React.FC = () => {
               <div
                 style={{
                   padding: "1rem 1.15rem",
-                  background: "rgba(255, 255, 255, 0.02)",
+                  background: "var(--bg-surface-subtle)",
                   border: "1px solid var(--border-subtle)",
                   borderRadius: "6px",
                 }}

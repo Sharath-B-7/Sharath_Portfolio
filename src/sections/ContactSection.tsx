@@ -48,19 +48,19 @@ export const ContactSection: React.FC = () => {
           <div
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.75rem, 3.8vw, 3rem)",
+              fontSize: "clamp(1.25rem, 4.2vw, 2.75rem)",
               fontWeight: 700,
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
-              wordBreak: "break-all",
-              lineHeight: 1.15,
+              wordBreak: "break-word",
+              lineHeight: 1.2,
               marginBottom: "1.75rem",
             }}
           >
             {personalInfo.social.email}
           </div>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem" }}>
+          <div className="contact-cta-buttons">
             <a
               href={`mailto:${personalInfo.social.email}`}
               className="btn-primary"
@@ -152,6 +152,12 @@ export const ContactSection: React.FC = () => {
       </div>
 
       <style>{`
+        .contact-cta-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.85rem;
+        }
+
         .contact-links-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -176,9 +182,23 @@ export const ContactSection: React.FC = () => {
           transform: translateY(-2px);
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 900px) and (min-width: 601px) {
+          .contact-links-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 600px) {
           .contact-links-grid {
             grid-template-columns: 1fr;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .contact-cta-buttons > a,
+          .contact-cta-buttons > button {
+            width: 100% !important;
+            justify-content: center !important;
           }
         }
       `}</style>

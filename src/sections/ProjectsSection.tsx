@@ -106,15 +106,18 @@ export const ProjectsSection: React.FC = () => {
               type="button"
               onClick={() => setActiveFilter(cat.id)}
               style={{
-                background: activeFilter === cat.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
+                background: activeFilter === cat.id ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
                 border: activeFilter === cat.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
                 borderRadius: "6px",
-                padding: "0.35rem 0.8rem",
+                padding: "0.38rem 0.8rem",
                 color: activeFilter === cat.id ? "var(--text-primary)" : "var(--text-secondary)",
                 fontFamily: "var(--font-sans)",
                 fontSize: "0.8125rem",
                 fontWeight: activeFilter === cat.id ? 600 : 500,
                 cursor: "pointer",
+                minHeight: "36px",
+                display: "inline-flex",
+                alignItems: "center",
                 transition: "all 0.15s ease",
               }}
             >
@@ -277,7 +280,7 @@ export const ProjectsSection: React.FC = () => {
                             fontFamily: "var(--font-mono)",
                             fontSize: "0.71875rem",
                             color: "var(--text-secondary)",
-                            background: "rgba(255, 255, 255, 0.025)",
+                            background: "var(--bg-surface-subtle)",
                             padding: "0.22rem 0.55rem",
                             borderRadius: "4px",
                             border: "1px solid var(--border-subtle)",
@@ -290,7 +293,7 @@ export const ProjectsSection: React.FC = () => {
                   </div>
 
                   {/* Action Links */}
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.85rem", flexWrap: "wrap" }}>
+                  <div className="project-action-links">
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
@@ -336,12 +339,13 @@ export const ProjectsSection: React.FC = () => {
             position: "fixed",
             inset: 0,
             zIndex: 999,
-            background: "rgba(7, 10, 16, 0.88)",
+            background: "var(--modal-backdrop-bg)",
             backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "1.5rem",
+            padding: "clamp(0.75rem, 3vw, 1.5rem)",
           }}
           onClick={() => setSelectedDiagram(null)}
         >
@@ -353,11 +357,11 @@ export const ProjectsSection: React.FC = () => {
               maxHeight: "90vh",
               background: "var(--bg-surface-elevated)",
               border: "1px solid var(--border-default)",
-              padding: "1.5rem",
+              padding: "clamp(1rem, 2.5vw, 1.5rem)",
               borderRadius: "8px",
               display: "flex",
               flexDirection: "column",
-              boxShadow: "0 25px 60px rgba(0, 0, 0, 0.95)",
+              boxShadow: "var(--shadow-lg)",
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -371,24 +375,29 @@ export const ProjectsSection: React.FC = () => {
                 borderBottom: "1px solid var(--border-subtle)",
               }}
             >
-              <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
+              <span className="mono-tag" style={{ color: "var(--accent-cyan)", fontSize: "0.75rem" }}>
                 {selectedDiagram.title}
               </span>
               <button
                 type="button"
                 onClick={() => setSelectedDiagram(null)}
                 style={{
-                  background: "transparent",
-                  border: "none",
+                  background: "var(--bg-surface-subtle)",
+                  border: "1px solid var(--border-default)",
+                  borderRadius: "6px",
                   color: "var(--text-secondary)",
                   cursor: "pointer",
-                  display: "flex",
+                  display: "inline-flex",
                   alignItems: "center",
-                  padding: "0.25rem",
+                  justifyContent: "center",
+                  minWidth: "38px",
+                  minHeight: "38px",
+                  padding: "0.35rem",
+                  transition: "all 0.15s ease",
                 }}
                 aria-label="Close architecture modal"
               >
-                <X size={20} />
+                <X size={18} />
               </button>
             </div>
             <div style={{ overflow: "auto", maxHeight: "calc(90vh - 100px)", display: "flex", justifyContent: "center" }}>
@@ -403,6 +412,13 @@ export const ProjectsSection: React.FC = () => {
       )}
 
       <style>{`
+        .project-action-links {
+          display: flex;
+          align-items: center;
+          gap: 0.85rem;
+          flex-wrap: wrap;
+        }
+
         .project-editorial-card {
           border: 1px solid var(--border-default);
           background: var(--bg-surface);
@@ -432,8 +448,16 @@ export const ProjectsSection: React.FC = () => {
 
         @media (max-width: 640px) {
           .project-editorial-card {
-            padding: 1.25rem 1rem !important;
+            padding: 1.25rem 0.85rem !important;
             border-radius: 8px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .project-action-links > a,
+          .project-action-links > button {
+            width: 100% !important;
+            justify-content: center !important;
           }
         }
       `}</style>

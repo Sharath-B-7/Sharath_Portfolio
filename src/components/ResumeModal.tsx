@@ -54,16 +54,16 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
       onClick={handleClick}
       aria-labelledby="resume-modal-title"
       style={{
-        width: "92vw",
-        maxWidth: "960px",
-        height: "88vh",
+        width: "min(94vw, 960px)",
+        height: "min(88vh, 900px)",
         background: "var(--bg-surface-elevated)",
         border: "1px solid var(--border-default)",
         borderRadius: "8px",
-        boxShadow: "0 25px 60px rgba(0, 0, 0, 0.95)",
+        boxShadow: "var(--shadow-lg)",
         overflow: "hidden",
         display: isOpen ? "flex" : "none",
         flexDirection: "column",
+        margin: "auto",
       }}
     >
       {/* Modal Header */}
@@ -72,13 +72,15 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "1rem 1.5rem",
+          padding: "clamp(0.75rem, 2vw, 1rem) clamp(0.85rem, 2.5vw, 1.5rem)",
           background: "var(--bg-surface)",
           borderBottom: "1px solid var(--border-subtle)",
           flexShrink: 0,
+          flexWrap: "wrap",
+          gap: "0.75rem",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", minWidth: 0, flex: "1 1 auto" }}>
           <div
             style={{
               padding: "0.4rem",
@@ -86,20 +88,26 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               borderRadius: "4px",
               color: "var(--accent-cyan)",
               display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
               background: "var(--accent-cyan-subtle)",
+              flexShrink: 0,
             }}
           >
             <FileText size={18} />
           </div>
-          <div>
+          <div style={{ minWidth: 0 }}>
             <h2
               id="resume-modal-title"
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "1.0625rem",
+                fontSize: "clamp(0.9375rem, 2vw, 1.0625rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
-                lineHeight: 1.2,
+                lineHeight: 1.25,
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
             >
               {personalInfo.name} — Curriculum Vitae
@@ -109,26 +117,38 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 display: "flex",
                 alignItems: "center",
                 gap: "0.4rem",
-                fontSize: "0.71875rem",
+                fontSize: "0.6875rem",
                 color: "var(--text-muted)",
                 fontFamily: "var(--font-mono)",
                 marginTop: "0.15rem",
               }}
             >
-              <ShieldCheck size={13} color="var(--accent-emerald)" />
-              <span>Official Resume PDF · CIT Chennai</span>
+              <ShieldCheck size={12} color="var(--accent-emerald)" />
+              <span>Official PDF · CIT Chennai</span>
             </div>
           </div>
         </div>
 
         {/* Modal Controls */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            flexWrap: "wrap",
+          }}
+        >
           <a
             href={personalInfo.assets.resumePdf}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-editorial-secondary"
-            style={{ padding: "0.4rem 0.8rem", fontSize: "0.75rem", fontFamily: "var(--font-mono)" }}
+            style={{
+              padding: "0.4rem 0.75rem",
+              fontSize: "0.71875rem",
+              fontFamily: "var(--font-mono)",
+              minHeight: "36px",
+            }}
             title="Open PDF in new browser tab"
           >
             <ExternalLink size={13} />
@@ -138,7 +158,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             href={personalInfo.assets.resumePdf}
             download="Sharath_B_Resume.pdf"
             className="btn-editorial-primary"
-            style={{ padding: "0.4rem 0.8rem", fontSize: "0.75rem", fontFamily: "var(--font-mono)" }}
+            style={{
+              padding: "0.4rem 0.75rem",
+              fontSize: "0.71875rem",
+              fontFamily: "var(--font-mono)",
+              minHeight: "36px",
+            }}
             title="Download PDF"
           >
             <Download size={13} />
@@ -149,14 +174,16 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             aria-label="Close resume viewer"
             style={{
               padding: "0.4rem",
-              background: "rgba(255, 255, 255, 0.03)",
+              background: "var(--bg-surface-subtle)",
               border: "1px solid var(--border-default)",
               borderRadius: "4px",
               color: "var(--text-secondary)",
               cursor: "pointer",
-              display: "flex",
+              display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
+              minWidth: "36px",
+              minHeight: "36px",
               transition: "all 0.15s ease",
             }}
             onMouseEnter={(e) => {

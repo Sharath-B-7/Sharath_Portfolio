@@ -90,15 +90,18 @@ export const SkillsSection: React.FC = () => {
               type="button"
               onClick={() => setActiveCategory("all")}
               style={{
-                background: activeCategory === "all" ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
+                background: activeCategory === "all" ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
                 border: activeCategory === "all" ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
                 borderRadius: "6px",
-                padding: "0.35rem 0.75rem",
+                padding: "0.38rem 0.8rem",
                 color: activeCategory === "all" ? "var(--text-primary)" : "var(--text-secondary)",
                 fontFamily: "var(--font-sans)",
                 fontSize: "0.8125rem",
                 fontWeight: activeCategory === "all" ? 600 : 500,
                 cursor: "pointer",
+                minHeight: "36px",
+                display: "inline-flex",
+                alignItems: "center",
                 transition: "all 0.15s ease",
               }}
             >
@@ -111,15 +114,18 @@ export const SkillsSection: React.FC = () => {
                 type="button"
                 onClick={() => setActiveCategory(group.id)}
                 style={{
-                  background: activeCategory === group.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
+                  background: activeCategory === group.id ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
                   border: activeCategory === group.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
                   borderRadius: "6px",
-                  padding: "0.35rem 0.75rem",
+                  padding: "0.38rem 0.8rem",
                   color: activeCategory === group.id ? "var(--text-primary)" : "var(--text-secondary)",
                   fontFamily: "var(--font-sans)",
                   fontSize: "0.8125rem",
                   fontWeight: activeCategory === group.id ? 600 : 500,
                   cursor: "pointer",
+                  minHeight: "36px",
+                  display: "inline-flex",
+                  alignItems: "center",
                   transition: "all 0.15s ease",
                 }}
               >
@@ -134,12 +140,13 @@ export const SkillsSection: React.FC = () => {
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(255, 255, 255, 0.025)",
+              background: "var(--bg-surface-subtle)",
               border: "1px solid var(--border-default)",
               borderRadius: "4px",
-              padding: "0.35rem 0.75rem",
+              padding: "0.45rem 0.75rem",
               minWidth: "220px",
             }}
+            className="skills-search-box"
           >
             <Search size={13} color="var(--text-muted)" />
             <input
@@ -306,6 +313,11 @@ export const SkillsSection: React.FC = () => {
         @media (max-width: 640px) {
           .skills-grid-container {
             grid-template-columns: 1fr;
+          }
+          .skills-search-box {
+            width: 100% !important;
+            min-width: 100% !important;
+            margin-top: 0.35rem;
           }
         }
       `}</style>

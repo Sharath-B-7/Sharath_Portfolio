@@ -193,14 +193,14 @@ body {
   max-width: var(--max-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(1.25rem, 3.5vw, 2.5rem);
-  padding-right: clamp(1.25rem, 3.5vw, 2.5rem);
+  padding-left: clamp(1rem, 3.5vw, 2.5rem);
+  padding-right: clamp(1rem, 3.5vw, 2.5rem);
 }
 
 /* Section Common Styling */
 .editorial-section {
-  padding-top: clamp(4.5rem, 7.5vw, 6.5rem);
-  padding-bottom: clamp(4.5rem, 7.5vw, 6.5rem);
+  padding-top: clamp(3.75rem, 6.5vw, 6rem);
+  padding-bottom: clamp(3.75rem, 6.5vw, 6rem);
   position: relative;
   border-bottom: 1px solid var(--bg-hairline);
 }
@@ -251,6 +251,7 @@ body {
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   background: var(--btn-primary-bg);
   color: var(--btn-primary-text);
@@ -258,6 +259,7 @@ body {
   font-size: 0.875rem;
   font-weight: 600;
   padding: 0.68rem 1.35rem;
+  min-height: 44px;
   border-radius: 6px;
   text-decoration: none;
   cursor: pointer;
@@ -276,6 +278,7 @@ body {
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   background: var(--bg-surface-subtle);
   color: var(--text-primary);
@@ -283,6 +286,7 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.68rem 1.35rem;
+  min-height: 44px;
   border-radius: 6px;
   text-decoration: none;
   cursor: pointer;
@@ -300,6 +304,7 @@ body {
 .btn-editorial-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   background: var(--btn-primary-bg);
   color: var(--btn-primary-text);
@@ -307,6 +312,7 @@ body {
   font-size: 0.8125rem;
   font-weight: 600;
   padding: 0.55rem 1.1rem;
+  min-height: 38px;
   border-radius: 5px;
   text-decoration: none;
   cursor: pointer;
@@ -324,6 +330,7 @@ body {
 .btn-editorial-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.45rem;
   background: var(--bg-surface-subtle);
   color: var(--text-primary);
@@ -331,6 +338,7 @@ body {
   font-size: 0.8125rem;
   font-weight: 500;
   padding: 0.55rem 1.1rem;
+  min-height: 38px;
   border-radius: 5px;
   text-decoration: none;
   cursor: pointer;
@@ -361,8 +369,10 @@ body {
 .social-pill-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.45rem;
-  padding: 0.4rem 0.85rem;
+  padding: 0.45rem 0.85rem;
+  min-height: 38px;
   border-radius: 6px;
   background: var(--bg-surface-subtle);
   border: 1px solid var(--border-default);
@@ -416,8 +426,9 @@ dialog:modal {
 
 dialog::backdrop {
   overscroll-behavior: contain;
-  background: rgba(7, 10, 16, 0.85);
+  background: var(--modal-backdrop-bg);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 /* Reduced Motion */
