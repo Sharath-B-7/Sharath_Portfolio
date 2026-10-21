@@ -133,13 +133,17 @@ export const RagPreview: React.FC = () => {
     <div
       style={{
         border: "1px solid var(--border-default)",
-        background: "var(--bg-surface-elevated)",
+        background: "var(--bg-surface)",
         borderRadius: "8px",
-        padding: "clamp(1.15rem, 2vw, 1.5rem)",
+        padding: "clamp(0.9rem, 2vw, 1.35rem)",
         fontFamily: "var(--font-mono)",
         display: "flex",
         flexDirection: "column",
-        gap: "1.1rem",
+        gap: "0.9rem",
+        width: "100%",
+        maxWidth: "100%",
+        boxSizing: "border-box",
+        overflow: "hidden",
       }}
     >
       {/* Telemetry Header */}
@@ -148,7 +152,7 @@ export const RagPreview: React.FC = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          paddingBottom: "0.75rem",
+          paddingBottom: "0.65rem",
           borderBottom: "1px solid var(--border-subtle)",
           fontSize: "0.71875rem",
           color: "var(--text-muted)",
@@ -156,8 +160,8 @@ export const RagPreview: React.FC = () => {
           gap: "0.4rem",
         }}
       >
-        <span style={{ letterSpacing: "0.04em" }}>RAG PIPELINE · TWO-STAGE RETRIEVAL</span>
-        <span style={{ color: "var(--accent-cyan-light)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ letterSpacing: "0.04em", fontWeight: 600 }}>RAG PIPELINE · TWO-STAGE RETRIEVAL</span>
+        <span style={{ color: "var(--accent-terracotta)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
           <span
             style={{
               width: "6px",
@@ -173,7 +177,7 @@ export const RagPreview: React.FC = () => {
 
       {/* Preset Query Selector Tabs */}
       <div>
-        <div style={{ fontSize: "0.6875rem", color: "var(--text-muted)", marginBottom: "0.4rem", letterSpacing: "0.05em" }}>
+        <div style={{ fontSize: "0.6875rem", color: "var(--text-muted)", marginBottom: "0.35rem", letterSpacing: "0.04em" }}>
           SAMPLE INGESTION QUERIES:
         </div>
         <div style={{ display: "flex", gap: "0.35rem", flexWrap: "wrap" }}>
@@ -186,13 +190,14 @@ export const RagPreview: React.FC = () => {
                 setActiveCitationIndex(0);
               }}
               style={{
-                background: selectedQuery.id === item.id ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
-                border: selectedQuery.id === item.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
+                background: selectedQuery.id === item.id ? "var(--accent-terracotta-subtle)" : "var(--bg-surface-subtle)",
+                border: selectedQuery.id === item.id ? "1px solid var(--accent-terracotta-border)" : "1px solid var(--border-subtle)",
                 borderRadius: "4px",
-                padding: "0.3rem 0.6rem",
+                padding: "0.3rem 0.55rem",
                 color: selectedQuery.id === item.id ? "var(--text-primary)" : "var(--text-secondary)",
                 fontFamily: "var(--font-mono)",
                 fontSize: "0.71875rem",
+                fontWeight: selectedQuery.id === item.id ? 600 : 400,
                 cursor: "pointer",
                 transition: "all 0.15s ease",
               }}
@@ -206,7 +211,7 @@ export const RagPreview: React.FC = () => {
       {/* Source PDF Banner */}
       <div
         style={{
-          padding: "0.55rem 0.75rem",
+          padding: "0.5rem 0.65rem",
           background: "var(--bg-surface-subtle)",
           border: "1px solid var(--border-subtle)",
           borderRadius: "4px",
@@ -214,12 +219,12 @@ export const RagPreview: React.FC = () => {
           justifyContent: "space-between",
           alignItems: "center",
           gap: "0.5rem",
-          fontSize: "0.78125rem",
+          fontSize: "0.75rem",
           flexWrap: "wrap",
         }}
       >
-        <span style={{ color: "var(--text-primary)", display: "flex", alignItems: "center", gap: "0.45rem" }}>
-          <FileText size={14} color="var(--accent-cyan)" />
+        <span style={{ color: "var(--text-primary)", display: "flex", alignItems: "center", gap: "0.45rem", wordBreak: "break-word" }}>
+          <FileText size={13} color="var(--accent-terracotta)" />
           {selectedQuery.docName} ({selectedQuery.docPages} pages)
         </span>
         <span style={{ fontSize: "0.6875rem", color: "var(--accent-emerald)", display: "flex", alignItems: "center", gap: "0.3rem" }}>
@@ -234,7 +239,7 @@ export const RagPreview: React.FC = () => {
           display: "flex",
           gap: "0.35rem",
           borderBottom: "1px solid var(--border-subtle)",
-          paddingBottom: "0.5rem",
+          paddingBottom: "0.45rem",
           flexWrap: "wrap",
         }}
       >
@@ -244,10 +249,11 @@ export const RagPreview: React.FC = () => {
           style={{
             background: "transparent",
             border: "none",
-            borderBottom: activeTab === "qa" ? "2px solid var(--accent-cyan)" : "2px solid transparent",
-            padding: "0.25rem 0.5rem",
+            borderBottom: activeTab === "qa" ? "2px solid var(--accent-terracotta)" : "2px solid transparent",
+            padding: "0.25rem 0.45rem",
             color: activeTab === "qa" ? "var(--text-primary)" : "var(--text-muted)",
             fontSize: "0.71875rem",
+            fontWeight: activeTab === "qa" ? 600 : 400,
             cursor: "pointer",
             fontFamily: "var(--font-mono)",
           }}
@@ -260,10 +266,11 @@ export const RagPreview: React.FC = () => {
           style={{
             background: "transparent",
             border: "none",
-            borderBottom: activeTab === "rerank" ? "2px solid var(--accent-cyan)" : "2px solid transparent",
-            padding: "0.25rem 0.5rem",
+            borderBottom: activeTab === "rerank" ? "2px solid var(--accent-terracotta)" : "2px solid transparent",
+            padding: "0.25rem 0.45rem",
             color: activeTab === "rerank" ? "var(--text-primary)" : "var(--text-muted)",
             fontSize: "0.71875rem",
+            fontWeight: activeTab === "rerank" ? 600 : 400,
             cursor: "pointer",
             fontFamily: "var(--font-mono)",
           }}
@@ -276,10 +283,11 @@ export const RagPreview: React.FC = () => {
           style={{
             background: "transparent",
             border: "none",
-            borderBottom: activeTab === "workflow" ? "2px solid var(--accent-cyan)" : "2px solid transparent",
-            padding: "0.25rem 0.5rem",
+            borderBottom: activeTab === "workflow" ? "2px solid var(--accent-terracotta)" : "2px solid transparent",
+            padding: "0.25rem 0.45rem",
             color: activeTab === "workflow" ? "var(--text-primary)" : "var(--text-muted)",
             fontSize: "0.71875rem",
+            fontWeight: activeTab === "workflow" ? 600 : 400,
             cursor: "pointer",
             fontFamily: "var(--font-mono)",
           }}
@@ -290,21 +298,21 @@ export const RagPreview: React.FC = () => {
 
       {/* TAB CONTENT */}
       {activeTab === "qa" && (
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", width: "100%", maxWidth: "100%" }}>
           {/* User Question */}
           <div
             style={{
-              background: "rgba(0, 0, 0, 0.25)",
+              background: "var(--bg-surface-subtle)",
               border: "1px solid var(--border-subtle)",
               borderRadius: "6px",
-              padding: "0.75rem",
+              padding: "0.65rem 0.75rem",
             }}
           >
-            <div style={{ fontSize: "0.6875rem", color: "var(--accent-cyan)", marginBottom: "0.3rem", display: "flex", alignItems: "center", gap: "0.35rem" }}>
+            <div style={{ fontSize: "0.6875rem", color: "var(--accent-terracotta)", marginBottom: "0.25rem", display: "flex", alignItems: "center", gap: "0.35rem" }}>
               <Search size={12} />
               USER QUESTION:
             </div>
-            <div style={{ fontSize: "0.8125rem", color: "var(--text-primary)", fontWeight: 500 }}>
+            <div style={{ fontSize: "0.8125rem", color: "var(--text-primary)", fontWeight: 500, overflowWrap: "anywhere", wordBreak: "break-word" }}>
               &ldquo;{selectedQuery.question}&rdquo;
             </div>
           </div>
@@ -312,22 +320,22 @@ export const RagPreview: React.FC = () => {
           {/* Grounded LLM Answer */}
           <div
             style={{
-              background: "rgba(0, 240, 255, 0.03)",
-              border: "1px solid var(--accent-cyan-border)",
+              background: "var(--accent-terracotta-subtle)",
+              border: "1px solid var(--accent-terracotta-border)",
               borderRadius: "6px",
-              padding: "0.75rem",
+              padding: "0.65rem 0.75rem",
             }}
           >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.4rem", flexWrap: "wrap", gap: "0.35rem" }}>
-              <span style={{ fontSize: "0.6875rem", color: "var(--accent-cyan)", display: "flex", alignItems: "center", gap: "0.35rem" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.35rem", flexWrap: "wrap", gap: "0.35rem" }}>
+              <span style={{ fontSize: "0.6875rem", color: "var(--accent-terracotta)", display: "flex", alignItems: "center", gap: "0.35rem", fontWeight: 600 }}>
                 <Sparkles size={12} />
                 CONTEXT-GROUNDED RESPONSE (Groq / Llama 3.1 8B):
               </span>
-              <span style={{ fontSize: "0.65rem", color: "var(--accent-emerald)", background: "rgba(16, 185, 129, 0.1)", padding: "0.1rem 0.4rem", borderRadius: "3px" }}>
+              <span style={{ fontSize: "0.65rem", color: "var(--accent-emerald)", background: "var(--accent-emerald-subtle)", border: "1px solid var(--accent-emerald-border)", padding: "0.1rem 0.4rem", borderRadius: "3px" }}>
                 GROUNDED
               </span>
             </div>
-            <p style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.55, margin: 0 }}>
+            <p style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.55, margin: 0, overflowWrap: "anywhere", wordBreak: "break-word" }}>
               {selectedQuery.answer}
             </p>
           </div>
@@ -337,27 +345,30 @@ export const RagPreview: React.FC = () => {
             style={{
               border: "1px solid var(--border-subtle)",
               borderRadius: "6px",
-              padding: "0.75rem",
-              background: "rgba(0, 0, 0, 0.2)",
+              padding: "0.65rem 0.75rem",
+              background: "var(--bg-surface-subtle)",
+              width: "100%",
+              maxWidth: "100%",
+              boxSizing: "border-box",
             }}
           >
-            <div style={{ fontSize: "0.6875rem", color: "var(--text-muted)", marginBottom: "0.45rem", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.35rem" }}>
+            <div style={{ fontSize: "0.6875rem", color: "var(--text-muted)", marginBottom: "0.4rem", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.35rem" }}>
               <span>VERIFIED PAGE CITATIONS:</span>
-              <span style={{ color: "var(--accent-cyan)" }}>{selectedQuery.citations.length} Sources Retained</span>
+              <span style={{ color: "var(--accent-terracotta)" }}>{selectedQuery.citations.length} Sources Retained</span>
             </div>
 
             {/* Citation Chips */}
-            <div style={{ display: "flex", gap: "0.35rem", marginBottom: "0.6rem", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "0.35rem", marginBottom: "0.5rem", flexWrap: "wrap" }}>
               {selectedQuery.citations.map((cite, idx) => (
                 <button
                   key={cite.chunkId}
                   type="button"
                   onClick={() => setActiveCitationIndex(idx)}
                   style={{
-                    background: activeCitationIndex === idx ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.03)",
-                    border: activeCitationIndex === idx ? "1px solid var(--accent-cyan)" : "1px solid var(--border-subtle)",
+                    background: activeCitationIndex === idx ? "var(--accent-terracotta-subtle)" : "var(--bg-surface)",
+                    border: activeCitationIndex === idx ? "1px solid var(--accent-terracotta)" : "1px solid var(--border-subtle)",
                     borderRadius: "4px",
-                    padding: "0.2rem 0.5rem",
+                    padding: "0.2rem 0.45rem",
                     color: activeCitationIndex === idx ? "var(--text-primary)" : "var(--text-muted)",
                     fontSize: "0.6875rem",
                     cursor: "pointer",
@@ -368,7 +379,7 @@ export const RagPreview: React.FC = () => {
                 >
                   <BookOpen size={11} />
                   <span>Page {cite.page} · {cite.chunkId}</span>
-                  <span style={{ color: "var(--accent-cyan)", fontSize: "0.625rem" }}>
+                  <span style={{ color: "var(--accent-terracotta)", fontSize: "0.625rem", fontWeight: 600 }}>
                     ({(cite.rerankScore * 100).toFixed(0)}%)
                   </span>
                 </button>
@@ -381,10 +392,12 @@ export const RagPreview: React.FC = () => {
                 fontSize: "0.75rem",
                 color: "var(--text-secondary)",
                 lineHeight: 1.5,
-                background: "rgba(255, 255, 255, 0.02)",
-                padding: "0.55rem 0.65rem",
+                background: "var(--bg-surface)",
+                padding: "0.5rem 0.65rem",
                 borderRadius: "4px",
-                borderLeft: "2px solid var(--accent-cyan)",
+                borderLeft: "2px solid var(--accent-terracotta)",
+                overflowWrap: "anywhere",
+                wordBreak: "break-word",
               }}
             >
               &ldquo;{selectedQuery.citations[activeCitationIndex].text}&rdquo;
@@ -394,9 +407,9 @@ export const RagPreview: React.FC = () => {
       )}
 
       {activeTab === "rerank" && (
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", width: "100%", maxWidth: "100%" }}>
           <div style={{ fontSize: "0.71875rem", color: "var(--text-muted)", lineHeight: 1.45 }}>
-            Two-stage architecture: ChromaDB vector search retrieves 15 candidates; a joint cross-encoder scores <span style={{ color: "var(--accent-cyan)" }}>(question, chunk)</span> pairs to extract the top 4.
+            Two-stage architecture: ChromaDB vector search retrieves 15 candidates; a joint cross-encoder scores <span style={{ color: "var(--accent-terracotta)" }}>(question, chunk)</span> pairs to extract the top 4.
           </div>
 
           <div
@@ -405,23 +418,26 @@ export const RagPreview: React.FC = () => {
               borderRadius: "6px",
               overflowX: "auto",
               WebkitOverflowScrolling: "touch",
+              width: "100%",
+              maxWidth: "100%",
             }}
           >
-            <div style={{ minWidth: "420px" }}>
+            <div style={{ minWidth: "290px", width: "100%" }}>
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "1.2fr 1.2fr 1.1fr 1fr",
-                  padding: "0.45rem 0.65rem",
-                  background: "rgba(255, 255, 255, 0.03)",
+                  gridTemplateColumns: "1.1fr 1fr 1fr 0.9fr",
+                  padding: "0.45rem 0.6rem",
+                  background: "var(--bg-surface-subtle)",
                   borderBottom: "1px solid var(--border-subtle)",
                   fontSize: "0.65625rem",
                   color: "var(--text-muted)",
+                  fontWeight: 600,
                 }}
               >
-                <span>CHUNK REF</span>
-                <span>VECTOR SEARCH</span>
-                <span>CROSS-ENCODER</span>
+                <span>CHUNK</span>
+                <span>VECTOR</span>
+                <span>CROSS-ENC</span>
                 <span>STATUS</span>
               </div>
 
@@ -430,30 +446,30 @@ export const RagPreview: React.FC = () => {
                   key={cand.chunkId}
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "1.2fr 1.2fr 1.1fr 1fr",
-                    padding: "0.45rem 0.65rem",
+                    gridTemplateColumns: "1.1fr 1fr 1fr 0.9fr",
+                    padding: "0.4rem 0.6rem",
                     borderBottom: "1px solid var(--border-subtle)",
-                    fontSize: "0.71875rem",
+                    fontSize: "0.6875rem",
                     alignItems: "center",
-                    background: cand.selected ? "rgba(0, 240, 255, 0.025)" : "transparent",
+                    background: cand.selected ? "var(--accent-terracotta-subtle)" : "transparent",
                   }}
                 >
-                  <span style={{ color: "var(--text-primary)" }}>
+                  <span style={{ color: "var(--text-primary)", fontWeight: 500, overflowWrap: "anywhere" }}>
                     {cand.chunkId} (p.{cand.page})
                   </span>
                   <span style={{ color: "var(--text-muted)" }}>
-                    Rank #{cand.rank} ({cand.initialScore.toFixed(2)})
+                    #{cand.rank} ({cand.initialScore.toFixed(2)})
                   </span>
-                  <span style={{ color: cand.selected ? "var(--accent-cyan)" : "var(--text-muted)", fontWeight: cand.selected ? 600 : 400 }}>
-                    Score: {cand.rerankScore.toFixed(3)}
+                  <span style={{ color: cand.selected ? "var(--accent-terracotta)" : "var(--text-muted)", fontWeight: cand.selected ? 600 : 400 }}>
+                    {cand.rerankScore.toFixed(3)}
                   </span>
                   <span>
                     {cand.selected ? (
-                      <span style={{ color: "var(--accent-emerald)", fontSize: "0.65rem", background: "rgba(16, 185, 129, 0.1)", padding: "0.1rem 0.35rem", borderRadius: "3px" }}>
-                        TOP 4 SELECTED
+                      <span style={{ color: "var(--accent-emerald)", fontSize: "0.625rem", background: "var(--accent-emerald-subtle)", border: "1px solid var(--accent-emerald-border)", padding: "0.1rem 0.3rem", borderRadius: "3px", whiteSpace: "nowrap" }}>
+                        TOP 4
                       </span>
                     ) : (
-                      <span style={{ color: "var(--text-muted)", fontSize: "0.65rem" }}>
+                      <span style={{ color: "var(--text-muted)", fontSize: "0.625rem" }}>
                         FILTERED
                       </span>
                     )}
@@ -467,8 +483,8 @@ export const RagPreview: React.FC = () => {
             style={{
               fontSize: "0.6875rem",
               color: "var(--text-muted)",
-              padding: "0.45rem 0.65rem",
-              background: "rgba(255, 255, 255, 0.02)",
+              padding: "0.4rem 0.6rem",
+              background: "var(--bg-surface-subtle)",
               borderRadius: "4px",
               display: "flex",
               justifyContent: "space-between",
@@ -477,18 +493,18 @@ export const RagPreview: React.FC = () => {
             }}
           >
             <span>Initial Vector Retrieval: Top 15</span>
-            <span style={{ color: "var(--accent-cyan)" }}>Final Context Feed: Top 4 Chunks</span>
+            <span style={{ color: "var(--accent-terracotta)", fontWeight: 600 }}>Final Context Feed: Top 4 Chunks</span>
           </div>
         </div>
       )}
 
       {activeTab === "workflow" && (
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem", width: "100%", maxWidth: "100%" }}>
           <div style={{ fontSize: "0.71875rem", color: "var(--text-muted)" }}>
             End-to-End Ingestion, Retrieval, Re-ranking &amp; Inference Pipeline:
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem", width: "100%", maxWidth: "100%" }}>
             {[
               {
                 step: "01",
@@ -500,25 +516,25 @@ export const RagPreview: React.FC = () => {
                 step: "02",
                 title: "Chunking & Embeddings",
                 desc: "800 char chunks with 150 char overlap; embedded via all-MiniLM-L6-v2",
-                tech: "RecursiveCharacterTextSplitter",
+                tech: "TextSplitter",
               },
               {
                 step: "03",
                 title: "ChromaDB Vector Retrieval",
                 desc: "Cosine similarity search retrieves initial top 15 candidate passages",
-                tech: "ChromaDB Local",
+                tech: "ChromaDB",
               },
               {
                 step: "04",
                 title: "Cross-Encoder Re-Ranking",
                 desc: "ms-marco-MiniLM-L-6-v2 scores (question, chunk) pairs to select top 4",
-                tech: "Sentence-Transformers",
+                tech: "MiniLM-L6",
               },
               {
                 step: "05",
                 title: "Grounded LLM Response",
                 desc: "Grounded prompt generates answer with exact page citations",
-                tech: "Groq (Llama 3.1 8B)",
+                tech: "Groq (Llama 3.1)",
               },
             ].map((node) => (
               <div
@@ -527,21 +543,21 @@ export const RagPreview: React.FC = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  padding: "0.55rem 0.75rem",
-                  background: "rgba(255, 255, 255, 0.02)",
+                  padding: "0.45rem 0.65rem",
+                  background: "var(--bg-surface-subtle)",
                   border: "1px solid var(--border-subtle)",
                   borderRadius: "4px",
                   fontSize: "0.75rem",
-                  gap: "0.5rem",
+                  gap: "0.45rem",
                   flexWrap: "wrap",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-                  <span style={{ color: "var(--accent-cyan)", fontWeight: 700, fontSize: "0.7rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.55rem", minWidth: 0, flex: 1 }}>
+                  <span style={{ color: "var(--accent-terracotta)", fontWeight: 700, fontSize: "0.7rem", flexShrink: 0 }}>
                     {node.step}
                   </span>
-                  <div>
-                    <div style={{ color: "var(--text-primary)", fontWeight: 600 }}>{node.title}</div>
+                  <div style={{ minWidth: 0, overflowWrap: "anywhere" }}>
+                    <div style={{ color: "var(--text-primary)", fontWeight: 600, fontSize: "0.75rem" }}>{node.title}</div>
                     <div style={{ color: "var(--text-muted)", fontSize: "0.6875rem" }}>{node.desc}</div>
                   </div>
                 </div>
@@ -553,6 +569,7 @@ export const RagPreview: React.FC = () => {
                     padding: "0.15rem 0.4rem",
                     borderRadius: "3px",
                     flexShrink: 0,
+                    background: "var(--bg-surface)",
                   }}
                 >
                   {node.tech}
@@ -568,23 +585,24 @@ export const RagPreview: React.FC = () => {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "0.4rem",
-          paddingTop: "0.75rem",
+          gap: "0.35rem",
+          paddingTop: "0.65rem",
           borderTop: "1px solid var(--border-subtle)",
           textAlign: "center",
+          width: "100%",
         }}
       >
-        <div style={{ background: "var(--bg-surface-subtle)", padding: "0.35rem 0.2rem", borderRadius: "4px" }}>
+        <div style={{ background: "var(--bg-surface-subtle)", padding: "0.35rem 0.2rem", borderRadius: "4px", minWidth: 0 }}>
           <div style={{ fontSize: "0.59375rem", color: "var(--text-muted)" }}>CHUNK SIZE</div>
-          <div style={{ fontSize: "0.78125rem", color: "var(--text-primary)", fontWeight: 600 }}>800 / 150</div>
+          <div style={{ fontSize: "0.75rem", color: "var(--text-primary)", fontWeight: 600 }}>800 / 150</div>
         </div>
-        <div style={{ background: "var(--bg-surface-subtle)", padding: "0.35rem 0.2rem", borderRadius: "4px" }}>
+        <div style={{ background: "var(--bg-surface-subtle)", padding: "0.35rem 0.2rem", borderRadius: "4px", minWidth: 0 }}>
           <div style={{ fontSize: "0.59375rem", color: "var(--text-muted)" }}>CANDIDATES</div>
-          <div style={{ fontSize: "0.78125rem", color: "var(--accent-cyan)", fontWeight: 600 }}>15 &rarr; Top 4</div>
+          <div style={{ fontSize: "0.75rem", color: "var(--accent-terracotta)", fontWeight: 600 }}>15 &rarr; Top 4</div>
         </div>
-        <div style={{ background: "var(--bg-surface-subtle)", padding: "0.35rem 0.2rem", borderRadius: "4px" }}>
+        <div style={{ background: "var(--bg-surface-subtle)", padding: "0.35rem 0.2rem", borderRadius: "4px", minWidth: 0 }}>
           <div style={{ fontSize: "0.59375rem", color: "var(--text-muted)" }}>INFERENCE</div>
-          <div style={{ fontSize: "0.78125rem", color: "var(--accent-emerald)", fontWeight: 600 }}>Llama 3.1</div>
+          <div style={{ fontSize: "0.75rem", color: "var(--accent-emerald)", fontWeight: 600 }}>Llama 3.1</div>
         </div>
       </div>
 
@@ -596,7 +614,7 @@ export const RagPreview: React.FC = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          paddingTop: "0.25rem",
+          paddingTop: "0.2rem",
           flexWrap: "wrap",
           gap: "0.35rem",
         }}
@@ -605,7 +623,7 @@ export const RagPreview: React.FC = () => {
           <ShieldCheck size={12} color="var(--accent-emerald)" />
           Interactive Demo · Grounded in RAG Architecture
         </span>
-        <span style={{ color: "var(--accent-cyan)", fontSize: "0.65rem" }}>
+        <span style={{ color: "var(--accent-terracotta)", fontSize: "0.65rem", fontWeight: 600 }}>
           pypdf + ChromaDB + Groq
         </span>
       </div>

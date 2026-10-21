@@ -253,76 +253,39 @@ export const ProjectsSection: React.FC = () => {
               key={project.id}
               className={`project-editorial-card project-card-${project.id}`}
             >
-              <div className="project-grid-layout">
-                {/* LEFT COLUMN: Technical Narrative, Architecture & Stack */}
-                <div className="project-left-col">
-                  {/* Category & Status */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "0.75rem",
-                      marginBottom: "0.85rem",
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <span className="mono-tag" style={{ color: "var(--accent-terracotta)" }}>
-                      {project.categoryTag}
+              {/* CARD HEADER: Category, Status, Title & Subtitle */}
+              <div className="project-card-header">
+                <div className="project-header-meta">
+                  <span className="mono-tag" style={{ color: "var(--accent-terracotta)" }}>
+                    {project.categoryTag}
+                  </span>
+                  {project.statusBadge && (
+                    <span className="project-status-badge">
+                      {project.statusBadge}
                     </span>
-                    {project.statusBadge && (
-                      <span
-                        style={{
-                          fontSize: "0.6875rem",
-                          fontFamily: "var(--font-sans)",
-                          fontWeight: 500,
-                          color: "var(--text-secondary)",
-                          border: "1px solid var(--border-subtle)",
-                          padding: "0.15rem 0.55rem",
-                          borderRadius: "4px",
-                          letterSpacing: "0.02em",
-                          background: "var(--bg-surface-subtle)",
-                        }}
-                      >
-                        {project.statusBadge}
-                      </span>
-                    )}
-                  </div>
+                  )}
+                </div>
 
-                  {/* Title */}
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "clamp(1.5rem, 2.4vw, 2.1rem)",
-                      fontWeight: 700,
-                      color: "var(--text-primary)",
-                      letterSpacing: "-0.025em",
-                      lineHeight: 1.25,
-                      marginBottom: "0.35rem",
-                      overflowWrap: "break-word",
-                    }}
-                  >
-                    {project.name}
-                  </h3>
+                <h3 className="project-card-title">
+                  {project.name}
+                </h3>
 
-                  {/* Subtitle */}
-                  <div
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      fontSize: "0.9375rem",
-                      color: "var(--accent-terracotta-light)",
-                      marginBottom: "1.25rem",
-                      fontWeight: 500,
-                    }}
-                  >
-                    {project.subtitle}
-                  </div>
+                <div className="project-card-subtitle">
+                  {project.subtitle}
+                </div>
+              </div>
 
-                  {/* Domain-Tailored Architectural Spec Element */}
-                  {renderDomainSpec(project)}
+              {/* FULL-WIDTH ARCHITECTURAL SPEC BANNER */}
+              <div className="project-spec-container">
+                {renderDomainSpec(project)}
+              </div>
 
+              {/* 2-COLUMN BALANCED GRID: Left Narrative & Links, Right Interactive Preview */}
+              <div className="project-grid-layout">
+                {/* LEFT COLUMN: Technical Narrative, Architecture Highlights, Stack & Actions */}
+                <div className="project-left-col">
                   {/* Engineering Narrative */}
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem", marginBottom: "1.5rem" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem", marginBottom: "1.35rem" }}>
                     <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68, margin: 0 }}>
                       {project.problem}
                     </p>
@@ -332,41 +295,13 @@ export const ProjectsSection: React.FC = () => {
                   </div>
 
                   {/* Key Capabilities & Highlights */}
-                  <div style={{ marginBottom: "1.5rem" }}>
-                    <div
-                      style={{
-                        fontSize: "0.6875rem",
-                        fontFamily: "var(--font-mono)",
-                        color: "var(--text-muted)",
-                        letterSpacing: "0.06em",
-                        marginBottom: "0.6rem",
-                        textTransform: "uppercase",
-                      }}
-                    >
+                  <div style={{ marginBottom: "1.35rem" }}>
+                    <div className="project-block-label">
                       Key Architecture Highlights
                     </div>
-                    <ul
-                      style={{
-                        listStyle: "none",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "0.45rem",
-                        padding: 0,
-                        margin: 0,
-                      }}
-                    >
+                    <ul className="project-highlights-list">
                       {project.capabilities.map((cap, idx) => (
-                        <li
-                          key={idx}
-                          style={{
-                            fontSize: "0.84375rem",
-                            color: "var(--text-secondary)",
-                            display: "flex",
-                            alignItems: "flex-start",
-                            gap: "0.5rem",
-                            lineHeight: 1.5,
-                          }}
-                        >
+                        <li key={idx}>
                           <span style={{ color: "var(--accent-terracotta)", flexShrink: 0, marginTop: "0.05rem" }}>—</span>
                           <span>{cap}</span>
                         </li>
@@ -375,40 +310,13 @@ export const ProjectsSection: React.FC = () => {
                   </div>
 
                   {/* Tech Stack Pills */}
-                  <div style={{ marginBottom: "1.75rem" }}>
-                    <div
-                      style={{
-                        fontSize: "0.6875rem",
-                        fontFamily: "var(--font-mono)",
-                        color: "var(--text-muted)",
-                        letterSpacing: "0.06em",
-                        marginBottom: "0.5rem",
-                        textTransform: "uppercase",
-                      }}
-                    >
+                  <div style={{ marginBottom: "1.5rem" }}>
+                    <div className="project-block-label">
                       Technologies
                     </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        alignItems: "center",
-                        gap: "0.4rem",
-                      }}
-                    >
+                    <div className="project-tech-tags">
                       {project.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          style={{
-                            fontFamily: "var(--font-mono)",
-                            fontSize: "0.71875rem",
-                            color: "var(--text-secondary)",
-                            background: "var(--bg-surface-subtle)",
-                            padding: "0.22rem 0.55rem",
-                            borderRadius: "4px",
-                            border: "1px solid var(--border-subtle)",
-                          }}
-                        >
+                        <span key={tech} className="tech-tag-pill">
                           {tech}
                         </span>
                       ))}
@@ -546,8 +454,12 @@ export const ProjectsSection: React.FC = () => {
           border: 1px solid var(--border-default);
           background: var(--bg-surface);
           border-radius: 10px;
-          padding: clamp(1.25rem, 3.5vw, 2.75rem);
+          padding: clamp(1.25rem, 3.2vw, 2.5rem);
           position: relative;
+          box-sizing: border-box;
+          width: 100%;
+          max-width: 100%;
+          overflow: hidden;
           transition: border-color 0.2s ease, background 0.2s ease;
         }
 
@@ -555,11 +467,112 @@ export const ProjectsSection: React.FC = () => {
           border-color: var(--border-strong);
         }
 
+        .project-card-header {
+          margin-bottom: 1.25rem;
+        }
+
+        .project-header-meta {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.75rem;
+          margin-bottom: 0.75rem;
+          flex-wrap: wrap;
+        }
+
+        .project-status-badge {
+          font-size: 0.6875rem;
+          font-family: var(--font-sans);
+          font-weight: 500;
+          color: var(--text-secondary);
+          border: 1px solid var(--border-subtle);
+          padding: 0.15rem 0.55rem;
+          border-radius: 4px;
+          letter-spacing: 0.02em;
+          background: var(--bg-surface-subtle);
+        }
+
+        .project-card-title {
+          font-family: var(--font-display);
+          font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+          font-weight: 700;
+          color: var(--text-primary);
+          letter-spacing: -0.025em;
+          line-height: 1.25;
+          margin-bottom: 0.35rem;
+          overflow-wrap: break-word;
+        }
+
+        .project-card-subtitle {
+          font-family: var(--font-sans);
+          font-size: 0.9375rem;
+          color: var(--accent-terracotta-light);
+          font-weight: 500;
+        }
+
+        .project-spec-container {
+          margin-bottom: 1.75rem;
+          width: 100%;
+        }
+
         .project-grid-layout {
           display: grid;
-          grid-template-columns: 1.15fr 0.85fr;
-          gap: clamp(1.75rem, 3vw, 3rem);
+          grid-template-columns: 1.05fr 0.95fr;
+          gap: clamp(1.5rem, 2.8vw, 2.75rem);
           align-items: start;
+          width: 100%;
+        }
+
+        .project-left-col,
+        .project-right-col {
+          min-width: 0;
+          max-width: 100%;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        .project-block-label {
+          font-size: 0.6875rem;
+          font-family: var(--font-mono);
+          color: var(--text-muted);
+          letter-spacing: 0.05em;
+          margin-bottom: 0.55rem;
+          text-transform: uppercase;
+        }
+
+        .project-highlights-list {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 0.45rem;
+          padding: 0;
+          margin: 0;
+        }
+
+        .project-highlights-list li {
+          font-size: 0.84375rem;
+          color: var(--text-secondary);
+          display: flex;
+          align-items: flex-start;
+          gap: 0.5rem;
+          line-height: 1.5;
+        }
+
+        .project-tech-tags {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 0.4rem;
+        }
+
+        .tech-tag-pill {
+          font-family: var(--font-mono);
+          font-size: 0.71875rem;
+          color: var(--text-secondary);
+          background: var(--bg-surface-subtle);
+          padding: 0.22rem 0.55rem;
+          border-radius: 4px;
+          border: 1px solid var(--border-subtle);
         }
 
         /* Domain-Tailored Spec Panels */
@@ -567,8 +580,9 @@ export const ProjectsSection: React.FC = () => {
           background: var(--bg-surface-subtle);
           border: 1px solid var(--border-subtle);
           border-radius: 8px;
-          padding: 1rem 1.1rem;
-          margin-bottom: 1.35rem;
+          padding: 0.9rem 1.1rem;
+          box-sizing: border-box;
+          width: 100%;
         }
 
         .spec-panel-header {
@@ -618,7 +632,7 @@ export const ProjectsSection: React.FC = () => {
 
         /* RAG Pipeline Flow Track */
         .rag-flow-panel {
-          padding: 1rem 1.15rem;
+          padding: 0.9rem 1.15rem;
         }
 
         .pipeline-steps-track {
@@ -626,18 +640,22 @@ export const ProjectsSection: React.FC = () => {
           align-items: center;
           gap: 0.45rem;
           overflow-x: auto;
-          padding-bottom: 0.25rem;
+          padding-bottom: 0.35rem;
+          -webkit-overflow-scrolling: touch;
+          width: 100%;
+          box-sizing: border-box;
         }
 
         .pipeline-step-node {
           background: var(--bg-surface);
           border: 1px solid var(--border-subtle);
           border-radius: 6px;
-          padding: 0.5rem 0.65rem;
+          padding: 0.5rem 0.75rem;
           display: flex;
           flex-direction: column;
           gap: 0.15rem;
-          min-width: 105px;
+          min-width: 110px;
+          flex: 1;
           flex-shrink: 0;
           transition: border-color 0.15s ease;
         }
@@ -656,7 +674,7 @@ export const ProjectsSection: React.FC = () => {
 
         .step-name {
           font-family: var(--font-sans);
-          font-size: 0.75rem;
+          font-size: 0.78125rem;
           font-weight: 600;
           color: var(--text-primary);
           white-space: nowrap;
@@ -692,12 +710,12 @@ export const ProjectsSection: React.FC = () => {
 
         @media (max-width: 640px) {
           .project-editorial-card {
-            padding: 1.25rem 0.85rem !important;
+            padding: 1.25rem 0.9rem !important;
             border-radius: 8px !important;
           }
           .pipeline-step-node {
-            min-width: 95px !important;
-            padding: 0.4rem 0.55rem !important;
+            min-width: 100px !important;
+            padding: 0.4rem 0.6rem !important;
           }
         }
 

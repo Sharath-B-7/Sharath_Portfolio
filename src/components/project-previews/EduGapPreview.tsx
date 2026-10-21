@@ -11,8 +11,8 @@ interface SkillDomain {
 
 const skillDomains: SkillDomain[] = [
   { name: "Linear Algebra", mastery: 88, status: "Mastered", color: "var(--accent-emerald)" },
-  { name: "Fraction Arithmetic", mastery: 42, status: "Prerequisite Gap", color: "var(--accent-cyan-light)", remediation: "Khan Academy: Concept 04 Fractions & Step Notes" },
-  { name: "Coordinate Geometry", mastery: 58, status: "Review Required", color: "#fbbf24", remediation: "Practice Set: Slope-Intercept & Plane Transformations" },
+  { name: "Fraction Arithmetic", mastery: 42, status: "Prerequisite Gap", color: "var(--accent-terracotta)", remediation: "Khan Academy: Concept 04 Fractions & Step Notes" },
+  { name: "Coordinate Geometry", mastery: 58, status: "Review Required", color: "#d97706", remediation: "Practice Set: Slope-Intercept & Plane Transformations" },
   { name: "Trigonometry", mastery: 76, status: "Mastered", color: "var(--accent-emerald)" },
   { name: "Differential Calculus", mastery: 71, status: "Mastered", color: "var(--accent-emerald)" },
 ];
@@ -49,7 +49,7 @@ export const EduGapPreview: React.FC = () => {
         }}
       >
         <span style={{ letterSpacing: "0.04em" }}>EDUGAP AI · DKT DIAGNOSTIC ENGINE</span>
-        <span style={{ color: "var(--accent-cyan-light)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ color: "var(--accent-terracotta)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
           <span
             style={{
               width: "6px",
@@ -67,7 +67,7 @@ export const EduGapPreview: React.FC = () => {
       <div
         style={{
           padding: "0.55rem 0.75rem",
-          background: "rgba(255, 255, 255, 0.025)",
+          background: "var(--bg-surface-subtle)",
           border: "1px solid var(--border-subtle)",
           borderRadius: "4px",
           display: "flex",
@@ -102,7 +102,7 @@ export const EduGapPreview: React.FC = () => {
           style={{
             background: "transparent",
             border: "none",
-            color: activeTab === "domains" ? "var(--accent-cyan)" : "var(--text-muted)",
+            color: activeTab === "domains" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
             fontFamily: "var(--font-mono)",
             fontWeight: 600,
@@ -111,7 +111,7 @@ export const EduGapPreview: React.FC = () => {
             alignItems: "center",
             gap: "0.35rem",
             padding: "0.2rem 0.4rem",
-            borderBottom: activeTab === "domains" ? "2px solid var(--accent-cyan)" : "2px solid transparent",
+            borderBottom: activeTab === "domains" ? "2px solid var(--accent-terracotta)" : "2px solid transparent",
           }}
         >
           <BookOpen size={13} />
@@ -124,7 +124,7 @@ export const EduGapPreview: React.FC = () => {
           style={{
             background: "transparent",
             border: "none",
-            color: activeTab === "graph" ? "var(--accent-cyan)" : "var(--text-muted)",
+            color: activeTab === "graph" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
             fontFamily: "var(--font-mono)",
             fontWeight: 600,
@@ -133,7 +133,7 @@ export const EduGapPreview: React.FC = () => {
             alignItems: "center",
             gap: "0.35rem",
             padding: "0.2rem 0.4rem",
-            borderBottom: activeTab === "graph" ? "2px solid var(--accent-cyan)" : "2px solid transparent",
+            borderBottom: activeTab === "graph" ? "2px solid var(--accent-terracotta)" : "2px solid transparent",
           }}
         >
           <GitBranch size={13} />
@@ -146,7 +146,7 @@ export const EduGapPreview: React.FC = () => {
           style={{
             background: "transparent",
             border: "none",
-            color: activeTab === "remediation" ? "var(--accent-cyan)" : "var(--text-muted)",
+            color: activeTab === "remediation" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
             fontFamily: "var(--font-mono)",
             fontWeight: 600,
@@ -155,7 +155,7 @@ export const EduGapPreview: React.FC = () => {
             alignItems: "center",
             gap: "0.35rem",
             padding: "0.2rem 0.4rem",
-            borderBottom: activeTab === "remediation" ? "2px solid var(--accent-cyan)" : "2px solid transparent",
+            borderBottom: activeTab === "remediation" ? "2px solid var(--accent-terracotta)" : "2px solid transparent",
           }}
         >
           <AlertCircle size={13} />
@@ -171,8 +171,8 @@ export const EduGapPreview: React.FC = () => {
               key={idx}
               onClick={() => setSelectedDomain(skill)}
               style={{
-                border: selectedDomain.name === skill.name ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-                background: selectedDomain.name === skill.name ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.02)",
+                border: selectedDomain.name === skill.name ? "1px solid var(--accent-terracotta-border)" : "1px solid var(--border-subtle)",
+                background: selectedDomain.name === skill.name ? "var(--accent-terracotta-subtle)" : "var(--bg-surface-subtle)",
                 borderRadius: "4px",
                 padding: "0.55rem 0.75rem",
                 cursor: "pointer",
@@ -192,7 +192,7 @@ export const EduGapPreview: React.FC = () => {
                 style={{
                   width: "100%",
                   height: "4px",
-                  background: "rgba(255, 255, 255, 0.08)",
+                  background: "var(--border-subtle)",
                   borderRadius: "2px",
                   overflow: "hidden",
                 }}
@@ -228,36 +228,36 @@ export const EduGapPreview: React.FC = () => {
             <svg width="100%" height="100%" viewBox="0 0 320 160">
               {/* Edges */}
               <line x1="60" y1="80" x2="160" y2="45" stroke="var(--border-strong)" strokeWidth={1.5} />
-              <line x1="60" y1="80" x2="160" y2="115" stroke="var(--accent-cyan)" strokeWidth={2} strokeDasharray="4 2" />
+              <line x1="60" y1="80" x2="160" y2="115" stroke="var(--accent-terracotta)" strokeWidth={2} strokeDasharray="4 2" />
               <line x1="160" y1="45" x2="260" y2="80" stroke="var(--border-strong)" strokeWidth={1.5} />
               <line x1="160" y1="115" x2="260" y2="80" stroke="var(--border-strong)" strokeWidth={1.5} />
 
               {/* Node 1: Fractions (Prereq root) */}
-              <circle cx="60" cy="80" r="14" fill="var(--accent-cyan-subtle)" stroke="var(--accent-cyan)" strokeWidth={2} />
+              <circle cx="60" cy="80" r="14" fill="var(--accent-terracotta-subtle)" stroke="var(--accent-terracotta)" strokeWidth={2} />
               <text x="60" y="84" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-mono)">
                 Fractions
               </text>
-              <text x="60" y="103" textAnchor="middle" fill="var(--accent-cyan-light)" fontSize="7" fontFamily="var(--font-mono)">
+              <text x="60" y="103" textAnchor="middle" fill="var(--accent-terracotta)" fontSize="7" fontFamily="var(--font-mono)">
                 42% [GAP]
               </text>
 
               {/* Node 2: Linear Equations */}
-              <circle cx="160" cy="45" r="13" fill="rgba(16, 185, 129, 0.15)" stroke="var(--accent-emerald)" strokeWidth={1.5} />
+              <circle cx="160" cy="45" r="13" fill="var(--accent-emerald-subtle)" stroke="var(--accent-emerald)" strokeWidth={1.5} />
               <text x="160" y="49" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-mono)">
                 Algebra
               </text>
 
               {/* Node 3: Coordinate Geo */}
-              <circle cx="160" cy="115" r="13" fill="rgba(251, 191, 36, 0.15)" stroke="#fbbf24" strokeWidth={1.5} />
+              <circle cx="160" cy="115" r="13" fill="rgba(217, 119, 6, 0.12)" stroke="#d97706" strokeWidth={1.5} />
               <text x="160" y="119" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-mono)">
                 Geometry
               </text>
-              <text x="160" y="137" textAnchor="middle" fill="#fbbf24" fontSize="7" fontFamily="var(--font-mono)">
+              <text x="160" y="137" textAnchor="middle" fill="#d97706" fontSize="7" fontFamily="var(--font-mono)">
                 58%
               </text>
 
               {/* Node 4: Trigonometry */}
-              <circle cx="260" cy="80" r="13" fill="rgba(16, 185, 129, 0.15)" stroke="var(--accent-emerald)" strokeWidth={1.5} />
+              <circle cx="260" cy="80" r="13" fill="var(--accent-emerald-subtle)" stroke="var(--accent-emerald)" strokeWidth={1.5} />
               <text x="260" y="84" textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontFamily="var(--font-mono)">
                 Trig
               </text>
@@ -275,7 +275,7 @@ export const EduGapPreview: React.FC = () => {
         <div
           style={{
             padding: "0.85rem",
-            background: "rgba(255, 255, 255, 0.02)",
+            background: "var(--bg-surface-subtle)",
             border: "1px solid var(--border-default)",
             borderRadius: "6px",
             fontSize: "0.71875rem",
@@ -286,7 +286,7 @@ export const EduGapPreview: React.FC = () => {
           <div style={{ color: "var(--text-primary)", fontWeight: 600, marginBottom: "0.4rem" }}>
             Recommended Intervention for Selected Domain:
           </div>
-          <div style={{ color: "var(--accent-cyan)", marginBottom: "0.5rem" }}>
+          <div style={{ color: "var(--accent-terracotta)", marginBottom: "0.5rem" }}>
             {selectedDomain.name} (Score: {selectedDomain.mastery}%)
           </div>
           <div>{selectedDomain.remediation || "Mastery benchmark achieved (≥70%). Ready for advanced prerequisite-linked problem sets."}</div>

@@ -90,25 +90,25 @@
   --bg-canvas: #F4F0E8;
   --bg-surface: #FFFFFF;
   --bg-surface-elevated: #EDE7DC;
-  --bg-surface-subtle: #FAF7F2;
-  --bg-surface-hover: #E8E1D5;
+  --bg-surface-subtle: #F6F2EB;
+  --bg-surface-hover: #E6DDD0;
 
   --bg-hairline: rgba(36, 42, 39, 0.08);
   --bg-hairline-subtle: rgba(36, 42, 39, 0.04);
   --bg-hairline-strong: rgba(36, 42, 39, 0.16);
-  --border-subtle: #E2DBD0;
-  --border-default: #D4CBBE;
-  --border-strong: #BAAE9D;
-  --border-focus: rgba(181, 106, 69, 0.45);
+  --border-subtle: #E2DAD0;
+  --border-default: #D2C7B8;
+  --border-strong: #B2A492;
+  --border-focus: rgba(181, 106, 69, 0.50);
 
   --text-primary: #242A27;
-  --text-secondary: #525C57;
-  --text-muted: #737E79;
-  --text-faint: #9EA8A3;
+  --text-secondary: #424B47;
+  --text-muted: #64706B;
+  --text-faint: #8B9792;
 
   /* Rich Terracotta in Light Theme (#B56A45) */
   --accent-terracotta: #B56A45;
-  --accent-terracotta-light: #9C5532;
+  --accent-terracotta-light: #964F2D;
   --accent-terracotta-subtle: rgba(181, 106, 69, 0.09);
   --accent-terracotta-border: rgba(181, 106, 69, 0.28);
   --accent-terracotta-hover: rgba(181, 106, 69, 0.16);
@@ -125,7 +125,7 @@
   --accent-emerald-border: rgba(5, 150, 105, 0.24);
 
   --shadow-sm: 0 1px 3px rgba(36, 42, 39, 0.05);
-  --shadow-md: 0 4px 14px rgba(36, 42, 39, 0.07);
+  --shadow-md: 0 4px 14px rgba(36, 42, 39, 0.08);
   --shadow-lg: 0 14px 32px rgba(36, 42, 39, 0.12);
 
   /* Hero Portrait Vignette Overlays & Atmospheric Blend (Matching #F4F0E8) */
@@ -141,9 +141,9 @@
   /* Primary Button Tokens */
   --btn-primary-bg: #242A27;
   --btn-primary-text: #F4F0E8;
-  --btn-primary-hover-bg: #171A19;
+  --btn-primary-hover-bg: #141716;
   --btn-primary-hover-text: #FFFFFF;
-  --btn-primary-shadow: rgba(36, 42, 39, 0.14);
+  --btn-primary-shadow: rgba(36, 42, 39, 0.15);
 
   /* Scrollbar & Background Grid */
   --scrollbar-thumb: #D0C7B9;
@@ -224,12 +224,11 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent-terracotta-light);
+  font-family: var(--font-sans);
+  font-size: 0.78125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent-terracotta);
   margin-bottom: 0.75rem;
 }
 
@@ -256,8 +255,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--text-muted);
 }
 

@@ -80,10 +80,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setMatrixOpen(false);
+        setMobileMenuOpen(false);
       }
     };
 
-    if (matrixOpen) {
+    if (matrixOpen || mobileMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
       document.addEventListener("keydown", handleKeyDown);
     }
@@ -91,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [matrixOpen]);
+  }, [matrixOpen, mobileMenuOpen]);
 
   const [activeSection, setActiveSection] = useState<string>("hero");
 
@@ -115,6 +116,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
   }, []);
 
   const directoryHubs = [
+    {
+      id: "hero",
+      name: "Home",
+      desc: "Top overview & personal introduction",
+      href: "#hero",
+      icon: <User size={16} color="var(--accent-terracotta)" />,
+    },
     {
       id: "projects",
       name: "Projects",
@@ -146,7 +154,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
     {
       id: "achievements",
       name: "Achievements",
-      desc: "450+ LeetCode problems & credentials",
+      desc: "LeetCode problem practice & credentials",
       href: "#achievements",
       icon: <Trophy size={16} color="var(--accent-terracotta)" />,
     },
@@ -158,6 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
       isAction: true,
       onClick: () => {
         setMatrixOpen(false);
+        setMobileMenuOpen(false);
         onOpenResume();
       },
       icon: <FileText size={16} color="var(--accent-terracotta)" />,
@@ -165,7 +174,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
     {
       id: "contact",
       name: "Contact",
-      desc: "Direct email inquiry & professional network",
+      desc: "Direct inquiry & professional network",
       href: "#contact",
       icon: <Mail size={16} color="var(--accent-terracotta)" />,
     },
@@ -364,21 +373,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             )}
           </button>
 
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.6875rem",
-              color: "var(--text-muted)",
-              border: "1px solid var(--border-subtle)",
-              padding: "0.35rem 0.75rem",
-              borderRadius: "9999px",
-              background: "var(--bg-surface-subtle)",
-            }}
-            className="header-badge"
-          >
-            CIT // 2029
-          </span>
-
           {/* Theme Toggle Button - Mobile (Quick 1-tap accessible) */}
           <button
             onClick={toggleTheme}
@@ -389,17 +383,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               background: "var(--bg-surface)",
               border: "1px solid var(--border-default)",
               color: "var(--text-primary)",
-              padding: "0.45rem",
+              padding: "0.5rem",
               borderRadius: "8px",
               cursor: "pointer",
               alignItems: "center",
               justifyContent: "center",
-              minWidth: "42px",
-              minHeight: "42px",
+              minWidth: "44px",
+              minHeight: "44px",
+              boxShadow: "var(--shadow-sm)",
             }}
             className="theme-toggle-mobile"
           >
-            {theme === "dark" ? <Sun size={18} color="var(--accent-terracotta)" /> : <Moon size={18} color="var(--accent-terracotta)" />}
+            {theme === "dark" ? <Sun size={19} color="var(--accent-terracotta)" /> : <Moon size={19} color="var(--accent-terracotta)" />}
           </button>
 
           {/* Mobile hamburger */}
@@ -410,18 +405,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               background: "var(--bg-surface)",
               border: "1px solid var(--border-default)",
               color: "var(--text-primary)",
-              padding: "0.45rem",
+              padding: "0.5rem",
               borderRadius: "8px",
               cursor: "pointer",
               alignItems: "center",
               justifyContent: "center",
-              minWidth: "42px",
-              minHeight: "42px",
+              minWidth: "44px",
+              minHeight: "44px",
+              boxShadow: "var(--shadow-sm)",
             }}
             className="mobile-toggle-btn"
             aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </header>
@@ -594,28 +591,80 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         </>
       )}
 
+      {/* Mobile Drawer Backdrop */}
+      {mobileMenuOpen && (
+        <div
+          onClick={() => setMobileMenuOpen(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "var(--modal-backdrop-bg)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            zIndex: 115,
+          }}
+          aria-hidden="true"
+        />
+      )}
+
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
           style={{
             position: "fixed",
-            top: "70px",
+            top: "72px",
             left: "1rem",
             right: "1rem",
             background: "var(--bg-surface-elevated)",
             border: "1px solid var(--border-default)",
             borderRadius: "14px",
-            padding: "1.25rem",
-            zIndex: 100,
+            padding: "1.15rem 1.25rem",
+            zIndex: 125,
             display: "flex",
             flexDirection: "column",
-            gap: "0.5rem",
+            gap: "0.35rem",
             boxShadow: "var(--shadow-lg)",
             maxHeight: "calc(100vh - 90px)",
             overflowY: "auto",
             WebkitOverflowScrolling: "touch",
+            animation: "mobileMenuFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
+          {/* Mobile Menu Header */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              paddingBottom: "0.65rem",
+              borderBottom: "1px solid var(--border-subtle)",
+              marginBottom: "0.25rem",
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              color: "var(--accent-terracotta)",
+              textTransform: "uppercase",
+              letterSpacing: "0.04em",
+            }}
+          >
+            <span>Navigation Menu</span>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "var(--text-muted)",
+                cursor: "pointer",
+                padding: "0.25rem",
+                display: "inline-flex",
+                alignItems: "center",
+              }}
+              aria-label="Close menu"
+            >
+              <X size={16} />
+            </button>
+          </div>
+
           {directoryHubs.map((hub) => (
             <a
               key={hub.name}
@@ -633,27 +682,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 display: "flex",
                 alignItems: "center",
                 gap: "0.65rem",
-                padding: "0.6rem 0.25rem",
+                padding: "0.55rem 0.35rem",
                 minHeight: "44px",
                 borderBottom: "1px solid var(--border-subtle)",
+                borderRadius: "6px",
               }}
             >
-              {hub.icon}
-              <span>{hub.name}</span>
+              <div style={{ display: "inline-flex", alignItems: "center" }}>{hub.icon}</div>
+              <div style={{ flex: 1 }}>
+                <span>{hub.name}</span>
+                <span style={{ display: "block", fontSize: "0.71875rem", color: "var(--text-secondary)", fontWeight: 400 }}>
+                  {hub.desc}
+                </span>
+              </div>
             </a>
           ))}
 
           {/* Mobile Drawer Appearance Switcher */}
           <div
             style={{
-              paddingTop: "0.6rem",
+              paddingTop: "0.75rem",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
             }}
           >
-            <span style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}>
-              Appearance
+            <span style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", fontFamily: "var(--font-sans)", fontWeight: 500 }}>
+              Theme
             </span>
             <button
               onClick={toggleTheme}
@@ -661,25 +716,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 background: "var(--bg-surface)",
                 border: "1px solid var(--border-default)",
                 borderRadius: "6px",
-                padding: "0.38rem 0.75rem",
+                padding: "0.45rem 0.85rem",
                 color: "var(--text-primary)",
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
+                fontFamily: "var(--font-sans)",
+                fontSize: "0.78125rem",
+                fontWeight: 500,
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.45rem",
                 cursor: "pointer",
+                minHeight: "38px",
               }}
             >
               {theme === "dark" ? (
                 <>
-                  <Sun size={13} color="var(--accent-terracotta)" />
-                  <span>Light Mode</span>
+                  <Sun size={14} color="var(--accent-terracotta)" />
+                  <span>Switch to Light</span>
                 </>
               ) : (
                 <>
-                  <Moon size={13} color="var(--accent-terracotta)" />
-                  <span>Dark Mode</span>
+                  <Moon size={14} color="var(--accent-terracotta)" />
+                  <span>Switch to Dark</span>
                 </>
               )}
             </button>
@@ -697,6 +754,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           to {
             opacity: 1;
             transform: translate(-50%, 0);
+          }
+        }
+        @keyframes mobileMenuFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
         @media (max-width: 820px) {

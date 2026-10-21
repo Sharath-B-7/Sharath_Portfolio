@@ -152,7 +152,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
           {/* Order Item 4: Bold, Expressive Editorial Headline */}
           <h1 className="hero-headline-text">
-            <span style={{ display: "block" }}>CYBERSECURITY &amp;</span>
+            <span style={{ display: "block" }}>CYBERSECURITY, AI &amp;</span>
             <span style={{ display: "block" }}>SOFTWARE ENGINEER</span>
           </h1>
 
@@ -437,7 +437,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         /* --- Headline --- */
         .hero-headline-text {
           font-family: var(--font-display);
-          font-size: clamp(2.35rem, 5.5vw, 5.25rem);
+          font-size: clamp(2.15rem, 5vw, 4.85rem);
           font-weight: 800;
           letter-spacing: -0.035em;
           line-height: 1.04;

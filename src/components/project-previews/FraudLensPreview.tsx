@@ -24,7 +24,7 @@ const sampleEntities: SampleEntity[] = [
     name: "Flagged High-Risk UPI Entity",
     score: 34,
     riskTier: "HIGH RISK",
-    riskColor: "var(--accent-cyan-light)",
+    riskColor: "var(--accent-terracotta)",
     centrality: "0.82 (Cluster Flag)",
     reports: 14,
     region: "Tamil Nadu & Karnataka",
@@ -76,7 +76,7 @@ const sampleEntities: SampleEntity[] = [
     name: "Suspicious Automated Bot Endpoint",
     score: 48,
     riskTier: "SUSPICIOUS",
-    riskColor: "var(--accent-cyan)",
+    riskColor: "#d97706",
     centrality: "0.59 (Anomalous Fanout)",
     reports: 5,
     region: "Northern Region",
@@ -129,7 +129,7 @@ export const FraudLensPreview: React.FC = () => {
         }}
       >
         <span style={{ letterSpacing: "0.04em" }}>FRAUDLENS AI · TRUST ENGINE SIMULATOR</span>
-        <span style={{ color: "var(--accent-cyan-light)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ color: "var(--accent-terracotta)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
           <span
             style={{
               width: "6px",
@@ -155,8 +155,8 @@ export const FraudLensPreview: React.FC = () => {
               type="button"
               onClick={() => setSelectedEntity(entity)}
               style={{
-                background: selectedEntity.id === entity.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
-                border: selectedEntity.id === entity.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
+                background: selectedEntity.id === entity.id ? "var(--accent-terracotta-subtle)" : "var(--bg-surface-subtle)",
+                border: selectedEntity.id === entity.id ? "1px solid var(--accent-terracotta-border)" : "1px solid var(--border-subtle)",
                 borderRadius: "4px",
                 padding: "0.3rem 0.6rem",
                 color: selectedEntity.id === entity.id ? "var(--text-primary)" : "var(--text-secondary)",
@@ -176,7 +176,7 @@ export const FraudLensPreview: React.FC = () => {
       <div
         style={{
           padding: "0.55rem 0.75rem",
-          background: "rgba(255, 255, 255, 0.025)",
+          background: "var(--bg-surface-subtle)",
           border: "1px solid var(--border-subtle)",
           borderRadius: "4px",
           display: "flex",
@@ -211,7 +211,7 @@ export const FraudLensPreview: React.FC = () => {
           style={{
             background: "transparent",
             border: "none",
-            color: activeTab === "score" ? "var(--accent-cyan)" : "var(--text-muted)",
+            color: activeTab === "score" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
             fontFamily: "var(--font-mono)",
             fontWeight: 600,
@@ -220,7 +220,7 @@ export const FraudLensPreview: React.FC = () => {
             alignItems: "center",
             gap: "0.35rem",
             padding: "0.2rem 0.4rem",
-            borderBottom: activeTab === "score" ? "2px solid var(--accent-cyan)" : "2px solid transparent",
+            borderBottom: activeTab === "score" ? "2px solid var(--accent-terracotta)" : "2px solid transparent",
           }}
         >
           <Activity size={13} />
@@ -233,7 +233,7 @@ export const FraudLensPreview: React.FC = () => {
           style={{
             background: "transparent",
             border: "none",
-            color: activeTab === "graph" ? "var(--accent-cyan)" : "var(--text-muted)",
+            color: activeTab === "graph" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
             fontFamily: "var(--font-mono)",
             fontWeight: 600,
@@ -242,7 +242,7 @@ export const FraudLensPreview: React.FC = () => {
             alignItems: "center",
             gap: "0.35rem",
             padding: "0.2rem 0.4rem",
-            borderBottom: activeTab === "graph" ? "2px solid var(--accent-cyan)" : "2px solid transparent",
+            borderBottom: activeTab === "graph" ? "2px solid var(--accent-terracotta)" : "2px solid transparent",
           }}
         >
           <Network size={13} />
@@ -255,7 +255,7 @@ export const FraudLensPreview: React.FC = () => {
           style={{
             background: "transparent",
             border: "none",
-            color: activeTab === "triage" ? "var(--accent-cyan)" : "var(--text-muted)",
+            color: activeTab === "triage" ? "var(--accent-terracotta)" : "var(--text-muted)",
             fontSize: "0.71875rem",
             fontFamily: "var(--font-mono)",
             fontWeight: 600,
@@ -264,7 +264,7 @@ export const FraudLensPreview: React.FC = () => {
             alignItems: "center",
             gap: "0.35rem",
             padding: "0.2rem 0.4rem",
-            borderBottom: activeTab === "triage" ? "2px solid var(--accent-cyan)" : "2px solid transparent",
+            borderBottom: activeTab === "triage" ? "2px solid var(--accent-terracotta)" : "2px solid transparent",
           }}
         >
           <FileText size={13} />
@@ -279,7 +279,7 @@ export const FraudLensPreview: React.FC = () => {
           <div
             style={{
               border: "1px solid var(--border-default)",
-              background: "rgba(255, 255, 255, 0.02)",
+              background: "var(--bg-surface-subtle)",
               borderRadius: "6px",
               padding: "0.95rem 1.1rem",
             }}
@@ -293,8 +293,8 @@ export const FraudLensPreview: React.FC = () => {
                   fontSize: "0.6875rem",
                   color: selectedEntity.riskColor,
                   fontWeight: 600,
-                  background: "var(--accent-cyan-subtle)",
-                  border: "1px solid var(--accent-cyan-border)",
+                  background: "var(--accent-terracotta-subtle)",
+                  border: "1px solid var(--accent-terracotta-border)",
                   padding: "0.15rem 0.45rem",
                   borderRadius: "3px",
                   display: "inline-flex",
@@ -326,7 +326,7 @@ export const FraudLensPreview: React.FC = () => {
 
             <div style={{ display: "flex", justifyContent: "space-between", paddingBottom: "0.35rem", borderBottom: "1px solid var(--border-subtle)" }}>
               <span style={{ color: "var(--text-muted)" }}>Community Flags:</span>
-              <span style={{ color: selectedEntity.reports > 0 ? "var(--accent-cyan-light)" : "var(--accent-emerald)" }}>
+              <span style={{ color: selectedEntity.reports > 0 ? "var(--accent-terracotta)" : "var(--accent-emerald)" }}>
                 {selectedEntity.reports} Verified Reports
               </span>
             </div>
@@ -372,7 +372,7 @@ export const FraudLensPreview: React.FC = () => {
                     y1={source.y}
                     x2={target.x}
                     y2={target.y}
-                    stroke={edge.flagged ? "rgba(200, 100, 70, 0.85)" : "var(--border-strong)"}
+                    stroke={edge.flagged ? "rgba(181, 106, 69, 0.85)" : "var(--border-strong)"}
                     strokeWidth={edge.flagged ? 1.5 : 1}
                     strokeDasharray={edge.flagged ? "4 2" : undefined}
                   />
@@ -388,7 +388,7 @@ export const FraudLensPreview: React.FC = () => {
                 const fillColor = isTarget
                   ? "var(--accent-terracotta)"
                   : isMule
-                  ? "rgba(200, 100, 70, 0.45)"
+                  ? "rgba(181, 106, 69, 0.45)"
                   : "var(--border-strong)";
 
                 const radius = isTarget ? 14 : isHovered ? 12 : 9;
@@ -425,7 +425,7 @@ export const FraudLensPreview: React.FC = () => {
           </div>
 
           <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.6875rem", color: "var(--text-muted)", flexWrap: "wrap", gap: "0.35rem" }}>
-            <span>Cyan: Target Entity</span>
+            <span>Terracotta: Target Entity</span>
             <span>Dashed: Flagged Clustering Link</span>
           </div>
         </div>
@@ -437,7 +437,7 @@ export const FraudLensPreview: React.FC = () => {
           <div
             style={{
               padding: "0.85rem",
-              background: "rgba(255, 255, 255, 0.02)",
+              background: "var(--bg-surface-subtle)",
               border: "1px solid var(--border-default)",
               borderRadius: "6px",
               fontSize: "0.71875rem",

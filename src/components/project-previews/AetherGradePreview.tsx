@@ -97,13 +97,13 @@ export const AetherGradePreview: React.FC = () => {
         }}
       >
         <span style={{ letterSpacing: "0.04em" }}>AETHERGRADE · CRYPTOGRAPHIC LEDGER</span>
-        <span style={{ color: tampered ? "var(--accent-cyan-light)" : "var(--accent-emerald)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ color: tampered ? "var(--accent-terracotta)" : "var(--accent-emerald)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
           <span
             style={{
               width: "6px",
               height: "6px",
               borderRadius: "50%",
-              backgroundColor: tampered ? "var(--accent-cyan-light)" : "var(--accent-emerald)",
+              backgroundColor: tampered ? "var(--accent-terracotta)" : "var(--accent-emerald)",
               display: "inline-block",
             }}
           />
@@ -123,8 +123,8 @@ export const AetherGradePreview: React.FC = () => {
               type="button"
               onClick={() => setActiveRole(role)}
               style={{
-                background: activeRole === role ? "var(--accent-cyan-subtle)" : "var(--bg-surface-subtle)",
-                border: activeRole === role ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
+                background: activeRole === role ? "var(--accent-terracotta-subtle)" : "var(--bg-surface-subtle)",
+                border: activeRole === role ? "1px solid var(--accent-terracotta-border)" : "1px solid var(--border-subtle)",
                 borderRadius: "4px",
                 padding: "0.3rem 0.6rem",
                 color: activeRole === role ? "var(--text-primary)" : "var(--text-secondary)",
@@ -156,7 +156,7 @@ export const AetherGradePreview: React.FC = () => {
         }}
       >
         <span style={{ color: "var(--text-primary)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
-          <Key size={12} style={{ color: "var(--accent-cyan)" }} />
+          <Key size={12} style={{ color: "var(--accent-terracotta)" }} />
           ROLE: {activeRole}
         </span>
         <span style={{ color: "var(--text-muted)" }}>
@@ -176,9 +176,10 @@ export const AetherGradePreview: React.FC = () => {
             type="button"
             onClick={toggleTamper}
             style={{
-              background: tampered ? "var(--accent-emerald)" : "var(--accent-cyan-subtle)",
-              border: "1px solid var(--accent-cyan-border)",
-              color: tampered ? "#000" : "var(--accent-cyan)",
+              background: tampered ? "var(--accent-emerald)" : "var(--accent-terracotta-subtle)",
+              border: tampered ? "1px solid var(--accent-emerald-border)" : "1px solid var(--accent-terracotta-border)",
+              color: tampered ? "#0E100F" : "var(--accent-terracotta)",
+              fontWeight: tampered ? 600 : 500,
               fontSize: "0.65625rem",
               padding: "0.2rem 0.5rem",
               borderRadius: "4px",
@@ -198,8 +199,8 @@ export const AetherGradePreview: React.FC = () => {
           <div
             key={block.height}
             style={{
-              border: block.valid ? "1px solid var(--border-default)" : "1px solid var(--accent-cyan-light)",
-              background: block.valid ? "var(--bg-surface-subtle)" : "var(--accent-cyan-subtle)",
+              border: block.valid ? "1px solid var(--border-default)" : "1px solid var(--accent-terracotta)",
+              background: block.valid ? "var(--bg-surface-subtle)" : "var(--accent-terracotta-subtle)",
               borderRadius: "5px",
               padding: "0.6rem 0.75rem",
               fontSize: "0.6875rem",
@@ -214,10 +215,11 @@ export const AetherGradePreview: React.FC = () => {
               </span>
               <span
                 style={{
-                  color: block.valid ? "var(--accent-emerald)" : "var(--accent-cyan-light)",
+                  color: block.valid ? "var(--accent-emerald)" : "var(--accent-terracotta)",
                   display: "flex",
                   alignItems: "center",
                   gap: "0.25rem",
+                  fontWeight: 600,
                 }}
               >
                 {block.valid ? <ShieldCheck size={11} /> : <Lock size={11} />}
