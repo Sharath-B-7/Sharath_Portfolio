@@ -3,9 +3,6 @@ import {
   ArrowDownRight,
   FileText,
   Mail,
-  Shield,
-  GraduationCap,
-  CheckCircle2,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "../components/Icons";
 import { personalInfo } from "../data/personalInfo";
@@ -18,6 +15,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
   return (
     <section
       id="hero"
+      className="hero-section"
       style={{
         position: "relative",
         minHeight: "100svh",
@@ -30,7 +28,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
       }}
     >
       {/* ==============================================================
-          RIGHT-SIDE FULL-BLEED EDITORIAL BACKGROUND PHOTOGRAPH
+          DESKTOP RIGHT-SIDE FULL-BLEED EDITORIAL BACKGROUND PHOTOGRAPH
           Seamless Multi-Directional Gradient Blend into Canvas
           ============================================================== */}
       <div
@@ -105,7 +103,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
       </div>
 
       {/* ==============================================================
-          MAIN HERO CONTENT (LEFT SIDE DOMINANCE)
+          MAIN HERO CONTENT (LEFT SIDE DOMINANCE ON DESKTOP,
+          PORTRAIT-LED NATURAL FLOW ON MOBILE)
           ============================================================== */}
       <div
         className="container hero-container-main"
@@ -128,7 +127,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           }}
           className="hero-left-col"
         >
-          {/* Subtle Status Pill */}
+          {/* 1. Clear Portrait (Mobile only: large, prominent, natural proportions above heading) */}
+          <div className="hero-mobile-portrait" aria-label="Sharath B portrait">
+            <img
+              src={personalInfo.assets.profilePhoto}
+              alt="Sharath B — Cybersecurity & Software Engineer"
+              className="hero-mobile-portrait-img"
+              loading="eager"
+            />
+          </div>
+
+          {/* 2. Availability Label */}
           <div
             style={{
               display: "inline-flex",
@@ -139,8 +148,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               background: "rgba(16, 185, 129, 0.08)",
               border: "1px solid var(--accent-emerald-border)",
               width: "fit-content",
-              marginBottom: "1.35rem",
+              marginBottom: "1.25rem",
             }}
+            className="hero-availability-pill"
           >
             <span
               style={{
@@ -164,17 +174,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             </span>
           </div>
 
-          {/* Refined, Authoritative Editorial Headline */}
+          {/* 3. Primary Editorial Headline */}
           <h1
             className="hero-headline-text"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.35rem, 5.2vw, 5.25rem)",
+              fontSize: "clamp(2.25rem, 5.2vw, 5.25rem)",
               fontWeight: 700,
               letterSpacing: "-0.035em",
               lineHeight: 1.08,
               color: "var(--text-primary)",
-              marginBottom: "1.45rem",
+              marginBottom: "1.15rem",
               overflowWrap: "break-word",
             }}
           >
@@ -182,68 +192,63 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             <span style={{ display: "block", color: "#ffffff" }}>Software Engineer</span>
           </h1>
 
-          {/* Compact Supporting Metadata Pills */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: "0.5rem",
-              marginBottom: "1.65rem",
-            }}
-            className="hero-meta-pills"
-          >
-            <div className="hero-clean-pill">
-              <Shield size={12} color="var(--accent-cyan)" />
-              <span>Cybersecurity &amp; Network Security</span>
-            </div>
-
-            <div className="hero-clean-pill">
-              <GraduationCap size={12} color="var(--accent-cyan)" />
-              <span>CIT Chennai · 2025–2029</span>
-            </div>
-
-            <div className="hero-clean-pill">
-              <CheckCircle2 size={12} color="var(--accent-emerald)" />
-              <span>CGPA: 8.5 / 10</span>
-            </div>
-
-            {/* Clickable LeetCode Pill with exact label "Consistent Problem Solver" and no number count */}
-            <a
-              href={personalInfo.social.leetcode}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-clean-pill"
-              style={{ textDecoration: "none", cursor: "pointer" }}
-              title="LeetCode Profile"
+          {/* 4. Short Supporting Text (Role Tagline + Understated LeetCode Problem Solver badge) */}
+          <div className="hero-support-group" style={{ marginBottom: "1.35rem" }}>
+            <p
+              className="hero-tagline"
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: "clamp(0.95rem, 1.25vw, 1.125rem)",
+                fontWeight: 500,
+                color: "var(--accent-cyan-light)",
+                lineHeight: 1.45,
+                marginBottom: "0.75rem",
+              }}
             >
-              <LeetCodeIcon size={12} color="var(--accent-cyan)" />
-              <span>Consistent Problem Solver</span>
-            </a>
+              Building secure systems, practical software, and applied AI/ML.
+            </p>
+
+            {/* Clickable LeetCode badge without problem count */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+              <a
+                href={personalInfo.social.leetcode}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-clean-pill"
+                style={{ textDecoration: "none", cursor: "pointer" }}
+                title="LeetCode Profile"
+              >
+                <LeetCodeIcon size={12} color="var(--accent-cyan)" />
+                <span>Consistent Problem Solver</span>
+              </a>
+            </div>
           </div>
 
-          {/* Short Introduction Paragraph */}
+          {/* 5. Concise Introduction Paragraph (Authentic, no 450+ count) */}
           <p
             style={{
               fontFamily: "var(--font-sans)",
-              fontSize: "clamp(0.95rem, 1.2vw, 1.0625rem)",
+              fontSize: "clamp(0.9375rem, 1.1vw, 1.0625rem)",
               color: "var(--text-secondary)",
               lineHeight: 1.68,
               maxWidth: "580px",
-              marginBottom: "1.85rem",
+              marginBottom: "1.75rem",
             }}
+            className="hero-intro-bio"
           >
             I'm <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>Sharath B</strong>, a Cybersecurity student at <span style={{ color: "var(--text-primary)" }}>Chennai Institute of Technology</span> focused on defensive security, threat modeling, and secure software engineering.
           </p>
 
-          {/* Primary Action Buttons */}
+          {/* 6. Primary Action Buttons */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
               gap: "0.85rem",
               flexWrap: "wrap",
+              marginBottom: "1.5rem",
             }}
+            className="hero-cta-buttons"
           >
             <a href="#projects" className="btn-primary">
               <span>View Projects</span>
@@ -256,13 +261,62 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             </button>
           </div>
 
+          {/* 7. Social Links (Mobile integrated view below buttons) */}
+          <div className="hero-mobile-social" aria-label="Social connections">
+            <span className="hero-mobile-social-label">Connect:</span>
+            <div className="hero-mobile-social-links">
+              <a
+                href={`mailto:${personalInfo.social.email}`}
+                className="social-pill-link"
+                title="Direct Email"
+              >
+                <Mail size={13} />
+                <span>Email</span>
+              </a>
+
+              <a
+                href={personalInfo.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-pill-link"
+                title="GitHub Profile"
+              >
+                <GithubIcon size={13} />
+                <span>GitHub</span>
+              </a>
+
+              <a
+                href={personalInfo.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-pill-link"
+                title="LinkedIn Profile"
+              >
+                <LinkedinIcon size={13} />
+                <span>LinkedIn</span>
+              </a>
+
+              <a
+                href={personalInfo.social.leetcode}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-pill-link"
+                title="LeetCode Profile"
+              >
+                <LeetCodeIcon size={13} />
+                <span>LeetCode</span>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
 
       {/* ==============================================================
-          SLIM BOTTOM INFORMATION BAR (ALIGNED FOOTER BAR)
+          SLIM BOTTOM INFORMATION BAR (ALIGNED FOOTER BAR ON DESKTOP)
           ============================================================== */}
       <div
+        className="hero-bottom-bar"
         style={{
           position: "relative",
           zIndex: 20,
@@ -405,7 +459,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         </div>
       </div>
 
-      {/* Dedicated Styles for Hero & Metadata Pills */}
+      {/* Dedicated Styles for Hero & Metadata */}
       <style>{`
         .hero-clean-pill {
           display: inline-flex;
@@ -428,33 +482,119 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           color: var(--text-primary);
         }
 
+        /* Desktop: mobile portrait and mobile social are hidden */
+        .hero-mobile-portrait {
+          display: none;
+        }
+
+        .hero-mobile-social {
+          display: none;
+        }
+
+        /* ==========================================================
+           MOBILE & TABLET RESPONSIVE HERO (<= 960px)
+           Portrait-led natural hero sequence with clear portrait
+           above heading, no watermark behind text, no separate card
+           ========================================================== */
         @media (max-width: 960px) {
           #hero {
             min-height: auto !important;
-            padding-bottom: 2rem;
+            padding-bottom: 2.5rem;
           }
+
+          /* Hide desktop right-side background portrait & desktop bottom bar */
           .hero-backdrop-portrait {
-            position: relative !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            height: clamp(240px, 36vh, 320px) !important;
-            opacity: 1 !important;
-            pointer-events: none;
-          }
-          .hero-vignette-left {
             display: none !important;
           }
+
+          .hero-bottom-bar {
+            display: none !important;
+          }
+
+          /* Content column full width */
           .hero-left-col {
             max-width: 100% !important;
           }
+
           .hero-container-main {
-            padding-top: 1.25rem !important;
-            padding-bottom: 2rem !important;
+            padding-top: clamp(5.25rem, 8vh, 6.25rem) !important;
+            padding-bottom: 1.5rem !important;
           }
-          .hero-bottom-container {
-            flex-direction: column !important;
-            align-items: flex-start !important;
+
+          /* 1. Large, clear profile portrait above the heading */
+          .hero-mobile-portrait {
+            display: block;
+            width: clamp(140px, 42vw, 180px);
+            aspect-ratio: 4 / 5;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-default);
+            background: var(--bg-surface);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+            margin-bottom: 1.35rem;
+          }
+
+          .hero-mobile-portrait-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 14%;
+            display: block;
+          }
+
+          /* 3. Headline responsiveness */
+          .hero-headline-text {
+            font-size: clamp(2rem, 7.5vw, 3rem) !important;
+            line-height: 1.12 !important;
+            margin-bottom: 0.95rem !important;
+          }
+
+          /* 6. Buttons responsiveness */
+          .hero-cta-buttons {
             gap: 0.75rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+
+          /* 7. Social Links row on mobile */
+          .hero-mobile-social {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-subtle);
+          }
+
+          .hero-mobile-social-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+          }
+
+          .hero-mobile-social-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+          }
+        }
+
+        /* Narrow mobile phones (<= 360px, e.g. iPhone SE 1st gen) */
+        @media (max-width: 360px) {
+          .hero-mobile-portrait {
+            width: 130px;
+          }
+
+          .hero-headline-text {
+            font-size: 1.85rem !important;
+          }
+
+          .hero-cta-buttons > a,
+          .hero-cta-buttons > button {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>
