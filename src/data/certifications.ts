@@ -8,6 +8,9 @@ export interface CertificationItem {
   description: string;
   skills: string[];
   badgeLabel: string;
+  filename: string;
+  filePath: string;
+  format: "image" | "pdf";
 }
 
 export const certificationsData: CertificationItem[] = [
@@ -22,6 +25,9 @@ export const certificationsData: CertificationItem[] = [
       "Core cloud architecture, AWS cloud security compliance, Identity and Access Management (IAM), shared responsibility model, and infrastructure resilience.",
     skills: ["Cloud Architecture", "AWS Core Services", "Cloud Security", "IAM Compliance"],
     badgeLabel: "Certification",
+    filename: "AWS.png",
+    filePath: "/certificates/AWS.png",
+    format: "image",
   },
   {
     id: "cisco-networking",
@@ -34,6 +40,9 @@ export const certificationsData: CertificationItem[] = [
       "Computer networking fundamentals, OSI & TCP/IP models, routing and switching principles, IP addressing, and packet flow.",
     skills: ["Networking Basics", "TCP/IP Architecture", "Routing & Switching", "Packet Analysis"],
     badgeLabel: "Certification",
+    filename: "Networking Basics Certificate_page-0001.jpg",
+    filePath: "/certificates/Networking Basics Certificate_page-0001.jpg",
+    format: "image",
   },
   {
     id: "python-essentials",
@@ -46,6 +55,9 @@ export const certificationsData: CertificationItem[] = [
       "Foundational Python programming, control flow, functions, modular application design, and fundamental algorithmic logic.",
     skills: ["Python", "Modular Architecture", "Data Structures", "Algorithmic Logic"],
     badgeLabel: "Certification",
+    filename: "Python Essentials 1 Certificate_page-0001.jpg",
+    filePath: "/certificates/Python Essentials 1 Certificate_page-0001.jpg",
+    format: "image",
   },
   {
     id: "google-gemini",
@@ -58,6 +70,9 @@ export const certificationsData: CertificationItem[] = [
       "Certified proficiency in leveraging Google Gemini AI models, prompt engineering, multimodal reasoning, and rapid developer prototyping.",
     skills: ["Generative AI", "Gemini Models", "Prompt Engineering", "Multimodal AI"],
     badgeLabel: "Certification",
+    filename: "Gemini Certificate_page-0001.jpg",
+    filePath: "/certificates/Gemini Certificate_page-0001.jpg",
+    format: "image",
   },
   {
     id: "be10x-ai",
@@ -70,6 +85,9 @@ export const certificationsData: CertificationItem[] = [
       "Hands-on workshop exploring modern AI productivity workflows, developer tooling, and automated engineering integration.",
     skills: ["AI Workflows", "Productivity Automation", "Developer Tooling"],
     badgeLabel: "Workshop",
+    filename: "AI Tools Worshop Certificate_page-0001.jpg",
+    filePath: "/certificates/AI Tools Worshop Certificate_page-0001.jpg",
+    format: "image",
   },
   {
     id: "elevance-soc",
@@ -82,6 +100,9 @@ export const certificationsData: CertificationItem[] = [
       "Practical hands-on training on enterprise SOC operations, live security event monitoring, log correlation, and defensive threat triage.",
     skills: ["SOC Monitoring", "Incident Analysis", "Log Correlation", "Threat Triage"],
     badgeLabel: "Workshop & Training",
+    filename: "SOC Training Certificate.png",
+    filePath: "/certificates/SOC Training Certificate.png",
+    format: "image",
   },
 ];
 
