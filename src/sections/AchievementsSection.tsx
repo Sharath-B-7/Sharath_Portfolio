@@ -87,7 +87,7 @@ export const AchievementsSection: React.FC = () => {
               >
                 <span className="mono-tag" style={{ color: "var(--accent-terracotta)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
                   <LeetCodeIcon size={13} color="var(--accent-terracotta)" />
-                  01 · ALGORITHMIC RIGOR
+                  01 · Algorithmic Practice
                 </span>
                 <a
                   href={personalInfo.social.leetcode}
@@ -244,7 +244,7 @@ export const AchievementsSection: React.FC = () => {
               >
                 <span className="mono-tag" style={{ color: "var(--accent-terracotta)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
                   <ShieldCheck size={13} />
-                  02 · OPERATIONAL TRAINING
+                  02 · Operational Training
                 </span>
                 <span
                   style={{
@@ -370,7 +370,7 @@ export const AchievementsSection: React.FC = () => {
           >
             <div>
               <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-terracotta)" }}>
-                VERIFIED CREDENTIALS
+                Verified Technical Credentials
               </span>
               <h3
                 style={{

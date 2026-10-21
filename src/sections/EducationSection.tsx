@@ -48,7 +48,7 @@ export const EducationSection: React.FC = () => {
               >
                 <span className="mono-tag" style={{ color: "var(--accent-terracotta)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
                   <GraduationCap size={13} />
-                  01 · UNDERGRADUATE DEGREE
+                  01 · Undergraduate Degree
                 </span>
                 <span
                   style={{
@@ -204,7 +204,7 @@ export const EducationSection: React.FC = () => {
               >
                 <span className="mono-tag" style={{ color: "var(--accent-terracotta)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
                   <Award size={13} />
-                  02 · SCHOLASTIC EXCELLENCE
+                  02 · Scholastic Distinctions
                 </span>
                 <span
                   style={{

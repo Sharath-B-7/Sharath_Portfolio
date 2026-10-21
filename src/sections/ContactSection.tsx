@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ArrowUpRight, Copy, Check, Send, Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "../components/Icons";
+import { GithubIcon, LinkedinIcon } from "../components/Icons";
 import { personalInfo } from "../data/personalInfo";
 
 export const ContactSection: React.FC = () => {
@@ -126,27 +126,6 @@ export const ContactSection: React.FC = () => {
             </div>
           </a>
 
-          {/* LeetCode */}
-          <a
-            href={personalInfo.social.leetcode}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-profile-card"
-          >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-                <LeetCodeIcon size={18} />
-                <span style={{ fontSize: "0.75rem", fontFamily: "var(--font-sans)", fontWeight: 600, color: "var(--text-primary)" }}>LeetCode</span>
-              </div>
-              <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
-            </div>
-            <div style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
-              Sharathbcs (450+ Solved)
-            </div>
-            <div style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-              Continuous algorithmic practice across data structures &amp; graph theory
-            </div>
-          </a>
         </div>
 
       </div>
@@ -160,7 +139,7 @@ export const ContactSection: React.FC = () => {
 
         .contact-links-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
           gap: 1.5rem;
           border-top: 1px solid var(--border-subtle);
           padding-top: 2.5rem;
@@ -180,12 +159,6 @@ export const ContactSection: React.FC = () => {
           border-color: var(--border-strong);
           background: var(--bg-surface-elevated);
           transform: translateY(-2px);
-        }
-
-        @media (max-width: 900px) and (min-width: 601px) {
-          .contact-links-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
         }
 
         @media (max-width: 600px) {

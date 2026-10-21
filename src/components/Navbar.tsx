@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
       localStorage.setItem("theme-preference", next);
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) {
-        meta.setAttribute("content", next === "light" ? "#faf8f5" : "#121214");
+        meta.setAttribute("content", next === "light" ? "#F4F0E8" : "#171A19");
       }
     } catch (e) {}
   };

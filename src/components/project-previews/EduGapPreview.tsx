@@ -81,8 +81,8 @@ export const EduGapPreview: React.FC = () => {
         <span style={{ color: "var(--text-primary)" }}>
           SESSION: #CIT-2026-CS88 · Mathematics Diagnostic
         </span>
-        <span style={{ fontSize: "0.6875rem", color: "var(--accent-cyan)", fontWeight: 600 }}>
-          ACCURACY: 92.4%
+        <span style={{ fontSize: "0.6875rem", color: "var(--accent-terracotta)", fontWeight: 600 }}>
+          DIAGNOSTIC: ACTIVE
         </span>
       </div>
 

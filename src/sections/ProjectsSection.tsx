@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight, Image as ImageIcon, X, SlidersHorizontal } from "lucide-react";
+import { ArrowUpRight, Image as ImageIcon, X, SlidersHorizontal, BookOpen, GitMerge, Shield, Activity } from "lucide-react";
 import { GithubIcon } from "../components/Icons";
 import { projectsData } from "../data/projects";
 import type { ProjectItem } from "../data/projects";
@@ -55,6 +55,126 @@ export const ProjectsSection: React.FC = () => {
         return <AetherGradePreview />;
       case "fraudlens-ai":
         return <FraudLensPreview />;
+      default:
+        return null;
+    }
+  };
+
+  const renderDomainSpec = (project: ProjectItem) => {
+    switch (project.id) {
+      case "knowledge-gap-detection":
+        return (
+          <div className="project-spec-panel">
+            <div className="spec-panel-header">
+              <span className="spec-panel-icon"><BookOpen size={13} /></span>
+              <span className="spec-panel-title">Academic Research Specifications</span>
+            </div>
+            <div className="project-spec-grid">
+              <div className="project-spec-item">
+                <span className="project-spec-label">Diagnostic Engine</span>
+                <span className="project-spec-value">Tuned XGBoost + PyTorch LSTM sequence modeling for Deep Knowledge Tracing</span>
+              </div>
+              <div className="project-spec-item">
+                <span className="project-spec-label">Concept Graph</span>
+                <span className="project-spec-value">20-node prerequisite dependency network mapping cross-domain mathematics skills</span>
+              </div>
+              <div className="project-spec-item">
+                <span className="project-spec-label">Adaptive Path</span>
+                <span className="project-spec-value">Automated cognitive deficit detection with targeted remediation resource routing</span>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "rag":
+        return (
+          <div className="project-spec-panel rag-flow-panel">
+            <div className="spec-panel-header">
+              <span className="spec-panel-icon"><GitMerge size={13} /></span>
+              <span className="spec-panel-title">Two-Stage Retrieval Pipeline Architecture</span>
+            </div>
+            <div className="pipeline-steps-track">
+              <div className="pipeline-step-node">
+                <span className="step-num">01</span>
+                <span className="step-name">PDF Ingestion</span>
+                <span className="step-detail">pypdf parser</span>
+              </div>
+              <div className="pipeline-step-connector" aria-hidden="true">→</div>
+              <div className="pipeline-step-node">
+                <span className="step-num">02</span>
+                <span className="step-name">Chunking</span>
+                <span className="step-detail">800 chars / 150 overlap</span>
+              </div>
+              <div className="pipeline-step-connector" aria-hidden="true">→</div>
+              <div className="pipeline-step-node">
+                <span className="step-num">03</span>
+                <span className="step-name">Vector Search</span>
+                <span className="step-detail">ChromaDB (top-15)</span>
+              </div>
+              <div className="pipeline-step-connector" aria-hidden="true">→</div>
+              <div className="pipeline-step-node highlight">
+                <span className="step-num">04</span>
+                <span className="step-name">Cross-Encoder</span>
+                <span className="step-detail">ms-marco (top-4)</span>
+              </div>
+              <div className="pipeline-step-connector" aria-hidden="true">→</div>
+              <div className="pipeline-step-node">
+                <span className="step-num">05</span>
+                <span className="step-name">Grounded LLM</span>
+                <span className="step-detail">Llama 3.1 + Citations</span>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "aethergrade":
+        return (
+          <div className="project-spec-panel">
+            <div className="spec-panel-header">
+              <span className="spec-panel-icon"><Shield size={13} /></span>
+              <span className="spec-panel-title">Security &amp; Cryptographic Architecture</span>
+            </div>
+            <div className="project-spec-grid">
+              <div className="project-spec-item">
+                <span className="project-spec-label">Access Boundary</span>
+                <span className="project-spec-value">Multi-Role RBAC (Admin, Faculty, Student) with cryptographically signed JWTs</span>
+              </div>
+              <div className="project-spec-item">
+                <span className="project-spec-label">Tamper Defense</span>
+                <span className="project-spec-value">Immutable SHA-256 hash-chain ledger that flags historical single-byte tampering</span>
+              </div>
+              <div className="project-spec-item">
+                <span className="project-spec-label">Data Protection</span>
+                <span className="project-spec-value">PBKDF2 password hashing, AES-256 payload encryption &amp; HMAC verification</span>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "fraudlens-ai":
+        return (
+          <div className="project-spec-panel">
+            <div className="spec-panel-header">
+              <span className="spec-panel-icon"><Activity size={13} /></span>
+              <span className="spec-panel-title">Graph Threat Intelligence Triad</span>
+            </div>
+            <div className="project-spec-grid">
+              <div className="project-spec-item">
+                <span className="project-spec-label">Identity Graph</span>
+                <span className="project-spec-value">Degree centrality analysis detecting shared mule accounts and anomalous clusters</span>
+              </div>
+              <div className="project-spec-item">
+                <span className="project-spec-label">Signal Synthesis</span>
+                <span className="project-spec-value">Community reports and velocity heuristics synthesized into an interpretable Trust Index (0–100)</span>
+              </div>
+              <div className="project-spec-item">
+                <span className="project-spec-label">Service Layer</span>
+                <span className="project-spec-value">High-throughput FastAPI backend with SQLite/SQLAlchemy &amp; interactive client</span>
+              </div>
+            </div>
+          </div>
+        );
+
       default:
         return null;
     }
@@ -126,12 +246,12 @@ export const ProjectsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Project Presentations List */}
+        {/* Project Presentations List (Strict Order 1 to 4) */}
         <div style={{ display: "flex", flexDirection: "column", gap: "3.25rem" }}>
           {filteredProjects.map((project) => (
             <article
               key={project.id}
-              className="project-editorial-card"
+              className={`project-editorial-card project-card-${project.id}`}
             >
               <div className="project-grid-layout">
                 {/* LEFT COLUMN: Technical Narrative, Architecture & Stack */}
@@ -191,14 +311,17 @@ export const ProjectsSection: React.FC = () => {
                       fontFamily: "var(--font-sans)",
                       fontSize: "0.9375rem",
                       color: "var(--accent-terracotta-light)",
-                      marginBottom: "1.35rem",
+                      marginBottom: "1.25rem",
                       fontWeight: 500,
                     }}
                   >
                     {project.subtitle}
                   </div>
 
-                  {/* Engineering Narrative (Problem Context + Solution Architecture) */}
+                  {/* Domain-Tailored Architectural Spec Element */}
+                  {renderDomainSpec(project)}
+
+                  {/* Engineering Narrative */}
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem", marginBottom: "1.5rem" }}>
                     <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68, margin: 0 }}>
                       {project.problem}
@@ -439,6 +562,120 @@ export const ProjectsSection: React.FC = () => {
           align-items: start;
         }
 
+        /* Domain-Tailored Spec Panels */
+        .project-spec-panel {
+          background: var(--bg-surface-subtle);
+          border: 1px solid var(--border-subtle);
+          border-radius: 8px;
+          padding: 1rem 1.1rem;
+          margin-bottom: 1.35rem;
+        }
+
+        .spec-panel-header {
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          margin-bottom: 0.75rem;
+          color: var(--accent-terracotta);
+          font-family: var(--font-mono);
+          font-size: 0.6875rem;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+
+        .spec-panel-icon {
+          display: inline-flex;
+          align-items: center;
+        }
+
+        .project-spec-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.85rem;
+        }
+
+        .project-spec-item {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .project-spec-label {
+          font-family: var(--font-mono);
+          font-size: 0.6875rem;
+          color: var(--text-muted);
+          letter-spacing: 0.03em;
+          font-weight: 500;
+        }
+
+        .project-spec-value {
+          font-family: var(--font-sans);
+          font-size: 0.8125rem;
+          color: var(--text-secondary);
+          line-height: 1.45;
+        }
+
+        /* RAG Pipeline Flow Track */
+        .rag-flow-panel {
+          padding: 1rem 1.15rem;
+        }
+
+        .pipeline-steps-track {
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          overflow-x: auto;
+          padding-bottom: 0.25rem;
+        }
+
+        .pipeline-step-node {
+          background: var(--bg-surface);
+          border: 1px solid var(--border-subtle);
+          border-radius: 6px;
+          padding: 0.5rem 0.65rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.15rem;
+          min-width: 105px;
+          flex-shrink: 0;
+          transition: border-color 0.15s ease;
+        }
+
+        .pipeline-step-node.highlight {
+          border-color: var(--accent-terracotta);
+          background: var(--accent-terracotta-subtle);
+        }
+
+        .step-num {
+          font-family: var(--font-mono);
+          font-size: 0.625rem;
+          color: var(--accent-terracotta);
+          font-weight: 600;
+        }
+
+        .step-name {
+          font-family: var(--font-sans);
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: var(--text-primary);
+          white-space: nowrap;
+        }
+
+        .step-detail {
+          font-family: var(--font-mono);
+          font-size: 0.625rem;
+          color: var(--text-muted);
+          white-space: nowrap;
+        }
+
+        .pipeline-step-connector {
+          color: var(--accent-terracotta);
+          opacity: 0.6;
+          font-size: 0.8125rem;
+          flex-shrink: 0;
+        }
+
         @media (max-width: 1024px) {
           .project-grid-layout {
             grid-template-columns: 1fr !important;
@@ -446,10 +683,21 @@ export const ProjectsSection: React.FC = () => {
           }
         }
 
+        @media (max-width: 768px) {
+          .project-spec-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0.65rem !important;
+          }
+        }
+
         @media (max-width: 640px) {
           .project-editorial-card {
             padding: 1.25rem 0.85rem !important;
             border-radius: 8px !important;
+          }
+          .pipeline-step-node {
+            min-width: 95px !important;
+            padding: 0.4rem 0.55rem !important;
           }
         }
 

@@ -211,7 +211,7 @@ export const SkillsSection: React.FC = () => {
               >
                 <span className="mono-tag" style={{ color: "var(--accent-terracotta)", display: "inline-flex", alignItems: "center", gap: "0.45rem" }}>
                   <ShieldCheck size={14} />
-                  01 · FLAGSHIP SPECIALIZATION
+                  01 · Flagship Specialization
                 </span>
                 <span
                   style={{
@@ -226,7 +226,7 @@ export const SkillsSection: React.FC = () => {
                     letterSpacing: "0.04em",
                   }}
                 >
-                  CORE DISCIPLINE
+                  Core Discipline
                 </span>
               </div>
 
@@ -234,12 +234,11 @@ export const SkillsSection: React.FC = () => {
               <h3
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
-                  fontWeight: 800,
-                  letterSpacing: "-0.025em",
+                  fontSize: "clamp(1.35rem, 2.2vw, 1.85rem)",
+                  fontWeight: 700,
+                  letterSpacing: "-0.02em",
                   color: "var(--text-primary)",
                   marginBottom: "0.5rem",
-                  textTransform: "uppercase",
                 }}
               >
                 Cybersecurity &amp; Low-Level Systems
@@ -388,7 +387,7 @@ export const SkillsSection: React.FC = () => {
                 <div>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.85rem" }}>
                     <span className="mono-tag" style={{ color: "var(--accent-terracotta)" }}>
-                      02 · INTELLIGENT SYSTEMS
+                      02 · Intelligent Systems
                     </span>
                     <Cpu size={16} color="var(--accent-terracotta)" />
                   </div>
@@ -396,12 +395,11 @@ export const SkillsSection: React.FC = () => {
                   <h3
                     style={{
                       fontFamily: "var(--font-display)",
-                      fontSize: "clamp(1.25rem, 2vw, 1.6rem)",
-                      fontWeight: 800,
+                      fontSize: "clamp(1.2rem, 1.8vw, 1.5rem)",
+                      fontWeight: 700,
                       color: "var(--text-primary)",
-                      letterSpacing: "-0.02em",
+                      letterSpacing: "-0.015em",
                       marginBottom: "0.45rem",
-                      textTransform: "uppercase",
                     }}
                   >
                     Applied AI / ML &amp; Data
@@ -487,7 +485,7 @@ export const SkillsSection: React.FC = () => {
                 <div>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.85rem" }}>
                     <span className="mono-tag" style={{ color: "var(--accent-terracotta)" }}>
-                      03 · APPLICATION ARCHITECTURE
+                      03 · Application Architecture
                     </span>
                     <Globe size={16} color="var(--accent-terracotta)" />
                   </div>
@@ -495,12 +493,11 @@ export const SkillsSection: React.FC = () => {
                   <h3
                     style={{
                       fontFamily: "var(--font-display)",
-                      fontSize: "clamp(1.25rem, 2vw, 1.6rem)",
-                      fontWeight: 800,
+                      fontSize: "clamp(1.2rem, 1.8vw, 1.5rem)",
+                      fontWeight: 700,
                       color: "var(--text-primary)",
-                      letterSpacing: "-0.02em",
+                      letterSpacing: "-0.015em",
                       marginBottom: "0.45rem",
-                      textTransform: "uppercase",
                     }}
                   >
                     Web Systems &amp; Platforms

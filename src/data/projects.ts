@@ -47,8 +47,8 @@ export const projectsData: ProjectItem[] = [
   {
     id: "knowledge-gap-detection",
     number: "01",
-    categoryTag: "01 · MACHINE LEARNING & AI",
-    statusBadge: "ACADEMIC RESEARCH",
+    categoryTag: "01 · Machine Learning & AI",
+    statusBadge: "Academic Research · CIT",
     name: "Knowledge Gap Detection",
     subtitle: "Deep Knowledge Tracing & Prerequisite-Aware Personalized Learning",
     problem:
@@ -76,7 +76,7 @@ export const projectsData: ProjectItem[] = [
         badge: "MODERATE GAP",
         value: "72.4%",
         unit: "OVERALL MASTERY",
-        note: "Tuned XGBoost (92.40% Accuracy, ROC-AUC 0.9865) + PyTorch LSTM sequence tracing across 10 skill domains. (Verified Benchmark)",
+        note: "Dual-AI diagnostic formulation combining tuned XGBoost with PyTorch LSTM sequence modeling across 10 skill domains.",
         theme: "cyan",
       },
       metrics: [
@@ -87,7 +87,7 @@ export const projectsData: ProjectItem[] = [
         },
         {
           label: "Critical Deficit Identified:",
-          value: "Fraction Arithmetic (42% Accuracy — High Friction)",
+          value: "Fraction Arithmetic (Prerequisite Gap Identified)",
           highlight: true,
           color: "#f87171",
         },
@@ -108,10 +108,10 @@ export const projectsData: ProjectItem[] = [
   {
     id: "rag",
     number: "02",
-    categoryTag: "02 · RETRIEVAL-AUGMENTED GENERATION",
-    statusBadge: "PRODUCTION RAG PIPELINE",
-    name: "RAG — Intelligent Q&A System",
-    subtitle: "Two-Stage Retrieval-Augmented Generation with Cross-Encoder Re-Ranking",
+    categoryTag: "02 · Retrieval-Augmented Generation",
+    statusBadge: "Production Pipeline",
+    name: "Enterprise RAG System",
+    subtitle: "Two-Stage Document Q&A Pipeline with Cross-Encoder Re-Ranking",
     problem:
       "Finding accurate answers across extensive technical documents is time-consuming when users must manually scan lengthy PDFs. Standard language models also risk hallucinating responses when ungrounded in the source document.",
     architectureContribution:
@@ -167,8 +167,8 @@ export const projectsData: ProjectItem[] = [
   {
     id: "aethergrade",
     number: "03",
-    categoryTag: "03 · SECURE SYSTEMS",
-    statusBadge: "SYSTEMS BUILT",
+    categoryTag: "03 · Secure Systems & Engineering",
+    statusBadge: "Native Java SE Runtime",
     name: "AetherGrade",
     subtitle: "Cryptographic Tamper-Evident Ledger & Multi-Role Access Control",
     problem:
@@ -225,8 +225,8 @@ export const projectsData: ProjectItem[] = [
   {
     id: "fraudlens-ai",
     number: "04",
-    categoryTag: "04 · FRAUD INTELLIGENCE",
-    statusBadge: "ACTIVE DEVELOPMENT",
+    categoryTag: "04 · Fraud Intelligence & Analytics",
+    statusBadge: "Active Development",
     name: "FraudLens AI",
     subtitle: "Graph-Based Anomaly Detection & Digital Payment Fraud Intelligence",
     problem:
@@ -253,7 +253,7 @@ export const projectsData: ProjectItem[] = [
         badge: "HIGH RISK ALERT",
         value: "34",
         unit: "/ 100",
-        note: "Confidence: 94.2% based on 14 community reports & mule node graph clustering. (Illustrative Demo Data)",
+        note: "Heuristic confidence score based on community risk reports and graph node cluster analysis (Interactive Simulator).",
         theme: "danger",
       },
       metrics: [
