@@ -704,9 +704,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         .hero-ambient-light {
           opacity: 0;
           background:
-            linear-gradient(to right, #F4F0E8 0%, rgba(244, 240, 232, 0.85) 10%, rgba(244, 240, 232, 0.25) 22%, transparent 32%),
-            linear-gradient(to top, rgba(244, 240, 232, 0.70) 0%, rgba(244, 240, 232, 0.20) 10%, transparent 22%),
-            linear-gradient(to bottom, rgba(244, 240, 232, 0.40) 0%, transparent 10%);
+            /* Left broad ambient blend into #F4F0E8 */
+            linear-gradient(to right, #F4F0E8 0%, rgba(244, 240, 232, 0.95) 12%, rgba(244, 240, 232, 0.65) 26%, rgba(244, 240, 232, 0.20) 42%, transparent 58%),
+            /* Bottom broad ambient blend into #F4F0E8 */
+            linear-gradient(to top, #F4F0E8 0%, rgba(244, 240, 232, 0.95) 12%, rgba(244, 240, 232, 0.65) 26%, rgba(244, 240, 232, 0.20) 42%, transparent 54%),
+            /* Right edge softening into #F4F0E8 (eliminates dark doorway box) */
+            linear-gradient(to left, #F4F0E8 0%, rgba(244, 240, 232, 0.80) 6%, rgba(244, 240, 232, 0.25) 12%, transparent 18%),
+            /* Top edge softening into #F4F0E8 under navigation */
+            linear-gradient(to bottom, #F4F0E8 0%, rgba(244, 240, 232, 0.85) 6%, rgba(244, 240, 232, 0.35) 12%, transparent 20%);
         }
 
         [data-theme="light"] .hero-ambient-dark {
@@ -752,7 +757,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
         .hero-mobile-ambient-light {
           opacity: 0;
-          background: linear-gradient(to top, #F4F0E8 0%, rgba(244, 240, 232, 0.85) 12%, transparent 28%);
+          background:
+            linear-gradient(to top, #F4F0E8 0%, rgba(244, 240, 232, 0.95) 14%, rgba(244, 240, 232, 0.50) 28%, transparent 42%),
+            linear-gradient(to bottom, #F4F0E8 0%, rgba(244, 240, 232, 0.70) 6%, transparent 14%);
         }
 
         [data-theme="light"] .hero-mobile-ambient-dark {
