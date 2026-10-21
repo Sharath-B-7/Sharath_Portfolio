@@ -1,381 +1,585 @@
 import React, { useState } from "react";
-import { Trophy, Code2, GraduationCap, ShieldCheck, Cpu, Award, CheckCircle2, SlidersHorizontal } from "lucide-react";
-import { achievementsData, dsaTopics } from "../data/exploring";
+import { ArrowUpRight, Award, ShieldCheck, CheckCircle2, SlidersHorizontal, Terminal } from "lucide-react";
+import { LeetCodeIcon } from "../components/Icons";
+import { personalInfo } from "../data/personalInfo";
 import { certificationsData } from "../data/certifications";
 
 export const AchievementsSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<"all" | "academic" | "certifications">("all");
+  const [activeFilter, setActiveFilter] = useState<"all" | "cert" | "workshop">("all");
 
-  const getAchievementIcon = (id: string) => {
-    switch (id) {
-      case "leetcode":
-        return <Code2 size={20} color="var(--accent-cyan)" />;
-      case "academics":
-        return <GraduationCap size={20} color="var(--accent-emerald)" />;
-      case "soc-training":
-        return <ShieldCheck size={20} color="var(--accent-cyan)" />;
-      case "practical-projects":
-        return <Cpu size={20} color="var(--accent-cyan)" />;
-      default:
-        return <Trophy size={20} color="var(--accent-cyan)" />;
-    }
-  };
+  // Filter out the SOC training from the certifications list because it has its own dedicated feature card in Part A
+  const credentialsList = certificationsData.filter((c) => c.id !== "elevance-soc");
+
+  const filteredCredentials = credentialsList.filter((item) => {
+    if (activeFilter === "all") return true;
+    if (activeFilter === "cert") return item.type === "certification";
+    if (activeFilter === "workshop") return item.type === "training";
+    return true;
+  });
+
+  const dsaDomains = [
+    "Arrays & Strings",
+    "Two Pointers",
+    "Sliding Window",
+    "Binary Search",
+    "Linked Lists",
+    "Trees & BST",
+    "Graph Theory (BFS/DFS)",
+    "Dynamic Programming",
+    "Stack & Queue",
+    "Greedy Algorithms",
+    "Bit Manipulation",
+    "Hash Tables",
+  ];
+
+  const socCompetencies = [
+    "Live Security Event Monitoring",
+    "SIEM & Log Correlation",
+    "Defensive Threat Triage",
+    "Incident Escalation Workflows",
+    "False Positive Filtering",
+    "Alert Investigation Protocols",
+  ];
 
   return (
     <section id="achievements" className="editorial-section">
       <div className="container">
+        
         {/* Section Header */}
-        <div style={{ marginBottom: "2.5rem" }}>
-          <div className="section-label">05 · Demonstrated Track Record</div>
+        <div style={{ marginBottom: "2.75rem" }}>
+          <div className="section-label">05 · Problem Solving &amp; Credentials</div>
           <h2 className="section-heading-editorial">
-            Achievements &amp; Credentials
+            Algorithmic Practice &amp; Technical Credentials
           </h2>
           <p className="section-subheading-editorial">
-            Verified academic milestones, algorithmic problem-solving track record across 450+ LeetCode problems, and industry-standard certifications.
+            Continuous problem-solving discipline on LeetCode, hands-on Security Operations Center (SOC) training, and verified technical credentials.
           </p>
         </div>
 
-        {/* Tab Filters */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.45rem",
-            flexWrap: "wrap",
-            marginBottom: "2.5rem",
-            paddingBottom: "1rem",
-            borderBottom: "1px solid var(--border-subtle)",
-          }}
-        >
-          <span
+        {/* PART A: Dedicated Problem Solving & Practical Training Cards */}
+        <div className="achieve-split-grid" style={{ marginBottom: "3.5rem" }}>
+          
+          {/* Card 1: Competitive Algorithmic Practice (LeetCode Feature) */}
+          <div
+            className="achieve-card-block"
             style={{
-              fontSize: "0.78125rem",
-              fontFamily: "var(--font-sans)",
-              color: "var(--text-muted)",
-              marginRight: "0.5rem",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.35rem",
+              border: "1px solid var(--border-default)",
+              background: "var(--bg-surface)",
+              borderRadius: "10px",
+              padding: "clamp(1.35rem, 3vw, 2.5rem)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              transition: "border-color 0.2s ease, background 0.2s ease",
             }}
           >
-            <SlidersHorizontal size={13} />
-            Filter credentials:
-          </span>
+            <div>
+              {/* Meta bar */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "0.85rem",
+                  flexWrap: "wrap",
+                  gap: "0.5rem",
+                }}
+              >
+                <span className="mono-tag" style={{ color: "var(--accent-cyan)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+                  <LeetCodeIcon size={13} color="var(--accent-cyan)" />
+                  01 · ALGORITHMIC RIGOR
+                </span>
+                <a
+                  href={personalInfo.social.leetcode}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-editorial-secondary"
+                  style={{
+                    padding: "0.25rem 0.6rem",
+                    fontSize: "0.71875rem",
+                    fontFamily: "var(--font-mono)",
+                    gap: "0.3rem",
+                  }}
+                >
+                  <span>LeetCode Profile</span>
+                  <ArrowUpRight size={11} style={{ opacity: 0.7 }} />
+                </a>
+              </div>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab("all")}
-            style={{
-              background: activeTab === "all" ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
-              border: activeTab === "all" ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-              borderRadius: "6px",
-              padding: "0.35rem 0.8rem",
-              color: activeTab === "all" ? "var(--text-primary)" : "var(--text-secondary)",
-              fontFamily: "var(--font-sans)",
-              fontSize: "0.8125rem",
-              fontWeight: activeTab === "all" ? 600 : 500,
-              cursor: "pointer",
-              transition: "all 0.15s ease",
-            }}
-          >
-            All Milestones &amp; Certs
-          </button>
+              {/* Title */}
+              <h3
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(1.35rem, 2.2vw, 1.75rem)",
+                  fontWeight: 700,
+                  color: "var(--text-primary)",
+                  letterSpacing: "-0.02em",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                LeetCode Problem Solving
+              </h3>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab("academic")}
-            style={{
-              background: activeTab === "academic" ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
-              border: activeTab === "academic" ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-              borderRadius: "6px",
-              padding: "0.35rem 0.8rem",
-              color: activeTab === "academic" ? "var(--text-primary)" : "var(--text-secondary)",
-              fontFamily: "var(--font-sans)",
-              fontSize: "0.8125rem",
-              fontWeight: activeTab === "academic" ? 600 : 500,
-              cursor: "pointer",
-              transition: "all 0.15s ease",
-            }}
-          >
-            Academic &amp; DSA Discipline
-          </button>
+              {/* Prominent Stat */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "baseline",
+                  gap: "0.75rem",
+                  marginBottom: "1rem",
+                  flexWrap: "wrap",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "clamp(2.5rem, 4.5vw, 3.25rem)",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                    lineHeight: 1,
+                  }}
+                >
+                  450+
+                </span>
+                <div>
+                  <span style={{ fontSize: "0.875rem", color: "var(--text-secondary)", fontFamily: "var(--font-mono)", display: "block" }}>
+                    Problems Solved
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.6875rem",
+                      fontFamily: "var(--font-mono)",
+                      color: "var(--accent-emerald)",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.3rem",
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: "5px",
+                        height: "5px",
+                        borderRadius: "50%",
+                        backgroundColor: "var(--accent-emerald)",
+                        display: "inline-block",
+                      }}
+                    />
+                    Continuous Practice
+                  </span>
+                </div>
+              </div>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab("certifications")}
-            style={{
-              background: activeTab === "certifications" ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
-              border: activeTab === "certifications" ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-              borderRadius: "6px",
-              padding: "0.35rem 0.8rem",
-              color: activeTab === "certifications" ? "var(--text-primary)" : "var(--text-secondary)",
-              fontFamily: "var(--font-sans)",
-              fontSize: "0.8125rem",
-              fontWeight: activeTab === "certifications" ? 600 : 500,
-              cursor: "pointer",
-              transition: "all 0.15s ease",
-            }}
-          >
-            Industry Certifications ({certificationsData.length})
-          </button>
-        </div>
-
-        {/* SECTION A: Key Milestones Grid */}
-        {(activeTab === "all" || activeTab === "academic") && (
-          <div style={{ marginBottom: "3rem" }}>
-            <div style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)", color: "var(--accent-cyan-light)", letterSpacing: "0.04em", marginBottom: "1rem" }}>
-              // CORE HIGHLIGHTS &amp; PROBLEM SOLVING
+              {/* Narrative */}
+              <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68, marginBottom: "1.5rem" }}>
+                Disciplined daily practice focusing on optimal time and space complexity tradeoffs, memory efficiency, and pattern recognition. Routine focus centers on Graph Theory, Dynamic Programming, Tree Traversals, and Two-Pointer strategies to anticipate edge cases across all software architectures.
+              </p>
             </div>
 
+            {/* Practice Domains Tag Cloud */}
             <div
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                gap: "1.5rem",
+                borderTop: "1px solid var(--border-subtle)",
+                paddingTop: "1.25rem",
               }}
             >
-              {achievementsData.map((item) => (
-                <div
-                  key={item.id}
+              <div
+                style={{
+                  fontSize: "0.6875rem",
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--text-muted)",
+                  letterSpacing: "0.06em",
+                  marginBottom: "0.6rem",
+                  textTransform: "uppercase",
+                }}
+              >
+                Practiced Computational Domains:
+              </div>
+
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+                {dsaDomains.map((domain) => (
+                  <span
+                    key={domain}
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.71875rem",
+                      color: "var(--text-secondary)",
+                      background: "rgba(255, 255, 255, 0.025)",
+                      padding: "0.22rem 0.55rem",
+                      borderRadius: "4px",
+                      border: "1px solid var(--border-subtle)",
+                    }}
+                  >
+                    {domain}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Practical SOC Operations Training */}
+          <div
+            className="achieve-card-block"
+            style={{
+              border: "1px solid var(--border-default)",
+              background: "var(--bg-surface)",
+              borderRadius: "10px",
+              padding: "clamp(1.35rem, 3vw, 2.5rem)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              transition: "border-color 0.2s ease, background 0.2s ease",
+            }}
+          >
+            <div>
+              {/* Meta bar */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "0.85rem",
+                  flexWrap: "wrap",
+                  gap: "0.5rem",
+                }}
+              >
+                <span className="mono-tag" style={{ color: "var(--accent-cyan)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+                  <ShieldCheck size={13} />
+                  02 · OPERATIONAL TRAINING
+                </span>
+                <span
                   style={{
-                    padding: "clamp(1.5rem, 2vw, 1.85rem)",
-                    background: "var(--bg-surface)",
-                    border: "1px solid var(--border-default)",
-                    borderRadius: "8px",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    gap: "1.25rem",
-                    transition: "border-color 0.2s ease, background 0.2s ease",
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.75rem",
+                    color: "var(--accent-cyan-light)",
+                    background: "rgba(6, 182, 212, 0.08)",
+                    border: "1px solid var(--accent-cyan-border)",
+                    padding: "0.15rem 0.55rem",
+                    borderRadius: "4px",
                   }}
-                  className="editorial-card-hover"
                 >
-                  <div>
-                    {/* Top Row: Icon + Badge */}
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
-                      <div
-                        style={{
-                          width: "40px",
-                          height: "40px",
-                          borderRadius: "8px",
-                          background: "var(--bg-surface-elevated)",
-                          border: "1px solid var(--border-subtle)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {getAchievementIcon(item.id)}
-                      </div>
+                  Practical Training
+                </span>
+              </div>
 
-                      <span
-                        style={{
-                          fontSize: "0.6875rem",
-                          fontFamily: "var(--font-mono)",
-                          color: "var(--text-secondary)",
-                          border: "1px solid var(--border-subtle)",
-                          padding: "0.15rem 0.5rem",
-                          borderRadius: "4px",
-                          background: "rgba(255, 255, 255, 0.02)",
-                        }}
-                      >
-                        {item.badge}
-                      </span>
-                    </div>
+              {/* Title */}
+              <h3
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(1.35rem, 2.2vw, 1.75rem)",
+                  fontWeight: 700,
+                  color: "var(--text-primary)",
+                  letterSpacing: "-0.02em",
+                  marginBottom: "0.35rem",
+                }}
+              >
+                Real-Time SOC Operations
+              </h3>
 
-                    <div
+              {/* Provider */}
+              <div
+                style={{
+                  fontSize: "0.95rem",
+                  color: "var(--accent-cyan-light)",
+                  fontWeight: 600,
+                  marginBottom: "0.45rem",
+                }}
+              >
+                Elevance Skills · Practical Security Training
+              </div>
+
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.75rem",
+                  color: "var(--text-muted)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Hands-on Defensive Security Operations
+              </div>
+
+              {/* Narrative */}
+              <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68, marginBottom: "1.5rem" }}>
+                Completed specialized hands-on training covering enterprise Security Operations Center (SOC) workflows, focusing on live security event monitoring, log correlation, incident triage, and escalation protocols in corporate environments.
+              </p>
+            </div>
+
+            {/* Core Competencies Checklist */}
+            <div
+              style={{
+                borderTop: "1px solid var(--border-subtle)",
+                paddingTop: "1.25rem",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.6875rem",
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--text-muted)",
+                  letterSpacing: "0.06em",
+                  marginBottom: "0.6rem",
+                  textTransform: "uppercase",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.35rem",
+                }}
+              >
+                <Terminal size={12} />
+                Operational Competencies Acquired:
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                  gap: "0.5rem 0.75rem",
+                }}
+              >
+                {socCompetencies.map((comp, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      fontSize: "0.8125rem",
+                      color: "var(--text-secondary)",
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "0.45rem",
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    <CheckCircle2 size={13} style={{ color: "var(--accent-cyan)", flexShrink: 0, marginTop: "0.15rem" }} />
+                    <span>{comp}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* PART B: Verified Industry Certifications & Credentials */}
+        <div>
+          {/* Subheader and Filters */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-end",
+              flexWrap: "wrap",
+              gap: "1rem",
+              marginBottom: "1.75rem",
+              paddingBottom: "1rem",
+              borderBottom: "1px solid var(--border-subtle)",
+            }}
+          >
+            <div>
+              <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan)" }}>
+                VERIFIED CREDENTIALS
+              </span>
+              <h3
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(1.35rem, 2.2vw, 1.75rem)",
+                  fontWeight: 700,
+                  color: "var(--text-primary)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Industry Certifications &amp; Credentials
+              </h3>
+            </div>
+
+            {/* Filter Pills */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", flexWrap: "wrap" }}>
+              <span
+                style={{
+                  fontSize: "0.71875rem",
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--text-muted)",
+                  marginRight: "0.25rem",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.35rem",
+                }}
+              >
+                <SlidersHorizontal size={13} />
+                Filter:
+              </span>
+              {[
+                { id: "all", label: `All (${credentialsList.length})` },
+                { id: "cert", label: "Certifications" },
+                { id: "workshop", label: "Workshops" },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveFilter(tab.id as "all" | "cert" | "workshop")}
+                  style={{
+                    background: activeFilter === tab.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
+                    border: activeFilter === tab.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
+                    color: activeFilter === tab.id ? "var(--text-primary)" : "var(--text-secondary)",
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "0.8125rem",
+                    fontWeight: activeFilter === tab.id ? 600 : 500,
+                    padding: "0.35rem 0.8rem",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    transition: "all 0.15s ease",
+                  }}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Cards Grid */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))",
+              gap: "1.35rem",
+            }}
+          >
+            {filteredCredentials.map((cert) => (
+              <div
+                key={cert.id}
+                className="credential-editorial-card"
+                style={{
+                  padding: "1.35rem 1.5rem",
+                  background: "var(--bg-surface)",
+                  border: "1px solid var(--border-default)",
+                  borderRadius: "8px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  gap: "1rem",
+                  transition: "border-color 0.2s ease, background 0.2s ease",
+                }}
+              >
+                <div>
+                  {/* Card Meta */}
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "flex-start",
+                      marginBottom: "0.6rem",
+                      gap: "0.5rem",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <span
                       style={{
                         fontSize: "0.6875rem",
                         fontFamily: "var(--font-mono)",
                         color: "var(--accent-cyan)",
-                        letterSpacing: "0.06em",
-                        marginBottom: "0.3rem",
+                        letterSpacing: "0.04em",
                       }}
                     >
-                      {item.category}
-                    </div>
-
-                    <h3
+                      {cert.issuer}
+                    </span>
+                    <span
                       style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "1.25rem",
-                        fontWeight: 700,
-                        color: "var(--text-primary)",
-                        marginBottom: "0.4rem",
-                        letterSpacing: "-0.02em",
-                      }}
-                    >
-                      {item.title}
-                    </h3>
-
-                    <div
-                      style={{
+                        fontSize: "0.65625rem",
                         fontFamily: "var(--font-mono)",
-                        fontSize: "1.15rem",
-                        fontWeight: 700,
-                        color: "var(--text-primary)",
-                        marginBottom: "0.75rem",
+                        color: "var(--text-secondary)",
+                        border: "1px solid var(--border-subtle)",
+                        padding: "0.15rem 0.5rem",
+                        borderRadius: "4px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.3rem",
+                        background: "rgba(255, 255, 255, 0.02)",
                       }}
                     >
-                      {item.metric}
-                    </div>
-
-                    <p style={{ color: "var(--text-secondary)", fontSize: "0.84375rem", lineHeight: 1.65 }}>
-                      {item.description}
-                    </p>
+                      <Award size={11} style={{ color: "var(--accent-cyan)" }} />
+                      {cert.badgeLabel}
+                    </span>
                   </div>
 
-                  {/* LeetCode Topic Tag Cloud if leetcode card */}
-                  {item.id === "leetcode" && (
-                    <div style={{ paddingTop: "0.75rem", borderTop: "1px solid var(--border-subtle)" }}>
-                      <div style={{ fontSize: "0.65625rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", marginBottom: "0.4rem" }}>
-                        PRACTICE DOMAINS:
-                      </div>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
-                        {dsaTopics.slice(0, 8).map((topic, tIdx) => (
-                          <span
-                            key={tIdx}
-                            style={{
-                              fontSize: "0.65625rem",
-                              fontFamily: "var(--font-mono)",
-                              background: "rgba(255, 255, 255, 0.03)",
-                              border: "1px solid var(--border-subtle)",
-                              borderRadius: "3px",
-                              padding: "0.1rem 0.35rem",
-                              color: "var(--text-muted)",
-                            }}
-                          >
-                            {topic}
-                          </span>
-                        ))}
-                        <span style={{ fontSize: "0.65625rem", color: "var(--accent-cyan)", fontFamily: "var(--font-mono)", alignSelf: "center" }}>
-                          +8 more
-                        </span>
-                      </div>
-                    </div>
-                  )}
+                  {/* Title */}
+                  <h4
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "1.1rem",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      marginBottom: "0.5rem",
+                      lineHeight: 1.35,
+                    }}
+                  >
+                    {cert.title}
+                  </h4>
+
+                  {/* Description */}
+                  <p style={{ color: "var(--text-secondary)", fontSize: "0.84375rem", lineHeight: 1.6, margin: 0 }}>
+                    {cert.description}
+                  </p>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
 
-        {/* SECTION B: Industry Certifications & Training Grid */}
-        {(activeTab === "all" || activeTab === "certifications") && (
-          <div>
-            <div style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)", color: "var(--accent-cyan-light)", letterSpacing: "0.04em", marginBottom: "1rem" }}>
-              // VERIFIED CREDENTIALS &amp; CERTIFICATIONS
-            </div>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-                gap: "1.25rem",
-              }}
-            >
-              {certificationsData.map((cert) => (
+                {/* Skills Chips */}
                 <div
-                  key={cert.id}
                   style={{
-                    padding: "1.5rem",
-                    background: "var(--bg-surface)",
-                    border: "1px solid var(--border-default)",
-                    borderRadius: "8px",
                     display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    gap: "1rem",
-                    transition: "border-color 0.2s ease, background 0.2s ease",
+                    flexWrap: "wrap",
+                    gap: "0.35rem",
+                    paddingTop: "0.75rem",
+                    borderTop: "1px solid var(--border-subtle)",
                   }}
-                  className="editorial-card-hover"
                 >
-                  <div>
-                    {/* Header: Issuer + Badge */}
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "0.6rem" }}>
-                      <span
-                        style={{
-                          fontSize: "0.6875rem",
-                          fontFamily: "var(--font-mono)",
-                          color: "var(--accent-cyan)",
-                          letterSpacing: "0.05em",
-                        }}
-                      >
-                        {cert.issuer}
-                      </span>
-                      <span
-                        style={{
-                          fontSize: "0.65625rem",
-                          fontFamily: "var(--font-mono)",
-                          color: "var(--text-secondary)",
-                          border: "1px solid var(--border-subtle)",
-                          padding: "0.15rem 0.45rem",
-                          borderRadius: "4px",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "0.25rem",
-                          background: "rgba(255, 255, 255, 0.02)",
-                        }}
-                      >
-                        <Award size={10} style={{ color: "var(--accent-cyan)" }} />
-                        {cert.badgeLabel}
-                      </span>
-                    </div>
-
-                    {/* Title */}
-                    <h3
+                  {cert.skills.map((skill, sIdx) => (
+                    <span
+                      key={sIdx}
                       style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "1.1rem",
-                        fontWeight: 700,
-                        color: "var(--text-primary)",
-                        marginBottom: "0.6rem",
-                        lineHeight: 1.3,
+                        fontSize: "0.6875rem",
+                        fontFamily: "var(--font-mono)",
+                        color: "var(--text-secondary)",
+                        background: "rgba(255, 255, 255, 0.025)",
+                        border: "1px solid var(--border-subtle)",
+                        padding: "0.15rem 0.5rem",
+                        borderRadius: "3px",
                       }}
                     >
-                      {cert.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p style={{ color: "var(--text-secondary)", fontSize: "0.8125rem", lineHeight: 1.55, marginBottom: "1rem" }}>
-                      {cert.description}
-                    </p>
-                  </div>
-
-                  {/* Skills tags */}
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", paddingTop: "0.75rem", borderTop: "1px solid var(--border-subtle)" }}>
-                    {cert.skills.map((skill, sIdx) => (
-                      <span
-                        key={sIdx}
-                        style={{
-                          fontSize: "0.6875rem",
-                          fontFamily: "var(--font-mono)",
-                          color: "var(--text-muted)",
-                          background: "rgba(255, 255, 255, 0.03)",
-                          border: "1px solid var(--border-subtle)",
-                          padding: "0.15rem 0.45rem",
-                          borderRadius: "3px",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "0.25rem",
-                        }}
-                      >
-                        <CheckCircle2 size={9} style={{ color: "var(--accent-cyan)" }} />
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                      {skill}
+                    </span>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        )}
+        </div>
+
       </div>
 
       <style>{`
-        .editorial-card-hover:hover {
+        .achieve-split-grid {
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: clamp(1.75rem, 3vw, 2.5rem);
+          align-items: stretch;
+        }
+
+        .achieve-card-block:hover,
+        .credential-editorial-card:hover {
           border-color: var(--border-strong) !important;
-          background: var(--bg-surface-elevated) !important;
+        }
+
+        @media (max-width: 960px) {
+          .achieve-split-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.75rem !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .achieve-card-block {
+            padding: 1.25rem 1rem !important;
+            border-radius: 8px !important;
+          }
+          .credential-editorial-card {
+            padding: 1.25rem 1rem !important;
+          }
         }
       `}</style>
     </section>

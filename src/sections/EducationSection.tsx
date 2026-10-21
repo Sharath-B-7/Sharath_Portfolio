@@ -1,81 +1,24 @@
-import React, { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import React from "react";
+import { GraduationCap, Award, BookOpen } from "lucide-react";
 import { personalInfo } from "../data/personalInfo";
 
 export const EducationSection: React.FC = () => {
-  const [filterType, setFilterType] = useState<"all" | "certification" | "training" | "workshop">("all");
-
-  const credentials = [
-    {
-      title: "AWS Certified Cloud Practitioner",
-      issuer: "Amazon Web Services (AWS)",
-      type: "certification",
-      typeLabel: "Certification",
-      year: "Verified Credential",
-      details: "Cloud Architecture, AWS Core Services, Cloud Security, Shared Responsibility & IAM",
-    },
-    {
-      title: "Google Gemini Certified University Student",
-      issuer: "Google",
-      type: "certification",
-      typeLabel: "Certification",
-      year: "Certified Student",
-      details: "Generative AI Foundations, Prompt Engineering, Multimodal Reasoning & Prototyping",
-    },
-    {
-      title: "Cisco Python Essentials 1",
-      issuer: "Python Institute / Cisco Academy",
-      type: "certification",
-      typeLabel: "Certification",
-      year: "Verified Credential",
-      details: "Modular Architecture, Control Flow, Data Structures & Algorithmic Logic in Python",
-    },
-    {
-      title: "Networking Basics",
-      issuer: "Cisco Networking Academy",
-      type: "certification",
-      typeLabel: "Certification",
-      year: "Verified Credential",
-      details: "TCP/IP Architecture, OSI Model, Routing & Switching Fundamentals, Subnetting & Packet Flow",
-    },
-    {
-      title: "Real-Time Security Operations Center (SOC) Training",
-      issuer: "Elevance Skills",
-      type: "training",
-      typeLabel: "Practical Training",
-      year: "Hands-on Training",
-      details: "Live Security Event Monitoring, Log Correlation, Triage Protocols & Incident Escalation Workflows",
-    },
-    {
-      title: "AI Tools Workshop",
-      issuer: "Be10x",
-      type: "workshop",
-      typeLabel: "Workshop",
-      year: "Completed",
-      details: "Modern AI Productivity Workflows, Generative Tooling & Developer Automation Integration",
-    },
-  ];
-
-  const filteredCredentials = filterType === "all"
-    ? credentials
-    : credentials.filter((c) => c.type === filterType);
-
   return (
     <section id="education" className="editorial-section">
       <div className="container">
         
         {/* Section Header */}
-        <div style={{ marginBottom: "3.5rem" }}>
-          <div className="section-label">04 · Education &amp; Credentials</div>
+        <div style={{ marginBottom: "2.75rem" }}>
+          <div className="section-label">04 · Academic Foundation</div>
           <h2 className="section-heading-editorial">
-            Academic Foundation &amp; Credentials
+            Education &amp; Scholastic Record
           </h2>
           <p className="section-subheading-editorial">
-            Rigorous undergraduate studies at Chennai Institute of Technology, continuous algorithmic problem solving, and verified technical credentials.
+            Formal undergraduate studies in Computer Science and Engineering with Cyber Security specialization at Chennai Institute of Technology, grounded in a strong secondary schooling record.
           </p>
         </div>
 
-        {/* Top 2-Column Split: Degree & Problem Solving */}
+        {/* 2-Column Split: Undergraduate Degree & Scholastic Distinctions */}
         <div className="edu-split-grid">
           {/* Formal Degree Card */}
           <div
@@ -83,8 +26,8 @@ export const EducationSection: React.FC = () => {
             style={{
               border: "1px solid var(--border-default)",
               background: "var(--bg-surface)",
-              borderRadius: "8px",
-              padding: "clamp(1.75rem, 3vw, 2.5rem)",
+              borderRadius: "10px",
+              padding: "clamp(1.35rem, 3vw, 2.5rem)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -92,99 +35,155 @@ export const EducationSection: React.FC = () => {
             }}
           >
             <div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.6rem" }}>
-                <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
-                  UNDERGRADUATE DEGREE
+              {/* Top Meta Bar */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "0.85rem",
+                  flexWrap: "wrap",
+                  gap: "0.5rem",
+                }}
+              >
+                <span className="mono-tag" style={{ color: "var(--accent-cyan)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+                  <GraduationCap size={13} />
+                  01 · UNDERGRADUATE DEGREE
                 </span>
                 <span
                   style={{
                     fontFamily: "var(--font-mono)",
-                    fontSize: "0.875rem",
+                    fontSize: "0.8125rem",
                     fontWeight: 600,
                     color: "var(--accent-emerald)",
+                    background: "rgba(16, 185, 129, 0.08)",
+                    border: "1px solid var(--accent-emerald-border)",
+                    padding: "0.15rem 0.55rem",
+                    borderRadius: "4px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.35rem",
                   }}
                 >
-                  CGPA: 8.5 / 10
+                  <span
+                    style={{
+                      width: "6px",
+                      height: "6px",
+                      borderRadius: "50%",
+                      backgroundColor: "var(--accent-emerald)",
+                      display: "inline-block",
+                    }}
+                  />
+                  CGPA: {personalInfo.education.cgpa}
                 </span>
               </div>
 
+              {/* Institution Title */}
               <h3
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "1.4rem",
+                  fontSize: "clamp(1.35rem, 2.2vw, 1.75rem)",
                   fontWeight: 700,
                   color: "var(--text-primary)",
                   letterSpacing: "-0.02em",
                   marginBottom: "0.35rem",
                 }}
               >
-                Chennai Institute of Technology
+                {personalInfo.education.college}
               </h3>
 
-              <div style={{ fontSize: "0.95rem", color: "var(--text-primary)", fontWeight: 500, marginBottom: "0.45rem" }}>
-                B.E. Computer Science and Engineering — Cyber Security
-              </div>
-
+              {/* Degree Name */}
               <div
                 style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "0.8125rem",
+                  fontSize: "0.95rem",
+                  color: "var(--accent-cyan-light)",
+                  fontWeight: 600,
+                  marginBottom: "0.45rem",
+                }}
+              >
+                {personalInfo.education.degree}
+              </div>
+
+              {/* Term & Location */}
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.75rem",
                   color: "var(--text-muted)",
                   marginBottom: "1.25rem",
                 }}
               >
-                2025 – 2029 (2nd Year) · Chennai, Tamil Nadu
+                {personalInfo.education.year} (2nd Year) · {personalInfo.education.location}
               </div>
 
-              <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.68, marginBottom: "1.5rem" }}>
-                Core coursework centers on Systems Programming, Defensive Cybersecurity, Network Security, Operating Systems, Database Management Systems, and Data Structures &amp; Algorithms.
+              {/* Description */}
+              <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68, marginBottom: "1.5rem" }}>
+                Rigorous curriculum bridging systems programming, low-level architecture, and defensive cybersecurity. Coursework emphasizes building verifiable software, threat modeling, operating system internals, and discrete algorithmic logic.
               </p>
             </div>
 
-            {/* Prior Scholastic Distinctions */}
+            {/* Core Coursework Categories */}
             <div
               style={{
                 borderTop: "1px solid var(--border-subtle)",
                 paddingTop: "1.25rem",
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "1.25rem",
               }}
             >
-              <div>
-                <span className="mono-tag" style={{ display: "block", marginBottom: "0.25rem" }}>
-                  Class 12 (HSC)
-                </span>
-                <span style={{ fontSize: "0.875rem", color: "var(--text-primary)", fontWeight: 600, display: "block" }}>
-                  97% · 3rd School Rank
-                </span>
-                <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "0.15rem", display: "block" }}>
-                  Little Angels Higher Sec. School
-                </span>
+              <div
+                style={{
+                  fontSize: "0.6875rem",
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--text-muted)",
+                  letterSpacing: "0.06em",
+                  marginBottom: "0.6rem",
+                  textTransform: "uppercase",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.35rem",
+                }}
+              >
+                <BookOpen size={12} />
+                Key Coursework &amp; Academic Breadth:
               </div>
 
-              <div>
-                <span className="mono-tag" style={{ display: "block", marginBottom: "0.25rem" }}>
-                  Class 10 (SSLC)
-                </span>
-                <span style={{ fontSize: "0.875rem", color: "var(--text-primary)", fontWeight: 600, display: "block" }}>
-                  98% · School Topper
-                </span>
-                <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "0.15rem", display: "block" }}>
-                  Little Angels Matriculation School
-                </span>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+                {[
+                  "Defensive Cybersecurity",
+                  "Network Security",
+                  "Operating Systems",
+                  "Data Structures & Algorithms",
+                  "Database Management Systems",
+                  "Systems Programming",
+                  "Object-Oriented Design",
+                  "Computer Networks",
+                ].map((course) => (
+                  <span
+                    key={course}
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.71875rem",
+                      color: "var(--text-secondary)",
+                      background: "rgba(255, 255, 255, 0.025)",
+                      padding: "0.22rem 0.55rem",
+                      borderRadius: "4px",
+                      border: "1px solid var(--border-subtle)",
+                    }}
+                  >
+                    {course}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Problem Solving / LeetCode Card */}
+          {/* Scholastic Distinctions Card (Secondary & Higher Secondary) */}
           <div
             className="edu-card-block"
             style={{
               border: "1px solid var(--border-default)",
               background: "var(--bg-surface)",
-              borderRadius: "8px",
-              padding: "clamp(1.75rem, 3vw, 2.5rem)",
+              borderRadius: "10px",
+              padding: "clamp(1.35rem, 3vw, 2.5rem)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -192,224 +191,145 @@ export const EducationSection: React.FC = () => {
             }}
           >
             <div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.6rem" }}>
-                <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
-                  COMPETITIVE ALGORITHMIC PRACTICE
+              {/* Top Meta Bar */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "0.85rem",
+                  flexWrap: "wrap",
+                  gap: "0.5rem",
+                }}
+              >
+                <span className="mono-tag" style={{ color: "var(--accent-cyan)", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+                  <Award size={13} />
+                  02 · SCHOLASTIC EXCELLENCE
                 </span>
-                <a
-                  href={personalInfo.social.leetcode}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-link-arrow"
-                  style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)" }}
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.75rem",
+                    color: "var(--text-secondary)",
+                    background: "rgba(255, 255, 255, 0.025)",
+                    border: "1px solid var(--border-subtle)",
+                    padding: "0.15rem 0.55rem",
+                    borderRadius: "4px",
+                  }}
                 >
-                  <span>PROFILE</span>
-                  <ArrowUpRight size={12} />
-                </a>
+                  Top Rank Distinctions
+                </span>
               </div>
 
+              {/* Title */}
               <h3
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "1.4rem",
+                  fontSize: "clamp(1.35rem, 2.2vw, 1.75rem)",
                   fontWeight: 700,
                   color: "var(--text-primary)",
                   letterSpacing: "-0.02em",
-                  marginBottom: "0.5rem",
+                  marginBottom: "0.35rem",
                 }}
               >
-                LeetCode Problem Solving
+                Secondary Schooling
               </h3>
 
               <div
                 style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  gap: "0.6rem",
+                  fontSize: "0.95rem",
+                  color: "var(--text-secondary)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Consistent academic top-rank performance across state board evaluations.
+              </div>
+
+              {/* Class 12 Block */}
+              <div
+                style={{
+                  padding: "1rem 1.15rem",
+                  background: "rgba(255, 255, 255, 0.02)",
+                  border: "1px solid var(--border-subtle)",
+                  borderRadius: "6px",
                   marginBottom: "1rem",
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "clamp(2.5rem, 5vw, 3.25rem)",
-                    fontWeight: 700,
-                    color: "var(--text-primary)",
-                    lineHeight: 1,
-                  }}
-                >
-                  450+
-                </span>
-                <span style={{ fontSize: "0.875rem", color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }}>
-                  problems solved
-                </span>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.35rem", flexWrap: "wrap", gap: "0.35rem" }}>
+                  <span style={{ fontSize: "0.8125rem", color: "var(--accent-cyan-light)", fontFamily: "var(--font-mono)", fontWeight: 600 }}>
+                    Class 12 (Higher Secondary / HSC)
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.84375rem",
+                      fontWeight: 700,
+                      color: "var(--accent-emerald)",
+                    }}
+                  >
+                    97% · 3rd School Rank
+                  </span>
+                </div>
+                <div style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "0.2rem" }}>
+                  Little Angels Higher Secondary School
+                </div>
+                <div style={{ fontSize: "0.78125rem", color: "var(--text-muted)" }}>
+                  Higher Secondary concentration in Mathematics, Physics, Chemistry, and Computer Science.
+                </div>
               </div>
 
-              <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.68, marginBottom: "1.5rem" }}>
-                Continuous algorithmic practice emphasizing optimal time and space complexity. Routine focus covers Data Structures, Graph Theory, Dynamic Programming, Tree Traversals, and Two-Pointer strategies.
-              </p>
+              {/* Class 10 Block */}
+              <div
+                style={{
+                  padding: "1rem 1.15rem",
+                  background: "rgba(255, 255, 255, 0.02)",
+                  border: "1px solid var(--border-subtle)",
+                  borderRadius: "6px",
+                }}
+              >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.35rem", flexWrap: "wrap", gap: "0.35rem" }}>
+                  <span style={{ fontSize: "0.8125rem", color: "var(--accent-cyan-light)", fontFamily: "var(--font-mono)", fontWeight: 600 }}>
+                    Class 10 (Secondary / SSLC)
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.84375rem",
+                      fontWeight: 700,
+                      color: "var(--accent-emerald)",
+                    }}
+                  >
+                    98% · School Topper
+                  </span>
+                </div>
+                <div style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "0.2rem" }}>
+                  Little Angels Matriculation School
+                </div>
+                <div style={{ fontSize: "0.78125rem", color: "var(--text-muted)" }}>
+                  First rank across the graduating school cohort with distinctions across all subjects.
+                </div>
+              </div>
             </div>
 
+            {/* Scholastic Summary Tag */}
             <div
               style={{
                 borderTop: "1px solid var(--border-subtle)",
                 paddingTop: "1.25rem",
+                marginTop: "1.25rem",
                 display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                fontSize: "0.75rem",
+                color: "var(--text-muted)",
+                fontFamily: "var(--font-mono)",
                 flexWrap: "wrap",
-                gap: "0.45rem",
+                gap: "0.35rem",
               }}
             >
-              {["Data Structures", "Algorithms", "Graph Theory", "Dynamic Programming", "Tree Traversals"].map((t) => (
-                <span
-                  key={t}
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.71875rem",
-                    color: "var(--text-muted)",
-                    background: "rgba(255, 255, 255, 0.025)",
-                    padding: "0.22rem 0.55rem",
-                    borderRadius: "4px",
-                    border: "1px solid var(--border-subtle)",
-                  }}
-                >
-                  {t}
-                </span>
-              ))}
+              <span>Academic Distinction</span>
+              <span style={{ color: "var(--accent-cyan)" }}>Tamil Nadu State Board</span>
             </div>
-          </div>
-        </div>
-
-        {/* Credentials Index: Clearly Distinguished Certifications, Training & Workshops */}
-        <div style={{ marginTop: "3.5rem" }}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-end",
-              flexWrap: "wrap",
-              gap: "1rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <div>
-              <span className="mono-tag" style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan)" }}>
-                CREDENTIALS &amp; SPECIALIZED TRAINING
-              </span>
-              <h3
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "1.45rem",
-                  fontWeight: 700,
-                  color: "var(--text-primary)",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Verified Certifications, Training &amp; Workshops
-              </h3>
-            </div>
-
-            {/* Filter Pills */}
-            <div style={{ display: "flex", gap: "0.35rem", flexWrap: "wrap" }}>
-              {(
-                [
-                  { id: "all", label: "All Credentials" },
-                  { id: "certification", label: "Certifications" },
-                  { id: "training", label: "Practical Training" },
-                  { id: "workshop", label: "Workshops" },
-                ] as const
-              ).map((tab) => (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => setFilterType(tab.id)}
-                  style={{
-                    background: filterType === tab.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
-                    border: filterType === tab.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-                    color: filterType === tab.id ? "var(--text-primary)" : "var(--text-muted)",
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.8125rem",
-                    fontWeight: filterType === tab.id ? 600 : 500,
-                    padding: "0.35rem 0.8rem",
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    transition: "all 0.15s ease",
-                  }}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Credentials Table / Rows */}
-          <div style={{ borderTop: "1px solid var(--border-subtle)" }}>
-            {filteredCredentials.map((cred, idx) => {
-              const isCert = cred.type === "certification";
-              const isTraining = cred.type === "training";
-
-              return (
-                <div
-                  key={idx}
-                  className="credential-row"
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1.4fr 1.6fr 0.9fr 0.8fr",
-                    gap: "1.5rem",
-                    padding: "1.25rem 0",
-                    borderBottom: "1px solid var(--border-subtle)",
-                    alignItems: "baseline",
-                  }}
-                >
-                  <div>
-                    <span style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--text-primary)", display: "block", marginBottom: "0.2rem" }}>
-                      {cred.title}
-                    </span>
-                    <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>
-                      {cred.issuer}
-                    </span>
-                  </div>
-
-                  <div style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.55 }}>
-                    {cred.details}
-                  </div>
-
-                  <div>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.6875rem",
-                        padding: "0.2rem 0.55rem",
-                        border: "1px solid",
-                        borderColor: isCert
-                          ? "var(--accent-cyan-border)"
-                          : isTraining
-                          ? "var(--accent-emerald-border)"
-                          : "var(--border-subtle)",
-                        color: isCert
-                          ? "var(--accent-cyan)"
-                          : isTraining
-                          ? "var(--accent-emerald)"
-                          : "var(--text-muted)",
-                        background: isCert
-                          ? "var(--accent-cyan-subtle)"
-                          : isTraining
-                          ? "var(--accent-emerald-subtle)"
-                          : "rgba(255, 255, 255, 0.02)",
-                        borderRadius: "4px",
-                      }}
-                    >
-                      {cred.typeLabel}
-                    </span>
-                  </div>
-
-                  <div style={{ textAlign: "right" }}>
-                    <span className="mono-tag" style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
-                      {cred.year}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
 
@@ -419,24 +339,25 @@ export const EducationSection: React.FC = () => {
         .edu-split-grid {
           display: grid;
           grid-template-columns: 1.15fr 0.85fr;
-          gap: 2rem;
+          gap: clamp(1.75rem, 3vw, 2.5rem);
+          align-items: stretch;
         }
 
         .edu-card-block:hover {
           border-color: var(--border-strong) !important;
-          background: var(--bg-surface-elevated) !important;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 960px) {
           .edu-split-grid {
-            grid-template-columns: 1fr;
-          }
-          .credential-row {
             grid-template-columns: 1fr !important;
-            gap: 0.6rem !important;
+            gap: 1.75rem !important;
           }
-          .credential-row > div:last-child {
-            text-align: left !important;
+        }
+
+        @media (max-width: 640px) {
+          .edu-card-block {
+            padding: 1.25rem 1rem !important;
+            border-radius: 8px !important;
           }
         }
       `}</style>

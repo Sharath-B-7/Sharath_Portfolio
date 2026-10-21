@@ -116,14 +116,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
     {
       id: "education",
       name: "Education",
-      desc: "CIT Chennai (B.E. CSE Cyber) & credentials",
+      desc: "CIT Chennai (B.E. CSE Cyber) & scholastic record",
       href: "#education",
       icon: <GraduationCap size={16} color="var(--accent-cyan)" />,
     },
     {
       id: "achievements",
       name: "Achievements",
-      desc: "450+ LeetCode problems & milestones",
+      desc: "450+ LeetCode problems & credentials",
       href: "#achievements",
       icon: <Trophy size={16} color="var(--accent-cyan)" />,
     },
