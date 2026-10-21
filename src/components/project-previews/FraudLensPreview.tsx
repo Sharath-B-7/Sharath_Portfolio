@@ -126,16 +126,15 @@ export const FraudLensPreview: React.FC = () => {
           color: "var(--text-muted)",
         }}
       >
-        <span style={{ letterSpacing: "0.06em" }}>SYS // FRAUDLENS_SIMULATOR</span>
-        <span style={{ color: "var(--accent-cyan)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ letterSpacing: "0.04em" }}>FRAUDLENS AI · TRUST ENGINE SIMULATOR</span>
+        <span style={{ color: "var(--accent-cyan-light)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
           <span
             style={{
               width: "6px",
               height: "6px",
               borderRadius: "50%",
-              backgroundColor: "var(--accent-cyan)",
+              backgroundColor: "var(--accent-emerald)",
               display: "inline-block",
-              boxShadow: "0 0 6px var(--accent-cyan)",
             }}
           />
           INTELLIGENCE ENGINE READY

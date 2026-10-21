@@ -26,7 +26,7 @@ export const AchievementsSection: React.FC = () => {
       <div className="container">
         {/* Section Header */}
         <div style={{ marginBottom: "2.5rem" }}>
-          <div className="section-label">04 // Demonstrated Track Record</div>
+          <div className="section-label">05 · Demonstrated Track Record</div>
           <h2 className="section-heading-editorial">
             Achievements &amp; Credentials
           </h2>
@@ -49,8 +49,8 @@ export const AchievementsSection: React.FC = () => {
         >
           <span
             style={{
-              fontSize: "0.71875rem",
-              fontFamily: "var(--font-mono)",
+              fontSize: "0.78125rem",
+              fontFamily: "var(--font-sans)",
               color: "var(--text-muted)",
               marginRight: "0.5rem",
               display: "inline-flex",
@@ -59,7 +59,7 @@ export const AchievementsSection: React.FC = () => {
             }}
           >
             <SlidersHorizontal size={13} />
-            FILTER CREDENTIALS:
+            Filter credentials:
           </span>
 
           <button
@@ -68,11 +68,12 @@ export const AchievementsSection: React.FC = () => {
             style={{
               background: activeTab === "all" ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
               border: activeTab === "all" ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-              borderRadius: "4px",
-              padding: "0.35rem 0.75rem",
+              borderRadius: "6px",
+              padding: "0.35rem 0.8rem",
               color: activeTab === "all" ? "var(--text-primary)" : "var(--text-secondary)",
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.71875rem",
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.8125rem",
+              fontWeight: activeTab === "all" ? 600 : 500,
               cursor: "pointer",
               transition: "all 0.15s ease",
             }}
@@ -86,11 +87,12 @@ export const AchievementsSection: React.FC = () => {
             style={{
               background: activeTab === "academic" ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
               border: activeTab === "academic" ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-              borderRadius: "4px",
-              padding: "0.35rem 0.75rem",
+              borderRadius: "6px",
+              padding: "0.35rem 0.8rem",
               color: activeTab === "academic" ? "var(--text-primary)" : "var(--text-secondary)",
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.71875rem",
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.8125rem",
+              fontWeight: activeTab === "academic" ? 600 : 500,
               cursor: "pointer",
               transition: "all 0.15s ease",
             }}
@@ -104,11 +106,12 @@ export const AchievementsSection: React.FC = () => {
             style={{
               background: activeTab === "certifications" ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
               border: activeTab === "certifications" ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-              borderRadius: "4px",
-              padding: "0.35rem 0.75rem",
+              borderRadius: "6px",
+              padding: "0.35rem 0.8rem",
               color: activeTab === "certifications" ? "var(--text-primary)" : "var(--text-secondary)",
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.71875rem",
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.8125rem",
+              fontWeight: activeTab === "certifications" ? 600 : 500,
               cursor: "pointer",
               transition: "all 0.15s ease",
             }}
@@ -120,8 +123,8 @@ export const AchievementsSection: React.FC = () => {
         {/* SECTION A: Key Milestones Grid */}
         {(activeTab === "all" || activeTab === "academic") && (
           <div style={{ marginBottom: "3rem" }}>
-            <div style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)", color: "var(--accent-cyan)", letterSpacing: "0.06em", marginBottom: "1rem" }}>
-              // CORE HIGHLIGHTS &amp; DSA DISCIPLINE
+            <div style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)", color: "var(--accent-cyan-light)", letterSpacing: "0.04em", marginBottom: "1rem" }}>
+              // CORE HIGHLIGHTS &amp; PROBLEM SOLVING
             </div>
 
             <div
@@ -260,8 +263,8 @@ export const AchievementsSection: React.FC = () => {
         {/* SECTION B: Industry Certifications & Training Grid */}
         {(activeTab === "all" || activeTab === "certifications") && (
           <div>
-            <div style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)", color: "var(--accent-cyan)", letterSpacing: "0.06em", marginBottom: "1rem" }}>
-              // VERIFIED INDUSTRY CERTIFICATIONS &amp; CREDENTIALS
+            <div style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)", color: "var(--accent-cyan-light)", letterSpacing: "0.04em", marginBottom: "1rem" }}>
+              // VERIFIED CREDENTIALS &amp; CERTIFICATIONS
             </div>
 
             <div

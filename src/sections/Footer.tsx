@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
             >
               SHARATH B
             </div>
-            <p style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }}>
+            <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
               B.E. Computer Science &amp; Engineering (Cyber Security) · Chennai Institute of Technology
             </p>
           </div>
@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
               className="mono-tag"
               style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}
             >
-              CHENNAI, IN // 2026
+              CHENNAI, INDIA · 2026
             </span>
 
             <button

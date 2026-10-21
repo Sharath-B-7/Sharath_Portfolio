@@ -66,7 +66,7 @@ export const EducationSection: React.FC = () => {
         
         {/* Section Header */}
         <div style={{ marginBottom: "3.5rem" }}>
-          <div className="section-label">04 // Education &amp; Credentials</div>
+          <div className="section-label">04 · Education &amp; Credentials</div>
           <h2 className="section-heading-editorial">
             Academic Foundation &amp; Credentials
           </h2>
@@ -127,8 +127,8 @@ export const EducationSection: React.FC = () => {
 
               <div
                 style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.75rem",
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "0.8125rem",
                   color: "var(--text-muted)",
                   marginBottom: "1.25rem",
                 }}
@@ -326,10 +326,11 @@ export const EducationSection: React.FC = () => {
                     background: filterType === tab.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
                     border: filterType === tab.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
                     color: filterType === tab.id ? "var(--text-primary)" : "var(--text-muted)",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    padding: "0.35rem 0.75rem",
-                    borderRadius: "4px",
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "0.8125rem",
+                    fontWeight: filterType === tab.id ? 600 : 500,
+                    padding: "0.35rem 0.8rem",
+                    borderRadius: "6px",
                     cursor: "pointer",
                     transition: "all 0.15s ease",
                   }}

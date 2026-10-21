@@ -49,7 +49,7 @@ export const ProjectsSection: React.FC = () => {
       <div className="container">
         {/* Section Header */}
         <div style={{ marginBottom: "2.5rem" }}>
-          <div className="section-label">02 // Selected Work</div>
+          <div className="section-label">02 · Selected Work</div>
           <h2 className="section-heading-editorial">
             Engineered Systems &amp; Research
           </h2>
@@ -82,7 +82,7 @@ export const ProjectsSection: React.FC = () => {
             }}
           >
             <SlidersHorizontal size={13} />
-            FILTER DOMAIN:
+            Filter by domain:
           </span>
           {filterCategories.map((cat) => (
             <button
@@ -92,11 +92,12 @@ export const ProjectsSection: React.FC = () => {
               style={{
                 background: activeFilter === cat.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
                 border: activeFilter === cat.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-                borderRadius: "4px",
-                padding: "0.35rem 0.75rem",
+                borderRadius: "6px",
+                padding: "0.35rem 0.8rem",
                 color: activeFilter === cat.id ? "var(--text-primary)" : "var(--text-secondary)",
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.71875rem",
+                fontFamily: "var(--font-sans)",
+                fontSize: "0.8125rem",
+                fontWeight: activeFilter === cat.id ? 600 : 500,
                 cursor: "pointer",
                 transition: "all 0.15s ease",
               }}
@@ -141,13 +142,14 @@ export const ProjectsSection: React.FC = () => {
                       <span
                         style={{
                           fontSize: "0.6875rem",
-                          fontFamily: "var(--font-mono)",
+                          fontFamily: "var(--font-sans)",
+                          fontWeight: 500,
                           color: "var(--text-secondary)",
                           border: "1px solid var(--border-subtle)",
                           padding: "0.15rem 0.5rem",
                           borderRadius: "4px",
-                          letterSpacing: "0.04em",
-                          background: "rgba(255, 255, 255, 0.02)",
+                          letterSpacing: "0.02em",
+                          background: "var(--bg-surface-subtle)",
                         }}
                       >
                         {project.statusBadge}
@@ -188,9 +190,9 @@ export const ProjectsSection: React.FC = () => {
                   <div style={{ marginBottom: "1.35rem" }}>
                     <span
                       className="mono-tag"
-                      style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan)" }}
+                      style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan-light)" }}
                     >
-                      PROBLEM STATEMENT
+                      PROBLEM CONTEXT
                     </span>
                     <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68 }}>
                       {project.problem}
@@ -201,9 +203,9 @@ export const ProjectsSection: React.FC = () => {
                   <div style={{ marginBottom: "1.5rem" }}>
                     <span
                       className="mono-tag"
-                      style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan)" }}
+                      style={{ display: "block", marginBottom: "0.35rem", color: "var(--accent-cyan-light)" }}
                     >
-                      TECHNICAL ARCHITECTURE &amp; CONTRIBUTION
+                      ARCHITECTURE &amp; IMPLEMENTATION
                     </span>
                     <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.68 }}>
                       {project.architectureContribution}
@@ -214,9 +216,9 @@ export const ProjectsSection: React.FC = () => {
                   <div style={{ marginBottom: "1.75rem" }}>
                     <span
                       className="mono-tag"
-                      style={{ display: "block", marginBottom: "0.55rem", color: "var(--accent-cyan)" }}
+                      style={{ display: "block", marginBottom: "0.55rem", color: "var(--accent-cyan-light)" }}
                     >
-                      IMPLEMENTED CAPABILITIES
+                      KEY CAPABILITIES &amp; HIGHLIGHTS
                     </span>
                     <ul
                       style={{

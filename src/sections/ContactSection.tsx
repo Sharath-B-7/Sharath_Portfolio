@@ -18,7 +18,7 @@ export const ContactSection: React.FC = () => {
         
         {/* Section Header */}
         <div style={{ marginBottom: "3.5rem" }}>
-          <div className="section-label">05 // Inquiries &amp; Connections</div>
+          <div className="section-label">06 · Inquiries &amp; Connections</div>
           <h2 className="section-heading-editorial">
             Let's Build Something Secure.
           </h2>
@@ -39,9 +39,9 @@ export const ContactSection: React.FC = () => {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.85rem" }}>
-            <Mail size={15} color="var(--accent-cyan)" />
-            <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
-              PRIMARY DIRECT CONTACT
+            <Mail size={15} color="var(--accent-cyan-light)" />
+            <span className="mono-tag" style={{ color: "var(--accent-cyan-light)" }}>
+              DIRECT EMAIL INQUIRY
             </span>
           </div>
 
@@ -92,11 +92,11 @@ export const ContactSection: React.FC = () => {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <GithubIcon size={18} />
-                <span className="mono-tag" style={{ color: "var(--text-primary)" }}>GITHUB</span>
+                <span style={{ fontSize: "0.75rem", fontFamily: "var(--font-sans)", fontWeight: 600, color: "var(--text-primary)" }}>GitHub</span>
               </div>
               <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
             </div>
-            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
               @Sharath-B-7
             </div>
             <div style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
@@ -114,11 +114,11 @@ export const ContactSection: React.FC = () => {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <LinkedinIcon size={18} />
-                <span className="mono-tag" style={{ color: "var(--text-primary)" }}>LINKEDIN</span>
+                <span style={{ fontSize: "0.75rem", fontFamily: "var(--font-sans)", fontWeight: 600, color: "var(--text-primary)" }}>LinkedIn</span>
               </div>
               <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
             </div>
-            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
               Sharath B
             </div>
             <div style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
@@ -136,11 +136,11 @@ export const ContactSection: React.FC = () => {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <LeetCodeIcon size={18} />
-                <span className="mono-tag" style={{ color: "var(--text-primary)" }}>LEETCODE</span>
+                <span style={{ fontSize: "0.75rem", fontFamily: "var(--font-sans)", fontWeight: 600, color: "var(--text-primary)" }}>LeetCode</span>
               </div>
               <ArrowUpRight size={14} style={{ opacity: 0.6 }} />
             </div>
-            <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
               Sharathbcs (450+ Solved)
             </div>
             <div style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>

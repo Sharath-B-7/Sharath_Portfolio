@@ -47,7 +47,7 @@ export const SkillsSection: React.FC = () => {
       <div className="container">
         {/* Section Header */}
         <div style={{ marginBottom: "2.5rem" }}>
-          <div className="section-label">03 // Technical Capabilities</div>
+          <div className="section-label">03 · Technical Capabilities</div>
           <h2 className="section-heading-editorial">
             Disciplines &amp; Core Toolchain
           </h2>
@@ -73,8 +73,8 @@ export const SkillsSection: React.FC = () => {
           <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", flexWrap: "wrap" }}>
             <span
               style={{
-                fontSize: "0.71875rem",
-                fontFamily: "var(--font-mono)",
+                fontSize: "0.78125rem",
+                fontFamily: "var(--font-sans)",
                 color: "var(--text-muted)",
                 marginRight: "0.4rem",
                 display: "inline-flex",
@@ -83,7 +83,7 @@ export const SkillsSection: React.FC = () => {
               }}
             >
               <SlidersHorizontal size={12} />
-              CATEGORY:
+              Category:
             </span>
 
             <button
@@ -92,11 +92,12 @@ export const SkillsSection: React.FC = () => {
               style={{
                 background: activeCategory === "all" ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
                 border: activeCategory === "all" ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-                borderRadius: "4px",
-                padding: "0.3rem 0.65rem",
+                borderRadius: "6px",
+                padding: "0.35rem 0.75rem",
                 color: activeCategory === "all" ? "var(--text-primary)" : "var(--text-secondary)",
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.71875rem",
+                fontFamily: "var(--font-sans)",
+                fontSize: "0.8125rem",
+                fontWeight: activeCategory === "all" ? 600 : 500,
                 cursor: "pointer",
                 transition: "all 0.15s ease",
               }}
@@ -112,11 +113,12 @@ export const SkillsSection: React.FC = () => {
                 style={{
                   background: activeCategory === group.id ? "var(--accent-cyan-subtle)" : "rgba(255, 255, 255, 0.025)",
                   border: activeCategory === group.id ? "1px solid var(--accent-cyan-border)" : "1px solid var(--border-subtle)",
-                  borderRadius: "4px",
-                  padding: "0.3rem 0.65rem",
+                  borderRadius: "6px",
+                  padding: "0.35rem 0.75rem",
                   color: activeCategory === group.id ? "var(--text-primary)" : "var(--text-secondary)",
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.71875rem",
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "0.8125rem",
+                  fontWeight: activeCategory === group.id ? 600 : 500,
                   cursor: "pointer",
                   transition: "all 0.15s ease",
                 }}
@@ -196,8 +198,8 @@ export const SkillsSection: React.FC = () => {
                   {/* Header with index, restrained icon, and group name */}
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.6rem" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                      <span className="mono-tag" style={{ color: "var(--accent-cyan)" }}>
-                        {group.index} //
+                      <span className="mono-tag" style={{ color: "var(--accent-cyan-light)" }}>
+                        {group.index} ·
                       </span>
                       <h3
                         style={{

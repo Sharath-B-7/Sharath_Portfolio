@@ -147,16 +147,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
                 borderRadius: "50%",
                 backgroundColor: "var(--accent-emerald)",
                 display: "inline-block",
-                boxShadow: "0 0 6px var(--accent-emerald)",
               }}
             />
             <span
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.71875rem",
-                fontWeight: 600,
+                fontFamily: "var(--font-sans)",
+                fontSize: "0.8125rem",
+                fontWeight: 500,
                 color: "#34d399",
-                letterSpacing: "0.04em",
+                letterSpacing: "0.01em",
               }}
             >
               Available for Internships &amp; Research
@@ -403,13 +402,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           gap: 0.45rem;
           padding: 0.32rem 0.65rem;
           border-radius: 6px;
-          background: rgba(255, 255, 255, 0.025);
+          background: var(--bg-surface-subtle);
           border: 1px solid var(--border-subtle);
           color: var(--text-secondary);
-          font-family: var(--font-mono);
-          font-size: 0.75rem;
+          font-family: var(--font-sans);
+          font-size: 0.8125rem;
           font-weight: 500;
-          letter-spacing: 0.02em;
+          letter-spacing: 0.01em;
         }
 
         @media (max-width: 960px) {

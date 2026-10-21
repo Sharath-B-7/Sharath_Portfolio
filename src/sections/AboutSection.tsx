@@ -9,7 +9,7 @@ export const AboutSection: React.FC = () => {
         <div className="about-editorial-grid">
           {/* Left Column: Heading, Academic Thesis & Credentials */}
           <div className="about-left-col">
-            <div className="section-label">01 // Approach &amp; Background</div>
+            <div className="section-label">01 · Approach &amp; Background</div>
             <h2
               className="section-heading-editorial"
               style={{
@@ -43,7 +43,7 @@ export const AboutSection: React.FC = () => {
                 <span style={{ fontSize: "0.9375rem", color: "var(--text-primary)", fontWeight: 600, display: "block" }}>
                   B.E. CSE — Cyber Security
                 </span>
-                <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", marginTop: "0.15rem", display: "block" }}>
+                <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", fontFamily: "var(--font-sans)", marginTop: "0.2rem", display: "block" }}>
                   CIT Chennai · 2025–2029
                 </span>
               </div>
@@ -71,7 +71,7 @@ export const AboutSection: React.FC = () => {
                   />
                   {personalInfo.education.cgpa}
                 </span>
-                <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", marginTop: "0.15rem", display: "block" }}>
+                <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", fontFamily: "var(--font-sans)", marginTop: "0.2rem", display: "block" }}>
                   Consistent Academic Record
                 </span>
               </div>
@@ -99,16 +99,16 @@ export const AboutSection: React.FC = () => {
                 display: "flex",
                 flexWrap: "wrap",
                 gap: "1.5rem",
-                fontSize: "0.75rem",
+                fontSize: "0.8125rem",
                 color: "var(--text-muted)",
-                fontFamily: "var(--font-mono)",
+                fontFamily: "var(--font-sans)",
               }}
             >
-              <span>LANGUAGES: English, Tamil</span>
+              <span>Languages: English, Tamil</span>
               <span>·</span>
-              <span>LOCATION: Chennai, India</span>
+              <span>Location: Chennai, India</span>
               <span>·</span>
-              <span>FOCUS: Defensive Security &amp; Systems</span>
+              <span>Focus: Defensive Security &amp; Systems</span>
             </div>
           </div>
 

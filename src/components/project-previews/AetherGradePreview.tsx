@@ -94,7 +94,7 @@ export const AetherGradePreview: React.FC = () => {
           color: "var(--text-muted)",
         }}
       >
-        <span style={{ letterSpacing: "0.06em" }}>SYS // AETHERGRADE_LEDGER</span>
+        <span style={{ letterSpacing: "0.04em" }}>AETHERGRADE · CRYPTOGRAPHIC LEDGER</span>
         <span style={{ color: tampered ? "var(--accent-cyan-light)" : "var(--accent-emerald)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
           <span
             style={{

@@ -46,19 +46,18 @@ export const EduGapPreview: React.FC = () => {
           color: "var(--text-muted)",
         }}
       >
-        <span style={{ letterSpacing: "0.06em" }}>SYS // EDUGAP_DKT_ENGINE</span>
-        <span style={{ color: "var(--accent-cyan)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ letterSpacing: "0.04em" }}>EDUGAP AI · DKT DIAGNOSTIC ENGINE</span>
+        <span style={{ color: "var(--accent-cyan-light)", display: "flex", alignItems: "center", gap: "0.4rem" }}>
           <span
             style={{
               width: "6px",
               height: "6px",
               borderRadius: "50%",
-              backgroundColor: "var(--accent-cyan)",
+              backgroundColor: "var(--accent-emerald)",
               display: "inline-block",
-              boxShadow: "0 0 6px var(--accent-cyan)",
             }}
           />
-          XGBOOST + LSTM RUNNING
+          XGBOOST + LSTM READY
         </span>
       </div>
 

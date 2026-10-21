@@ -195,7 +195,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             border: "1px solid var(--border-default)",
             borderRadius: "9999px",
             padding: "0.32rem 0.55rem",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+            boxShadow: "var(--shadow-md)",
           }}
           className="nav-center-pill"
         >
@@ -240,14 +240,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               color: "var(--text-primary)",
               fontSize: "0.78125rem",
               fontWeight: 600,
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-sans)",
               padding: "0.42rem 0.95rem",
               borderRadius: "9999px",
               cursor: "pointer",
               display: "inline-flex",
               alignItems: "center",
               gap: "0.45rem",
-              letterSpacing: "0.03em",
+              letterSpacing: "0.02em",
               transition: "all 0.18s ease",
             }}
           >
@@ -258,7 +258,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 borderRadius: "50%",
                 backgroundColor: "var(--accent-cyan)",
                 display: "inline-block",
-                boxShadow: "0 0 6px var(--accent-cyan)",
               }}
             />
             <Terminal size={12} color="var(--accent-cyan)" />
@@ -370,7 +369,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               border: "1px solid var(--border-default)",
               borderRadius: "16px",
               padding: "1.25rem 1.5rem",
-              boxShadow: "0 25px 60px -10px rgba(0, 0, 0, 0.95), 0 0 35px rgba(6, 182, 212, 0.08)",
+              boxShadow: "var(--shadow-lg)",
               zIndex: 110,
               animation: "fadeInDown 0.15s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
@@ -387,7 +386,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               marginBottom: "1rem",
               fontFamily: "var(--font-mono)",
               fontSize: "0.6875rem",
-              letterSpacing: "0.08em",
+              letterSpacing: "0.05em",
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--accent-cyan)", fontWeight: 600 }}>
@@ -398,12 +397,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                   borderRadius: "50%",
                   backgroundColor: "var(--accent-cyan)",
                   display: "inline-block",
-                  boxShadow: "0 0 6px var(--accent-cyan)",
                 }}
               />
-              <span>SYSTEM DIRECTORY // SHARATH B</span>
+              <span>NAVIGATION DIRECTORY · SHARATH B</span>
             </div>
-            <span style={{ color: "var(--text-muted)" }}>[ 07 HUBS ACTIVE ]</span>
+            <span style={{ color: "var(--text-muted)" }}>[ 07 SECTIONS ]</span>
           </div>
 
           {/* Directory Options Grid */}
@@ -525,7 +523,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             display: "flex",
             flexDirection: "column",
             gap: "0.75rem",
-            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.95)",
+            boxShadow: "var(--shadow-lg)",
           }}
         >
           {directoryHubs.map((hub) => (
@@ -539,12 +537,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               style={{
                 color: "var(--text-primary)",
                 textDecoration: "none",
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.875rem",
+                fontFamily: "var(--font-sans)",
+                fontSize: "0.9375rem",
+                fontWeight: 500,
                 display: "flex",
                 alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.45rem 0",
+                gap: "0.6rem",
+                padding: "0.5rem 0",
                 borderBottom: "1px solid var(--border-subtle)",
               }}
             >
