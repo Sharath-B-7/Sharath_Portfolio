@@ -52,6 +52,11 @@
   --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
   --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.55);
 
+  /* Hero Portrait Multi-Directional Alpha Mask Tokens (Dark Theme Default) */
+  --hero-mask-h: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.02) 6%, rgba(0, 0, 0, 0.14) 14%, rgba(0, 0, 0, 0.40) 24%, rgba(0, 0, 0, 0.76) 36%, rgba(0, 0, 0, 0.95) 48%, black 58%, black 100%);
+  --hero-mask-v: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.04) 4%, rgba(0, 0, 0, 0.18) 10%, rgba(0, 0, 0, 0.58) 18%, rgba(0, 0, 0, 0.92) 26%, black 32%, black 100%);
+  --hero-mobile-mask-v: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.04) 4%, rgba(0, 0, 0, 0.22) 12%, rgba(0, 0, 0, 0.68) 22%, black 35%, black 100%);
+
   /* Hero Portrait Atmosphere & Seamless Edge Blend Tokens (Deep Charcoal #171A19) */
   --bg-canvas-90: rgba(23, 26, 25, 0.90);
   --bg-canvas-40: rgba(23, 26, 25, 0.40);
@@ -129,6 +134,11 @@
   --shadow-sm: 0 1px 3px rgba(36, 42, 39, 0.06);
   --shadow-md: 0 4px 14px rgba(36, 42, 39, 0.08), 0 1px 3px rgba(36, 42, 39, 0.04);
   --shadow-lg: 0 14px 32px rgba(36, 42, 39, 0.10), 0 2px 6px rgba(36, 42, 39, 0.04);
+
+  /* Hero Portrait Multi-Directional Alpha Mask Tokens (Light Theme Warm Ivory) */
+  --hero-mask-h: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.03) 5%, rgba(0, 0, 0, 0.18) 12%, rgba(0, 0, 0, 0.52) 20%, rgba(0, 0, 0, 0.88) 28%, black 35%, black 100%);
+  --hero-mask-v: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0.22) 8%, rgba(0, 0, 0, 0.65) 15%, rgba(0, 0, 0, 0.94) 22%, black 28%, black 100%);
+  --hero-mobile-mask-v: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.05) 4%, rgba(0, 0, 0, 0.28) 11%, rgba(0, 0, 0, 0.72) 19%, black 28%, black 100%);
 
   /* Hero Portrait Atmosphere & Seamless Edge Blend Tokens (Warm Architectural Ivory #F4F0E8) */
   --bg-canvas-90: rgba(244, 240, 232, 0.90);

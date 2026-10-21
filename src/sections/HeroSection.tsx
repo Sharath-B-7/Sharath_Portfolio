@@ -42,38 +42,38 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           top: 0,
           right: 0,
           bottom: 0,
-          width: "clamp(360px, 40vw, 620px)",
+          width: "clamp(380px, 44vw, 760px)",
           zIndex: 1,
           pointerEvents: "none",
           overflow: "hidden",
+          backgroundColor: "transparent",
         }}
       >
-        {/* Genuine Profile Photograph — Preserved original asset with 0 filters */}
-        <img
-          src={personalInfo.assets.profilePhoto}
-          alt="Sharath B — Cybersecurity & Software Engineer"
-          className="hero-portrait-img"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center 10%",
-          }}
-          loading="eager"
-        />
+        {/* Layer 1: Vertical Alpha Mask Container (Dissolves lower body into continuous background) */}
+        <div className="hero-mask-vertical">
+          {/* Layer 2: Horizontal Alpha Mask Container (Broad gradual left-edge dissolution) */}
+          <div className="hero-mask-horizontal">
+            {/* Genuine Profile Photograph — Original unretouched asset with zero filters */}
+            <img
+              src={personalInfo.assets.profilePhoto}
+              alt="Sharath B — Cybersecurity & Software Engineer"
+              className="hero-portrait-img"
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center 10%",
+                display: "block",
+              }}
+              loading="eager"
+            />
 
-        {/* Dual-Theme Seamless Ambient Blends — Zero Halos, Zero Masks, Zero Face Overlays */}
-        <div className="hero-blend-dark" aria-hidden="true">
-          <div className="hero-blend-dark-left" />
-          <div className="hero-blend-dark-bottom" />
-          <div className="hero-blend-dark-top" />
-        </div>
-        <div className="hero-blend-light" aria-hidden="true">
-          <div className="hero-blend-light-left" />
-          <div className="hero-blend-light-bottom" />
-          <div className="hero-blend-light-top" />
+            {/* Layer 3: Dual-Theme Atmospheric Edge Harmonies (Seamless color transitions) */}
+            <div className="hero-ambient-dark" aria-hidden="true" />
+            <div className="hero-ambient-light" aria-hidden="true" />
+          </div>
         </div>
       </div>
 
@@ -82,20 +82,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           Nearly full-width prominent photo fading smoothly into canvas
           ============================================================== */}
       <div className="hero-mobile-portrait-banner" aria-label="Sharath B portrait">
-        <img
-          src={personalInfo.assets.profilePhoto}
-          alt="Sharath B — Cybersecurity & Software Engineer"
-          className="hero-mobile-portrait-banner-img"
-          loading="eager"
-        />
-        {/* Mobile Dual-Theme Seamless Ambient Blends */}
-        <div className="hero-mobile-blend-dark" aria-hidden="true">
-          <div className="hero-mobile-blend-dark-bottom" />
-          <div className="hero-mobile-blend-dark-top" />
-        </div>
-        <div className="hero-mobile-blend-light" aria-hidden="true">
-          <div className="hero-mobile-blend-light-bottom" />
-          <div className="hero-mobile-blend-light-top" />
+        <div className="hero-mobile-mask-vertical">
+          <img
+            src={personalInfo.assets.profilePhoto}
+            alt="Sharath B — Cybersecurity & Software Engineer"
+            className="hero-mobile-portrait-banner-img"
+            loading="eager"
+          />
+          <div className="hero-mobile-ambient-dark" aria-hidden="true" />
+          <div className="hero-mobile-ambient-light" aria-hidden="true" />
         </div>
       </div>
 
@@ -642,204 +637,129 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           }
         }
 
-        /* Prevent hero photo image elements from animating during theme changes */
+        /* Prevent hero photo image elements from animating or resizing during theme changes */
         .hero-portrait-img,
         .hero-mobile-portrait-banner-img {
           transition: none !important;
+          border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
+          filter: none !important;
+          -webkit-filter: none !important;
         }
 
-        /* Desktop Portrait Container — Clean, full-bleed natural frame (No radial mask, no halo) */
+        /* Desktop Portrait Container — Integrated natural stage */
         .hero-backdrop-portrait {
-          transition: background-color 450ms cubic-bezier(0.4, 0, 0.2, 1);
+          background-color: transparent !important;
+          border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
         }
 
-        /* Ambient Blend Layers — Smooth 450ms cross-fade between themes */
-        .hero-blend-dark,
-        .hero-blend-light {
+        /* Vertical Mask Layer: Smooth, gradual lower body dissolution into background */
+        .hero-mask-vertical {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          -webkit-mask-image: var(--hero-mask-v);
+          mask-image: var(--hero-mask-v);
+          -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+        }
+
+        /* Horizontal Mask Layer: Broad, natural left-edge dissolution into text negative space */
+        .hero-mask-horizontal {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          -webkit-mask-image: var(--hero-mask-h);
+          mask-image: var(--hero-mask-h);
+          -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+        }
+
+        /* Ambient Color Harmonization Overlays — Smooth 450ms cross-fade between themes */
+        .hero-ambient-dark,
+        .hero-ambient-light {
           position: absolute;
           inset: 0;
           pointer-events: none;
           transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-blend-dark {
+        .hero-ambient-dark {
           opacity: 1;
+          background:
+            linear-gradient(to right, #171A19 0%, rgba(23, 26, 25, 0.88) 16%, rgba(23, 26, 25, 0.40) 34%, transparent 56%),
+            linear-gradient(to top, #171A19 0%, rgba(23, 26, 25, 0.80) 12%, transparent 28%),
+            linear-gradient(to bottom, rgba(23, 26, 25, 0.60) 0%, transparent 12%);
         }
-        .hero-blend-light {
+
+        .hero-ambient-light {
+          opacity: 0;
+          background:
+            linear-gradient(to right, #F4F0E8 0%, rgba(244, 240, 232, 0.85) 10%, rgba(244, 240, 232, 0.25) 22%, transparent 32%),
+            linear-gradient(to top, rgba(244, 240, 232, 0.70) 0%, rgba(244, 240, 232, 0.20) 10%, transparent 22%),
+            linear-gradient(to bottom, rgba(244, 240, 232, 0.40) 0%, transparent 10%);
+        }
+
+        [data-theme="light"] .hero-ambient-dark {
           opacity: 0;
         }
-
-        [data-theme="light"] .hero-blend-dark {
-          opacity: 0;
-        }
-        [data-theme="light"] .hero-blend-light {
+        [data-theme="light"] .hero-ambient-light {
           opacity: 1;
         }
 
-        /* Dark Theme Desktop Blends: Broad, cinematic integration matching reference site */
-        .hero-blend-dark-left {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            to right,
-            #171A19 0%,
-            rgba(23, 26, 25, 0.95) 16%,
-            rgba(23, 26, 25, 0.65) 32%,
-            rgba(23, 26, 25, 0.20) 48%,
-            transparent 62%
-          );
-        }
-
-        .hero-blend-dark-bottom {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: clamp(100px, 16vh, 160px);
-          background: linear-gradient(
-            to top,
-            #171A19 0%,
-            rgba(23, 26, 25, 0.85) 35%,
-            rgba(23, 26, 25, 0.25) 75%,
-            transparent 100%
-          );
-        }
-
-        .hero-blend-dark-top {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          height: clamp(60px, 9vh, 90px);
-          background: linear-gradient(
-            to bottom,
-            rgba(23, 26, 25, 0.70) 0%,
-            transparent 100%
-          );
-        }
-
-        /* Light Theme Desktop Blends: Scoped strictly to left stone pillar (0-34%), zero face overlay */
-        .hero-blend-light-left {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            to right,
-            #F4F0E8 0%,
-            rgba(244, 240, 232, 0.95) 12%,
-            rgba(244, 240, 232, 0.60) 22%,
-            rgba(244, 240, 232, 0.15) 28%,
-            transparent 34%
-          );
-        }
-
-        .hero-blend-light-bottom {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: clamp(80px, 12vh, 120px);
-          background: linear-gradient(
-            to top,
-            rgba(244, 240, 232, 0.65) 0%,
-            rgba(244, 240, 232, 0.20) 50%,
-            transparent 100%
-          );
-        }
-
-        .hero-blend-light-top {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          height: clamp(50px, 8vh, 80px);
-          background: linear-gradient(
-            to bottom,
-            rgba(244, 240, 232, 0.50) 0%,
-            transparent 100%
-          );
-        }
-
-        /* Mobile Portrait Banner & Blends */
+        /* Mobile Portrait Banner & Vertical Mask Layer */
         .hero-mobile-portrait-banner {
-          transition: background-color 450ms cubic-bezier(0.4, 0, 0.2, 1);
+          background-color: transparent !important;
+          border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
         }
 
-        .hero-mobile-blend-dark,
-        .hero-mobile-blend-light {
+        .hero-mobile-mask-vertical {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          -webkit-mask-image: var(--hero-mobile-mask-v);
+          mask-image: var(--hero-mobile-mask-v);
+          -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+        }
+
+        .hero-mobile-ambient-dark,
+        .hero-mobile-ambient-light {
           position: absolute;
           inset: 0;
           pointer-events: none;
           transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-mobile-blend-dark {
+        .hero-mobile-ambient-dark {
           opacity: 1;
+          background: linear-gradient(to top, #171A19 0%, rgba(23, 26, 25, 0.90) 14%, transparent 36%);
         }
-        .hero-mobile-blend-light {
+
+        .hero-mobile-ambient-light {
+          opacity: 0;
+          background: linear-gradient(to top, #F4F0E8 0%, rgba(244, 240, 232, 0.85) 12%, transparent 28%);
+        }
+
+        [data-theme="light"] .hero-mobile-ambient-dark {
           opacity: 0;
         }
-
-        [data-theme="light"] .hero-mobile-blend-dark {
-          opacity: 0;
-        }
-        [data-theme="light"] .hero-mobile-blend-light {
+        [data-theme="light"] .hero-mobile-ambient-light {
           opacity: 1;
-        }
-
-        .hero-mobile-blend-dark-bottom {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 38%;
-          background: linear-gradient(
-            to top,
-            #171A19 0%,
-            rgba(23, 26, 25, 0.95) 25%,
-            rgba(23, 26, 25, 0.45) 60%,
-            transparent 100%
-          );
-        }
-
-        .hero-mobile-blend-dark-top {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          height: 14%;
-          background: linear-gradient(
-            to bottom,
-            rgba(23, 26, 25, 0.65) 0%,
-            transparent 100%
-          );
-        }
-
-        .hero-mobile-blend-light-bottom {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 32%;
-          background: linear-gradient(
-            to top,
-            #F4F0E8 0%,
-            rgba(244, 240, 232, 0.90) 25%,
-            rgba(244, 240, 232, 0.35) 65%,
-            transparent 100%
-          );
-        }
-
-        .hero-mobile-blend-light-top {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          height: 12%;
-          background: linear-gradient(
-            to bottom,
-            rgba(244, 240, 232, 0.50) 0%,
-            transparent 100%
-          );
         }
       `}</style>
     </section>
